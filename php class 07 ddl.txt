@@ -51,9 +51,26 @@ ______________________________________________
 	
 	id int auto_increment primary key not null,
 	
-    number tinyint unsigned not null
+        number int unsigned not null,
+	
+	name varchar ,
+	
+	dates datetime
 	
 )
+
+
+Practise :
+
+account_name , account_number , email , phone , 
+pass , gender , address,
+openning_day , openning_time
+
+
+
+
+
+
 
   
 Data type :
@@ -70,9 +87,6 @@ Data type :
 	1 byte (means 3 digit) 
 	
 	
-	
-___________	
-
 
 
 	Alter Table :
@@ -242,33 +256,7 @@ built in take 4 digit after decimel
 
 
 
-_____________________________________
 
-
-
-10. 
-
-
-
-practise 1 : 
-
-
-
-create table hellow_data(
-
- id int unsigned auto_increment primary key,
-
- account_name varchar(255) not null,
-
- account_number int not null,
-
- profile_info varchar(3000) not null,
-
- openning_day date not null,
-
- openning_time time not null
-
-)
 
 
 
