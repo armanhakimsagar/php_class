@@ -152,9 +152,9 @@ ______________________________________________________
   
 
 
-** Add Bank Info table a country_id)
+** Add country_id in Practise table
 ** Practise add account_type & comments (saving or business) by std
-
+** create accounts table add user_id 
 
 ** ADD FOREIGN KEY :
 
