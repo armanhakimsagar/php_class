@@ -1,0 +1,95 @@
+@for ($i = 0; $i < 10; $i++)
+    
+     {{ $i }}
+
+@endfor
+
+
+
+
+<?php $first = "<b>Narendra Sisodia</b>"; ?>
+
+
+
+{!! $first !!}  // not prevent xss htmlentities
+
+{{ $first }}
+
+
+
+   master.blade.php
+
+
+   <h1> header </h1>
+
+   @yield('title')
+
+   <h1> footer </h1>
+
+
+
+   about.blade.php
+
+
+   @extends('folder.filename_only')	[link]
+
+
+   make expression blade :
+
+
+   @section('title')
+
+	content will show
+
+   @endsection
+
+
+
+   
+
+
+-> CSS LINK :
+
+
+   put it in /public/assets/css/ 
+
+
+   link in blade.php
+
+
+   <link href="{{ asset('public/asset/css/bootstrap.min.css') }}" rel="stylesheet">   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SETUP TEMPLATE :
+
+
+1. must have ext master.blade.php
+
+
+2. will have 2 page. 1 for make section & other for master part 
+
+
+3. must return view the section file. not the view master yield file.
+
+
+4. master is for html,head,body footer & @yield('section_part') 
+
+
+5. in section file just 
+
+
+
+
+

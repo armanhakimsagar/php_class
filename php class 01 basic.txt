@@ -1,0 +1,109 @@
+server application (Apache) :
+
+
+<?php
+
+
+
+echo ECHO EcHo
+
+print
+
+echo has no return value while 
+
+print has a return value of 1
+
+
+
+echo "abc","def"
+
+print "abc","def"
+
+
+//
+
+#
+
+/* */
+
+
+concatination
+
+
+
+variable
+
+$ | A-z 0-9 _ | white | case sensitive
+
+
+
+'Cox\'s Bazar'
+
+
+echo '$a'
+
+echo "$a"  // " " cut all variable & {} inside it
+
+echo "{$a}"
+
+echo 10 . 20;
+
+echo "$a+$b" // no arethmethic will work
+
+echo "<pre>";
+	
+echo "\t dfgdf ";
+
+echo "\n dfgdf ";
+
+echo "</pre>";
+
+
+
+error_reporting(0);
+
+
+10 + "25Studs";   // remove word
+
+10 + "Studs25";     // remove all
+
+2.3 +"4"              
+
+"ab"+"kv"             //  0 + 0
+
+"2a" + "3d1";       // remove d1
+
+
+
+
+
+
+Arithmetic Operators :
+
+
++ * / %	(vag ses)
+
+
+
+Assignment Operators
+
+
+= +=  -=  *=  /= 
+
+
+
+	$a = 2;
+	$b = 1;
+	$c = 3;
+	
+	echo $c %= $b += $a;
+	
+	ans 0
+
+
+** start from right
+
+echo 01234;
+
+first*8^last
+

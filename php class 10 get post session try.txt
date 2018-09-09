@@ -1,0 +1,265 @@
+GET Method :
+__________
+
+Free css template.
+
+Make header.php | footer.php | layout.php | Page for all menu
+
+layout.php :
+
+    <a href="?v=about">about</a>
+
+
+<?php
+
+    if(isset($_GET['v'])){
+
+        if(file_exists($_GET['v'].".php")){
+
+            require($_GET['v'].".php");
+
+        }
+
+        else{
+
+            require("404.php");
+
+        }
+
+    }else{
+
+            require("404.php");
+
+        }
+
+
+?>
+
+
+
+
+___________________
+
+
+
+
+multiple get method :
+
+
+<a href="?a=1&b=2">data</a>
+
+<?php
+
+	if($_GET['a']== 1 && $_GET['b']== 2){
+	
+		echo "ok";
+		
+	}else{
+	
+		echo "not ok";
+		
+	}
+
+?>
+
+
+____________________________
+
+
+
+make form , enctype , $_POST , $_FILES
+
+print_r();
+
+
+__________________________
+
+
+
+SESSION VS COOKIE 
+
+
+session save in server & cookies in browser. both have reference for work.
+
+1. cookies save in browser 
+
+2. cookie is user identity
+
+3. must need 4 param. 
+
+  check by :
+  
+  
+  
+    $value = "welcome to our website";
+
+	setcookie('cook',$value,time()+3,"/");
+	
+	
+	if(isset($_COOKIE['cook'])){
+	
+		echo $value;
+		
+	}
+
+	"\" means allow cookie in whole website
+	
+  
+1. session is store value in browser
+
+    $a = 10;
+	
+	if($a==10){
+
+		session_start();
+		$_SESSION['name'] = $a;
+		
+	}
+	
+	if(!empty($_SESSION['name'])){
+	
+		echo "session ok";
+		
+	}else{
+		echo "session not ok";
+	}
+   
+
+
+______________________________________
+
+
+
+
+	function check($a){
+	
+		if($a==20){
+			throw new exception;
+		}
+	}
+
+	try{
+		
+		$a = 10;
+		
+		check($a);
+		
+		echo "not ok";
+		
+	}catch(Exception $e){
+		
+		echo "not ok";
+		
+	}
+
+ 
+__________
+
+
+
+file handelling :
+
+** file write :
+
+	$rand = rand(1,100);
+
+    $file = fopen("foldername/".$rand,"w");
+
+    fwrite($file, $txt); 
+	
+
+** file open :
+
+    $myfile = fopen("abc.txt", "r");
+
+    echo fread($myfile,filesize("abc.txt"));
+
+	___________________
+	
+	or in live server :
+	
+	$my_url = $_SERVER["DOCUMENT_ROOT"]."/news_content/".$post->content;
+	
+	$myfile = fopen($my_url, "r");
+	
+	echo fread($myfile,filesize($my_url));
+	
+	
+	
+
+
+ 
+array foreach try catch login :
+______________________________
+
+
+
+function check1($id){
+	if($id == 1){
+		throw new exception;
+	}
+	
+}
+
+function check2($id){
+	if($id == 2){
+		throw new exception;
+	}
+	
+}
+
+$a = array(
+		array(
+			'id'=>3
+		),
+		array(
+			'id'=>2
+		),
+	);
+
+try{
+	
+	foreach($a as $a_new){
+		check1($a_new['id']);
+	}
+	try{
+	
+		foreach($a as $a_new){
+			check2($a_new['id']);
+		}
+		
+	}catch(Exception $e){
+		
+		header('location:admin2.php');
+		
+	}
+}catch(Exception $e){
+	
+	header('location:admin1.php');
+	
+}
+
+
+
+
+
+___________________
+
+
+
+	function secure_session(){
+
+		session_set_cookie_params($lifetime,$path,$domian,$secure,$httponly);
+	
+		session_start();
+	
+	}
+	
+	secure_session(0,'/','localhost',true,true);
+	
+	[$secure true means javascripts document.cookie will not work. $httponly true means need ssl layer for access]
+	
+	check by https://localhost
+
+	check left secure button
+	

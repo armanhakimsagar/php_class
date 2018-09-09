@@ -1,0 +1,337 @@
+* if(isset($_POST['submit']))
+
+	function validation($data){
+
+	$data = trim(strip_tags($data));
+
+	return $data;
+
+	}
+
+	$pic = $_FILES['image']['name']
+
+	
+* $error = 0;	
+
+* $msg = "";
+
+  $msg .= "required";
+  
+  echo $msg;
+  
+  
+
+* value="<?php if(isset($_POST['username'])) 
+
+  echo $_POST['username']  ?>">
+
+
+* in function $this->con->query($data)
+
+
+* throw new exception()
+
+* catch(exception $e)
+
+
+* must not retrun data for insert & update
+
+
+
+
+
+1st must validation function:
+_____________________________
+
+
+function validation($data){
+
+	$data = trim(strip_tags($data));
+	
+	return $data;
+	
+}
+
+no need validation function for radio.
+
+only try !isset($_POST['gender'])
+
+
+
+2nd start if isset :
+____________________
+
+**
+
+if($name == ""){
+
+	$error = $error+1;
+	
+	$user_error = "<p>username required</p>"; // for set error beside
+
+	$msg .= "<p> name required </p>";
+
+}
+
+		
+**	
+	
+$password =="" || 
+
+!preg_match ( '/[0-9]?[A-Z]?[!@#$]/' , $password )
+
+
+**
+
+$password != $retype_password || $retype_password == ""
+
+
+**
+
+$email == "" || 
+
+filter_var($_POST['email'],FILTER_VALIDATE_EMAIL == false
+
+
+**
+
+$phone =="" || 
+
+!is_numeric($phone) || 
+
+strlen($phone) != 11
+
+**
+
+
+!isset($_POST['radio'])
+
+
+**
+
+$country == 0
+
+
+**
+
+
+if($date == ""){
+
+	 $error = $error +1;
+	 
+	 $msg .= "<p> Date required </p>";
+	 
+}
+
+if($date != ""){
+
+	list($y, $m, $d) = explode('-', $date);
+
+
+	if(checkdate($m,$d,$y) == false){
+		$error = $error +1;
+		$msg .= "<p> date required </p>";
+	}
+
+}
+	  
+	  
+**
+
+
+!isset($_FILES['image']) || 
+
+substr($_FILES['image']['name'],-4) != ".jpg"
+
+$_FILES['picture']['size'] > 900000  [800kb]
+
+
+
+
+list($old_height,$old_width) = 
+
+getimagesize($_FILES['pic']['tmp_name']);  // for get image height width
+
+echo $old_height.$old_width;
+
+
+
+
+Full Code :
+__________
+
+
+
+<?php
+		class webapps{
+		
+		public $localhost = "localhost";
+		
+		public $user = "root";
+		
+		public $password = "";
+		
+		public $database = "prac";
+		
+		public $link;
+		
+		public function __construct(){
+		
+		$this->link = 
+
+		mysqli_connect($this->localhost,$this->user,$this->password,$this->database);
+
+		if($this->link){
+
+			echo "connected";
+
+		}
+	  }
+	  
+	  public function insertdata($insert){
+		  $insert = $this->link->query($insert);
+		  if($insert){
+			  throw new exception;
+		  }
+	  }
+		
+	}
+
+		if(isset($_POST['register'])){
+		
+		function validation($data){
+		
+			$data = trim(strip_tags($data));
+			
+			return $data;
+		}
+		
+		$name = validation($_POST['name']);
+		
+		$email = validation($_POST['email']);
+		
+		$phone = validation($_POST['phone']);
+		
+		$password = validation($_POST['password']);
+		
+		$retype_password = validation($_POST['retype_password']); 
+		
+		$date = validation($_POST['date']); 
+		
+		$country = $_POST['country'];
+		
+		$image = $_FILES['image']['name'];
+		
+		$error = 0;
+		
+		$msg = "";
+		
+		if($name == ""){
+		
+			$error = $error+1;
+			
+			$msg .= "<p> name required </p>";
+			
+		}
+		if($password =="" || !preg_match('/[0-9]?[A-Z]?[!@#$]/',$password)){
+		
+			$error = $error+1;
+			
+			$msg .= "<p> pasword required </p>";
+			
+		}
+		if($password != $retype_password || $retype_password == ""){
+		
+		
+			$error = $error+1;	
+			
+			$msg .= "<p>retype password not matched </p>";
+			
+		}
+		if($email == "" || filter_var($_POST['email'],FILTER_VALIDATE_EMAIL == false)){
+		
+			$msg .= "<p> email required </p>";
+			
+		}
+		if($phone =="" || !is_numeric($phone) || strlen($phone) != 11){
+		
+			$msg .= "<p> phone required </p>";
+			
+		}
+		if(!isset($gender)){
+		
+			$msg .= "<p> gender required </p>";
+			
+		}
+		if($country == 0){
+		
+			$msg .= "<p> country required </p>";
+			
+		}
+		if(!isset($_FILES['image']) || substr($image,-4) != ".jpg"){
+		
+			$msg .= "<p> image required </p>";	
+			
+		}
+		if(!isset($checkbox)){
+		
+			$msg .= "<p> checkbox required </p>";	
+			
+		}
+		if($error == 0){
+			try{
+			
+				$gender = $_POST['radio'] ;
+				$checkbox = $_POST['checkbox'];
+				$password = md5($password);
+				$webapps = new webapps;
+				$insert = "INSERT INTO insert_data VALUES('','$name','$password','$email','$phone','$gender','$country','$image')";
+				$webapps->insertdata($insert);
+				echo "DATA NOT INSERTED";
+				
+			}catch(exception $e){
+				echo "DATA INSERTED SUCCESFULLY";
+				move_uploaded_file($_FILES['image']['tmp_name'],'img/'.$image);
+				session_start();
+				$_SESSION['admin'] = $name;
+				header('location:admin.php');
+			}
+			
+		}else{
+			echo $msg;
+			
+		}
+	}
+?>
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<form action="" method="post" enctype='multipart/form-data'>
+
+    <input type="text" name="name"/> <br/><br/>
+    <input type="password" name="password"/> <br/><br/>  
+	<input type="password" name="retype_password"/> <br/><br/>
+    <input type="email" name="email"/> <br/><br/>
+	<input type="text" name="phone"/> <br/><br/>
+    Male : <input type="radio" name="radio" />
+    Female : <input type="radio" name="radio" /> <br/><br/>
+    <select name="country">
+    	<option value="0">SELECT A COUNTRY</option>
+		<option value="1">Bangladesh</option>
+    </select> <br/><br/>
+    <input type="date" name="date" /> <br/><br/>
+    <input type="file" name="image"/> <br/><br/>
+    <input type="checkbox" name="checkbox"/> <br/><br/>
+    <input type="submit" name="register"/>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+1. input type button. every id must dynamic. so id="{{ $checkout_item->id }}"
+ 
+2. onclick catch data by class delete . but get delete id by this.id
+
+3. then ajax pass url & built in type get.
+
+4. every row must unique so <tr id="row{{ $checkout_item->id }}">
+
+5. now hide the row by row id
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+		<script>
+		
+		
+			$(document).ready(function(){
+				$(".delete").click(function(){
+					var id = this.id;
+					$.ajax({
+						url : 'clear_cart/'+id,
+						type: 'get',
+						success:function(){
+							$("#row"+id).hide();
+						}
+					})
+				})
+					
+			});
+		</script>		
+
+
+
+@foreach($checkout_items as $checkout_item)
+
+	<tr id="row{{ $checkout_item->id }}">
+	
+		<form action="{{ url('update') }}" method="get">
+		
+			<td><img src="images/{{ $checkout_item->image }}" height="50px" /></td>
+			
+			<td>{{  $checkout_item->name  }}</td>
+
+			<td>{{  $checkout_item->price  }}</td>
+
+			<td><input type="number" value="{{  $checkout_item->quantity  }}" name="quantity"/></td>
+			
+			<td>{{  $checkout_item->quantity * $checkout_item->price  }}</td>
+			
+			<input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+			<input type="hidden" name="id" id="id" value="{{ $checkout_item->id }}" />
+			
+			<td><input type="button" id="update" value='Update'></td>
+			
+			<td><input type="button" id="{{ $checkout_item->id }}" class="delete" value='Delete'></td>
+		</form>
+		
+	</tr>
+
+@endforeach
+
+
+
+	
+	public function clear($id){
+		
+        $cart = new Cart();
+        $product = product::find($id);
+		$id = $product->id;
+        $cart->remove($id);		
+
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+SEARCH :
+
+
+
+
+search :
+
+
+
+1. make a form with url csrf tokken with get method
+
+  <form action="{{ url('search') }}" method="get" >
+
+  <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+
+
+
+2. 
+
+    public function index(Request $request)
+    {  
+        $product_title = $request->product_title;                        // get data from field
+        
+         if(!empty($product_title)){                                           // check data is empty
+             
+            $data = Product::where('title', 'like', '%'.$product_title.'%' )->get();  // check by where
+		      
+            return view('all_product_view',compact('data'));                 // return data
+
+         }else{						//  regual data
+             
+                $data = Product::simplePaginate(2);
+	  
+	   return view('all_product_view',compact('data'));
+         }
+        
+        
+    }

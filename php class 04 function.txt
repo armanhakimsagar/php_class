@@ -1,0 +1,222 @@
+Function : 
+
+
+create function :
+
+function abc(){
+	$a = 10;
+	return $a;
+
+}
+
+echo abc();
+
+
+
+_______________________
+
+
+function abc($a,$b=10){
+	
+	echo $a.$b;
+
+}
+
+abc(10);
+
+
+_______________________
+
+
+
+if(function_exists('abc')){
+  
+   echo "function ase";
+	
+}
+
+
+_______________________
+
+
+
+function a(){ 
+
+  function b(){
+
+  $a = 100;
+
+  echo $a;
+
+ } 
+
+}
+
+
+a();
+
+b();
+
+
+_______________________
+
+
+
+local (in function)
+
+global (out function)
+
+static (store local variable data)
+
+
+
+Global variable :
+
+
+$abc = "20";
+
+
+function abcc(){
+	
+   global $abc;	
+	
+   echo $abc;
+	
+} 
+
+
+
+Local variable :
+
+
+
+function abcc(){
+	
+   $abc = "hello";
+	
+   echo $abc;
+	
+} 
+
+for use it outside function use
+global inside function.
+
+
+
+__________________
+
+
+
+
+<?php
+	
+
+function cal($price, $vat , $discount){
+		
+static $sl = 1;
+
+$price_vat = $price + ($price*$vat)/100;
+		
+$price = $price_vat - ($price_vat*$discount)/100;
+
+echo "Product no : $sl ". $price;
+
+$sl++;
+
+}
+
+
+cal(1000,5,1);
+
+cal(100,5,1);
+
+
+?>
+
+
+
+
+_________________________
+
+
+
+return multiple values from function :
+
+* return as array, get the array values inside
+  list function.
+
+  
+function abc(){
+
+	$a = 10;
+	$b = 20;
+	
+	return array($a,$b);
+	
+}
+
+
+list($a,$b) =  abc();
+
+echo $a.$b;
+
+
+______
+
+	
+
+function cal($price, $vat , $discount){
+		
+static $sl = 1;
+
+$price_vat = $price + ($price*$vat)/100;
+		
+$price = $price_vat - ($price_vat*$discount)/100;
+
+$sl++;
+
+return array($sl,$price);
+
+}
+
+
+list($sl,$price) = cal(1000,20,30);
+
+echo $sl." price is ".$price;
+
+
+list($sl,$price) = cal(1000,20,30);
+
+echo $sl." price is ".$price;
+
+__________________
+
+
+	annominius function :
+	
+
+	$a = function{
+		echo "string";
+	};
+
+	$a();
+	
+	
+	
+	
+	// clouser use in annominius function
+	
+	// use for pass data in function Otherwise errorss
+
+	
+		$abc = "string";
+	
+		$a = function a() use($abc){
+		
+			echo $abc;
+			
+		};
+
+		$a();
+		
+__________________

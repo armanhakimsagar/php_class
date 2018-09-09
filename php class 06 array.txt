@@ -1,0 +1,351 @@
+ARRAY :
+______
+
+
+Indexed array : 
+______________
+
+Arrays with a numeric index
+
+
+$array = 
+
+	array(
+		'af','34'=>'df','dfdsa'
+	);
+
+$array[31] = 'sfgvfs';
+
+print_r($array);
+
+
+
+
+index array loop count function :
+_______________________________
+
+
+
+$arr = array("a","ff");
+
+$count = count($arr);
+	
+for($i=0; $i<$count; $i++){
+		
+echo $arr[$i];
+	
+}
+
+
+
+Associative array : 
+__________________
+
+
+Arrays with named keys
+
+two ways to create an associative array:
+
+$age = array("Peter"=>"35", "Ben"=>"37");
+
+$age['Peter'] = "35";
+
+$age['Ben'] = "37";
+
+
+
+array index(count from last higest value)
+
+
+
+
+
+
+
+multidimention array : 
+_____________________
+
+2 dimention
+
+$a = array(
+           array(
+
+           ),
+            array(
+
+           )
+       );
+
+
+print_r($data[0][0][1])
+
+
+$arr[1]['id'] = 10;
+
+
+echo count($arr[1]); 
+
+
+
+
+
+three-dimensional array
+_______________________
+
+
+
+$a = array(
+		array(
+			array(
+				'id' =>'hello'
+			),
+		),
+
+	);
+
+	
+print_r($a[0][0]['id']);
+
+
+
+
+
+multidimention loop :
+____________________
+
+
+	
+$array = array(
+	array(
+		'id' =>'vfed',
+		'name' => 'dvfdfd'
+	
+	),
+	array(
+		'id' =>'vfed',
+		'name' => 'dvfdfd'
+	
+	),
+	array(
+		'id' =>'vfed',
+		'name' => 'dvfdfd'
+	
+	)
+);
+
+foreach($array as $newarray){
+	echo "this is id :".$newarray['id'];
+	echo "this is name :".$newarray['name'];
+}
+
+
+
+
+
+____________________________
+
+
+array function :
+
+
+array_combine : 
+______________
+
+
+make 1st array index & 2nd array value
+
+$index = array("id1","id2","id3");
+
+$value = array("value1","value2","value3");
+
+$c=array_combine($index,$value);
+
+
+
+array key :
+__________
+
+
+print_r only array key for associative array
+
+$a=array("Volvo"=>"1","BMW"=>"2","Toyota"=>"3");
+
+print_r(array_keys($a));
+
+
+
+array map :
+_________
+
+pass any function in array
+
+
+function myfunction($num)
+{
+  echo $num*$num;
+}
+
+$a=array(1,2,3,4,5);
+
+array_map("myfunction",$a);
+
+
+
+Array Shift :
+____________
+
+
+array_shift() function removes the 
+
+first element from an array
+
+
+$a=array("a"=>"red","b"=>"green");
+
+array_shift($a);
+
+print_r ($a);
+
+
+
+array_slice() :
+______________
+
+
+cut array (array name, start , how many will stay)
+
+$a=array("red","green","blue","yellow","brown");
+
+print_r(array_slice($a,2));
+
+
+
+
+
+
+array_reverse() :
+_______________
+
+
+The array_reverse() function returns 
+
+an array in the reverse order.
+
+$a=array("a"=>"Volvo","b"=>"BMW","c"=>"Toyota");
+
+print_r(array_reverse($a));
+
+
+
+array_unshift() :
+_______________
+
+
+The array_unshift() The new array values will 
+
+be inserted in the beginning of the array.
+
+$a=array("a"=>"red","b"=>"green");
+
+array_unshift($a,"blue");
+
+print_r($a);
+
+
+
+
+
+
+array sort function :
+____________________
+
+
+
+	$array = array(
+		array(
+			'id' =>'1',
+			'name' => 'a'
+		
+		),
+		array(
+			'id' =>'2',
+			'name' => 'x'
+		
+		)
+	);
+	
+	asort($array);
+	
+	
+	[sort by value accending 
+	
+	keep perevoius index]
+	
+	
+	foreach($array as $key=>$newarr){
+		
+		echo $key." ".$newarr['id'];
+		
+		echo $newarr['name']."<br/>";
+		
+	}
+	
+sort($a)
+
+[sort by value make new index]
+
+
+rsort($a)	   
+
+[sort of value by decending
+ make new index
+]
+
+
+ksort($a)	   
+
+[arrage by key indexed key]
+
+
+unset($array[0])
+	
+
+
+
+
+__________________________
+
+
+
+RANGE :
+_____
+
+
+$number = range("0","9");
+
+$a_z = range("A","Z");
+
+$merge = array_merge($number,$a_z);
+
+shuffle($merge);
+
+for($i=0; $i <= count($merge)-1;$i++){
+
+  echo $merge[$i];
+
+}
+
+
+
+
+____________________________
+
+pointer :
+
+
+$people = array("Peter", "Joe", "Glenn", "Cleveland");
+
+echo current($people) . "<br>";
+echo next($people) . "<br>";
+echo prev($people);
+

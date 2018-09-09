@@ -1,0 +1,196 @@
+STRING FUNCTIONS :
+
+
+echo substr($str, 3, 2);  
+
+// start , how many will stay
+
+
+echo substr($str, 3);     
+
+// start 3 , stay to end
+
+
+echo substr($str, -3, 3);    
+
+// start -3, stay to 3
+
+
+echo substr($str, 3, -2); 
+
+// start 3 , 
+
+
+
+
+ucfirst()
+
+
+lcfirst()
+
+
+md5()
+
+
+str_word_count("Hello world!");
+
+
+ucwords()
+
+
+trim()
+
+
+rtrim("World/", "/")  [right trim]
+
+
+strlen()
+
+
+strtoupper()
+
+
+strtolower()
+
+
+strstr("Hello world!","world"); 
+
+
+[cut the world]
+
+
+strrev("Hello World!");    
+
+
+[reverse the string]
+
+
+strip_tags("Hello <b>world!</b>");
+
+[remove tag]
+
+
+htmlentities()
+
+[use in chatbox]
+
+
+________________________
+
+
+
+$word = substr($str,0,2);
+	
+echo str_pad($word,5,".");	
+
+[make prothom alo]
+
+
+
+_____________________
+
+
+
+$str = array("vfgees","fwrd","rgfvr");
+	
+print_r(implode("+",$str));
+
+
+
+$str = "explode is string to array";
+
+print_r(explode(" ",$str));
+
+
+$pow = pow(10,2);
+	
+echo $pow;
+
+
+max(2, 3, 1, 6, 7); 
+
+
+min(2, 3, 1, 6, 7); 
+
+
+round(5.055, 2);  
+
+
+Make round :
+
+
+	$a = .9;
+
+	$b = .8;
+
+	$d = .1;
+
+	$e = .2;
+
+	$x = $a-$b;
+
+	$y = $e-$d;
+
+	$f = round($x,2);
+
+	echo $f;
+
+	if($f==$y){
+
+		echo "ok";
+	}
+
+
+// make .1-.2 cal
+
+
+floor(4.3) 
+
+//  4
+
+
+ceil(4.3)  
+
+//   5
+
+
+Filter :
+
+sanitize for remove unexpected thing
+
+validate is data ok for this field
+
+
+
+filter_var($str, FILTER_SANITIZE_STRING);
+
+filter_var($int, FILTER_VALIDATE_INT) === false
+
+filter_var($ip, FILTER_VALIDATE_IP) === false)
+
+filter_var($email, FILTER_VALIDATE_EMAIL) === false
+
+
+
+
+include (part down) require (full down)
+
+
+
+Detect Browser :
+______________
+
+
+download browsecap.ini
+
+place this is xampp\php
+
+now php.ini file set directory 
+
+browscap = "C:\xampp\php\browscap.ini";
+
+$browser = get_browser(null,true);
+
+echo $browser['browser'];
+
+

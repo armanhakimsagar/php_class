@@ -1,0 +1,152 @@
+for see no error 
+
+display_errors=off [php.ini]
+
+
+
+class webapps{
+
+public $localhost ="lcalhost";
+
+public $user = "root";
+
+public $password = "";
+
+public $db = "project";
+
+public $con;
+
+public function __construct(){
+
+//  $this->con = new mysqli  (MySQLi Object-Oriented)
+
+//	$this->con = mysqli_connect (Procedural)
+	
+	($this->localhost,$this->user,
+	
+	 $this->password,$this->db);
+	
+	if($this->con->connect_error){
+	
+		echo "connection failed";
+		
+	}else{
+		echo "Connected successfully";
+	}
+	
+  }	
+	
+}
+
+$webapps = new webapps;
+	
+
+?>
+
+
+
+mysqli close :
+
+$conn->close();  (Close the Connection)
+
+mysqli_close($conn); (MySQLi Procedural)
+
+
+
+
+_____
+
+
+connect with multiple database :
+
+nothing but double $con & $con2
+
+
+class webapps{
+
+public $localhost ="localhost";
+
+public $user = "root";
+
+public $password = "";
+
+public $db1 = "commerce";
+
+public $db2 = "project";
+
+public $con;
+
+public $con2;
+
+
+public function __construct(){
+	
+	$this->con = new mysqli($this->localhost,$this->user,$this->password,$this->db1);
+	$this->con2 = new mysqli($this->localhost,$this->user,$this->password,$this->db2);
+	
+	if ($this->con->connect_error) {
+		echo "Connection failed".$this->con->connect_error;
+	}else{
+		echo "Connected successfully";
+	}
+}	
+
+public function select(){
+	$select = "select * FROM database1_table";
+	$data = $this->con->query($select);
+	$main_data = $data->fetch_object();
+	echo $main_data->name;
+}
+
+public function select2(){
+	$select = "select * FROM database1_table";
+	$data = $this->con->query($select);
+	$main_data = $data->fetch_object();
+	echo $main_data->name;
+}
+
+}
+
+
+$object = new webapps;
+$object->select();
+$object->select2();
+
+
+
+_____
+
+
+connect 3rd database by 
+
+PDO connection try w3school:
+
+try{
+
+$con = new PDO("mysql:host=$this->localhost;
+
+dbname=$this->database", 
+
+$this->username,$this->password)
+
+
+$conn->setAttribute(PDO::ATTR_ERRMODE, 
+      
+   PDO::ERRMODE_EXCEPTION);
+} 
+catch(PDOException $e){
+
+   echo "Connection failed: " . $e->getMessage();
+	
+}
+
+setAttribute -> database handeller 
+ATTR_ERRMODE -> set error
+ERRMODE_EXCEPTION -> throw error to exception
+
+
+________________________
+
+
+project database create & connection
+

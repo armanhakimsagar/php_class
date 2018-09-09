@@ -1,0 +1,202 @@
+EDIT :
+
+FOR update just pass old id & old image name by hidden.
+
+thats all.
+
+1. pass url md5(password) for secure url
+
+   edit.php?p=<?php echo $data->user_password ?>
+   
+   
+	$webapps = new webapps;	
+
+	$p = $_GET['p'];
+
+	$select = "SELECT * FROM users WHERE user_password='$p'";
+
+	$data = $webapps->select($select);
+
+	$edit = $data->fetch_object();
+
+	
+
+5. for gender :
+
+  <?php if($view->gender == "m"){echo "checked";} 
+
+
+
+  
+  
+6. <option value="<?php echo $ini ?>" 
+
+   <?php if($ini==$view->country)
+						
+   { echo "selected"; } ?>>
+   
+   
+   
+
+
+7. <input type="hidden" name="old_name" 
+
+   value="<?php echo $view->image ?>"/>
+   
+   *for delete old image
+   
+   
+   <input type="hidden" name="id" 
+
+   value="<?php echo $view->id ?>"/>
+   
+   *for delete old row. get id
+   
+   
+
+   show image :
+   
+   <img src="<?php echo "img/".$edit->pic ?>" >
+   
+   
+   
+   
+*** for pass old image 
+
+
+
+8. $myfile = fopen("abc.txt", "r");
+
+   echo fread($myfile,filesize("abc.txt"));
+
+
+
+
+update :
+_______
+
+
+UPDATE Customers
+
+SET ContactName = 'Alfred Schmidt'
+
+WHERE CustomerID = 1
+
+
+
+move_uploaded_file($_FILES['pic']['tmp_name'],
+
+"img/".$_FILES['pic']['name']);
+
+
+unlink("img/".$_FILES['old_pic']['name']);
+   
+
+   
+not need to unlink file (it replace automatic)
+
+
+
+
+
+
+
+
+DELETE :
+
+
+
+
+<a onClick="return confirm('Please confirm deletion');" 
+
+href='delete.php?id=1'>delete</a>
+
+
+
+*. window.location.href pass email & image multiple 
+
+   get method for delete both image & file
+   
+   a.php?email=abc & image=sss
+   
+*. $delete = "DELETE FROM users WHERE email = '$email'"
+
+    unlink image , files , session_destroy , redirect
+
+
+    echo "acoount deleted succefully";
+		
+	unlink("img/".$image);
+		
+	unlink("files/".$email."address.txt");
+		
+	unlink("files/".$email."bio.txt");
+	
+	session_start();
+		
+	unset($_SESSION['admin']);
+		
+	session_destroy;
+		
+	header('location:index.php');
+   
+
+
+var data = confirm("Want To Confirm Delete");
+
+if(data){ 
+	
+	window.location.href = 
+	
+	"delete.php?email=<?php echo $data->user_email ?>&image=<?php echo $data->pic ?>";
+
+}
+
+
+
+
+
+
+   
+code :
+_____
+
+
+edit.php
+
+
+
+<?php
+require("function.php");
+if(isset($_GET['update'])){
+	$id = $_GET['update'];
+	$view = "SELECT * FROM insert_data WHERE id='$id'";	
+	$webapps = new webapps;
+	$alldata = $webapps->view_data($view);
+	$data = $alldata->fetch_object();
+}
+
+
+if(isset($_POST['new_up'])){
+	try{
+		$img = $_FILES['new_img']['name'];
+		$old_img = $_POST['old_img'];
+		$update = "UPDATE insert_data set image='$img' where image='$old_img'";
+		$webapps = new webapps;		
+		$update = $webapps->update($update);
+		echo "not updated";
+	}catch(exception $e){
+		move_uploaded_file($_FILES['new_img']['tmp_name'],'img/'.$img);
+		header('location:admin.php');
+	}
+}
+?>
+
+<img src="img/<?php echo $data->image ?>"/>
+
+
+<form action="update.php" method="post" enctype='multipart/form-data'>
+	<input type="hidden" name="old_img" value="<?php echo $data->image ?>" />
+	<input type="file" name="new_img" />
+	<input type="submit" name="new_up" />
+</form>

@@ -1,0 +1,159 @@
+for($a=1;$a<=11;$a++)
+
+
+for($a=1;$a<=11;$a++){ }
+	
+echo $a;
+
+
+for($i=5; $i<=10; $i++); 
+
+echo $i;
+
+
+
+
+*for($i=1; $i<=20; ++$i)
+
+
+
++= 2
+
+
+
+
+
+now do :
+
+date("")
+
+for($i=2017; $i>=1990; $i--)
+
+
+
+break echo;
+
+
+echo break;
+
+
+continue;
+
+
+*while(con){
+
+  echo;
+
+  increment;
+
+}
+
+
+do {
+
+   echo " ";
+   
+   $a++;
+
+}
+
+
+while (condition);
+
+
+
+* make select option loop
+
+
+
+
+echo time(); 
+
+
+date("Ymd")
+
+
+date("YMD")
+
+
+date("Ymda")
+
+
+date("his")
+
+
+
+date_default_timezone_set("Asia/Dhaka");
+
+
+date(" Y-m-d h:i:sa", 
+
+
+strtotime("+1 week 3 days 7 hours 5 seconds"));
+
+
+
+
+
+
+switch($color){
+         
+	case ("red"):
+						
+	echo "RED color";
+				   
+	break;
+
+	default :
+
+	echo "no color";
+
+}
+
+
+
+
+
+
+
+
+
+
+	$j = 1;
+	$k = 1;
+
+	for($j; $j <= 3; $j++){
+	
+		for($k; $k <= $j; $k++){
+		
+			echo $k;
+			
+		}
+	}
+	
+
+	
+	
+	
+
+	$j = 1;
+	$k = 1;
+	$l = 3;
+
+	for($j; $j <= 3; $j++){
+	
+		for($k; $k <= $j; $k++){
+		
+			for($l; $l <= $k; $l++){
+		
+				echo $j;
+				
+			}
+			
+		}
+	}
+	
+	
+
+
+

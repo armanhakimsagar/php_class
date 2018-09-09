@@ -1,0 +1,109 @@
+work list :
+
+**. view data
+
+**. file open
+
+**. subject dropdown list
+
+**. tinymce
+
+
+
+___________________
+
+
+data view : 
+
+make email unique; 
+
+$email = $_SESSION['email'];
+
+
+$webapps = new webapps;
+
+$id = $_SESSION['admin'];
+
+$select = "SELECT * FROM users WHERE user_email='$id'";
+
+$select = $webapps->select($select);
+
+
+$data = $select->fetch_object() 
+
+fetch_array() Fetch a result row as an associative array, 
+
+a numeric array and also it fetches by both associative & numeric array.
+
+
+fetch_assoc() Fetch a result row as an associative array
+
+
+fetch_row() Fetch a result row as an numeric array
+
+foreach only works with arrays (or objects that act like arrays).
+
+A while loop will take any condition that you give it, and does not have to involve arrays.
+
+echo $data->user_info;
+
+
+_____
+
+
+file view :
+
+
+$fopen = fopen("files/".$bio_file,"r");
+
+echo fread($fopen,filesize("files/".$bio_file));
+
+
+
+______
+
+
+subject view select option:
+
+
+
+<?php
+			
+$webapps = new webapps;
+
+$select = "SELECT * FROM job_name";
+
+$data = $webapps->select($select);
+
+while($data2 = $data->fetch_object()){ ?>
+
+<option value="<?php echo $data2->id ?>">
+
+<?php echo $data2->name ?></option>;
+
+<?php } ?>
+
+
+
+
+_______
+
+
+set tinymce in index file :
+
+1. remove strip_tags & htmlenties
+
+2. use fopen for data secure store.
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>
+</head>
+<body>
+  <textarea>Next, get a free TinyMCE Cloud API key!</textarea>
+</body>
+</html>

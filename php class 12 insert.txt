@@ -1,0 +1,217 @@
+* form method enctype
+
+* print_r
+
+
+____
+
+
+* try , new webapps , $this->con->query($insert)
+
+
+____
+
+
+* unique email , 
+
+  $user_address_data = $_POST['user_address'];
+	
+  $address_file_name = $user_email."address.txt";
+	
+  $fopen = fopen("files/".$address_file_name,"w");
+	
+  fwrite($fopen,$user_address_data);
+
+  
+____
+  
+  
+  
+* move_uploaded_file
+	
+  ($_FILES['image']['tmp_name'],'img/'.$image);
+  
+  
+* max_file_size = 8m ; upload_max_filesize =8m
+
+
+
+____
+
+
+session_start();
+
+$_SESSION['admin'] = $user_email;
+
+header('location:perosnal.php');
+				
+				
+				
+				
+session_start();
+
+if(!isset($_SESSION['email']) 
+
+&& empty($_SESSION['email'])){
+
+	 header('location:back.php');
+	 
+}
+
+
+session_start();
+
+unset($_SESSION['email']);
+
+session_destroy();
+
+header('location:http://nhclcbd.com/index.php');
+
+
+_____
+
+
+
+if(isset($_POST['register'])){
+
+	$user_address_data = $_POST['user_address'];
+	
+	$address_file_name = $user_email."address.txt";
+	
+	$fopen = fopen($address_file_name,"w");
+	
+	fwrite($fopen,$user_address_data);
+	
+	
+try{
+
+	$webapps = new webapps;
+	
+	$insert = "INSERT INTO insert_data VALUES
+	('','$name','$password','$email')";
+	
+	$webapps->insertdata($insert);
+	
+	echo "DATA NOT INSERTED";
+	
+	
+}
+
+catch(exception $e){
+
+	echo "DATA INSERTED SUCCESFULLY";
+	
+	move_uploaded_file
+	
+	($_FILES['image']['tmp_name'],'img/'.$image);
+	
+	session_start();
+	
+	$_SESSION['admin'] = $user_email;
+	
+	header('location:perosnal.php');
+
+  }
+
+}
+
+
+
+
+___________________________
+
+
+
+		class webapps{
+		
+		public $localhost = "localhost";
+		
+		public $user = "root";
+		
+		public $password = "";
+		
+		public $database = "prac";
+		
+		public $link;
+		
+		public function __construct(){
+		
+		$this->link = 
+
+		new mysqli($this->localhost,$this->user,
+		$this->password,$this->database);
+
+		if($this->link){
+
+			echo "connected";
+
+		}
+	  }
+	  
+	  public function insertdata($insert){
+		  $insert = $this->link->query($insert);
+		  if($insert){
+			  throw new exception;
+		  }
+	  }
+		
+	}
+	
+	
+___________________________
+
+
+Log file :
+
+
+
+create :
+
+
+ $filename = "counter.log";
+
+ $data = "fire"."\n";
+
+ file_put_contents($filename,$data,FILE_APPEND);
+
+
+
+view :
+
+
+if($file = fopen("counter.log", "r")){
+
+    while(!feof($file)) {
+
+        $line = fgets($file);
+
+        echo "#".$line ."<br/>";
+    }
+
+    fclose($file);
+
+}   
+
+
+
+___________________________
+
+
+visitor counter :
+
+<?php
+
+$handle = fopen("counter.txt", "r");
+
+$counter = (int ) fread($handle,20); 
+
+$counter++; 
+
+echo $counter; 
+
+$handle = fopen("counter.txt", "w" ); 
+
+fwrite($handle,$counter) ;
+
+
+?>

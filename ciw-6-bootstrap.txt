@@ -1,0 +1,100 @@
+->structure :
+
+* no need 12 . just row then desired grid.
+
+  col-xs-1   -> col-1
+
+_______________
+
+
+  m-1	   -> margin all side 1 grid
+
+
+________________
+
+
+  mt-4	   -> margin top 4 grid for all version
+
+
+_______________
+
+
+  mt-sm-5  -> margin top small version only
+
+_______________
+
+
+
+  d-none	hidden in xs version
+
+  d-sm-none	hidden in sm version
+
+  d-block	block in xs version
+
+
+
+_______________
+
+
+  
+
+  -> structure :
+
+  * no need 12 . just row then desired grid.
+
+  Horizontal Alignment	-> justify-content-center
+
+
+	<div class="container">
+	
+        <div class="row">
+		
+			<div class="col-lg-6 col-md-9 col-sm-2 col-12">
+			
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-12 col-12">
+					
+					 sec 1 
+					 
+					</div>
+					<div class="col-lg-16 col-md-6 col-sm-12 col-12">
+					
+					 sec 1
+					 
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+		
+    </div>
+	
+	
+	
+_______________
+
+
+
+
+** Multiple slider in single page :
+
+
+1. change the id in new slider & add   $('#carouselExampleIndicators1').carousel();
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		$('#carouselExampleIndicators1').carousel();
+	});
+
+</script>
+
+
+
+** hover menubar : (just add)
+
+ul.navbar-nav li:hover div.dropdown-menu{ display: block; }

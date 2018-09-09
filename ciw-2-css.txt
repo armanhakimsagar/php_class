@@ -1,0 +1,810 @@
+CIW 2 ( CSS )
+
+
+
+
+
+
+
+9
+
+
+Internal
+
+External
+
+Inline
+
+Class(naming)
+
+Id
+
+Selector
+
+Property
+
+Value
+
+Link
+
+
+
+BG image || BG repeat || BG size cover
+
+Background-size: 100% 400px (for fit)
+
+
+border-width
+
+border-style (required)
+
+border-color
+
+border-bottom
+
+
+
+border: 10px solid transparent;
+
+border-image: url(border.png)  
+  
+             30 round|stretch;
+
+
+
+			 
+Margin (4 value) clockwise
+
+Padding
+
+Float
+
+
+(Practice 5 div toggle)
+
+(Make table with css)
+
+
+
+
+_____
+
+
+
+
+10 - professional layout padding margin 
+
+
+
+______
+
+
+
+11 - 
+
+
+Professional layout padding margin & border
+
+
+
+
+iconset :
+
+
+background-image:url('a.png');
+
+background-position:0px 0px;
+
+background-repeat:no-repeat;
+			
+height:50px;
+
+width:50px;
+
+display:block
+
+
+
+_______
+
+
+
+
+
+12 - 
+
+
+
+
+css property :
+
+
+color
+
+text-align
+
+Overflow : hidden
+
+text-transform: capitalize;
+
+text-indent: 50px;
+
+letter-spacing: 3px;
+
+line-height: 1.8;
+
+word-spacing: 10px;
+
+text-shadow: 3px 2px red;
+
+font-family:
+
+google font library
+
+font-size: 40px;
+
+font-weight: bold;
+
+--z-index 
+
+
+make 3-4 box no float to position,
+
+then last box give position .
+
+change the position & top position for see differnce.
+
+
+Position : relative (take position last ansenter)
+
+Position : absulate (take position top left ansenter)
+
+
+
+________
+
+
+
+
+
+
+13 - 
+
+
+
+
+
+
+
+menu
+____
+
+
+
+-ul : margin 0 , padding 0
+
+-ul li : position relative , float
+
+-Ul li a : display block , line height ,
+
+
+
+
+radius
+
+hover
+
+active
+
+
+
+dropdownmenu
+____________
+
+
+-li position relative+ float +list style
+
+
+-Ul li a display block
+
+
+-Ul li ul : visibility hidden position absulate 
+
+-ul li:a hover : visibility visible
+
+
+
+
+
+
+
+
+14 - 
+
+
+
+
+
+Daraz :
+______
+
+
+
+same to same drop down just :
+
+
+
+*** Avoid : 
+
+ul li : relative | float left in sub div
+
+
+
+*** must use :
+
+absulate | ul li : float left |
+
+full menu will be in a div |
+
+margin-left in section div
+
+
+
+
+****
+
+Font Awesome Icons
+
+
+
+
+<a href=""> Home </a>
+     
+    <ul>
+        <li>
+
+            <div class="sub">1</div>
+
+        </li>
+    </ul> 
+
+
+
+css :
+
+.div ul{
+
+	padding:0px;
+
+	margin:0px
+}
+
+.div ul li{
+
+	padding:0px;
+
+	margin:0px;
+
+	float:left
+
+}
+
+
+.div ul li a{
+
+	height:100px;
+
+	width:100px;
+
+	background-color:#999;
+
+	display:block
+
+}
+
+
+.sub{
+
+	height:400px; 
+
+	width:400px; 
+
+	background-color:#F3F; 
+
+}
+
+.div ul li ul{
+
+	visibility:hidden;
+
+	position:absolute
+
+}
+
+.div ul li:hover ul li div{
+
+	visibility:visible;
+
+	left:100px;
+
+	top:10px
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+15
+
+
+
+table tr td:nth-child(2n) 
+
+
+first-child 
+
+
+last-child 
+
+
+odd even 
+
+
+2 
+
+
+2n+1 ( 1 is starting point )
+
+
+>    Child selector
+
+
+*
+
+
++     Adjacent Siblings selector
+
+
+(first tag after div)
+
+
+~     General sibling selector
+
+
+(All tag after div)
+
+
+p::after { content : ' hy ' }
+
+
+p::before
+
+
+a[href='#']
+
+
+ul li: nth-child(2) a
+
+
+ul li ul li : border 0px
+
+
+ul li ul li:last-child a
+
+
+
+
+***No float left for internal prothom-alo div
+
+***for image side writing give float left
+
+
+
+
+
+
+
+
+
+16
+
+
+
+Tag make & customized
+
+@media only screen and (min-width: 481px) 
+
+ and (max-width:768px){
+
+  body: 
+
+}
+
+
+Desktop 992-1280
+
+
+Tablet 768-992
+
+
+Mobile 480-768
+
+
+All div 100% or 50%
+
+
+(Make full template by this)
+
+
+Google map
+
+
+Clear left
+
+(Clear the float)
+
+
+
+
+
+ANIMATION :
+__________
+
+
+
+
+**animation (make template)
+
+.animate
+
+
+(height/width/bg/position: relative
+
+
+Animation : ciw 5s infinite
+
+
+(Must WebKit moz)
+
+
+@keyframes ciw{
+
+ 0%{ }
+
+
+}
+
+
+
+Transform 
+
+
+transition
+
+
+-moz-skew(deg)
+
+
+rotate(deg)
+
+
+Translate (PX)
+
+
+Scale(1.5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Make main & shade 
+_________________
+
+
+In main:
+
+height/width/bg/float/radius
+
+
+In shade :
+
+height/width/bg/float/radius/float/
+
+transition/transform 
+
+
+Make shade in main
+
+main:hover shade
+
+
+
+
+
+DARAZ CODE :
+___________
+
+<style>
+
+.div{
+	height:300px;
+
+	width:100px;
+
+	background-color:#F00;
+
+	float:left
+}
+
+
+.div ul{
+
+	padding:0px;
+
+	margin:0px
+}
+
+.div ul li{
+
+	padding:0px;
+
+	margin:0px;
+
+	float:left
+
+}
+
+
+.div ul li a{
+
+	height:100px;
+
+	width:100px;
+
+	background-color:#999;
+
+	display:block
+
+}
+
+
+.sub{
+
+	height:400px; 
+
+	width:400px; 
+
+	background-color:#F3F; 
+
+}
+
+.div ul li ul{
+
+	visibility:hidden;
+
+	position:absolute
+
+}
+
+.div ul li:hover ul{
+
+	visibility:visible;
+
+	left:100px;
+
+	top:10px
+}
+
+
+</style>
+
+
+<div class="div">
+
+	<ul>
+    	<li><a href=""> Home </a>
+        	<ul>
+            	<li>
+            		<div class="sub">1</div>
+                </li>
+            </ul>
+        </li>
+        <li><a href=""> Home </a>
+        	<ul>
+            	<li>
+            		<div class="sub">2</div>
+                </li>
+            </ul>
+        </li>
+        <li><a href=""> Home </a></li>
+    </ul>		
+
+	
+</div>
+
+
+
+https://www.w3schools.com/howto/
+
+
+
+FLEX :
+____
+
+
+
+
+
+
+CONTAINER :
+__________
+
+
+min-width: 1020px;
+
+width :100% (browser flexible)
+
+
+
+MAIN SECTION :
+_____________
+
+
+display:flex;	
+
+
+flex-wrap:wrap;
+
+
+width : 100% (if browser resize);
+
+
+// justify-content: space-around
+
+   ( for space-between & space-around )
+
+
+
+
+
+child-div :
+__________
+
+
+flex : 1 1 200
+
+grow shrink basis(min-width)
+
+
+(no width)
+
+
+//width : 300px; ( no flex for justify )
+
+
+
+
+
+
+@media only screen and (min-width:400px) 
+
+and (max-width:500px){
+
+   .logo{
+
+	height:300px;	
+
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+code :
+____
+
+
+
+.container{
+	height:100px;
+	width:100%;
+	max-width:1020px;
+	background-color:#F00;
+	margin:auto
+}
+
+
+.header{
+	display:flex;	
+	flex-wrap:wrap;
+}
+
+
+.logo{
+	flex:1 1 700px;
+	background:#CCC;
+	height:100px;	
+}
+
+
+.menu{
+	flex:1 1 300px;
+	background:#676555;
+	height:100px;
+}
+
+
+.section{
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:space-around
+}
+
+
+.one{
+	background-color:#FF0;
+	height:100px;
+	width:300px
+}
+
+
+.two{
+	background-color:#CCC;
+	height:100px;
+	width:300px
+}
+
+
+.three{
+	background-color:#093;
+	height:100px;
+	width:300px
+}
+
+@media only screen and (min-width:400px) and (max-width:500px){
+	
+	.logo{
+		height:200px;	
+	}
+
+}

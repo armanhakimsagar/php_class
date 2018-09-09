@@ -1,0 +1,118 @@
+1. ajax insert & view & OOP github
+
+
+
+
+
+View Page :
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    
+function post()
+{
+  var comment = document.getElementById("comment").value;
+  var name = document.getElementById("username").value;
+  if(comment && name)
+  {
+    $.ajax
+    ({
+      type: 'post',
+      url: 'post_comment.php',
+      data: 
+      {
+         user_comm:comment,
+	 user_name:name
+      },
+      success: function (response) 
+      {
+	    document.getElementById("all_comments").innerHTML=response+document.getElementById("all_comments").innerHTML;
+	    document.getElementById("comment").value="";
+        document.getElementById("username").value="";
+  
+      }
+    });
+  }
+  
+  return false;
+}
+</script>
+
+
+
+  <form method='post' action="" onsubmit="return post();">
+  
+  	<textarea id="comment" placeholder="Write Your Comment Here....."></textarea>
+
+  	<input type="text" id="username" placeholder="Your Name">
+
+  	<input type="submit" value="Post Comment">
+	
+  </form>
+
+
+
+<div id="all_comments"> 
+	<!-- show result here after response -->
+</div>
+
+
+
+________________________________________________________________
+
+
+
+
+
+<?php
+
+include('insert.php');
+
+if(isset($_POST['user_comm']) && isset($_POST['user_name']))
+{
+
+  // insert comment
+    
+  $comment=$_POST['user_comm'];
+  $name=$_POST['user_name'];
+  
+  $object = new webapps;
+  $insert="insert into comments values('','$name','$comment',CURRENT_TIMESTAMP)";
+  $object->insert($insert);
+  
+
+    
+  // after insert select all data it will hold by response param
+  
+  $select="select name,comment,post_time from comments where name='$name' and comment='$comment'";
+  $data = $object->select($select);
+  
+  while($row= $data->fetch_object()){ ?>
+  
+      <div class="comment_div"> 
+	  
+	    <p class="name">Posted By:<?php echo $row->name;?></p>
+            <p class="comment"><?php echo $row->comment;?></p>	
+	    <p class="time"><?php echo $row->post_time;?></p>
+			
+      </div>
+  
+  <?php
+  }
+exit;
+
+}
+
+?>
+
+
+
+
+
+
+
+
+
+

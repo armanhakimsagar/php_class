@@ -1,0 +1,105 @@
+VIEW :
+______
+
+
+1. must work with scope resulation operator.
+
+   for simple insert view use elequent orm
+   
+   for complicated use query builder.
+   
+   use DB; DB::select(), DB::update()
+
+
+2. use App\Category;
+ 
+   $cat = Category::all();
+   
+   $scat = Subcategory::all();
+   
+   
+3.  return view('admin.product',compact('cat','scat'));
+
+
+
+
+
+* first view :
+
+
+1. in controller work in index function.
+
+
+	use App\modelname;
+
+	use illuminate\http\request;
+		  
+	use App\Category;
+
+	use App\Subcategory;
+
+
+	public function ViewProduct(){
+	
+		$cat = Category::all();
+		$scat = Subcategory::all();
+		return view('admin.product',compact('cat','scat'));
+		
+	}
+
+
+	@if(session()->has('delete_message'))
+			<div class="alert alert-success">
+				{{ session()->get('delete_message') }}
+			</div>
+	@endif	
+
+
+
+   <table class="table">
+
+   @foreach($tasks as $task)
+
+
+	{{ $task->title }}
+
+
+
+	@if(session()->has('delete_message'))
+			<div class="alert alert-success">
+				{{ session()->get('delete_message') }}
+			</div>
+	@endif	
+
+	
+		  
+2. in view :
+
+
+
+   <table class="table">
+
+   @foreach($tasks as $task)
+
+
+	{{ $task->title }}
+
+
+
+work with direct var. dont inside foreach loop :->
+
+
+
+{{ $users->links() }}
+
+{{ $users->count() }}
+
+{{ $users->firstItem() }}
+
+{{ $users->lastItem() }}
+
+{{ $users->perpage() }}
+
+{{ $users->total() }}
+
+

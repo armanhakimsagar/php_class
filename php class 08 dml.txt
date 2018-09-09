@@ -1,0 +1,392 @@
+
+TEXT :
+____
+
+
+in varchar max length 65000 char. if you want more than that you can use text.
+
+on more thing it can have default value null. but varchar anything you want.
+
+
+
+TEXT have 4 type :
+
+
+TINYTEXT 	:	Holds a string with a maximum length of 255 characters
+
+MEDIUMTEXT	:	Holds a string with a maximum length of 16,777,215 characters
+
+
+
+
+Practice :
+_________
+
+
+ecommerce table :
+
+
+category 	: id , cat
+
+
+sub_cat 	: id , scat , catid
+
+
+product 	: id , catid , scatid , name
+
+		      description, price , unit ,statusid 
+
+		      picture
+
+
+status		: id , status
+
+
+
+
+SELECT DATA :
+___________
+
+
+WORK WITH :
+
+country phone codes sql
+
+country name sql
+
+
+(operator selector) :
+
+ 1. 
+ 
+ 
+ show databases 
+
+ 
+ 2. 
+ 
+ 
+ show tables 
+
+ 
+ 3. 
+ 
+ 
+ * from php_practise 
+
+ 
+ 4. 
+ 
+ 
+ name from php_practise 
+
+ 
+ 5. 
+ 
+ limit 30 
+ 
+ (limit data number) 
+
+	
+ 6. 
+ 
+ 
+ limit 13,2 
+ 
+ (1st is starting point 2nd is how many we want to show) 
+
+	
+ 7. 
+ 
+ 
+ order by name 
+ 
+ (its show the name by order acc to dec) 
+
+	
+ 8. 
+ 
+ 
+ order by name desc 
+ 
+   
+ (its show the name by order dec to asc)
+
+   
+ 9. 
+ 
+ multiple order by id,name 
+ 
+ (its show the name & id both by order acc to dec) 
+ 
+ 
+ 10. 
+ 
+ 
+ order by name desc limit 1 
+ 
+ (its show the last name by order dec to asc) 
+
+	
+ 11. 
+ 
+ ORDER BY time DESC 
+ 
+ (its show the lastest date data) 
+
+	
+ 12. 
+ 
+ where id='50' 
+ 
+ (its show only limit data number. total 30 data) 
+
+	
+ 13. where id !='50' 
+
+ 
+ 14. where id > '50' 
+
+ 
+ 15. id < '50' 
+
+ 
+ 16. id >= '50' 
+
+ 
+ 17. where id <= '50' 
+
+ 
+ 18. 
+ 
+ where name BETWEEN 10 AND 20 
+ 
+ (its show only between 10 to 20 id number data 30) 
+
+	
+ 19. 
+ 
+ where name like 'ban%' 
+ 
+ (its show anything who start with ban , % is wildcard) 
+
+ 
+ 20. 
+ 
+ where id like '_1' | where nmae like '__1'
+ 
+ (its show one single number have before 1. ITS DEALS ONLY WITH NUMBER) 
+
+ 
+ 21. 
+ 
+ 
+ where id like 'b%h'  
+ 
+ (its show which have first letter b and last letter h )
+
+ 
+ 22. 
+ 
+ 
+ group by name 
+ 
+ (show it like facebook chat)
+ 
+ 
+ GROUP BY lets you use aggregate functions, 
+ 
+ like AVG, MAX, MIN, SUM, and COUNT. 
+ 
+ Other hand DISTINCT just removes duplicates.
+
+ 
+ 23. 
+ 
+ 
+ SELECT sum|avg|COUNT(sub_total) 
+ 
+ FROM table name;
+ 
+ 
+ (get total of any colomn)
+
+ 
+ 24. 
+ 
+ 
+ SELECT * FROM products WHERE 
+ 
+ start_date >= '2017-06-03' 
+ 
+ AND end_time  <= '2017-06-04'
+ 
+ 
+ 
+ 
+ 
+ 
+WORKING WITH 2 TABLE :->
+
+
+
+MAKE TWO TABLE FIELD INTO 1 FIELD: 
+
+
+SELECT * FROM datat
+WHERE id = 1
+
+UNION ALL
+
+SELECT * FROM helo1
+WHERE id = 1
+
+
+
+** LEFT JOIN :
+_____________
+
+
+common data from left table
+
+ALL data from SELECT table
+
+
+SELECT *
+
+FROM data
+
+LEFT JOIN data2
+
+ON data.id=data2.nameid
+
+
+
+** right join :
+
+
+all data from right table
+
+common data from SELECT table
+
+
+
+** inner join :
+
+bring all common data from 2 table
+
+
+
+
+
+
+TRIGGER :
+_______
+
+ 
+
+CREATE TRIGGER trigger_name
+ 
+BEFORE/AFTER (when trigger function will apply)
+
+INSERT/UPDATE  (which sql query trigger will apply)  
+
+ON table_name
+
+FOR EACH ROW
+
+SET new.fullname = CONCAT(new.fname,'  ',new.lname),
+
+SET new.fname = 'abc'
+
+____
+
+
+show TRIGGERS FROM database_name
+
+drop trigger trigger_name
+
+____
+
+
+arethmetic operator in sql : new.ext +-/* new.number
+
+AFTER INSERT ON table_name FOR EACH ROW
+
+INSERT INTO total_number VALUES('',CONCAT(new.fname,'  ',new.lname));
+
+
+
+
+** work with single trigger
+
+** work with multiple trigger
+
+** work with after insert another table
+
+
+
+
+rules :
+
+trigger is nothing but set a sql function. 
+
+it will auto add fname & lname then make fullname.
+
+first goto databse. then paste the query.
+
+
+1. SET before for trigger & insert in same table
+
+   (before make the function first. then insert data into table)
+   
+2. SET after for trigger & insert in different table
+
+   (after make the function after insert. then insert data into table)
+   
+3. new keyword for assign in fieldname
+
+4. INSERT/UPDATE ON table_name (which sql query trigger will execute) 
+
+5. multple trigger just comma
+
+
+
+____
+
+
+store procedure :
+
+
+CREATE PROCEDURE select_name()
+
+BEGIN
+
+   SELECT * FROM abc
+   
+END
+
+CALL select_name()
+
+
+DROP PROCEDURE procude_name;
+
+show procedure status;
+
+
+____
+
+
+
+store a query in procedure name. call it when you want.
+
+Stored procedures are stored as precompilated code.
+
+Stored procedure can return value  but trigger cannt.
+
+execute store procedure by call keyword.
+
+trigger auto call but procedure need to call
+
+
+

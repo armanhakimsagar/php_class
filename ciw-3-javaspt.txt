@@ -1,0 +1,645 @@
+
+
+
+ document.childNode   [for see dom structure]
+
+
+ element node, comment node, 
+
+
+ text node, document node
+
+
+ var writting rules 
+
+
+ [case sensitive, a-z, 0-9 , white space, keyword]
+
+
+ var a = "abc xyz"; 
+
+
+ console.log(typeof(a));
+
+
+ var str = "i am good";
+
+
+ var n = str.indexOf("good"); 
+
+
+ var data = "Something world";
+
+
+ document.write(data.length);
+
+
+ document.write(data.toLowerCase());
+
+
+ document.write(data.toUpperCase());
+
+
+ document.write(data.trim());
+
+
+ Practise Moneybag (arethmetic operator)
+
+
+ <input type='text' style='' />                                                                                               
+
+
+ += , -- , ++ , [Assignment Operators]
+ 
+
+ console.log(5>7);  [boolen]
+
+
+
+
+
+
+
+
+ Condition :
+ __________
+
+
+ 
+
+ if if , if elseif
+
+
+ password username
+
+
+ Logical Operators AND OR
+
+
+
+ var salary = 31000;
+
+ var country = "bangladesh";
+
+ var password = "A014ds";
+
+ var retype = "A014ds";
+
+ var email = "agmail.com";
+
+ var phone = "01763498123";
+
+ var image = "a.jpg";
+
+
+
+ if(salary >= 30000 || salary <= 15000)
+
+
+ if(country != "Bangladesh")
+
+
+ if(!email.match(/@/) || email.slice(-4) != ".com")
+
+
+ if(phone.length != 11)
+
+
+ if(isNaN(phone))
+
+
+ if(!password.match(/[A-Z][0-9]/))
+
+
+  if(password != retype)
+
+
+  if(image.slice(-4) != ".jpg" 
+
+  && image.slice(-4) != "png")
+
+
+
+
+data types Float :
+________________
+
+
+ var a = .9;
+
+ var b = .8;
+
+ var c = a-b;
+
+ var g = c.toFixed(1);
+
+ var d = .1;
+
+ var e = .2;
+
+ var f = e-d;
+
+ if(g==f){
+
+ 	document.write("ok");
+
+ }
+
+ var a = 1.223
+
+
+ document.write(Math.round(a));
+
+
+
+
+data types Object :
+__________________
+
+
+
+  var weather = [
+      
+      {
+
+        a : 'a',
+        b : 'b'
+
+      },
+      
+      {
+
+        c : 'c',
+        d : 'd'
+
+      }
+
+  ];
+
+
+
+document.write(weather[0].a);
+
+
+
+
+
+
+LOOP :
+____
+
+
+for( ini ; con; increment )
+
+
+if(a==0){ break; }
+
+
+if(a==1){ continue; }
+
+
+
+var d = new Date();
+
+
+var n = d.getFullYear();
+
+
+for(i=1971 ; i <= n ; n++)
+
+
+
+while(con){
+
+	output;
+
+	increment;
+}
+
+
+do{
+	output;
+
+	incremnt;
+
+
+}
+
+while(con)
+
+
+
+
+
+
+
+array :
+_____
+
+
+
+
+var data = ["a","v","d"];
+
+
+a.sort();
+
+
+a.reverse(); [laste bring first]
+
+
+a.pop();         [remove last index]
+
+
+a.shift();       [remove first index]
+
+
+a.unshift("cc"); [add index first]
+
+
+a.push("cc");    [add index]
+
+
+a.splice(1,1);   [firstcut point,how many will cut]
+
+
+var a = [ ['a','b'],['11','22'] ];
+
+
+document.write(a[0][1]);
+
+
+
+
+
+
+
+array loop with multidimention :
+______________________________
+
+
+ALL IN ONE :
+
+
+for (index in person) {
+
+   document.write(person[index].fname);
+
+}
+
+
+
+for(i=0; i <= arr.length-1 ; i++){
+
+  document.write( arr[i] );
+
+}
+		
+	
+
+
+
+
+
+
+
+switch :
+______
+
+
+var a = "b";
+
+switch(a){
+
+ case 'c':
+
+ document.write("ok");
+
+ break;
+
+ default:
+
+ document.write("not ok"); 
+
+}
+
+
+
+
+
+
+
+fuction :
+_______
+
+
+
+
+function abc(data){
+
+  return data;  
+
+}
+
+abc();
+
+
+abc(1);
+
+
+
+// function expression
+
+
+
+var func = function abc(){
+
+   document.write("ok");	
+ 
+}
+
+
+
+// annominious function
+
+
+	
+var func = function(){
+	
+   document.write("ok");	
+
+}
+
+func();
+	
+
+// invoke function (fast) use in jquery
+
+
+(function(){
+
+   document.write("ok");
+
+})
+
+();
+
+
+
+// callback function is passing other 
+   
+// function in parameter
+
+
+
+
+function abc(){
+		
+   document.write("ok");	
+	
+}
+	
+function xyz(callback){
+		
+    callback();
+	
+}
+	
+
+xyz(abc);
+
+
+
+
+
+error handelling:
+________________
+
+
+function check(a){
+
+  if(a==10){
+
+    throw new exception;
+  
+  }
+
+}
+
+try{
+  
+  var a =10;
+
+  check(a);
+
+  document.write("not ok");
+
+}catch(e){
+
+  document.write("ok");
+
+}
+
+
+
+
+
+
+project calculator by function :
+_______________________________
+
+
+
+
+var data1 = parseFloat(doc.getid('data1').value);
+
+
+
+
+
+
+
+
+calculator:
+__________
+
+
+<form id="form">
+
+  <input type="text" id="answer" />
+
+  <input type="button" 
+
+   onClick="form.answer.value+='1'" />
+
+   <input type="button" 
+
+   onClick="form.answer.value = 
+
+   eval(form.answer.value)" />
+
+</form>
+
+
+
+
+
+
+
+EVENT :
+_____
+
+
+
+onClick='toogle()'
+
+document.getElementById('image').src = 'pic_bulbon.gif';
+
+
+upwork calculation onBlur
+
+var valuetotal = value1 - (value1*10)/100;
+
+
+
+
+
+
+
+
+
+
+
+window :
+_______
+
+
+window.open( "facebook.com", 
+
+"_blank" , "width=400,height=400" )
+
+
+document.write(window.location.href);
+
+// return url
+
+
+document.write(navigator.appCodeName)
+
+// return browser name
+
+
+document.write(navigator.platform)
+
+// return windows
+
+
+window.location = "a.php";
+
+// redirect
+
+
+
+
+
+form validation :
+_______________
+
+
+
+function  validation(){
+
+  var fn = document.getElementById("fn").value;
+
+  var ln = document.getElementById("ln").value;
+
+  var data = document.getElementById("p1").value;
+
+  var checkbox1 = document.getElementById("checkbox1").checked;
+
+  var checkbox2 = document.getElementById("checkbox2").checked;
+
+  var select_box = document.getElementById("select_box").selectedIndex;
+ 
+  var error = 0;
+  
+  
+  document.getElementById("efn").innerHTML = '';
+
+
+  if(fn==""){
+
+    error = error+1;
+
+  }
+  
+  if(password.length < 7){
+	
+	error = error+1;
+	
+  }
+
+  if(!email.match(/@/)){
+			
+	error = error+1;
+
+  }
+		
+  if(checkbox1==false && checkbox2==false){
+
+    error = error+1;
+	
+	document.getElementById("efname").innerHTML = '**first name required';
+	
+	document.getElementById("fn").className = "red";
+
+			
+  }
+  
+  if(select_box==0){
+
+    error = error+1;
+  }
+
+  if(error==0){
+
+    return true;
+  }
+
+  else{
+
+    return false;
+  }
+
+}
+
+
+
+
+<form action="a.html" onSubmit="return validation()">
+
+  <input type="text" id="fn" />
+  
+  <input type="text" id="ln" />
+  
+  <input type="text" id="p1">
+
+  <span id="eemail_number"></span>
+  
+  Male : <input type="radio" id="checkbox1" name="checkbox" />
+  
+  Female : <input type="radio" id="checkbox2" name="checkbox" />
+  
+  <select id="select_box">
+  
+    <option value="0">Select a option</option>
+  
+    <option value="1">1</option>
+  
+  </select>
+  
+  <input type="submit" value="submit" />
+
+</form>
+
+

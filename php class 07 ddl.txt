@@ -1,0 +1,419 @@
+SQL - Structured Query Language.
+
+Its a programming language
+
+SQL to access the database
+
+___________________________________________
+
+
+*. DDL (database defination language) :
+
+- its make structure
+	
+- create alter drop TRUNCATE TABLE
+
+
+____________________________________________
+
+
+*. DML (database manipulates language) :
+
+- insert delete update view
+ 
+ 
+____________________________________________
+
+
+*. RDBMS (relation on database management system) : 
+
+rdbms it can access in data. 
+
+manupulate,represent,
+
+
+1. MySQLi
+
+2. sql server
+
+3. Oracle 
+
+
+______________________________________________
+
+
+
+
+* create database databasename
+
+
+* create table tablename(
+	
+	id int auto_increment primary key not null,
+	
+    number tinyint unsigned not null
+	
+)
+
+  
+Data type :
+
+
+
+** number (lenght depends on type)
+
+	
+	tinyint: 1 byte (2^8)
+	
+	max range 127 means 
+	
+	1 byte (means 3 digit) 
+	
+	
+	
+___________	
+
+
+
+	Alter Table :
+	
+	
+	
+	Alter table tablename
+	
+	modify filedname datatype [change datatype]
+	
+	
+	
+	DROP COLUMN column_name   [delete]
+	
+	CHANGE COLUMN old new varchar(200); [change name]
+	
+	
+	**RENAME TABLE :
+	
+	RENAME TABLE tb1 TO tb2;
+	
+	
+	** DELETE ONLY DATA
+
+	TRUNCATE TABLE table_name
+	
+	
+	
+	** ADD FIELD :
+	
+	
+	Alter table tablename
+	
+	ADD column_name datatype  [add column]
+
+	AFTER filedname
+
+	
+	** ADD FOREIGN KEY :
+	
+	
+	Alter table tablename
+	
+	add FOREIGN KEY(country_id)
+
+	REFERENCES apps_countries(id)
+	
+	
+	SHOW CREATE TABLE tablename;
+
+	take the constraint datat_ibfk_1
+
+
+
+	alter table tablename
+
+	drop foreign key datat_ibfk_1
+
+
+
+	ALTER TABLE helo1
+
+	DROP KEY fieldname
+	
+___________
+
+	
+	
+	tinyint : 1 bites (1^8)
+	
+	smallint: 2 bytes (2^16)
+	
+	mediumint: 3 bytes (2^24)
+	
+	int/integer: 4 bytes (2^32)
+	
+	bigint: 8 bytes (2^64)
+	
+_______________________________________
+
+
+
+TEXT :
+____
+
+
+in varchar max length 65000 char. if you want more than that you can use text.
+
+on more thing it can have default value null. but varchar anything you want.
+
+
+
+TEXT have 4 type :
+
+
+TINYTEXT 	:	Holds a string with a maximum length of 255 characters
+
+MEDIUMTEXT	:	Holds a string with a maximum length of 16,777,215 characters
+	
+	
+	
+_______________________________________	
+	
+
+	
+	
+** charecter (lenght depends on allias)
+
+
+	char 2 byte  
+	
+	* CHAR field is a fixed length
+	
+	* fast if rows are of the same length
+
+	
+	varchar 2 byte :
+	
+	max 65000 charecter
+	
+	VARCHAR is a variable length field
+	
+
+
+   nvarchar not available in mysqli.
+   
+   it use for support all language.
+   
+   set Collation to utf8_croatian_ci
+
+
+
+** Date :
+
+	year 1 byte
+
+	date 3 byte [2017-05-24]
+
+	time 3 byte [5:59:35] 
+
+	datetime 8 byte [2017-05-24 07:46:42]  
+
+	timestamp 4 bytes 
+
+	TIMESTAMP has a range of '1970-01-01 00:00:01' UTC to '2038-01-19 03:14:07' UTC
+
+	[2017-05-24 07:46:42]
+
+
+
+
+Decimal :
+
+
+
+*float(5,2) [4 byte]
+
+(total 5, decimel 2)
+
+
+
+built in take 4 digit after decimel
+
+
+
+
+
+
+
+_____________________________________
+
+
+
+10. 
+
+
+
+practise 1 : 
+
+
+
+create table hellow_data(
+
+ id int unsigned auto_increment primary key,
+
+ account_name varchar(255) not null,
+
+ account_number int not null,
+
+ profile_info varchar(3000) not null,
+
+ openning_day date not null,
+
+ openning_time time not null
+
+)
+
+
+
+practise 2 :
+
+
+CREATE TABLE `insert_data` (
+
+   id int(11) AUTO_INCREMENT NOT null PRIMARY KEY,
+   
+  `name` varchar(200) DEFAULT NULL,
+  
+  `password_data` varchar(200) DEFAULT NULL,
+  
+  `email` varchar(100) DEFAULT NULL,
+  
+  `phone` int(11) NOT NULL,
+  
+  `country_id` int(11) NOT NULL,
+  
+   dof date not null,
+   
+  `gender` int(11) NOT NULL,
+  
+   status tinyint,
+   
+  `image` varchar(200) DEFAULT NULL
+  
+)
+
+
+___________________________________
+
+
+
+project :
+________
+
+
+
+id, Name, Email , Password , Phone
+
+Address , Biography , Main Job Role (int),
+
+Skill Level (tinyint), Sub Job Role (int), Skill Level (tinyint),
+
+Picture , SSC , HSC , GRADUATION , 
+
+POST-GRADUATION
+
+
+
+END CLASS----------------------------------
+___________________________________________
+
+
+STUDY :
+
+
+
+
+field attribute :
+
+
+*NOT NULL
+ 
+*DEFAULT
+
+*AUTO INCREMENT  cannot be null
+
+*unsigned - positive value
+
+*signed - positive & negetive value	
+
+
+
+PRIMARY KEY (AVOID DUPLICATE ENTRY FOR KEY)
+
+You can only have one primary key, 
+
+but you can have multiple columns
+
+cannot be NULL
+
+
+ALTER TABLE tablename DROP PRIMARY KEY;
+
+
+
+
+unique key (AVOID DUPLICATE ENTRY FOR VALUE)
+
+You can only have many unique key,
+
+- can have null value
+
+
+
+
+* There are three types of on delete associated with foreign key
+
+
+-On Delete Cascade: when data is removed from a parent table, 
+ automatically data deleted from child table (foreign key table).
+
+-On Delete set Null: when data is removed from a parent table, 
+ the foreign key associated cell will be null in a child table.
+
+-On Delete Restrict: when data is removed from a parent table, 
+ and there is a foreign key associated with child table it 
+ gives error, you can not delete the record.
+
+
+
+
+** Foreign key must be int
+
+** must be signed
+
+** must not insert data in 
+
+   reference table before set foreign key
+
+
+ALTER TABLE insert_data 
+
+add FOREIGN KEY(country_id)
+
+REFERENCES apps_countries(id)
+
+
+** ERRORS :
+
+Cannot add or update a child row -> 
+
+just truncate 2 table
+
+
+
+Hadop - 
+
+
+Java open source Linux platform framework.
+Process all stuctured unstructured & bulk data.
+1st process then store data. 
+For processing have many computer. 
+All computer have master & slave computer
+

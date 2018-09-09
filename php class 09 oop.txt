@@ -1,0 +1,650 @@
+
+*. exersize : 1 (calculator)
+
+	
+<form method="post">
+
+	<input type="text" name="data1"/>
+	<input type="text" name="data2"/>
+	<input type="submit" name="sub"/>
+	
+</form>
+ 
+class abc{
+		
+	public function plus($data1,$data2){
+
+		$data3 = $data1 + $data2;
+		
+		echo $data3;
+
+	}
+}
+ 
+ 
+if(isset($_POST['sub'])){
+
+ $data1 = $_POST['data1'];
+	
+ $data2 = $_POST['data2'];
+ 
+ $instance = new abc;
+ 
+ $instance->plus($data1,$data2);
+ 
+}
+
+
+___________________________________________
+
+
+
+
+Exersize : 2 	(EXTENDS & encapsulation)
+
+
+encapsulation public private protected 
+
+
+* public -> full page, 
+
+*** can access after make object 
+  (main difference between private & protected)
+
+
+class data1{
+
+	public $property1 = "this is public";
+	
+}
+
+class data2 extends data1{
+	
+	
+}
+
+class data3 extends data2{
+	
+	
+}
+
+$webapss = new data3;
+$webapss->property1;
+	
+	
+?>
+
+___________
+
+
+
+* protected -> 
+
+
+same class & work in extends.
+ 
+for check make function
+
+
+class data1{
+
+	protected $property1 = "this is public";
+	
+}
+
+class data2 extends data1{
+
+
+	
+}
+
+class data3 extends data2{
+	
+	public function data2method(){
+		echo $data2var = $this->property1;
+	}
+}
+
+$webapss = new data2;
+$webapss->data2method();
+
+
+
+______
+
+
+* private-> only class
+
+(can use it in only class. but make method then
+
+check $this->data)
+
+
+<?php
+
+	class data1{
+		private $property1 = "this is public";
+		public function aa(){
+			echo $this->property1;
+		}
+	}
+
+	
+	$webapss = new data1;
+	$webapss->aa();
+	
+	
+?>
+
+
+
+________________________________________
+
+
+
+
+EXERSIZE : 3 	TRAIT 
+
+
+*. trait is class. which can extends as musch by.
+
+*. trait abc { }
+
+*. extends by use traitname in any class
+
+
+	 trait newtrait{
+	
+		public function xx(){
+			echo "hello from trait ";
+		}
+		 
+	 }
+	
+	
+	class def{
+	 
+	 use newtrait;
+	 
+	 public function check(){
+	 
+		echo $this->data1;
+
+		}
+	}
+
+	
+	$instance = new def;
+	
+	$instance->xx();
+	
+	
+_____________________________________
+
+
+
+
+EXERSIZE : 4 	namespace
+
+
+* namespace must on top. access like
+
+
+namespace sec1{
+	
+	class cl{
+	
+		public $data = "hello";
+		
+	}
+	
+	use sec1\cl as new_cl;
+
+	$object = new new_cl;
+	
+	echo $object->data;
+
+}
+
+
+
+
+_________________________________________________
+
+
+
+
+
+EXERSIZE 5 magic
+
+
+
+which work autometic
+
+
+__contstract autometic call;
+
+__destruct autocall last;
+
+
+
+class HTMLgenerator {
+
+  function __construct() {
+  
+    echo "<html><body>";
+	
+  }
+  function __destruct() {
+  
+    echo "</body></html>";
+	
+  }
+  
+} 
+
+$html = new HTMLgenerator();
+
+echo "Hello, world!";
+
+
+*. multiple construct not possible single class,
+
+*. overriding is make multiple __construct method in extends class.
+
+*. for not effect construct in child take construct in trait
+
+
+__________
+
+
+get - property 
+
+set property with value
+
+call - method
+
+
+
+
+__get($e) call if want to access undefined property;
+	
+	
+class data1{
+	
+	public function __get($e){
+		echo "$e does not exist";
+	}
+
+}
+
+$webapss = new data1;
+$webapss->a;
+
+
+
+	
+___________
+
+
+
+__set() undefined propety with assigned value :
+
+
+
+class data1{
+	
+	public function __set($property,$value){
+
+		echo "$e $value does not exist";
+
+	}
+	
+}
+
+$webapss = new data1;
+
+$webapss->a = "dd";
+
+
+
+_________
+
+
+
+
+__call() if want to access undefined method with value :
+
+	
+public function __call($e,$value){
+
+	echo "$e  does not exist".implode("",$value);
+	
+}
+	
+
+$webapss = new data1;
+$webapss->a("ss","dd");
+
+
+	
+________________________________________________
+
+
+STUDY :
+
+
+* class is a keyword. define by class.
+
+  property is variable & method is function
+  
+
+
+  
+  
+* -> object operator
+  
+  1. object can access class
+  
+    $instance = new abc;
+	 
+    $instance->plus();
+	
+	
+  2. object can access property
+  
+    $instance = new abc;
+	 
+    $instance->plus;
+	
+    
+  
+* :: scope resulation operator 
+
+  1. factory pattern :
+  
+     call any method without make any object
+  
+	 classname::methodname
+	 
+  
+  2. SINGLETON PATTER :
+  
+  call any method in extends class parent::fds();
+  
+  class secondary extends main_class
+  
+	{
+		public function tom()
+		{
+			parent::parent_methodname();
+		}
+	}
+
+
+
+  
+  class_exists("classname");
+  
+  method_exists($instance,"method_name");
+
+  
+____________________________________________	
+	
+1. const is a property. value is fixed
+   
+   const built in public.can access 
+   
+   anywhere inside or outside class
+
+
+   const NAME = 'abc';
+   
+   echo main_class::NAME;
+
+
+   
+_____________________________________
+
+
+
+set datatype in function parameter is call Type hinting.
+
+for more security.
+ 
+    
+ARRAY :
+______
+
+
+$arr = array(1,2,3,4);
+	
+function testHint(array $arr) {
+
+    echo "ok";
+
+}
+
+testHint($arr);
+
+___
+
+
+$data = "data";	
+
+function testHint(string $data)
+
+___
+
+
+
+function abc(class_name $object){
+
+	echo $object->data;
+	
+}  
+
+abc($object);
+	
+
+
+_________
+
+
+
+
+*. channing method optional
+
+
+class abc{
+	
+	public function a(){
+	
+		echo "ok 1";
+		return $this;
+		
+	}
+	
+	public function b(){
+	
+		echo "ok 2";
+		
+	}
+}
+
+
+$abc = new abc;
+
+$abc->a()->b();
+
+
+
+method channing is call method in another method.
+
+$instance->method1()->method2();
+
+just need return $this from fisrt method.
+
+
+
+
+
+*. auto load class :
+___________________
+
+
+function __autoload($classname){
+
+  include("folder/".$classname.".php");
+
+}
+
+$car = new car;
+
+$car->lambhorghini();
+
+
+
+
+
+make folder make car.php make ___construct function. 
+
+auto_load function grab all class name from file so
+
+we can include all file in single link.
+
+
+
+
+
+*. Itteration :
+_______________
+
+
+
+iteration is a loop of propery.
+
+
+
+	class java{
+	
+		public $hello="hello";
+		public $name="name";
+		public $roll="1";
+		
+	}
+	
+	$php = new java;
+	
+	foreach($php as $key=>$value){
+	
+		echo $value;
+		
+	}
+
+
+
+*. Interface :
+_______________
+
+
+1. interface is class which contain empty method.
+
+   for access in method use implements.
+   
+2. in implements asign new value in method
+   
+3. if no idea about iplimentation use interface 
+
+   or than use abs
+   
+
+<?php
+	
+	interface java{
+		
+		public function hello();
+		
+	}
+	
+	class php implements java{
+		
+		public function hello(){
+			
+			echo "ok";
+			
+		}
+	}
+	
+	$ins = new php;
+	$ins->hello();
+	
+ ?>
+ 
+ 
+
+
+_______________________________________
+
+
+
+*. abstract class 
+
+
+
+1. cannt creat direct object. 
+
+   can create object of its extends
+
+
+2. method also same . cant direct access .
+  
+   need to assign value in extends
+   
+3. abs same like class but interface cant declair other than 
+
+   public & final . abs have magic method but implements dnt
+   
+   
+
+ abstract class abst{
+ 
+	public abstract function a();
+	
+ }
+ 
+ 
+ class newabs extends abst{
+ 
+	 public function a(){
+		echo "ok";
+	 }
+	 
+ }
+ 
+
+________________________________________________
+
+
+
+ABSTRACT VS INTERFACE VS FINAL VS STATIC :
+
+
+
+1. abstract is normal class. but dont support multiple inheritance.
+   have construct.
+
+   
+2. interface support multiple inheritance 
+   doent have construct. full confidnt about child will be interface.
+
+   
+3. FINAL method or class cannt extends or inherit or overwrite.
+
+
+4. static method property access by :: 
+
+echo user::$name;
+echo user::b();
+
+use for less secure apps.

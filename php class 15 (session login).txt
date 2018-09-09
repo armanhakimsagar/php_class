@@ -1,0 +1,62 @@
+0. login by email & password & make email unique
+
+1. if isset submit $_POST['login']
+
+2. then try select email password & status
+
+3. $instance->func($select)
+
+4. in catch 
+
+ session_start;
+ 
+ $_SESSION['email_std'] = $email;
+ 
+ $_SESSION['email_tc'] = $email;
+ 
+ header('location:studentaccount.php');
+
+5. set error in 2nd try catch
+
+    echo "username or password not matched";
+	
+	
+7. send $_SESSION['email']
+
+!isset($_SESSION['email_tc']) 
+
+|| empty($_SESSION['email_tc'])
+
+
+9.
+
+session_start();
+
+unset($_SESSION['super_admin_user']);
+unset($_SESSION['admin_user']);
+
+session_destroy();
+
+header('location:http://nhclcbd.com/index.php');
+
+
+	try{
+	  $webapps = new webapps;
+	  $admin1 = "SELECT * FROM users WHERE name='$username' && password_data='$password' && statues='1'";
+	  $webapps->admin1($admin1);
+	  
+	  try{
+		  $webapps = new webapps;
+		  $admin2 = "SELECT * FROM users WHERE name='$username' && password_data='$password' && statues='0'";
+		  $webapps->admin2($admin2);
+		  echo "username or password not matched";
+		}catch(exception $e){
+		  session_start;
+		  $_SESSION['admin2'] = $admin2;
+		  header('location:teacheraccount.php');
+		}
+	}catch(exception $e){
+	  session_start;
+	  $_SESSION['admin1'] = $admin1;
+	  header('location:studentaccount.php');
+	}

@@ -1,0 +1,206 @@
+Laravel Collective (Forms & HTML pakage)
+
+https://laravelcollective.com/docs/5.4/html
+
+
+*. CMD :
+
+   composer require "laravelcollective/html":"^5.4.0"
+ 
+
+
+
+*. config/app.php :
+
+  'providers' => [
+    
+    Collective\Html\HtmlServiceProvider::class,
+    
+  ],
+
+
+
+
+*. config/app.php
+
+  'aliases' => [
+
+      'Form' => Collective\Html\FormFacade::class,
+      'Html' => Collective\Html\HtmlFacade::class,
+
+  ],
+
+
+*. Form :
+
+
+{!! Form::open(['url' => 'foo/bar','class'=>'abc','method'=>'get','files' => true]) !!}
+         
+<?php echo Form::email("field_name", $value = "value_here", $attributes = ['class'=>'d','id'=>'ss']); ?>		 
+
+<?php echo Form::file("field_name", $attributes = ['class'=>'abc','method'=>'get']);?>
+
+<?php echo Form::radio('field_name', 'value', true, $attributes = ['class'=>'abc','method'=>'get']); ?>
+
+<?php echo Form::select('field_name', ['L' => 'Large', 'S' => 'Small'], 'selected_value'); ?>
+
+<?php echo Form::selectMonth('month'); ?>
+
+<?php echo Form::token(); ?>
+
+<?php echo Form::submit('Click Me!'); ?>
+     
+{!! Form::close() !!}
+
+
+
+
+______________________________________________
+
+
+-> Validation
+
+
+use App\Http\Requests;
+
+use App\Http\Controllers\controller;
+
+use App\ViewModel;
+
+use Illuminate\Http\Request;
+
+
+
+
+
+
+$this->validate($request, [
+	
+	'field' => 'alpha',
+
+	'field' => 'min:6|regex:/^(?=.*[a-z])(?=.*[A-Z]).+$/',
+
+	'field_confirmation' => 'max:255|same:fieldname',
+
+	'field' => 'Unique:database_tablename',
+
+	'field' => 'mimes:jpeg,jpg,png | min:400kb | dimensions:min_width=100,min_height=200',
+	
+	'field' => 'mimetypes:video/avi,video/mpeg',
+	
+]);
+
+
+
+-> Create Custom Error :
+
+
+   * https://laravel.com/docs/5.5/validation#custom-validation-rules
+
+    php artisan make:rule RulesName
+   
+   
+
+	* <?php
+
+		namespace App\Rules;
+
+		use Illuminate\Contracts\Validation\Rule;
+
+		class RulesName implements Rule{
+		
+			public function passes($attribute, $value){
+			
+				if($value==0){
+				
+					return $value;
+				
+				}
+				
+			}
+
+			public function message(){
+			
+				return 'The :type here error message.';
+				
+			}
+			
+		}
+		
+		* In Controller :
+		
+		use App\Rules\RulesName;
+
+		$request->validate([
+		
+			'name' => ['required', new RulesName],
+			
+		]);
+		
+		
+		
+		
+
+		
+*. Helper :
+
+
+	// Without Query String...
+	$url = $request->url();
+
+	
+	// With Query String...
+	$url = $request->fullUrl();
+	
+	
+	// print_r all data
+	$input = $request->all();
+	
+	
+	// single request	
+	$request->input('name');
+	
+	
+	//check if isset
+	if($request->has('name')){
+
+	}
+	
+	
+	// view exits 
+	if (View::exists('folder.file')) {
+    
+	}
+	
+	// return current url
+	echo url()->current();
+	
+	
+	// Get the current URL including the query string...
+	echo url()->full();
+
+	// Get the full URL for the previous request...
+	echo url()->previous();
+	
+	
+	// For link 
+	
+	echo url("/uri");
+	
+	
+	// session helper :
+	
+	$data = $request->session()->all(); 								(get)
+
+	if ($request->session()->has('users')) {							(check)
+		//
+	}
+	
+	$request->session()->put('key', 'value');							(store)
+	
+	$request->session()->flash('status', 'Task was successful!');		(store for next step)
+	
+	$request->session()->flush();										(unset)
+
+
+	

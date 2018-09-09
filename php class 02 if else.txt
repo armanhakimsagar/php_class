@@ -1,0 +1,250 @@
+
+if with Comparison Operators :
+
+
+
+if($a >= 5) 
+
+
+if(++$a > 21) Pre-increment
+
+
+if($a++ > $a) 
+
+
+if(10)
+
+
+if(0)
+
+
+if(false)
+
+
+if()
+
+
+if(-5)
+
+
+if(0 == false)
+
+
+if(0 === false)
+
+
+if(10%2)
+
+
+if(++$a) // $a = 0
+
+
+if($a++) // $a = 0
+
+
+if(0);  echo "ss";   echo "sss";	//sssss
+
+
+if(0)  echo "ss";   echo "sss";		//sss
+
+
+if(0)  echo "ss"; echo "sss"; echo "s";   // ssss
+
+
+
+
+
+
+$juices[1] = "ff";
+
+echo "He drank some $juices[1] juice.";	
+
+	
+	
+_______________________________________
+
+
+
+&& (True if both $x and $y are true)
+
+||  (True if either $x or $y is true)
+
+xor (True if either $x or $y is true, but not both)
+
+
+
+
+
+salary | age | country | date | :
+
+
+$a > 20000 || $a < 15000
+
+
+
+
+if(isset($a) && $a = 10)
+
+
+if($a = 10 && isset($a))
+
+
+_______________________________________
+
+
+
+reference means pointing same data to another variable 
+
+
+$a = 21 ;
+
+$b = &$a ;   		// assignment by reference
+
+
+
+$x = null;
+
+$x = &$a;
+	
+var_dump(++$a);			// 1
+	
+	
+
+	
+$array1 = array(1,null);
+
+$x[1] = &$array1[1];
+
+var_dump($x[1]);		// null
+
+var_dump($x);
+
+
+
+
+$v3 = "a";
+
+$v3 .= ' b';
+
+echo $v3;
+
+
+$v3 += 'c';
+
+echo $v3;	// 0
+
+
+
+_______________________________________
+
+
+
+if if
+
+if else if else
+
+login
+
+_______________________________________
+
+
+ternary operator :
+
+$a = 10;
+	
+echo $a == 10 ? 'yes':'no';
+
+
+
+_______________________________________
+
+
+
+Constant (Constants are like variables):
+
+define("GREETING", "hello");
+
+echo GREETING;
+
+
+_______________________________________
+
+
+
+
+DATA TYPE :
+
+
+String
+
+$x = "5985";
+var_dump($x);
+
+
+Integer
+
+$x = 5985;
+var_dump($x);
+
+
+Float
+
+$x = 10.365;
+var_dump($x);
+
+
+Boolean
+
+$a = true;
+var_dump($a);
+
+
+
+NULL
+
+$x = null;
+var_dump($x);
+
+
+
+
+
+Datatype :
+
+
+echo gettype($a)	// return only datatype
+
+
+if(is_int($v3)){
+
+	echo "ok";		// is_int check is it interger
+
+}
+
+
+
+var_dump((bool) 1);         // bool(true)
+
+
+var_dump((bool) "");        // bool(false)
+
+
+var_dump((bool) 0);        	// bool(false)
+
+
+var_dump(0 == (bool)'0'); 	// false
+
+
+var_dump(25/7);         	// float(3.5714285714286)
+
+
+var_dump((int) (25/7)); 	// int(3)
+
+
+echo sprintf( "+%d hello -%d", 36,10 );   
+
+// +36 hello -10 
+
+
+%s -> for string allow 
+
