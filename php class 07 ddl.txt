@@ -1,10 +1,28 @@
+
+1st class :
+
 SQL - Structured Query Language.
 
 Its a programming language
 
 SQL to access the database
 
-___________________________________________
+
+field attribute :
+
+
+*NOT NULL
+ 
+*DEFAULT
+
+*AUTO INCREMENT  cannot be null
+
+*unsigned - positive value
+
+*signed - positive & negetive value	
+
+
+_______
 
 
 *. DDL (database defination language) :
@@ -14,15 +32,13 @@ ___________________________________________
 - create alter drop TRUNCATE TABLE
 
 
-____________________________________________
-
+_______
 
 *. DML (database manipulates language) :
 
 - insert delete update view
  
- 
-____________________________________________
+_______
 
 
 *. RDBMS (relation on database management system) : 
@@ -39,7 +55,7 @@ manupulate,represent,
 3. Oracle 
 
 
-______________________________________________
+_______
 
 
 
@@ -60,7 +76,7 @@ ______________________________________________
 )
 
 
-Practise :
+Practise (Bank Info):
 
 account_name , account_number , email , phone , 
 pass , gender , address,
@@ -68,11 +84,41 @@ openning_day , openning_time
 
 
 
+Alter Table :
 
 
 
+Alter table tablename
 
-  
+modify filedname datatype [change datatype]
+
+
+
+DROP COLUMN column_name   [delete]
+
+CHANGE COLUMN old new varchar(200); [change name]
+
+
+**RENAME TABLE :
+
+RENAME TABLE tb1 TO tb2;
+
+
+** DELETE ONLY DATA
+
+TRUNCATE TABLE table_name
+
+
+
+** ADD FIELD :
+
+
+Alter table tablename
+
+ADD column_name datatype  [add column]
+
+AFTER filedname
+
 Data type :
 
 
@@ -86,75 +132,7 @@ Data type :
 	
 	1 byte (means 3 digit) 
 	
-	
 
-
-	Alter Table :
-	
-	
-	
-	Alter table tablename
-	
-	modify filedname datatype [change datatype]
-	
-	
-	
-	DROP COLUMN column_name   [delete]
-	
-	CHANGE COLUMN old new varchar(200); [change name]
-	
-	
-	**RENAME TABLE :
-	
-	RENAME TABLE tb1 TO tb2;
-	
-	
-	** DELETE ONLY DATA
-
-	TRUNCATE TABLE table_name
-	
-	
-	
-	** ADD FIELD :
-	
-	
-	Alter table tablename
-	
-	ADD column_name datatype  [add column]
-
-	AFTER filedname
-
-	
-	** ADD FOREIGN KEY :
-	
-	
-	Alter table tablename
-	
-	add FOREIGN KEY(country_id)
-
-	REFERENCES apps_countries(id)
-	
-	
-	SHOW CREATE TABLE tablename;
-
-	take the constraint datat_ibfk_1
-
-
-
-	alter table tablename
-
-	drop foreign key datat_ibfk_1
-
-
-
-	ALTER TABLE helo1
-
-	DROP KEY fieldname
-	
-___________
-
-	
-	
 	tinyint : 1 bites (1^8)
 	
 	smallint: 2 bytes (2^16)
@@ -164,7 +142,50 @@ ___________
 	int/integer: 4 bytes (2^32)
 	
 	bigint: 8 bytes (2^64)
-	
+
+______________________________________________________
+
+
+
+
+2nd class :
+  
+
+
+** Add Bank Info table a country_id)
+** Practise add account_type & comments (saving or business) by std
+
+
+** ADD FOREIGN KEY :
+
+
+Alter table tablename
+
+add FOREIGN KEY(country_id)
+
+REFERENCES apps_countries(id)
+
+
+SHOW CREATE TABLE tablename;
+
+take the constraint datat_ibfk_1
+
+
+
+alter table tablename
+
+drop foreign key datat_ibfk_1
+
+
+
+ALTER TABLE helo1
+
+DROP KEY fieldname
+
+
+
+
+
 _______________________________________
 
 
@@ -253,41 +274,6 @@ built in take 4 digit after decimel
 
 
 
-
-
-
-
-
-
-
-practise 2 :
-
-
-CREATE TABLE `insert_data` (
-
-   id int(11) AUTO_INCREMENT NOT null PRIMARY KEY,
-   
-  `name` varchar(200) DEFAULT NULL,
-  
-  `password_data` varchar(200) DEFAULT NULL,
-  
-  `email` varchar(100) DEFAULT NULL,
-  
-  `phone` int(11) NOT NULL,
-  
-  `country_id` int(11) NOT NULL,
-  
-   dof date not null,
-   
-  `gender` int(11) NOT NULL,
-  
-   status tinyint,
-   
-  `image` varchar(200) DEFAULT NULL
-  
-)
-
-
 ___________________________________
 
 
@@ -317,19 +303,6 @@ STUDY :
 
 
 
-
-field attribute :
-
-
-*NOT NULL
- 
-*DEFAULT
-
-*AUTO INCREMENT  cannot be null
-
-*unsigned - positive value
-
-*signed - positive & negetive value	
 
 
 
