@@ -1,5 +1,6 @@
 
 1st class :
+__________
 
 SQL - Structured Query Language.
 
@@ -149,6 +150,7 @@ ______________________________________________________
 
 
 2nd class :
+__________
   
 
 
@@ -186,6 +188,7 @@ DROP KEY fieldname
 _______________________________________
 
 class 3 :
+________
 
 
  show databases 
@@ -225,31 +228,42 @@ class 3 :
  (its show the lastest date data) 
 
 
+
  where id='50' 
+	
 	
  where id !='50' 
 
+
  where id > '50' 
+
 
  id < '50' 
 
+
  id >= '50' 
+
 
  where id <= '50' 
  
+ 
  where name BETWEEN 10 AND 20 
  
+ 
  where name like 'ban%' 
+ 
  
  where id like 'b%h'  
  
  group by name 
+
 
  SELECT sum|avg|COUNT(sub_total) 
  
  FROM table name;
  
  (get total of any colomn)
+ 
  
  SELECT * FROM products WHERE 
  
