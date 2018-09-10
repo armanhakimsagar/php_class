@@ -115,24 +115,32 @@ $country == 0
 **
 
 
-if($date == ""){
+if($dob != ""){
 
-	 $error = $error +1;
-	 
-	 $msg .= "<p> Date required </p>";
-	 
-}
-
-if($date != ""){
-
-	list($y, $m, $d) = explode('-', $date);
-
-
-	if(checkdate($m,$d,$y) == false){
-		$error = $error +1;
-		$msg .= "<p> date required </p>";
+        // broke in - part
+	$explode = explode('-',$dob);
+	// count if have 3 part (year, month , dday)
+	$count = count($explode);
+	// if have 3 part then execute
+	if($count == 3){
+		// put explode 3 part in list function
+		list($y,$m,$d) = $explode;
+		// check all 3 part have data & checkdate
+		if(isset($m) && isset($d) && isset($y)){
+			if(checkdate($m,$d,$y) == false){
+				$error = $error+1;
+				$msg .= "<p>* date formate problem</p>";
+			}
+			$error = $error+1;
+		}
+	}else{
+		$error = $error+1;
+		$msg .= "<p>* date formate problem</p>";
 	}
-
+}
+if($dob == ""){
+	$error = $error+1;
+	$msg .= "<p>* date field required</p>";
 }
 	  
 	  
