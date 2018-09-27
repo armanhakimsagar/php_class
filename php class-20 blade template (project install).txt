@@ -60,19 +60,20 @@ Hello, {{ $name }}
 
 _________________________
 
-@if (count($records) === 1)
+<?php $records = "ok"; ?>
 
-    I have one record!
-    
-@elseif (count($records) > 1)
+@isset($records)
 
-    I have multiple records!
+    records is defined and is not null...
     
-@else
+@endisset
 
-    I don't have any records!
+@empty($records)
+
+    ecords is "empty"...
     
-@endif
+@endempty
+
 
 _________________________
 
