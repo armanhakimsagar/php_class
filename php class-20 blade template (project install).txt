@@ -5,7 +5,7 @@
 @endfor
 
 
-
+_____________
 
 <?php $first = "<b>Narendra Sisodia</b>"; ?>
 
@@ -17,35 +17,98 @@
 
 
 
-   master.blade.php
+master.blade.php
 
 
-   <h1> header </h1>
+<h1> header </h1>
 
-   @yield('title')
+@yield('title')
 
-   <h1> footer </h1>
-
-
-
-   about.blade.php
-
-
-   @extends('folder.filename_only')	[link]
-
-
-   make expression blade :
-
-
-   @section('title')
-
-	content will show
-
-   @endsection
+<h1> footer </h1>
 
 
 
-   
+about.blade.php
+
+
+@extends('folder.filename_only')	[link]
+
+
+make expression blade :
+
+
+@section('title')
+
+content will show
+
+@endsection
+
+______________________
+
+
+ ** Displaying Data :  
+ 
+ Route::get('greeting', function () {
+ 
+    return view('welcome', ['name' => 'Samantha']);
+    
+ });
+ 
+ 
+Hello, {{ $name }}
+
+
+_________________________
+
+@if (count($records) === 1)
+    I have one record!
+@elseif (count($records) > 1)
+    I have multiple records!
+@else
+    I don't have any records!
+@endif
+
+_________________________
+
+@unless (Auth::check())
+    You are not signed in.
+@endunless
+
+
+________________________
+
+@isset($records)
+    // $records is defined and is not null...
+@endisset
+
+@empty($records)
+    // $records is "empty"...
+@endempty
+
+
+_______________________
+
+
+
+@switch($i)
+    @case(1)
+        First case...
+        @break
+
+    @case(2)
+        Second case...
+        @break
+
+    @default
+        Default case...
+@endswitch
+
+
+_______________________
+
+
+
+
 
 
 -> CSS LINK :
