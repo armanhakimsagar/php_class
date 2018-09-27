@@ -132,18 +132,38 @@ _______________________
 
 ________________________
 
-<head>
-    <!-- Head Contents -->
+master.blade.php
 
-    @stack('scripts')
-</head>
+<h1> header </h1>
+
+   @yield('sidebar')
+
+   @yield('special_js_links')
+
+<h1> footer </h1>
 
 
-@push('scripts')
 
-    This will be second...
-    
-@endpush
+
+
+template.blade.php
+
+@extends('welcome')
+
+@section('sidebar')
+
+    @parent
+
+    <p>This is appended to the master sidebar.</p>
+
+@endsection
+
+
+@section('special_js_links')
+
+    <p>This is js links</p>
+
+@endsection
 
 
 
