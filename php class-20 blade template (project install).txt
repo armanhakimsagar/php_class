@@ -16,32 +16,20 @@ _____________
 {{ $first }}
 
 
-
-master.blade.php
-
-
-<h1> header </h1>
-
-@yield('title')
-
-<h1> footer </h1>
+_________________________
 
 
-
-about.blade.php
-
-
-@extends('folder.filename_only')	[link]
-
-
-make expression blade :
+Route::get('/', function () {
+	$arrayName = array('a'=>'a','b'=>'b','c'=>'c');
+    return view('view',compact('arrayName'));
+});
 
 
-@section('title')
+@foreach($arrayName as $a)
+	<?php $a; ?>
+@endforeach
 
-content will show
 
-@endsection
 
 ______________________
 
@@ -131,6 +119,39 @@ _______________________
 
 
 ________________________
+
+
+
+
+master.blade.php
+
+
+<h1> header </h1>
+
+@yield('title')
+
+<h1> footer </h1>
+
+
+
+about.blade.php
+
+
+@extends('folder.filename_only')	[link]
+
+
+make expression blade :
+
+
+@section('title')
+
+content will show
+
+@endsection
+
+______________________
+
+
 
 master.blade.php
 
