@@ -1,7 +1,7 @@
+
+Control Structures
+
 @section and @yield @for are directives.
-
-
-
 
 @for ($i = 0; $i < 10; $i++)
     
@@ -10,48 +10,7 @@
 @endfor
 
 
-_____________
 
-<?php $first = "<b>Narendra Sisodia</b>"; ?>
-
-
-
-{!! $first !!}  // not prevent xss htmlentities
-
-{{ $first }}
-
-
-_________________________
-
-
-Route::get('/', function () {
-	$arrayName = array('a'=>'a','b'=>'b','c'=>'c');
-    return view('view',compact('arrayName'));
-});
-
-
-@foreach($arrayName as $a)
-	<?php $a; ?>
-@endforeach
-
-
-
-______________________
-
-
- ** Displaying Data :  
- 
- Route::get('greeting', function () {
- 
-    return view('welcome', ['name' => 'Samantha']);
-    
- });
- 
- 
-Hello, {{ $name }}
-
-
-_________________________
 
 <?php $records = "ok"; ?>
 
@@ -61,14 +20,13 @@ _________________________
     
 @endisset
 
+
 @empty($records)
 
     ecords is "empty"...
     
 @endempty
 
-
-_________________________
 
 @unless (Auth::check())
 
@@ -77,7 +35,6 @@ _________________________
 @endunless
 
 
-________________________
 
 @isset($records)
 
@@ -91,8 +48,6 @@ ________________________
     
 @endempty
 
-
-_______________________
 
 
 
@@ -116,6 +71,50 @@ _______________________
 _______________________
 
 
+
+<?php $first = "<b>Narendra Sisodia</b>"; ?>
+
+
+
+{!! $first !!}  // not prevent xss htmlentities
+
+{{ $first }}
+
+
+
+
+______________________
+
+
+ ** Displaying Data :  
+ 
+ 
+ 
+Route::get('/', function () {
+	$arrayName = array('a'=>'a','b'=>'b','c'=>'c');
+    return view('view',compact('arrayName'));
+});
+
+
+@foreach($arrayName as $a)
+	<?php $a; ?>
+@endforeach
+
+
+
+ Route::get('greeting', function () {
+ 
+    return view('welcome', ['name' => 'Samantha']);
+    
+ });
+ 
+ 
+Hello, {{ $name }}
+
+
+_______________________
+
+
 @foreach ($users as $user)
 
     <p>This is user {{ $user->id }}</p>
@@ -125,7 +124,7 @@ _______________________
 
 ________________________
 
-
+Template Inheritance
 
 
 master.blade.php
