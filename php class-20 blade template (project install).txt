@@ -1,3 +1,8 @@
+@section and @yield @for are directives.
+
+
+
+
 @for ($i = 0; $i < 10; $i++)
     
      {{ $i }}
@@ -145,7 +150,7 @@ make expression blade :
 
 @section('title')
 
-content will show
+  content will show
 
 @endsection
 
@@ -180,6 +185,8 @@ template.blade.php
 @endsection
 
 
+// create this section & parent it
+
 @section('special_js_links')
 
     <p>This is js links</p>
@@ -190,6 +197,17 @@ template.blade.php
 
 ________________________
 
+
+Route::get('greeting', function () {
+
+    return view('welcome', ['name' => 'Samantha']);
+
+});
+
+
+Hello, {{ $name }}.
+
+________________________
 
 
 
@@ -207,7 +225,16 @@ ________________________
 
 
 
+__________________________
 
+// directly show it
+
+@section('name')
+
+
+    <p>This is js links</p>
+
+@show
 
 
 
