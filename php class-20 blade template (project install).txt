@@ -10,6 +10,14 @@ Control Structures
 @endfor
 
 
+{{-- This comment will not be present in the rendered HTML --}}
+
+or
+
+@php
+  //
+@endphp
+
 
 
 <?php $records = "ok"; ?>
@@ -68,6 +76,14 @@ Control Structures
 @endswitch
 
 
+@auth
+   The user is authenticated...
+@endauth
+
+@guest
+   The user is not authenticated...
+@endguest
+	
 _______________________
 
 
@@ -197,14 +213,12 @@ template.blade.php
 ________________________
 
 
-Route::get('greeting', function () {
 
-    return view('welcome', ['name' => 'Samantha']);
+@section('navigation')
+    
+   @yield('sidebar')
 
-});
-
-
-Hello, {{ $name }}.
+@endsection
 
 ________________________
 
