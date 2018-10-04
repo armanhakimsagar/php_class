@@ -107,13 +107,13 @@ ______________________
  
  
 Route::get('/', function () {
-	$arrayName = array('a'=>'a','b'=>'b','c'=>'c');
+     $arrayName = array('a'=>'a','b'=>'b','c'=>'c');
     return view('view',compact('arrayName'));
 });
 
 
 @foreach($arrayName as $a)
-	<?php $a; ?>
+    <?php $a; ?>
 @endforeach
 
 
@@ -133,14 +133,27 @@ _______________________
 
 @foreach ($users as $user)
 
-    <p>This is user {{ $user->id }}</p>
+  <p>This is user {{ $user->id }}</p>
     
 @endforeach
 
 
 ________________________
 
-Template Inheritance
+Practise template install 
+without inheritance
+
+put it in /public/assets/css/ 
+
+link in blade.php
+
+<link href="{{ asset('public/asset/css/bootstrap.min.css') }}" rel="stylesheet">   
+
+
+______________________
+
+
+Template Inheritance:
 
 
 master.blade.php
@@ -148,7 +161,7 @@ master.blade.php
 
 <h1> header </h1>
 
-@yield('title')
+  @yield('title')
 
 <h1> footer </h1>
 
@@ -156,12 +169,9 @@ master.blade.php
 
 about.blade.php
 
-
 @extends('folder.filename_only')	[link]
 
-
 make expression blade :
-
 
 @section('title')
 
@@ -169,8 +179,12 @@ make expression blade :
 
 @endsection
 
+
+
 ______________________
 
+
+* Parent yield:
 
 
 master.blade.php
@@ -212,35 +226,29 @@ template.blade.php
 
 ________________________
 
+* Stack Push
 
+about.blade.php:
 
-@section('navigation')
-    
-   @yield('sidebar')
+@section('body')
 
 @endsection
 
-________________________
+@push('css')
+  partial css
+@endpush
 
 
+Master.blade.php
 
--> CSS LINK :
-
-
-   put it in /public/assets/css/ 
-
-
-   link in blade.php
-
-
-   <link href="{{ asset('public/asset/css/bootstrap.min.css') }}" rel="stylesheet">   
-
-
-
+<head>
+  stack('css')
+</head>
 
 __________________________
 
 // directly show it
+// no need yield
 
 @section('name')
 
@@ -255,24 +263,6 @@ __________________________
 
 
 
-
-
-SETUP TEMPLATE :
-
-
-1. must have ext master.blade.php
-
-
-2. will have 2 page. 1 for make section & other for master part 
-
-
-3. must return view the section file. not the view master yield file.
-
-
-4. master is for html,head,body footer & @yield('section_part') 
-
-
-5. in section file just 
 
 
 
