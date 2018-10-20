@@ -59,53 +59,35 @@ public function submit(Request $request){
 
 -> Create Custom Error :
 
-
-   * https://laravel.com/docs/5.5/validation#custom-validation-rules
-
-    php artisan make:rule RulesName
+    php artisan make:rule CustomRules
    
-   
+ 
+-> CustomRules.php :
 
-	* <?php
+	public function passes($attribute, $value)
+	    {
+		 if($value!=0){ 
+		    return $value;
+		 }
+	    }
 
-		namespace App\Rules;
+	    public function message()
+	    {
+		return 'ase error';
+	    }
+		
+		
+-> In Controller :
 
-		use Illuminate\Contracts\Validation\Rule;
+use App\Rules\CustomRules;
 
-		class RulesName implements Rule{
-		
-			public function passes($attribute, $value){
-			
-				if($value==0){
-				
-					return $value;
-				
-				}
-				
-			}
+$request->validate([
 
-			public function message(){
-			
-				return 'The :type here error message.';
-				
-			}
-			
-		}
-		
-		* In Controller :
-		
-		use App\Rules\RulesName;
+	'select' => ['required', new CustomRules],
 
-		$request->validate([
+]);
 		
-			'name' => ['required', new RulesName],
-			
-		]);
-		
-		
-		
-		
-
+	
 		
 *. Helper :
 
