@@ -32,30 +32,28 @@ ______________________________________________
 -> Validation
 
 
-use App\Http\Requests;
+public function submit(Request $request){
 
-use App\Http\Controllers\controller;
-
-use App\ViewModel;
-
-use Illuminate\Http\Request;
-
-
-$this->validate($request, [
+    	$this->validate($request, [
 	
-	'field' => 'alpha',
+	    'name' 	=> 'required|regex:/^[a-zA-Z\s]+$/',
+	    'email' 	=> 'required|email',
+	    'phone' 	=> 'required|regex:/^[0-9\s]{11}+$/',
+	    'date' 	=> 'date_format:Y-m-d',
+	    'password' 	=> 'confirmed|min:6|max:8|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/',
+	    'gender' 	=> 'required'
+	    
+	]);
 
-	'field' => 'min:6|regex:/^(?=.*[a-z])(?=.*[A-Z]).+$/',
-
-	'field_confirmation' => 'max:255|same:fieldname',
-
-	'field' => 'Unique:database_tablename',
-
-	'field' => 'mimes:jpeg,jpg,png | min:400kb | dimensions:min_width=100,min_height=200',
-	
-	'field' => 'mimetypes:video/avi,video/mpeg',
-	
-]);
+	if ($validator->fails()) {
+            return redirect('/submit')
+                            ->withErrors($validator)
+                            ->withInput();
+            } else {
+                
+                echo "ok";
+         }
+    }
 
 
 
