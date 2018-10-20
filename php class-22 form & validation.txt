@@ -1,59 +1,14 @@
-Laravel Collective (Forms & HTML pakage)
-
-https://laravelcollective.com/docs/5.4/html
-
-
-*. CMD :
-
-   composer require "laravelcollective/html":"^5.4.0"
- 
-
-
-
-*. config/app.php :
-
-  'providers' => [
-    
-    Collective\Html\HtmlServiceProvider::class,
-    
-  ],
-
-
-
-
-*. config/app.php
-
-  'aliases' => [
-
-      'Form' => Collective\Html\FormFacade::class,
-      'Html' => Collective\Html\HtmlFacade::class,
-
-  ],
 
 
 *. Form :
 
-
-{!! Form::open(['url' => 'foo/bar','class'=>'abc','method'=>'get','files' => true]) !!}
-         
-<?php echo Form::email("field_name", $value = "value_here", $attributes = ['class'=>'d','id'=>'ss']); ?>		 
-
-<?php echo Form::file("field_name", $attributes = ['class'=>'abc','method'=>'get']);?>
-
-<?php echo Form::radio('field_name', 'value', true, $attributes = ['class'=>'abc','method'=>'get']); ?>
-
-<?php echo Form::select('field_name', ['L' => 'Large', 'S' => 'Small'], 'selected_value'); ?>
-
-<?php echo Form::selectMonth('month'); ?>
-
-<?php echo Form::token(); ?>
-
-<?php echo Form::submit('Click Me!'); ?>
-     
-{!! Form::close() !!}
-
-
-
+full name   
+email
+number
+date
+password
+gender
+phone
 
 ______________________________________________
 
@@ -68,10 +23,6 @@ use App\Http\Controllers\controller;
 use App\ViewModel;
 
 use Illuminate\Http\Request;
-
-
-
-
 
 
 $this->validate($request, [
