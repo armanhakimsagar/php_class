@@ -2,13 +2,29 @@
 
 *. Form :
 
-full name   
-email
-number
-date
-password
-gender
-phone
+<form method="post" action="{{ url('submit') }}">
+
+    Name<input type="text" name="name">
+    email<input type="text" name="email">
+    phone<input type="text" name="phone">
+    date<input type="date" name="date">
+    password<input type="text" name="password">
+    Retype <input type="text" name="password_confirmation">
+    male<input type="radio" name="gender" value="male">
+    female<input type="radio" name="gender" value="female">
+    {{ csrf_field() }}
+    <input type="submit" name="submit">
+    
+</form>
+
+
+
+@if ($errors->has('password'))
+
+   {{ $errors->first('password') }}
+    
+@endif
+
 
 ______________________________________________
 
