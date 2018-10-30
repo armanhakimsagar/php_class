@@ -147,11 +147,7 @@ $this->validate($request, [
 ]);
 
 if ($validator->fails()) {
-       $feedback = [
-           'status'     => "error",
-           'message'    => "validation error"
-       ];  
-       return $feedback;
+       return response()->json($validator->errors,400);
 } else {
        $feedback = [
            'status'     => "success",
