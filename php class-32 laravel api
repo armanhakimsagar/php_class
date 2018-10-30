@@ -1,3 +1,6 @@
+API CREATE ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
 View:
 
 Route::get('departments', function() {
@@ -89,4 +92,35 @@ public function(Request $request,Poll $poll) {
 
 }
 
+______
 
+Delete 
+
+
+Route::delete('poll/{id}','control@method')
+
+controller :
+
+public function(Request $request,Poll $poll) {
+
+   $poll = $poll->delete();
+   
+   if(count($poll) == 0){
+       $feedback = [
+           'status'     => "error",
+           'message'    => "update error"
+        ]; 
+       
+    }else{
+        $feedback = [
+           'status'     => "success",
+           'message'    => "update successfully"
+        ]; 
+    }
+    
+    return $feedback;
+
+}
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
