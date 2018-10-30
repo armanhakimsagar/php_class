@@ -127,12 +127,36 @@ public function(Request $request,Poll $poll) {
 
 
 
-Validation:
+Validation for view:
 
 $department = department::find($id);
 
-if(is_null){
+if(is_null($department)){
   return .........
 }else{
   return ............
 }
+
+
+Validation for insert:
+
+$this->validate($request, [
+
+   'name' 	=> 'required'
+        
+]);
+
+if ($validator->fails()) {
+       $feedback = [
+           'status'     => "error",
+           'message'    => "validation error"
+       ];  
+       return $feedback;
+} else {
+       $feedback = [
+           'status'     => "success",
+           'message'    => "update successfully"
+       ];
+       return $feedback;
+}
+
