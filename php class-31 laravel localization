@@ -1,0 +1,36 @@
+Route::get('/', function () {
+
+   return view('welcome');
+
+});
+
+Route::get('{lang?}',function($lang = null){
+
+   App::setlocale($lang);
+	
+   return view('welcome');
+
+});
+
+
+_______
+
+Create folder :
+
+resourse/view/lang/in :
+
+<?php
+	
+    return [
+	'welcome' => 'india welcome',
+    ];
+
+?>
+_______
+
+
+@lang('header.welcome')
+
+
+
+______
