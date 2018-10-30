@@ -1,0 +1,50 @@
+Route::get('departments', function() {
+    
+    $department = department::all();
+    if(count($department) == 0){
+       $feedback = [
+           'status'     => "error",
+           'message'    => "data not found",
+           'data'       => null
+        ]; 
+       
+    }else{
+        $feedback = [
+           'status'     => "success",
+           'message'    => "data found",
+           'data'       => $department
+        ]; 
+    }
+    
+    return $feedback;
+    
+});
+
+
+______
+
+
+Route::get('departments/{id}', function($id) 
+
+
+______
+
+
+Route::post('departments', function(Request $request) {
+    $department = department::create($request->all);
+    
+    if(count($department) == 0){
+       $feedback = [
+           'status'     => "error",
+           'message'    => "insert error"
+        ]; 
+       
+    }else{
+        $feedback = [
+           'status'     => "success",
+           'message'    => "inserted successfully"
+        ]; 
+    }
+    
+    return $feedback;
+});
