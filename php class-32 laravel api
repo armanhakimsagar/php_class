@@ -1,3 +1,5 @@
+View:
+
 Route::get('departments', function() {
     
     $department = department::all();
@@ -23,14 +25,17 @@ Route::get('departments', function() {
 
 ______
 
+Edit:
 
 Route::get('departments/{id}', function($id) 
 
 
 ______
 
+Post:
 
 Route::post('departments', function(Request $request) {
+
     $department = department::create($request->all);
     
     if(count($department) == 0){
@@ -47,4 +52,41 @@ Route::post('departments', function(Request $request) {
     }
     
     return $feedback;
+    
 });
+
+** add 
+
+protected $fillable = ['fieldname','fieldname']
+
+
+______
+
+Update 
+
+Route::put('poll/{id}','control@method')
+
+controller :
+
+public function(Request $request,Poll $poll) {
+
+   $poll = $poll->update($request->all());
+   
+   if(count($poll) == 0){
+       $feedback = [
+           'status'     => "error",
+           'message'    => "update error"
+        ]; 
+       
+    }else{
+        $feedback = [
+           'status'     => "success",
+           'message'    => "update successfully"
+        ]; 
+    }
+    
+    return $feedback;
+
+}
+
+
