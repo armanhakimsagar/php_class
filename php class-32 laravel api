@@ -124,3 +124,15 @@ public function(Request $request,Poll $poll) {
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
+Validation:
+
+$department = department::find($id);
+
+if(is_null){
+  return .........
+}else{
+  return ............
+}
