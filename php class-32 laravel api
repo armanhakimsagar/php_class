@@ -209,7 +209,7 @@ Customize response:
 
 laravel have resourse for customize api response
 
-* php artisan make:resourse CustomResourse
+* php artisan make:resource CustomResourse
 
 
 * set this method in resourse
