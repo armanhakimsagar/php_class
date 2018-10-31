@@ -156,3 +156,54 @@ if ($validator->fails()) {
        return $feedback;
 }
 
+
+
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+Customize response:
+
+laravel have resourse for customize api response
+
+* php artisan make:resourse CustomResourse
+
+
+* set this method in resourse
+
+public function toArray($request){
+  return [
+    'title' => mb_strimwidth($this->title,0,5,'....'),
+  ]
+}
+
+* now use this resourse in your api controller
+ 
+ use App\Http\Resourse\CustomResourse as newCustomResourse;
+ 
+ in method :
+ 
+ new newCustomResourse(data::findOrFail($id));
+ 
+ 
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ 
+ 
+API Resouse create:
+
+* php artisan make:controller QuestionController --resourse --model=Question
+
+api.php
+
+* route::apiResourse('Questions','QuestionsController');
+
+[it create standard resourse for api]
+
+* Now check by:
+
+apc.com/api/questions
