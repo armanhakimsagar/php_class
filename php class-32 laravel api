@@ -68,62 +68,75 @@ protected $fillable = ['fieldname','fieldname']
 
 ______
 
-Update 
+
+Update :
 
 Route::put('poll/{id}','control@method')
 
+
 controller :
 
-public function(Request $request,Poll $poll) {
+public function update(Request $request,$id) {
 
-   $poll = $poll->update($request->all());
-   
-   if(count($poll) == 0){
+   $poll = DB::table('aps')
+		->where('id',$id)
+		->update(array(
+			'name'=>$request->name,
+		));
+
+   if($poll == null){
        $feedback = [
-           'status'     => "error",
-           'message'    => "update error"
-        ]; 
-       
+	   'status'     => "error",
+	   'message'    => "update error"
+	]; 
+
     }else{
-        $feedback = [
-           'status'     => "success",
-           'message'    => "update successfully"
-        ]; 
+	$feedback = [
+	   'status'     => "success",
+	   'message'    => "update successfully"
+	]; 
     }
-    
+
     return $feedback;
 
 }
 
+
+
 ______
 
-Delete 
+
+
+Delete :
 
 
 Route::delete('poll/{id}','control@method')
 
 controller :
 
-public function(Request $request,Poll $poll) {
+public function delete(Request $request,$id) {
 
-   $poll = $poll->delete();
-   
-   if(count($poll) == 0){
+   $poll = DB::table('aps')
+		->where('id',$id)
+		->delete();
+
+   if($poll == null){
        $feedback = [
-           'status'     => "error",
-           'message'    => "update error"
-        ]; 
-       
+	   'status'     => "error",
+	   'message'    => "delete error"
+	]; 
+
     }else{
-        $feedback = [
-           'status'     => "success",
-           'message'    => "update successfully"
-        ]; 
+	$feedback = [
+	   'status'     => "success",
+	   'message'    => "delete successfully"
+	]; 
     }
-    
+
     return $feedback;
 
 }
+
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
