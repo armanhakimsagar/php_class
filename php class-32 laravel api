@@ -32,6 +32,7 @@ Edit:
 
 Route::get('departments/{id}', function($id) 
 
+create method for edit
 
 ______
 
@@ -39,14 +40,18 @@ Post:
 
 Route::post('departments', function(Request $request) {
 
-    $department = department::create($request->all);
+    $data = $request->all();
     
-    if(count($department) == 0){
+    return ap::create([
+        'name' => $data['name']
+    ]);
+
+    if(count($data) == 0){
        $feedback = [
            'status'     => "error",
            'message'    => "insert error"
         ]; 
-       
+
     }else{
         $feedback = [
            'status'     => "success",
@@ -54,11 +59,9 @@ Route::post('departments', function(Request $request) {
         ]; 
     }
     
-    return $feedback;
-    
 });
 
-** add 
+** must add 
 
 protected $fillable = ['fieldname','fieldname']
 
@@ -131,33 +134,56 @@ Validation for view:
 
 $department = department::find($id);
 
-if(is_null($department)){
-  return .........
+if(is_null(ap::find($id))){
+    $feedback = [
+       'status'     => "error",
+       'message'    => "data not found",
+       'data'       => null
+    ]; 
+    return $feedback;
 }else{
-  return ............
+    $feedback = [
+       'status'     => "success",
+       'message'    => "data found",
+       'data'       => ap::find($id)
+    ]; 
+    return $feedback;
 }
 
 
 Validation for insert:
 
-$this->validate($request, [
 
-   'name' 	=> 'required'
-        
+$validator = Validator::make($request->all(), [
+	        
+    'name'  => 'required'
+
 ]);
 
 if ($validator->fails()) {
-       return response()->json($validator->errors,400);
+
+    return response()->json($validator->errors()->toArray(),400);
+    
 } else {
+
+    $data = $request->all();
+    return ap::create([
+        'name' => $data['name']
+    ]);
+
+    if(count($data) == 0){
        $feedback = [
+           'status'     => "error",
+           'message'    => "insert error"
+        ]; 
+
+    }else{
+        $feedback = [
            'status'     => "success",
-           'message'    => "update successfully"
-       ];
-       return $feedback;
+           'message'    => "inserted successfully"
+        ]; 
+    }
 }
-
-
-
 
 
 
