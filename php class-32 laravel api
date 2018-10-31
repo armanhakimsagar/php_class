@@ -165,6 +165,7 @@ if ($validator->fails()) {
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
+
 Customize response:
 
 laravel have resourse for customize api response
@@ -194,6 +195,7 @@ public function toArray($request){
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
  
  
+ 
 API Resouse create:
 
 * php artisan make:controller QuestionController --resourse --model=Question
@@ -207,3 +209,41 @@ api.php
 * Now check by:
 
 apc.com/api/questions
+
+
+* inside method everthing same
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+Side loading | one to many relationship:
+
+side load is load foreign key data in api.
+like load all questions of a poll.
+
+in poll model:
+
+public function questions(){
+  return hasMany('App\Quesion');
+}
+
+
+in poll controller:
+
+public function show($id){
+
+  $poll = Poll::with('questions')->findOrFail($id);
+  $response['poll'] = $poll;
+  $response['questions'] = $poll->questions;
+  return response->json($response,200);
+  
+}
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ 
+
+
