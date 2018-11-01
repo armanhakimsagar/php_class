@@ -286,3 +286,40 @@ public function show($id){
  
 
 
+Paginate API :
+
+department::paginate(10);
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ 
+
+
+API File show:
+
+return response->download(asset('imgae/a.png','Show name here'));
+
+see header response for file details.
+
+
+API File upload:
+
+$image = $request->file('photo')->store('image');
+
+return response()->json(['path' => $path], 200);
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ 
+
+API Security:
+
+Middleware:
+
+1. create middleware
+2. register it on group route middleware api array
+
+
+
+
