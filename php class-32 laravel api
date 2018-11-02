@@ -203,8 +203,12 @@ if ($validator->fails()) {
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Create Customize response:
-  			    modelname / modelnameCollection
+
+CUSTOMIZE SINGLE API RESPONSE DATA:
+
+
+			    modelname / modelnameCollection
+
 * php artisan make:resource Product / ProductCollection
 
 
@@ -233,6 +237,15 @@ public function toArray($request){
 
 	];
 }
+
+
+
+
+CUSTOMIZE ALL API RESPONSE DATA:
+
+
+
+
 
 
 
