@@ -244,6 +244,17 @@ public function toArray($request){
 CUSTOMIZE ALL API RESPONSE DATA:
 
 
+* php artisan make:resource crud/crudCollection
+
+* set in crudCollection:
+
+use Illuminate\Http\Resources\Json\Resource;
+
+class crudCollection extends Resource
+
+* set in method:
+
+crudCollection::collection(crud::all())
 
 
 
