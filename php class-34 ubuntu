@@ -1,0 +1,315 @@
+https://www.5balloons.info/how-to-install-laravel-5-5-with-xampp-on-linux/
+Linux :
+
+   Linux is a collection of free and open-source software operating systems built around the Linux kernel.
+   
+
+
+
+********* Commands :
+
+* admin $ sudo su
+
+* switch user sudo arman
+
+username@machine_name $ ($ means log in as normal user not administrator)
+
+* ls                            (list of file)
+   
+
+* pwd                           (present working directory)
+
+
+* ls directory_name
+
+
+* ls -a                         (list of all file)
+
+
+* locate filename               (for search anything)
+
+
+* which sudo                    (where this command install)
+
+
+* history                       (last 1000 commands)
+
+
+* mkdir hello
+
+
+* touch create_file             (create & read file)
+
+
+* cp ~/.destination             (current directory to destination)
+
+Move if you only need it in the target path, copy if you need it in both locations
+
+
+* mv current_folder destination folder
+
+
+* cp current_folder destination folder
+
+
+* rm filename                   (delete file)
+
+
+* rm -r                         (remove all)
+
+
+* nano filename.txt             ( edit in cmd ! for save control + X )
+
+* directory access :
+
+   sudo chmod 777 htdocs   (r = 4, w = 3, x = 1)
+
+
+
+
+
+
+
+
+********* Access in root :
+
+   sudo
+
+
+
+********* update dns & software
+ 
+  sudo apt-get update
+  sudo apt-get upgrade
+  sudo rm /var/lib/apt/lists/lock
+  sudo rm /var/cache/apt/archives/lock
+  sudo rm /var/lib/dpkg/lock
+
+
+
+********* download software by snap :
+
+  snap find
+  sudo snap install skype --classic
+  
+  
+********* Netbeans 
+
+sudo apt-get update
+
+sudo apt-get install netbeans
+
+
+
+
+
+********** Chrome :
+
+
+
+    Goto: https://www.google.com/intl/en-CA/chrome/browser/
+
+    Click Download Chrome
+
+    Choose either 32 bit .deb(for 32bit Ubuntu) or 64 bit .deb (for 64bit Ubuntu)
+
+    Click Accept and Install
+
+    Download .deb file to a folder (Downloads is the default folder)
+
+    Open up your Downloads folder.
+
+    Double-click the .deb file you just downloaded.
+
+    This should launch Ubuntu Software Centre.
+
+    When it prompts you to whether you wish to install Chrome, just say yes.
+    Input Password when asked to install.
+
+
+
+********** Viber :
+
+download for linux
+then install
+
+________________________________________________
+
+
+
+********** composer laravel lampp :
+
+sudo apt-get install composer
+
+https://www.apachefriends.org/download.html download from here first
+
+1. cd Downloads
+2. sudo su  (need to access form root)
+3. sudo chmod 777 xampp-linux-x64-7.2.4-0-installer.run
+4. ./xampp-linux-x64-7.2.4-0-installer.run (file name)
+
+1. cd /opt/lampp     (no need root now)
+2. sudo chmod 777 htdocs
+
+1. run server cmd :
+
+   sudo su
+   /opt/lampp/lampp start
+   
+   run server interface :
+   
+   cd /opt/lampp
+   sudo su
+   sudo ./manager-linux-x64.run
+
+
+
+
+
+
+************ laravel install :
+
+sudo apt-get update
+
+sudo apt-get install openssl
+php -i | grep -i openssl
+sudo apt-get install php7.0-mbstring
+sudo apt-get install libapache2-mod-php7.0
+sudo apt-get install php7.0-xml
+
+now go to cd /opt/lampp this directory 
+sudo su
+chmod -R 777 htdocs      (access to make folder in htdocs folder)
+
+   7 - Owner can write
+   7 - Group can write
+   5 - Others cannot write!
+
+cd /opt/lampp/htdocs
+
+composer create-project laravel/laravel /opt/lampp/htdocs/test_laravel (create project)
+composer update
+cp .env.example .env
+php artisan key:generate
+sudo su
+chmod -R 777 storage
+
+(For access any folder 777 !)
+
+
+* migration error :
+
+    app\provider\appserviceprovider.php :
+
+     use Illuminate\Support\Facades\Schema;
+
+     public function boot(){
+
+       Schema::defaultStringLength(191);
+
+   }
+
+
+
+************* git install :
+    
+    apt-get install git
+    git config --global user.name "Your Name"
+    git config --global user.email "youremail@domain.com"
+    git config --list
+
+
+************* install postman
+
+
+wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
+sudo tar -xzf postman.tar.gz -C /opt
+sudo ln -s /opt/Postman/Postman /usr/bin/postman
+
+now open from : computer / opt /postman
+
+
+************** notepad download :
+
+sudo snap install notepadqq
+
+
+************* curl download
+
+sudo apt-get install curl
+
+************* android studio
+
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+https://developer.android.com/studio/
+cd android-studio/bin
+./studio.sh
+
+
+
+************ photo editing :
+
+sudo apt-get install gimp
+
+
+__ other 
+
+sudo add-apt-repository ppa:kubuntu-ppa/backports 
+sudo apt-get update 
+sudo apt-get install krita
+
+
+************* git ubuntu :
+
+
+apt-get install git
+which git
+git --version
+
+
+
+Set username for multiple use :
+
+   git config --global user.name "mr x"
+
+   check by : git config --global user.name
+
+   git config --global user.email "mrx@gmail.com"
+
+   check by : git config --global user.email  
+   
+   
+
+
+
+git config --global user.name "arman"
+
+
+
+
+******** screen recorder 
+
+sudo add-apt-repository ppa:maarten-baert/simplescreenrecorder
+sudo apt-get update
+sudo apt-get install simplescreenrecorder
+
+now find /usr/share/applications for executable file
+
+
+******* mysqli workbench
+
+sudo apt-get install mysql-workbench
+
+
+
+******* eclipse is a text editor for java
+      
+            https://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/oxygen3a
+         
+            tar xf eclipse-inst-linux64.tar.gz
+         
+            cd eclipse-installer
+
+./eclipse-inst
