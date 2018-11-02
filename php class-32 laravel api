@@ -203,54 +203,37 @@ if ($validator->fails()) {
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+Create Customize response:
+  			    modelname / modelnameCollection
+* php artisan make:resource Product / ProductCollection
 
 
-Customize response:
+Show method for single data 
 
-laravel have resourse for customize api response
-
-* php artisan make:resource CustomResourse
-
-
-* set this method in resourse
-
+* use App\Http\Resources\Product\ProductResource;
+  
+* return new ProductResource($product); 
+ 
+ 
+Customize property of API :
+	
+		   
 public function toArray($request){
-  return [
-    'title' => mb_strimwidth($this->title,0,5,'....'),
-  ]
+
+	return [
+
+	'name' => $this->name,
+
+	'stock'	=> count($this->stock) == 0 ? 'out_of_stoke' : $this->stock,
+
+	'href'=> 
+		[	
+		  'details' => route('products.show',$this->id)
+		]
+
+	];
 }
 
-* now use this resourse in your api controller
- 
- use App\Http\Resourse\CustomResourse as newCustomResourse;
- 
- in method :
- 
- new newCustomResourse(data::findOrFail($id));
- 
- 
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
- 
- 
- 
-API Resouse create:
-
-* php artisan make:controller QuestionController --resourse --model=Question
-
-api.php
-
-* route::apiResourse('Questions','QuestionsController');
-
-[it create standard resourse for api]
-
-* Now check by:
-
-apc.com/api/questions
-
-
-* inside method everthing same
 
 
 
