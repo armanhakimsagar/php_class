@@ -88,6 +88,14 @@ Session::flash('meeting_msg', 'Inserted Successfully!');
 
 
 -> 
+
+@if(session()->has('insert_success'))
+
+    Duplicate Successfully
+    
+@endif
+
+
 -> Last insert id:
 
 $meeting_id = $meeting->id;
