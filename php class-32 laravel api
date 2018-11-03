@@ -352,10 +352,41 @@ return $next($request);
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
  
+ 
+Guzzle get request:
+
+___
+
+Route::get('formall','ApiController@getGuzzleRequest');
+
+public function getGuzzleRequest()
+{
+
+    $client = new \GuzzleHttp\Client();
+
+    $request = $client->get('http://localhost/API/public/api/all');
+
+    $response = $request->getBody();
+
+    echo $getStatusCode = $request->getStatusCode();
+
+    print_r($request->getHeader('content-type'));
+
+    $alldata = json_decode($response,true);
+
+    return view('welcome',compact('alldata'));
+}
+
+___
+
+@foreach($alldata as $alldatas)
+
+    {{ $alldatas['name'] }}
+    
+@endforeach
 
 
-
-
-
-
-
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ 
+ 
+ 
