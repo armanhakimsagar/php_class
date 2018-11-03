@@ -34,27 +34,68 @@ ______________________________________________
 
 public function submit(Request $request){
 
-    	$this->validate($request, [
+    	$validator = Validator::make($request->all(), [
 	
-	    'name' 	=> 'required|regex:/^[a-zA-Z\s]+$/',
+	    'name' 	=> 'required|
+	    		    regex:/^[a-zA-Z\s]+$/',
 	    'email' 	=> 'required|email',
-	    'phone' 	=> 'required|regex:/^[0-9\s]{11}+$/',
+	    'phone' 	=> 'required|
+	    		    regex:/^[0-9\s]{11}+$/',
 	    'date' 	=> 'date_format:Y-m-d',
-	    'password' 	=> 'confirmed|min:6|max:8|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/',
+	    'password' 	=> 'confirmed|min:6|max:8|
+	    		    regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/',
 	    'gender' 	=> 'required'
 	    
 	]);
 
 	if ($validator->fails()) {
-            return redirect('/submit')
+            return redirect('admin/meeting')
                             ->withErrors($validator)
                             ->withInput();
-            } else {
+            } else { else {
                 
                 echo "ok";
          }
     }
 
+
+
+-> Error show:
+
+@if ($errors->has('title'))
+
+   {{ $errors->first('title') }}
+                                
+@endif
+
+
+-> old value show:
+
+value="{{ old('title') }}" 
+
+-> Insert:
+
+$meeting                = new meeting;
+$meeting->user_id       = get_userid(Session::get('UserId'));
+$meeting->save();
+
+
+-> Last insert id:
+
+$meeting_id = $meeting->id;
+
+$loop = $request->count;
+
+for ($i = 1; $i <= $loop; $i++) {
+
+	$agenda                 = new agenda;
+	$agenda->agenda_name    = $request->input('agenda_name_'.$i);
+	$agenda->save();
+}
+
+Session::flash('meeting_msg', 'Inserted Successfully!'); 
+
+return redirect('admin/meeting');
 
 
 -> Create Custom Error :
