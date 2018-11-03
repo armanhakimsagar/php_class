@@ -38,12 +38,17 @@ public function submit(Request $request){
 	
 	    'name' 	=> 'required|
 	    		    regex:/^[a-zA-Z\s]+$/',
-	    'email' 	=> 'required|email',
+			    
+	    'email' 	=> 'required|email|unique:users',
+	    
 	    'phone' 	=> 'required|
 	    		    regex:/^[0-9\s]{11}+$/',
+			    
 	    'date' 	=> 'date_format:Y-m-d',
+	    
 	    'password' 	=> 'confirmed|min:6|max:8|
 	    		    regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/',
+			    
 	    'gender' 	=> 'required'
 	    
 	]);
@@ -79,7 +84,10 @@ $meeting                = new meeting;
 $meeting->user_id       = get_userid(Session::get('UserId'));
 $meeting->save();
 
+Session::flash('meeting_msg', 'Inserted Successfully!'); 
 
+
+-> 
 -> Last insert id:
 
 $meeting_id = $meeting->id;
@@ -105,17 +113,17 @@ return redirect('admin/meeting');
  
 -> CustomRules.php :
 
-	public function passes($attribute, $value)
-	    {
-		 if($value!=0){ 
-		    return $value;
-		 }
-	    }
+public function passes($attribute, $value)
+{
+ if($value!=0){ 
+    return $value;
+ }
+}
 
-	    public function message()
-	    {
-		return 'ase error';
-	    }
+public function message()
+{
+return 'ase error';
+}
 		
 		
 -> In Controller :
