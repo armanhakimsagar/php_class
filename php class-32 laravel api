@@ -426,4 +426,27 @@ View data :
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
  
  
+ Oauth:
+ 
+ 1. My website create a developer account with access token & app id in facebook 
+ 
+ 2. login with facebook button send authorization request to facebook server from my server with access token & app id.
+ 
+ 3. After login gives a confirmation message for my website grant permission
+ 
+ 4. After grant access request accept facebook send a grant token to my website to access api
+ 
+ 5. Now my website send request with grant token for access information
+ 
+ 6. Now facebook server send api token for access resource
+ 
+ 7. Now my website request for resouce api with api token
+ 
+ 8. Now facebook send protected resource data
+ 
+ 
+ 
+ 
+ 
+ 
  
