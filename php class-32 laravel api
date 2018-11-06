@@ -433,11 +433,11 @@ View data :
 	Authorization table:
 	
 	1. name 2. website name 3. callbackurl 4. client_id_for_client 5. client_id_for_developer 6. client secret
-	7. grant_token
+	7. grant_token 
  	
 	Resource table:
 	
-	1. resource_type 2. 
+	1. resource_type 2. api_token 3. authorization_id
  
  2. login with facebook button send authorization request to facebook server from my server with access token & app id.
  
