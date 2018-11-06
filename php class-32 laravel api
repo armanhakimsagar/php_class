@@ -429,7 +429,7 @@ View data :
  Oauth:
  
  1. My website create a developer account with name,website name,callbackurl, it will return app id, app secret in facebook 
- 	1. name 2.website name 3.callbackurl 4. app id 5. app secret
+ 	1. name 2. website name 3. callbackurl 4. app id 5. app secret
  
  2. login with facebook button send authorization request to facebook server from my server with access token & app id.
  
