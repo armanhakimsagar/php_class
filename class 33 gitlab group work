@@ -1,0 +1,9 @@
+Gitlab group work:>
+
+1. create gitlab account
+2. create group
+3. create repository in group
+4. add member in group ( Group[top menu] -> your group -> settings -> member  )
+5. give access member as developer
+6. unprotect group for push in repository
+      -> settings -> repository -> Protected Tags -> unprotected
