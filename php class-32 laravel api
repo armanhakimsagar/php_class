@@ -352,32 +352,69 @@ return $next($request);
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
  
- 
-Guzzle get request:
+Guzzle Token Check:
 
-___
+************
 
-Route::get('formall','ApiController@getGuzzleRequest');
+Client request for access API data:
 
-public function getGuzzleRequest()
-{
+Route::get('Developerall','DeveloperController@getGuzzleRequest');
 
-    $client = new \GuzzleHttp\Client();
+---
 
-    $request = $client->get('http://localhost/API/public/api/all');
+use GuzzleHttp\Client;
 
-    $response = $request->getBody();
+public function getGuzzleRequest(){
+	$client = new Client(['http_errors' => false]);
+	$allresponse = $client->request('GET','http://localhost/meeting_apps/public/api/departments', [
+	    'headers' => [
+		'authorization' => "after login set random token here & update token in database"
+	    ]
+	]);
+	$allbody = $allresponse->getBody();
+	$all_list = json_decode($allbody->getContents());
+	return view('view',compact('all_list'));
 
-    echo $getStatusCode = $request->getStatusCode();
-
-    print_r($request->getHeader('content-type'));
-
-    $alldata = json_decode($response,true);
-
-    return view('welcome',compact('alldata'));
 }
+    
+************
+
+Create API & Client auth check:
+
+Use GuzzleHttp\Client;
+use Illuminate\Http\Request;
+
+Route::get('departments', function(Request $request) {
+    
+    $headers = $request->headers->all(); 
+    // full array
+    
+    $pubapi = $request->header('authorization'); 
+    // only token
+    // now check token exits in table or not
+    // if token exits then pass data.
+    
+    $department = Department::all();
+    if(count($department) == 0){
+       $feedback = [
+           'status'     => "error",
+           'message'    => "data not found",
+           'data'       => null
+        ]; 
+    }else{
+        $feedback = [
+           'status'     => "success",
+           'message'    => "data found",
+           'data'       => $department
+        ]; 
+    }
+    return $department;
+});
 
 ___
+
+View data :
+
 
 @foreach($alldata as $alldatas)
 
