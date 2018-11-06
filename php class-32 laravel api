@@ -429,11 +429,19 @@ View data :
  Oauth:
  
  1. My website create a developer account with name,website name,callbackurl, it will return app id, app secret in facebook 
- 	1. name 2. website name 3. callbackurl 4. client id 5. client secret
+ 	
+	Authorization table:
+	
+	1. name 2. website name 3. callbackurl 4. client_id_for_client 5. client_id_for_developer 6. client secret
+	7. grant_token
+ 	
+	Resource table:
+	
+	1. resource_type 2. 
  
  2. login with facebook button send authorization request to facebook server from my server with access token & app id.
  
-	<a href="https://facebook.com/oauth2/authorize?client_id=myWebsite&client_secret=123">Login with fb</a>
+	<a href="https://connect.squareup.com/oauth2/authorize?client_id=sq0idp-gbQhcOCpmb2X4W1588Ky7A">Login with fb</a>
  
  3. After login gives a confirmation message for my website grant permission
  
