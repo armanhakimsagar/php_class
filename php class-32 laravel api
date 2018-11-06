@@ -435,9 +435,9 @@ View data :
  
  3. After login gives a confirmation message for my website grant permission
  
- 4. After grant access request accept facebook send a grant token to my website to access api
+ 4. After grant access request accept facebook send a auth grant token to my website to access api
  
- 5. Now my website send request with grant token for access information
+ 5. Now my website send request with auth grant token for access information
  
  6. Now facebook server send api token for access resource
  
