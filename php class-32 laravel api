@@ -433,6 +433,8 @@ View data :
  
  2. login with facebook button send authorization request to facebook server from my server with access token & app id.
  
+	<a href="https://facebook.com/oauth2/authorize?client_id=myWebsite&client_secret=123">Login with fb</a>
+ 
  3. After login gives a confirmation message for my website grant permission
  
  4. After grant access request accept facebook send a auth grant token to my website to access api
