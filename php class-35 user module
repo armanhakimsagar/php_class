@@ -15,22 +15,38 @@ User table:
   4. password
   5. phone
   6. empUserId
-  7. employee_id
+  7. employee_role_id
   8. visual_status
   9. created_at
   10. updated_at
   
-permission table:
+menu table:
+  1. id
+  2. menu name
+  3. visual_status
+  4. created_at
+  5. updated_at
+  
+sub menu table:
+  1. id
+  2. menu_id
+  3. sub menu name
+  3. visual_status
+  4. created_at
+  5. updated_at
+  
+set permission table:
   1. id
   2. permission id
-  3. permission name
-  4. view_slog
-  5. serial
-  6. menu_image
-  7. visual_status
-  8. created_at
-  9. updated_at
-  
+  3. menu_id
+  4. submenu_id
+  5. slog_url
+  6. serial
+  7. logo
+  8. visual_status
+  9. created_at
+  10. updated_at
+
 menu_permission table:
   1. id
   2. empUserId
@@ -39,9 +55,13 @@ menu_permission table:
   5. updated_at
   
   
+
 Steps:
   1. Employee Role        -> CRUD
   2. User                 -> CRUD
+  3. menu                 -> CRUD
+  4. Sub menu             -> CRUD
+  
   3. permission           -> CRUD
   4. menu_permission      -> CRUD
  
@@ -49,3 +69,5 @@ Menu showing logic:
   1. set empuserid in session after login
   2. Fetch menu_permission table:
         i. match permission_id against empUserId
+       ii. show view_slog from permission table & slog for link
+      iii. create route same named as slog
