@@ -34,7 +34,7 @@ User module:
  12. created_at
  13. updated_at
   
-* menus table for insert:
+* menus table static:
   1. id
   2. menu_rand_id
   2. menu name
@@ -44,11 +44,11 @@ User module:
   6. created_at
   7. updated_at
   
-* sub_menus table:
+* sub_menus static:
 
   1. id
   2. menu_rand_id
-  3. submenu_rand_id -> timestamp [fixed length]
+  3. submenu_rand_id
   4. sub_menu_name
   8. visual_status
   9. serial
@@ -56,14 +56,14 @@ User module:
  11. created_at
  12. updated_at
 
-* crud_permissions (auto insert after submenu create):
+* crud_permissions static:
 
   1. id
   2. submenu_rand_id 
-  2. create       (submenu_rand_id_01   [prefix submenu_rand_id , 01 for create])
-  3. view         (submenu_rand_id_02   [prefix submenu_rand_id , 02 for view])
-  4. edit         (submenu_rand_id_03   [prefix submenu_rand_id , 03 for edit])
-  5. delete       (submenu_rand_id_04   [prefix submenu_rand_id , 04 for delete])
+  2. submenu_rand_id.create       (submenu_rand_id_01   [prefix submenu_rand_id , 01 for create])
+  3. submenu_rand_id.view         (submenu_rand_id_02   [prefix submenu_rand_id , 02 for view])
+  4. submenu_rand_id.edit         (submenu_rand_id_03   [prefix submenu_rand_id , 03 for edit])
+  5. submenu_rand_id.delete       (submenu_rand_id_04   [prefix submenu_rand_id , 04 for delete])
 
 * set_menu_permissions table:
   1. id
@@ -81,11 +81,10 @@ User module:
   
 * set_crud_permissions table:
   1. id
-  2. submenu_rand_id . crud_prefix
+  2. submenu_rand_id.crud_prefix
   3. empUserID
-  4. sub_menu_name_rand_id
-  5. created_at
-  6. updated_at
+  4. created_at
+  5. updated_at
   
   
 * forgot_password_logs
@@ -98,8 +97,8 @@ User module:
 * Steps:
   1. users                    -> CRUD
   2. Departments              -> CRUD
-  3. menus                    -> Edit
-  4. sub_menus                -> Edit
+  3. menus                    -> static
+  4. sub_menus                -> static
   5. show menu list with submit , sub_menus list with submit , set_crud_permissions with submit
   5. set_permissions          -> CRUD
   6. login
