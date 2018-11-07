@@ -425,8 +425,14 @@ View data :
  	
 	* Resource Server (Resource table):
 	
-	1. resource data from users table
+	-> resource data from users table if
+	   
+	1. access_permission
+	2. empUserId
+	3. oauth_refreash_tokens
 	
+	-> 
+		
 	
  2. login with facebook button:.
  
