@@ -1,0 +1,51 @@
+User module:
+
+Employee Role table:
+  1. id
+  2. title
+  3. description
+  4. visual_status
+  5. created_at
+  6. updated_at
+  
+User table:
+  1. id
+  2. name
+  3. email
+  4. password
+  5. phone
+  6. empUserId
+  7. employee_id
+  8. visual_status
+  9. created_at
+  10. updated_at
+  
+permission table:
+  1. id
+  2. permission id
+  3. permission name
+  4. view_slog
+  5. serial
+  6. menu_image
+  7. visual_status
+  8. created_at
+  9. updated_at
+  
+menu_permission table:
+  1. id
+  2. empUserId
+  3. permission_id
+  4. created_at
+  5. updated_at
+  
+  
+Steps:
+  1. Employee Role        -> CRUD
+  2. User                 -> CRUD
+  3. permission           -> CRUD
+  4. menu_permission      -> CRUD
+ 
+Menu showing logic:
+  1. set empuserid in session after login
+  2. Fetch menu_permission table:
+        i. match permission_id against empUserId
