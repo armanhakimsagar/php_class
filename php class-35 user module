@@ -1,14 +1,12 @@
 User module:
-
-Employee Role table:
-  1. id
-  2. title
-  3. description
-  4. visual_status
-  5. created_at
-  6. updated_at
   
-User table:
+* Departments
+  1. id
+  2. name
+  3. created_at
+  4. updated_at
+
+* Users:
   1. id
   2. name
   3. email
@@ -17,57 +15,88 @@ User table:
   6. empUserId
   7. employee_role_id
   8. visual_status
-  9. created_at
-  10. updated_at
-  
-menu table:
+  9. department_id
+ 10. created_at
+ 11. updated_at
+
+* salary information:
   1. id
+  2. name
+  3. salary
+  4. created_at
+  5. updated_at
+  
+* menus table:
+  1. id
+  2. menu_rand_id
   2. menu name
   3. visual_status
-  4. created_at
-  5. updated_at
+  4. serial
+  5. logo
+  6. created_at
+  7. updated_at
   
-sub menu table:
+* sub_menus table:
   1. id
-  2. menu_id
-  3. sub menu name
-  3. visual_status
-  4. created_at
-  5. updated_at
-  
-set permission table:
-  1. id
-  2. permission id
-  3. menu_id
-  4. submenu_id
-  5. slog_url
-  6. serial
-  7. logo
+  2. menu_rand_id
+  3. sub_menu_name
+  4. submenu_rand_id -> timestamp [fixed length]
+  4. create       (submenu_rand_id_01   [prefix submenu_rand_id , 01 for create])
+  5. view         (submenu_rand_id_02   [prefix submenu_rand_id , 02 for view])
+  6. edit         (submenu_rand_id_03   [prefix submenu_rand_id , 03 for edit])
+  7. delete       (submenu_rand_id_04   [prefix submenu_rand_id , 04 for delete])
   8. visual_status
-  9. created_at
-  10. updated_at
+  9. serial
+ 10. logo
+ 11. created_at
+ 12. updated_at
 
-menu_permission table:
+  
+* set_menu_permissions table:
   1. id
-  2. empUserId
-  3. permission_id
+  2. empUserID
+  3. menu_name_rand_id
+  4. created_at
+  5. updated_at
+
+* set_submenu_permissions table:
+  1. id
+  2. empUserID
+  3. sub_menu_name_rand_id
   4. created_at
   5. updated_at
   
+* set_crud_permissions table:
+  1. id
+  2. submenu_rand_id . crud_prefix
   
+  
+* forgot_password_logs
+  1. id
+  2. request_header
+  3. request_time
+  4. created_at
+  5. updated_at
 
-Steps:
-  1. Employee Role        -> CRUD
-  2. User                 -> CRUD
-  3. menu                 -> CRUD
-  4. Sub menu             -> CRUD
+* Steps:
+  1. users                    -> CRUD
+  2. Departments              -> CRUD
+  2. Users                    -> CRUD
+  3. menus                    -> Edit
+  4. sub_menus                -> Edit
+  5. show menu list with submit , sub_menus list with submit , set_crud_permissions with submit
+  5. set_permissions          -> CRUD
+  6. login
+  7. forget_passwords manage
+  8. forget password log
   
-  3. permission           -> CRUD
-  4. menu_permission      -> CRUD
  
+
 Menu showing logic:
   1. set empuserid in session after login
   2. Fetch menu_permission table:
-        i. match permission_id against empUserId
-       ii. show view_slog from permission table & slog for link
-      iii. create route same named as slog
+       i. fetch show set_menu_permissions & set_submenu_permissions list for menu & submenu view against empuserid
+      ii. check all crud button before access
+     iii. inactive login check
+       
+ 
