@@ -22,11 +22,18 @@ User module:
 * salary information:
   1. id
   2. name
-  3. salary
+  3. Basic
+  4. House Rent Allowance
+  5. Car Allowance/Conveyance 
+  6. Medical Allowance
+  7. Special Allowances
+  8. Festival Bonus
+  9. Incentive Bonus
+  10.Arrear Others
   4. created_at
   5. updated_at
   
-* menus table:
+* menus table for insert & edit:
   1. id
   2. menu_rand_id
   2. menu name
@@ -36,22 +43,27 @@ User module:
   6. created_at
   7. updated_at
   
-* sub_menus table:
+* sub_menus table for insert & edit:
+
   1. id
   2. menu_rand_id
-  3. sub_menu_name
-  4. submenu_rand_id -> timestamp [fixed length]
-  4. create       (submenu_rand_id_01   [prefix submenu_rand_id , 01 for create])
-  5. view         (submenu_rand_id_02   [prefix submenu_rand_id , 02 for view])
-  6. edit         (submenu_rand_id_03   [prefix submenu_rand_id , 03 for edit])
-  7. delete       (submenu_rand_id_04   [prefix submenu_rand_id , 04 for delete])
+  3. submenu_rand_id -> timestamp [fixed length]
+  4. sub_menu_name
   8. visual_status
   9. serial
  10. logo
  11. created_at
  12. updated_at
 
-  
+* crud_permissions table (auto insert after submenu create):
+
+  1. id
+  2. submenu_rand_id 
+  2. create       (submenu_rand_id_01   [prefix submenu_rand_id , 01 for create])
+  3. view         (submenu_rand_id_02   [prefix submenu_rand_id , 02 for view])
+  4. edit         (submenu_rand_id_03   [prefix submenu_rand_id , 03 for edit])
+  5. delete       (submenu_rand_id_04   [prefix submenu_rand_id , 04 for delete])
+
 * set_menu_permissions table:
   1. id
   2. empUserID
@@ -69,6 +81,10 @@ User module:
 * set_crud_permissions table:
   1. id
   2. submenu_rand_id . crud_prefix
+  3. empUserID
+  4. sub_menu_name_rand_id
+  5. created_at
+  6. updated_at
   
   
 * forgot_password_logs
@@ -81,7 +97,6 @@ User module:
 * Steps:
   1. users                    -> CRUD
   2. Departments              -> CRUD
-  2. Users                    -> CRUD
   3. menus                    -> Edit
   4. sub_menus                -> Edit
   5. show menu list with submit , sub_menus list with submit , set_crud_permissions with submit
