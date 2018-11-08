@@ -409,19 +409,20 @@ View data :
 	5. pic
 	6. dob
 	7. phone
+	8. oauth_access_tokens   	(at last if access token match send data)
 	
 	* The Authorization Server:
 	
 	-> oauth_clients:
 	
 	1. empUserId 
-	2. website name 
+	2. website_name 
 	3. callbackurl  		(URIs beginning with "https")
 	4. oauth_clients     		(client id)
 	5. oauth_client_secret		(client secret)
 	5. oauth_auth_codes  		(send to apps after client accept request)
 	8. oauth_access_tokens		(send if client id & secret match)
-	9. grant types 			(different use cases)
+	9. grant_types  		(different use cases)
  	
 	* Resource Server (Resource table):
 	
@@ -429,7 +430,7 @@ View data :
 	   
 	1. access_permission
 	2. empUserId
-	3. access_token 		(at last if access token match send data)
+	3. access_token 		
 		
 	
  2. login with facebook button:.
