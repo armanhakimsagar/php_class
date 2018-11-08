@@ -84,11 +84,10 @@ User module:
   6. user_roles assign by admin                           -> CRUD
   7. login
   8. forget_passwords management
-  9. forgot_password_logs management management by admin  
- 10. view user profile with image & salary details 
- 11. inactive user login check
- 12. permission management by admin
+  9. view user profile with image & salary details 
+ 10. inactive user login check
+ 11. permission management by admin
   
-permission showing logic:
+* permission showing logic:
   1. after login set array of permission_lists of this user in session
   2. check button before showing it
