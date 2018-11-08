@@ -429,9 +429,7 @@ View data :
 	   
 	1. access_permission
 	2. empUserId
-	3. oauth_refreash_tokens
-	
-	-> 
+	3. access_token 		(at last if access token match send data)
 		
 	
  2. login with facebook button:.
@@ -482,4 +480,22 @@ View data :
      
  
  
- 
+SETPs:
+
+1. Register app_user
+2. Register app_user in oauth_clients section
+3. Provide register apps_user oauth_clients information & login link
+4. after hit login link by apps view a login link
+5. after login successfully ask for grant permission
+6. after grant response same api a oauth_auth_codes & state code
+7. now only check state value if ok send full information
+        POST https://api.authorization-server.com/token
+	  grant_type=authorization_code&
+	  code=AUTH_CODE_HERE&
+	  redirect_uri=REDIRECT_URI&
+	  client_id=CLIENT_ID&
+	  client_secret=CLIENT_SECRET
+8. if ok send access_token in same api
+9. now hit with access token in same api
+
+
