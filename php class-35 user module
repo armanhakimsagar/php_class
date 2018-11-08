@@ -59,13 +59,13 @@ User module:
   5. updated_at
   
 * Steps:
-  1. user full information management by admin        -> CRUD
-  2. Departments management by admin                  -> CRUD
-  3. user_salary_informations  management by admin    -> CRUD
+  1. user full information management by admin            -> CRUD
+  2. Departments management by admin                      -> CRUD
+  3. user_salary_informations  management by admin        -> CRUD
   4. login
   5. forget_passwords management
-  6. forgot_password_logs management management by admin
-  7. view user profile 
+  6. forgot_password_logs management management by admin  
+  7. view user profile with image & salary details 
   9. inactive user login check
  10. permission management by admin
   
