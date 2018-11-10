@@ -1,0 +1,131 @@
+Contact with hosting provider for get mail server configuration.
+No need any extarnal setting. 
+just put your mail configuration in .env file.
+Mailtrap for mail testing. 
+IT will not send any real message to your mail account.
+
+
+Route::get('mail_form_view','MailController@mail_form_view');
+Route::post('mailSend','MailController@mailSend');
+
+*   <form action="{{ url('mailSend') }}" method="post">
+
+	<input type="text" name="des">
+	<input type="text" name="email">
+	<input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
+	<input type="submit" name="mail" value="mail">
+	
+   </form>
+   
+
+*   Controller :
+
+use Mail;
+
+class MailController extends Controller
+{
+public function mail_form_view(){
+  return view('sendmail');
+}
+
+ public function mailSend(Request $request){
+
+  $emails = $request->email;
+  $title = "Databank Download Request Message";
+  $download_link = url('/')."/".$request->id;
+
+  $mail = Mail::send('emails.send', ['title' => $title, 'download_link' => $download_link], function ($message) use ($emails){
+    $message->from('mmasiaadmin@dnet.org.bd', 'Micro Merchant Asia');
+    $message->to($emails);
+    $message->subject("Databank Download Request Message");
+  });
+
+ }
+
+}
+
+
+
+view/emails/send.blade.php
+
+<html>
+<head></head>
+<body>
+<h4>{{ $title }}</h4>
+<p>{{ $download_link }}</p>
+</body>
+</html>
+
+
+.env (given by server adminstrator):
+
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=25
+MAIL_USERNAME=7b377e1839d361
+MAIL_PASSWORD=7673373cb322e2
+MAIL_ENCRYPTION=null
+
+
+______________________________________________________
+
+
+QUEQE MAIL:
+
+
+
+* make mail class for send mail :
+
+  php artisan make:mail send_mail
+ 
+  set :
+
+  public function build(){
+
+        return $this->view('emails.send');
+  }
+
+* queue table migration :
+
+  php artisan queue:table
+
+* create job for mail class :
+
+  php artisan make:job send_mail_job
+
+* php artisan migrate
+   or
+  CREATE TABLE jobs( id int not null AUTO_INCREMENT PRIMARY KEY, queue varchar(1000) not null, payload text not null, attempts tinyint not null, reserved_at int null, available_at int not null, created_at int not null )
+
+
+* set send_mail_job controller handle() part:
+
+  use App\Mail\send_mail;
+  use Mail;
+
+  Mail::to('abc@gmail.com')->send(new send_mail());
+
+
+* set dispatch job in route for run jobs everytime hit route :
+ 
+  
+  use App\Jobs\send_mail_job;
+  use Carbon\carbon;
+
+  Route::get('view_form','MailController@view_form');
+
+  Route::post('send_mail',function(){ 
+	$job = (new send_mail_job)
+			->delay(Carbon::now()->addSeconds(5));
+	dispatch($job);
+	return "email ok";
+  });
+
+  Route::get('send_mail','MailController@send_mail'); [remove previous route]
+
+
+* now active this delay by .env file :
+
+  queue_driver : database (means listen dispatch delay) queue_driver : sync (dont delay)
+
+* If occur any error check laravel.log file
