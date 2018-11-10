@@ -214,6 +214,7 @@ Migration approve :
 
 sudo apt install php7.0-mysql
 extension=php_pdo_mysql.dll (remove ; from php.ini)
+restart browser
 
 ************* git install :
     
