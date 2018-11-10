@@ -210,6 +210,10 @@ chmod -R 777 storage
    }
 
 
+Migration approve :
+
+sudo apt install php7.0-mysql
+extension=php_pdo_mysql.dll (remove ; from php.ini)
 
 ************* git install :
     
