@@ -1,0 +1,176 @@
+*** Step:1 Create three tables
+
+php artisan make:migration create_country_state_city_tables
+
+
+    public function up()
+    {
+        Schema::create('countries', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->timestamps();
+        });
+        Schema::create('states', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->integer('country_id');            
+            $table->timestamps();
+        });
+        Schema::create('cities', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->integer('state_id');            
+            $table->timestamps();
+        });
+    }
+    
+
+    public function down()
+    {
+        Schema::drop('countries');
+        Schema::drop('states');
+        Schema::drop('cities');
+    }
+    
+*** step 2:
+
+php artisan migrate
+
+
+*** step 3:
+
+Route::get('dropdownlist','DropdownController@index');
+Route::get('get-state-list','DropdownController@getStateList');
+Route::get('get-city-list','DropdownController@getCityList');
+
+
+*** step 4:
+
+Create a new controller DropdownController
+
+app/Http/Controllers/DropdownController.php
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use DB;
+class DropdownController extends Controller
+{
+    
+        public function index()
+        {
+            $countries = DB::table("countries")->pluck("name","id");
+            return view('index',compact('countries'));
+        }
+
+        public function getStateList(Request $request)
+        {
+            $states = DB::table("states")
+            ->where("country_id",$request->country_id)
+            ->pluck("name","id");
+            return response()->json($states);
+        }
+
+        public function getCityList(Request $request)
+        {
+            $cities = DB::table("cities")
+            ->where("state_id",$request->state_id)
+            ->pluck("name","id");
+            return response()->json($cities);
+        }
+}
+
+
+Step 5: Create an index.blade.php file
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ajax dynamic dependent country state city dropdown using jquery ajax in Laravel 5.6</title>
+    <link rel="stylesheet" href="http://www.codermen.com/css/bootstrap.min.css">    
+    <script src="http://www.codermen.com/js/jquery.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">Ajax dynamic dependent country state city dropdown using jquery ajax in Laravel 5.6</div>
+      <div class="panel-body">
+            <div class="form-group">
+                <select id="country" name="category_id" class="form-control" style="width:350px" >
+                <option value="" selected disabled>Select</option>
+                  @foreach($countries as $key => $country)
+                  <option value="{{$key}}"> {{$country}}</option>
+                  @endforeach
+                  </select>
+            </div>
+            <div class="form-group">
+                <label for="title">Select State:</label>
+                <select name="state" id="state" class="form-control" style="width:350px">
+                </select>
+            </div>
+         
+            <div class="form-group">
+                <label for="title">Select City:</label>
+                <select name="city" id="city" class="form-control" style="width:350px">
+                </select>
+            </div>
+      </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('#country').change(function(){
+    var countryID = $(this).val();    
+    if(countryID){
+        $.ajax({
+           type:"GET",
+           url:"{{url('get-state-list')}}?country_id="+countryID,
+           success:function(res){               
+            if(res){
+                $("#state").empty();
+                $("#state").append('<option>Select</option>');
+                $.each(res,function(key,value){
+                    $("#state").append('<option value="'+key+'">'+value+'</option>');
+                });
+           
+            }else{
+               $("#state").empty();
+            }
+           }
+        });
+    }else{
+        $("#state").empty();
+        $("#city").empty();
+    }      
+   });
+    $('#state').on('change',function(){
+    var stateID = $(this).val();    
+    if(stateID){
+        $.ajax({
+           type:"GET",
+           url:"{{url('get-city-list')}}?state_id="+stateID,
+           success:function(res){               
+            if(res){
+                $("#city").empty();
+                $.each(res,function(key,value){
+                    $("#city").append('<option value="'+key+'">'+value+'</option>');
+                });
+           
+            }else{
+               $("#city").empty();
+            }
+           }
+        });
+    }else{
+        $("#city").empty();
+    }
+        
+   });
+</script>
+</body>
+</html>
+
+
+
+Now You can run your application and see the result http://localhost:8000/dropdownlist 
