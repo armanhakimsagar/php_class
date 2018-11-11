@@ -1,0 +1,29 @@
+.htaccess
+
+
+RewiteEngine On
+
+DirectoryIndex main.php                   (index file here)
+
+IndexIgnor *.txt *.png                    (hide all txt & png file)
+
+AddtType application/x-httpd-php .ulala (.ulala wil work like php)
+
+
+
+
+________________________________________________
+
+
+cron job is list of schedule for server
+crontab is file name which contain task
+
+very simple it 1 row have 6 column : 
+
+minute hour day month  day_of_the_week  file name
+2       *   *    *          *           /message.sh
+
+if your server dont support crone job can use online crone job for load the file.
+such :
+cron job org
+easy cron
