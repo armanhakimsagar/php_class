@@ -1,0 +1,107 @@
+Raw PHP :
+
+
+
+
+* testing indivisual unit. 
+
+* PHPUnit is a programmer-oriented testing framework for PHP.
+
+* Unit testing is not for test full controller becasue controller have many functionality.
+  or its not for multi steps functions.
+  Its for one method test one output.
+
+* goal is each part of program working nicely.
+
+* You can get function execution time & memory
+
+* Its a indivisual method or small unit of codes.
+
+* TDD : test driven devlopment. (style of testing. Create test before create code )
+
+
+
+
+
+Download :
+
+
+
+
+* in laravel it auto downloaded by 
+  
+   "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    },
+
+    Folder location : vendor/phpunit/phpunut
+
+* In raw you can download by composer require phpunit/phpunit
+
+
+
+
+
+Load folder & run :
+
+
+
+* In phpunit.xml set this lines. bootstrap is test folder location. color for error show.
+  testsuites directory is testing loading directory.
+
+
+
+* for run in cmd : ./vendor/bin/phpunit  (full apps test | that means full test folder)
+
+
+
+
+Write test code :
+
+
+
+
+* now set your code in Tests\Feature\Exampletest.php (must set test prefix):
+
+  
+    public function testAllRoute()
+    {
+        $response = $this->get('/a');
+        $response->assertStatus(200);
+    }
+
+
+* now run : ./vendor/bin/phpunit
+
+
+* available testing function : https://laravel.com/docs/5.6/http-tests#response-assertions
+
+
+* test model in Tests\Feature\Exampletest.php (must set test prefix) :
+
+
+use App\user;
+
+$testmodel = new user;
+
+$data = [
+    'name' => str_shuffle("hello world"),
+    'description' => str_shuffle("hello world")
+];
+
+$testmodel->name = $data['name'];
+$testmodel->description = $data['description'];
+
+$save = $testmodel->save();
+
+$this->assertInstanceOf(user::class, $testmodel);
+$this->assertEquals($save,true);
+
+
+
+* now run : ./vendor/bin/phpunit
+
+
+
+
+
