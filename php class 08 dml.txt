@@ -1147,3 +1147,15 @@ Full database class sheet :
 * Trigger:
   A trigger is a named database object that is associated with a table, and it activates when a particular 
 event (e.g. an insert, update or delete) occurs for the table.
+
+
+
+________________________________________________________
+
+view table
+
+Create View `MyViewName` as 
+    Select
+        col1, col2, col3
+    From
+myTable T
