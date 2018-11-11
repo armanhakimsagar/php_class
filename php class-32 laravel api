@@ -399,4 +399,11 @@ View data :
  Oauth:
  
  https://github.com/armanhakimsagar/Oauth
+ 
+ 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ 
+ Create API Here  -http://editor.swagger.io/
+
+Then just export -> generate client -> html2 
 
