@@ -1,0 +1,71 @@
+Laravel Upload :
+
+0. set MultiPHP Manager php version & laravel php version
+
+1. zip public folder upload in public_html
+
+2. zip project folder upload in root
+
+3. redirect path in index.php
+
+4. Case sensitive issue : route | middleware | controller
+
+
+
+Database Setting :
+
+1. connect database
+
+2. create user & password
+
+3. upload database
+
+
+
+-------------------------------------
+
+
+Upgrade :
+
+check version : php artisan --version
+
+in composer.json repalce :
+
+"require": {
+
+   "laravel/framework": "5.5.*",
+}
+
+cmd :  composer update
+
+
+
+
+-------------------------------------
+
+Subdomain upload:
+
+* cpanel > Subdomains > 
+
+  Create a Subdomain : laravel 
+  Document Root      : public_html/laravel/public
+ 
+* Upload your full project in public_html/laravel folder.
+
+* setup database connection
+
+* update php version ( Specifically must update php version of sub domain)
+
+
+___________________________________________
+
+
+* search git in cpanel
+
+* set repository clone path
+
+* set directory for download file from git
+
+* click create.
+
+* for update click pull button 
