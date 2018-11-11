@@ -27,3 +27,38 @@ if your server dont support crone job can use online crone job for load the file
 such :
 cron job org
 easy cron
+
+
+
+__________________________________________________
+
+
+yml 
+
+
+YAML stands for YAML Ain't Markup Language.
+
+use for create : configuration files , metadata
+
+.yaml .yml
+
+
+define child :
+
+    Sports: 
+           name : 'Sachin Tendulkar'
+           name : 'Rahul Dravid'
+
+        
+define item :
+
+    Sports: cricket
+            - Sachin Tendulkar
+            - Rahul Dravid
+            - M S Dhoni
+            
+           
+           
+define array :
+
+Sports: ['Sachin Tendulkar' , 'Rahul Dravid' , 'M S Dhoni']
