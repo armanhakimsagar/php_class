@@ -1,0 +1,117 @@
+Create file in : 
+
+app/helpers.php
+
+
+
+autoload it composer.json :
+
+"autoload": {
+    "files": [
+        "app/helpers.php"
+    ],
+    "classmap": [
+        "database/seeds",
+        "database/factories"
+    ],
+    "psr-4": {
+        "App\\": "app/"
+    }
+},
+
+
+
+
+cmd : composer dump-autoload
+
+
+
+
+________________________________________________________________
+
+
+
+
+File create :
+
+
+
+
+1. Create file : 
+
+ // file open for 
+
+ $filename = "counter.log";
+ 
+ // data
+
+ $data = "fire"."\n";
+ 
+ // fopen & insert with append
+
+ file_put_contents($filename,$data,FILE_APPEND);
+
+
+2. view data from log file :
+
+
+view :
+
+
+if ($file = fopen("counter.log", "r")) {
+
+    while(!feof($file)) {
+
+        $line = fgets($file);
+
+        echo "#".$line ."<br/>";
+    }
+
+    fclose($file);
+    
+    
+    
+    
+    
+ 
+ 
+Error handle :
+
+
+
+* create folder in xampp/php/logs
+
+* in xampp control panel click on logs->php log errors
+
+* Now trying to get error message & send error to log file :
+
+  <?php
+  
+	// Send error message to the server log if error connecting to the database
+	
+		if (!mysqli_connect("localhost","bad_user","bad_password","my_db")) {
+		
+			error_log("Failed to connect to database!", 0);
+			
+		}
+
+  ?>
+  
+  
+  now check xampp/php/logs/php_error_log file
+  
+  
+  ______________________
+  
+  
+  
+  VIEW ERROR LOG :
+  
+  
+  <?php
+	
+	echo file_get_contents(ini_get('error_log'));
+  
+  ?>
+
+} 
