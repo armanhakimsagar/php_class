@@ -62,3 +62,273 @@ define item :
 define array :
 
 Sports: ['Sachin Tendulkar' , 'Rahul Dravid' , 'M S Dhoni']
+
+
+
+______________________________________________________________
+
+
+docker
+
+
+
+https://www.youtube.com/watch?v=VMLP2V6Qfm0
+************** RAW PHP :
+
+https://blog.anam.co/docker-in-bangla/
+
+Docker is tool.
+কোন এপ্লিকেশন আপনি তার প্রায় সব ডিপেন্ডেন্সি সহ শিপ করতে চাইলে ডকার খুব ভালো টুল। 
+প্রায় বেশীভাগ ডকার ইমেজ পোর্টেবল আর অলমোস্ট প্লাটফর্ম ইন্ডিপেন্ডেন্ট 
+
+
+__________________________________________________________________________
+
+
+Dockerfile : ডকার ফাইল একটা ডকার ইমেজ তৈরী করার ইনসট্রাকশন
+
+ FROM ubuntu:16.04   					(প্রতিটা ডকার ইমেজ অন্য কোন একটা বেস ইমেজ থেকে তৈরী হয়)
+ 
+  LABEL MAINTAINER Anam Ahmed				( ইমেজ নিয়ে এক্সট্রা ইনফরমেশন দেয়ার জন্য (ভার্শন, কে বানিয়েছে) ব্যাবহার করা হয়)
+  
+  RUN apt-get update && apt-get install -y nginx	(উবুন্টুর প্যাকেজ ম্যানেজার apt দিয়ে nginx ওয়েব সার্ভার এপ্লিকেশন ইনস্টল করেছি)
+  
+  WORKDIR /var/www/html					(ওয়ার্কিং ডিরেক্টরী)
+  
+  COPY . /var/www/html					 বিল্ড কনটেক্সট থেকে চাইলে যেকোন ফাইল আপনার ডকার ইমেজে কপি করে নিয়ে যেতে পারেন। 
+  
+  EXPOSE 80
+  
+  CMD ["nginx","-g","daemon off;"]			আপনার কমান্ড বন্ধ হয়ে গেলে কিন্তু আপনার কনটেইনার বন্ধ হয়ে যাবে। তাই একটা কমান্ড চালিয়ে রাখতে হবে। উপরের কমান্ডে nginx সার্ভার daemon হিসেবে না চলে ফোরগ্রাউন্ডে চলবে, যেন আপনার কনটেইনার বন্ধ হয়ে না যায়।
+
+
+
+______________________________________________________________________
+
+
+Image : ইমেজ ব্যাবহার করতে হলে ইমেজ থেকে একটা কনটেইনার চালু করতে হবে
+
+উপরের স্যাম্পল ডকার ফাইলটা একটা ফোল্ডার বানিয়ে সেটাতে Dockerfile (কোন এক্সটেনশন নাই) তৈরী করে রেখে দিন, 
+সাথে একটা index.html ফাইল 
+বানায়ে ভিতরে কিছু লিখে রাখেন সেই ফোল্ডারে
+ইমেজের ট্যাগ theanam/dockersample
+
+now run create image : docker build -t theanam/dockersample .
+
+now run container : docker run --name mycontainer -p 8080:80  theanam/dockersample
+
+browser : http://localhost:8080
+
+
+
+______________________________________________________________________
+
+
+Laravel Doc :
+
+https://www.youtube.com/watch?v=TQii1jDa96Y
+
+
+
+
+______________________________________________________________________
+
+
+
+
+Docker daemon : It is a process which is used to listen for Docker API requests. 
+                It also manages Docker objects like: images, container, network etc. 
+		A daemon can also communicate with other daemons to manage Docker services.
+
+Docker Registries : Docker Hub and the Docker Cloud
+
+image : is snapshot of a container. application list. we can publish it with project.
+
+container : running instance of image. it run image & create env
+
+docker client : The Docker client is the primary way that many Docker users interact with Docker.
+                its for start stop docker
+
+docker engine : tools for run docker container
+
+docker compose : its for run multiple container.
+
+docker kitematic : docker gui
+
+
+team work : 
+
+developer use :
+
+1st member create project with docker env. 
+all member download the project auto install env.
+Its best for version management (all developer pc).
+
+operator use :
+
+
+
+commands :
+
+docker images	: show total images list in os
+
+docker ps 	: running & all container list
+
+sudo apt-get install docker.io 
+
+sudo docker version
+
+docker built -t folder/folder  	[create docker]
+
+docker run -d -P folder/folder 	[run specific container]
+
+docker ps		       	[now check port of running container]
+
+docker-machine ip		[get machine ip]
+
+docker-machine create --driver vurtualbox dev-box
+
+
+
+
+
+
+
+About docker :
+
+ It onek kind of vm but depends on main operating system.
+ creating some task list for single project. 
+ it will not conflict with other project.
+ if docker on project all software will active & it will run.
+ docker-compose.yml is task list.
+	 
+	benifits :
+	
+	0. when we publish code with docker it create its own env & support all os & dont conflict with anyone.
+	
+	0. no need any apache, you can run docker from anywhere
+	
+	1. install differnt differnt software in docker for differnt project.
+	   it will not conflict with each other.
+	   
+	2. it help project in deployemnt issue.
+	   if docker run in docker it will run in every differnt platfrom 
+	  
+docker vs vm : 	
+
+* its called containerization.
+
+* we can create a docker.yml file for list of install software.
+  after run .yml file it create a image in dokcer folder.
+  image is a app or instance.
+  every vm or os have app.
+
+* now work in docker. after complete you can up it in docker hub just like git
+
+* its depends on main operating system. (vm depends on vm operation system)
+
+* space is not fixed , its flexible
+
+* container software will not conflict with other container
+  its a separate container for any project. 
+  if docker delete project container will be deleted.
+  
+* Docker File : docker-compose.yml : its a file contain all task for the project  
+  
+* after run the docker file you will get a image (instance of docker file).
+  image is nothing but a random string.
+  run image for get into container
+
+
+
+
+
+CODE :
+
+
+
+
+install :
+
+sudo apt update
+
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+
+sudo gedit /etc/apt/sources.list.d/docker.list
+
+curl -fsSL https://download.docker.com/linux/ubu... | sudo apt-key add -
+
+curl -fsSL https://download.docker.com/linux/ubu... | sudo apt-key add -
+
+sudo apt update
+
+sudo apt install docker-ce
+
+
+sudo docker run hello-world
+
+
+________________
+
+
+image :
+
+* list of application
+ 
+* Create a Dockerfile in your PHP project
+
+* this docker file is list of image
+
+* docker file : 
+
+RUN apt-get update
+RUN apt-get -y upgrade
+RUN docker-php-ext-install mysqli
+
+
+
+
+_______________
+
+
+conatainer :
+
+* run image for create container
+
+* docker build -t="containername" .
+
+* run container : docker run -d -p 8080:80 containername
+
+* docker ps 	[for see running container list]
+
+*
+
+____________________________________________________________________________________
+
+
+Docker :
+
+install :
+
+* composer create-project --prefer-dist laravel/laravel blog
+
+* cd blog
+
+* docker-compose up -d
+
+* docker-compose ps
+
+* Create a new Laravel application
+
+	docker run -it --rm \
+	    -v $(pwd):/opt \
+	    -w /opt \
+	    --network=phpapp_appnet \
+	    shippingdocker/php \
+	    composer create-project laravel/laravel application
+	    
+* 
+
+
+
+
