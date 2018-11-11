@@ -1,0 +1,250 @@
+Gitlab group work:>
+
+1. create gitlab account
+2. create group
+3. create repository in group
+4. add member in group ( Group[top menu] -> your group -> settings -> member  )
+5. give access member as developer
+6. unprotect group for push in repository
+      -> settings -> repository -> Protected Tags -> unprotected
+
+
+
+
+Install :
+
+
+1. download from :
+
+https://git-scm.com
+
+
+
+-> upload step :
+	
+	
+	git init 
+  //initialization | single time for single project 
+	
+	git add . 
+  //for upload all file
+
+	git commit -am "new message here for reminder" 			
+  // set any comment.must need to upload
+	
+	Create a new GitHub repository : 
+  https://github.com/new
+	
+	git remote add origin https://github.com/armanhakimsagar/prac.git 
+	
+	git push origin master  								
+  // for upload
+	
+	
+
+
+	
+-> Update Step :
+
+
+	git status  
+  // for check changes
+	
+	git add .
+	
+	git commit -am "new message here for reminder"
+	
+	git push origin master
+	
+
+
+
+_________________________
+
+
+
+		
+-> Create branch | version:
+   
+	0. first create locally brach then push . 
+     it will auto create a remote branch.
+	
+	1. create branch in live git manually
+	
+	2. git checkout -b version 
+     create a branch localy
+	
+	3. git checkout version 
+     If already created just
+	
+	4. git add .
+	
+	5. git commit -am "this is git version"
+	
+	6. git push -u origin version
+	
+	
+	Delete branch :
+	
+		git push origin --delete master_design 	(remote)
+		git branch -d master_design		(local)
+
+	
+
+
+
+
+_________________________
+
+
+
+-> download step :
+	
+	
+	
+Clone : Get a working copy of the remote repository.
+
+Pull  : merge any new changes
+
+fetch : This will Download all the changes that have been made to the origin/main 
+        branch project which are not present in your local branch.
+	
+	
+
+	
+
+	
+-->  git clone (for download copy):
+
+     git clone https://github.com/armanhakimsagar/php_ajax_api.git
+		
+-> download only branch :
+	
+    git pull https://github.com/armanhakimsagar/prac.git branch_name_here
+	
+  
+-->  git fetch :
+
+	First pull it. if make any changes then fetch.
+
+	git fetch https://github.com/armanhakimsagar/php_ajax_api.git
+
+
+  
+   
+ --> stash (save uncomplete work):
+ 
+ 
+     git add .
+     
+     git stash
+    
+    
+     Get stash work :
+     
+     git stash apply stash@{0}	[ {0} put here the number after save it ]
+
+     
+
+--> Delete branch :
+
+    git branch   		[list of brach]
+    
+    git branch -d branch_name	[delete branch]
+  
+  
+  
+
+--> Confiq info :
+
+    git config --list
+    
+    
+--> HEAD :
+
+   How does Git know what branch you’re currently on? It keeps a special pointer called HEAD
+
+   check by : cat .git/HEAD
+   
+   
+   
+--> GIT Diff :
+
+  git diff  shows the changes between commits, commit and working tree etc.
+
+  multiple commit on single file. then check the differnce by git diff.
+  
+  
+  git diff --cached file_name.txt
+
+  
+  
+--> GIT LOG :
+
+  commit history :
+  
+  git log
+  
+ 
+  
+--> Merge :
+
+
+git checkout master		(assign in master)
+git pull origin master		(pull master brach file)
+git merge test			(merge master & test)
+git push origin master		
+   
+   
+   
+--> Fork :
+
+   fork : copy full repository with commit & add in my repository.
+
+   after fork change any part & commit.
+   
+   
+ --> *.php linguist-language=PHP	[add language in repo]
+ 
+ 
+ -->  cat .gitignore			[if you want to untrack any extension]
+	    *.log
+	
+	
+--> team work https://www.youtube.com/watch?v=61WbzS9XMwk
+
+
+________________
+
+
+Question:
+
+1. what is git init?
+   ans:
+   
+
+2. Difference between Pull vs Fetch?
+   ans:
+   
+   
+
+3. what is git stash?
+   ans:
+   
+   
+
+4. How to delete branch?
+   ans:
+   
+   
+5. How to detect git history ?
+   ans:
+   
+   
+6. What is Gulp.js used for?
+   ans:
+   
+7. what is composer?
+   ans:
+   
+8. node js
