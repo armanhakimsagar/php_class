@@ -390,3 +390,760 @@ trigger auto call but procedure need to call
 
 
 
+__________________________________________________________________
+
+
+1st class :
+__________
+
+* Database ?
+
+stores a collection of data.
+
+* DBMS ?
+
+software for creating and managing databases
+
+* Relational DataBase Management System?
+
+Enables you to implement a database with tables, columns and indexes.
+
+* database engine:
+ 
+ that allows data to be accessed, locked and modified
+
+* backup and recovery:
+
+* Columnar database management system (CDBMS):
+
+
+* NoSQL DBMS :
+
+* Advantages of a DBMS:
+
+
+* RDBMS Terminology
+
+Database,Table,Column,Row,Primary Key,
+Foreign Key,Index
+
+* mysql
+
+MySQL supports large databases, up to 50 million rows or more in a table.
+
+MySQL works on many operating systems and with many languages including PHP, PERL, C, C++, JAVA, etc
+
+
+phpMyAdmin?
+
+phpMyAdmin is a free software tool written in PHP that is intended to handle 
+the administration of a MySQL or MariaDB database server.
+
+
+SQL - Structured Query Language.
+
+Its a programming language
+
+SQL to access the database
+
+
+field attribute :
+
+*NOT NULL
+ 
+*DEFAULT
+
+*AUTO INCREMENT  cannot be null
+
+*unsigned - positive value
+
+*signed - positive & negetive value	
+
+PHP supports the following data types:
+
+    String
+    Integer
+    Float
+    Boolean
+    Array
+    Object
+    NULL
+    Resource
+    
+_______
+
+
+*. DDL (database defination language) :
+
+- its make structure
+	
+- create alter drop TRUNCATE TABLE
+
+_______
+
+*. DML (database manipulates language) :
+
+- insert delete update view
+ 
+
+_______
+
+
+* create database databasename
+
+
+* create table tablename(
+	
+	id int auto_increment primary key not null,
+	
+        number int unsigned not null,
+	
+	name varchar ,
+	
+	dates datetime
+	
+)
+
+
+Practise (Bank Info):
+
+account_name , account_number , email , phone , 
+pass , gender , address,
+openning_day , openning_time
+
+
+
+Alter Table :
+
+
+Alter table tablename
+
+modify filedname datatype [change datatype]
+
+
+DROP COLUMN column_name   [delete]
+
+CHANGE COLUMN old new varchar(200); [change name]
+
+
+**RENAME TABLE :
+
+RENAME TABLE tb1 TO tb2;
+
+
+** DELETE ONLY DATA
+
+TRUNCATE TABLE table_name
+
+
+** ADD FIELD :
+
+Alter table tablename
+
+ADD column_name datatype  [add column]
+
+AFTER filedname
+
+
+Data type :
+
+** number (lenght depends on type)
+
+	
+	tinyint: 1 byte (2^8)
+	
+	max range 127 means 
+	
+	1 byte (means 3 digit) 
+	
+
+	tinyint : 1 bites (1^8)
+	
+	smallint: 2 bytes (2^16)
+	
+	mediumint: 3 bytes (2^24)
+	
+	int/integer: 4 bytes (2^32)
+	
+	bigint: 8 bytes (2^64)
+
+______________________________________________________
+
+
+
+
+2nd class :
+__________
+
+
+unique key (AVOID DUPLICATE ENTRY FOR VALUE)
+
+You can only have many unique key,
+
+- can have null value
+
+
+PRIMARY KEY (AVOID DUPLICATE ENTRY FOR KEY)
+
+You can only have one primary key, 
+
+but you can have multiple columns
+
+cannot be NULL
+
+
+What Is Database Design? 
+
+  creating a model of database.
+
+Conceptual Data Model (only sketch) :
+ 
+  How many department a business have & which data will go to where.
+  conceptual data model is a business model.
+  can draw in board.
+  
+Logical Model (add table & database name) :
+
+  add more data description with conceptual Data Model. 
+  here we create entities & attribute. 
+  
+Entity Relation Diagram (add column & attribute):
+
+  Graphical view of a database.
+  Attribute : column is attribute
+
+
+Physical model (blueprint -> migration or sql):
+
+  describe physical structre in graphical way. blueprint of a relational database.
+  such as : table name , datatype , realtionship , trigger ,foreign keys
+
+
+INSERT INTO MyGuests (firstname, lastname, email)
+VALUES ('John', 'Doe', 'john@example.com');
+
+
+SELECT * FROM MyTable
+
+
+UPDATE table_name
+SET column1=value, column2=value2,...
+WHERE some_column=some_value 
+
+
+** practise :
+
+Practise (Bank Info): CRUD in Practise table.
+
+
+** Add country_id in Practise table
+** Practise add account_type & comments (saving or business) by std
+** create accounts table add user_id 
+
+** ADD FOREIGN KEY :
+
+
+Alter table tablename
+
+add FOREIGN KEY(country_id)
+
+REFERENCES apps_countries(id)
+
+
+SHOW CREATE TABLE tablename;
+
+take the constraint datat_ibfk_1
+
+
+
+alter table tablename
+
+drop foreign key datat_ibfk_1
+
+
+
+ALTER TABLE helo1
+
+DROP KEY fieldname
+
+
+
+
+____________________________
+
+
+class 3 :
+________
+
+
+Written EXAM :
+
+1. what is DROP KEY?
+   ans:
+   
+2. what is ALTER in database?
+   ans:
+  
+3. what is foreign key in database?
+   ans:
+  
+4. what is SHOW CREATE in database?
+   ans:
+   
+5. what is REFERENCES in database?
+   ans:
+   
+6. bigint vs mediumint?
+   ans:
+
+7. what is TRUNCATE in database?
+   ans:
+   
+8. How to change datatype?
+   ans:
+
+9. What is RDBMS in database?
+   ans:
+   
+10.unsigned vs signed?
+   ans:
+
+11.NOT NULL vs DEFAULT?
+   ans:
+
+12.What is NoSQL DBMS?
+   ans:
+   
+13.What is database engine?
+   ans:
+  
+14.What is SQL?
+   ans:
+
+
+Practical exam :
+
+create database design->
+
+Conceptual Data Model
+Logical Model
+Entity Relation Diagram
+Physical model
+
+students table:
+id, Name, Email , Password , Phone, country_code_id
+
+Address , Biography , main_job_role_id,
+
+Skill Level,Picture , SSC , HSC , GRADUATION ,POST-GRADUATION,
+
+
+main_job_role_id: 
+
+  id, role
+
+country_code_id table:
+
+  id, code_id
+  
+country_table table:
+
+  id, country_name
+  
+  
+
+CRUD SQL in all table
+
+
+
+_______________________________________
+
+class 4 :
+________
+
+
+ show databases 
+ 
+ show tables * from php_practise 
+
+ 
+ name from php_practise limit 30
+ 
+ limit 13,2 
+ 
+ (1st is starting point 2nd is how many we want to show) 
+
+ 
+ order by name 
+ 
+ (its show the name by order acc to dec) 
+
+ 
+ order by name desc 
+   
+ (its show the name by order dec to asc)
+
+ 
+ multiple order by id,name 
+ 
+ (its show the name & id both by order acc to dec) 
+ 
+ 
+ order by name desc limit 1 
+ 
+ (its show the last name by order dec to asc) 
+
+ 
+ ORDER BY time DESC 
+ 
+ (its show the lastest date data) 
+
+
+
+ where id='50' 
+	
+	
+ where id !='50' 
+
+
+ where id > '50' 
+
+
+ id < '50' 
+
+
+ id >= '50' 
+
+
+ where id <= '50' 
+ 
+ 
+ where name BETWEEN 10 AND 20 
+ 
+ 
+ where name like 'ban%' 
+ 
+ 
+ where id like 'b%h'  
+ 
+ group by name 
+
+
+ SELECT sum|avg|COUNT(sub_total) 
+ 
+ FROM table name;
+ 
+ (get total of any colomn)
+ 
+ practise :  sum|avg|COUNT(sub_total) 
+ 
+ 
+ SELECT * FROM products WHERE 
+ 
+ start_date >= '2017-06-03' 
+ 
+ AND end_time  <= '2017-06-04'
+ 
+ 
+ 
+ update & delete
+
+
+
+_______________________________________
+
+
+class 5 :
+________
+
+create store procedure :
+
+DELIMITER $$  (defining functions in function)
+
+CREATE PROCEDURE select_name() 
+BEGIN 
+  SELECT * FROM cds; 
+END 
+
+
+call by: call select_name();
+
+practise: create procedure in Practise table.
+
+
+
+dynamic procedure:
+
+
+
+DELIMITER $$
+//delimeter for declair function
+
+CREATE PROCEDURE fulls(in  param varchar(100),out full_name varchar(50))
+//dynamic in & our param
+
+BEGIN
+    
+    //declair 2 var 
+    DECLARE results varchar(50);
+    DECLARE full_name varchar(50);
+    
+    //
+    SELECT fullusers INTO results
+    
+    FROM fullusers
+ 
+    WHERE full_name = param;
+ 
+    CASE results
+    
+    WHEN  'USA' THEN
+ 
+    SET full_name = 'usa';
+    
+    WHEN 'CANADA' THEN
+ 
+    SET full_name = 'canada';
+      
+    END CASE;
+
+END$$
+
+
+SELECT * FROM datat
+WHERE id = 1
+
+UNION ALL
+
+SELECT * FROM helo1
+WHERE id = 1
+
+
+
+
+common data from left table
+
+ALL data from SELECT table
+
+
+** SELECT * FROM data
+
+LEFT JOIN data2
+
+ON data.id=data2.nameid
+
+
+** right join :
+
+all data from right table
+
+common data from SELECT table
+
+
+** inner join :
+
+bring all common data from 2 table
+
+
+practise: left join & right join on practise table.
+
+
+create view table :
+
+    Create View `MyViewName` as 
+    Select
+        column1,column2
+    From
+    countries
+	
+
+practise: create view table in Practise table.
+
+
+Triggers :
+
+
+CREATE TRIGGER inserts
+ 
+AFTER INSERT ON users FOR EACH ROW
+
+INSERT INTO fullusers VALUES('',CONCAT(new.fname,' ',new.lname));
+
+
+practise: with full name , last name
+
+
+
+
+normalization:
+
+
+First normal form:
+
+1. each column should take single values 
+   (multiple value not allow)
+
+2. all column should contain related data
+
+3. All column should contain unique name
+
+4. remove data Duplicacy
+
+
+2nd normal form :
+
+remove partial dependancy 
+(partial dependency : If a column depends on another 
+primary column in many to many relationship)
+   
+Third normal form : 
+
+remove transitive dependency (many to many).
+If a non primary column depends on another non primary column.
+
+
+
+_________
+
+Exam :
+
+1. What is store procedure?
+ans:
+
+2.What is LEFT JOIN?
+ans:
+
+3.How to create view table?
+ans:
+
+4.how to sum|avg|COUNT in any column?
+ans:
+
+5.What is order by?
+ans:
+
+6.What is show databases?
+ans:
+
+7.What is BETWEEN 10 AND 20?
+ans:
+
+8.What is inner join?
+ans:
+
+10.What is UNION ALL?
+ans:
+
+11.What is meaning of limit 13,2
+ans:
+
+12.What is meaning of this CALL procedure_name()?
+ans:
+
+13.partial dependency vs transitive dependency?
+ans:
+
+14.left join vs right join?
+ans
+
+
+
+practical exam:
+
+ create a order_details table & insert 5 data.
+ coumns are : product_name, order_time , delivery_time , client_feedback, client_id
+
+ 
+ now create query:
+ 
+  * order_time & delivery_time between
+    this time 2018/12/31
+ 
+ create a view table for:
+  * client_feedback
+  
+ Left join query:
+  * Left join between client id
+
+ update query:
+  * Create update query for row 1,3,5
+
+
+ trigger query:
+  * create table for order_status, order_id
+  * Create trigger for success status in order_status column
+    after order_details table data insert
+  
+  
+
+
+
+
+___________________________________________
+
+
+
+Full database class sheet :
+
+* Database:
+  stores a collection of data.
+
+* Database management system (DBMS):
+  A database management system (DBMS) is system software for creating and managing databases. 
+  The DBMS provides users and programmers with a systematic way to create, retrieve, 
+  update and manage data.
+
+* Database engine:
+  That allows data to be accessed, locked and modified.
+
+* Relational DataBase Management System?
+  Enables you to implement a database with tables, columns and indexes.
+
+* database engine:
+  That allows data to be accessed, locked and modified
+  MySQLi is a Relational SQL database management system.
+
+* RDBMS Terminology:
+  Database,Table,Column,Row,Primary Key,
+  Foreign Key,Index
+
+* Mysql:
+  MySQL supports large databases, up to 50 million rows or more in a table.
+  MySQL works on many operating systems and with many languages including 
+  PHP, PERL, C, C++, JAVA, etc
+
+* NoSQL DBMS:
+  NoSQL databases and database management systems are rising quickly 
+  to prominence to resolve big data problems.
+
+
+* phpMyAdmin:
+  phpMyAdmin is a free software tool written in PHP that is intended to handle 
+  the administration of a MySQL or MariaDB database server.
+
+* SQL:
+  Structured Query Language.
+  Its a programming language.
+  SQL to access the database.
+
+
+* Stored Procedure:
+  A stored procedure is a prepared SQL code that you can save, 
+  so the code can be reused over and over again.
+  So if you have an SQL query that you write over and over again, 
+  save it as a stored procedure, and then just call it to execute it.
+
+* PHP supports the following data types:
+
+    String
+    Integer
+    Float (floating point numbers - also called double)
+    Boolean
+    Array
+    Object
+    NULL
+    Resource
+
+* Trigger:
+  A trigger is a named database object that is associated with a table, and it activates when a particular 
+event (e.g. an insert, update or delete) occurs for the table.
