@@ -329,6 +329,83 @@ install :
 	    
 * 
 
+_________________________________________________________________
 
+
+
+Jenkins - 
+    Jenkins is a software that allows continuous integration
+    Many developer work in same project they continuous integration in it.
+    after commit code jenking auto sink changes to CI server.
+    then jenkings build the code , test it & deploy it .
+    Jenkins is java application
+    
+Work flow :
+
+    . jenkings install in server
+    . developer create acount on git
+    . now jenkings will allow which brach will live in which ip
+    . developer push code to github
+    . jenkings auto sink after change any changes or it will sink after a period of hour
+    . CI (continuous integration) server text bug then output it      
+    
+    
+    
+    
+    
+Facilities :
+
+  1.  many people work not same file.
+      after commit it trigger a built. 
+      so if any error it will not upload file. it will notify for merge or remove.
+      its helps for error less upload & code will not break.
+     
+  2.  it automated sometest php unit, nunit etc
+  
+  3.  jenkings can integrate with git.
+      so if you upload file in git it will show our website live.
+      you dont need to access in server.
+      
+  4.  you can set upload time
+  
+  5. you can use tomcat. Apache Tomcat allows the implementation of Java Servlets and JavaServer Pages (JSP) 
+     to promote an effective Java server environment.
+     
+     
+     
+ 
+ Coding :
+ 
+ install :
+ 
+    sudo apt-get install jenkins
+    
+ Start :
+ 
+    sudo systemctl start jenkins
+ 
+ Opening the Firewall :
+    
+    sudo ufw status
+    sudo ufw allow 8080
+    sudo ufw allow OpenSSH
+    sudo ufw enable
+ 
+ http://ip_address_or_domain_name:8080
+ 
+ 
+ _______________________________
+ 
+ Jenkings with git :
+ 
+ https://www.youtube.com/watch?v=bGqS0f4Utn4
+ 
+ 1. install jenkings in server.
+ 
+ 2. create project
+    create a job (like cron job)
+    link folder or git link on creating project
+    
+provide developer jenkings folder link to developer
 
 
