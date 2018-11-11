@@ -218,34 +218,91 @@ git push origin master
 ________________
 
 
-Question:
+GULP :
 
-1. what is git init?
-   ans:
-   
 
-2. Difference between Pull vs Fetch?
-   ans:
-   
-   
+* Node installation
+ 
+  sudo apt-get install -y nodejs
 
-3. what is git stash?
-   ans:
+  sudo apt-get install npm
    
-   
+  node -v
+  
+  npm -v
+  
+  cmd > project > npm install
 
-4. How to delete branch?
-   ans:
-   
-   
-5. How to detect git history ?
-   ans:
-   
-   
-6. What is Gulp.js used for?
-   ans:
-   
-7. what is composer?
-   ans:
-   
-8. node js
+
+* Gulp installation (--global parameter indicates that, we are installing Gulp globally) :
+
+  sudo npm install --global gulp
+
+* you will see a file gulpfile.js in your project’s root. 
+  In this file, we will define all the Gulp tasks that we need to perform.
+
+
+* For example if you want to combine two css files called app.css and main.css into a single file all.css, 
+  then open your gulpfile.js file, add following task:
+  
+  var elixir = require('laravel-elixir');
+ 
+  elixir(function(mix) {
+     mix.styles([
+        "app.css",
+        "main.css"
+     ], 'public/css/all.css');
+ 
+ 
+  mix.scripts([
+        "common.js",
+        "main.js"
+     ], 'public/css/app.js');
+  });
+
+
+
+
+* Versioning CSS and JavaScript :
+
+  var elixir = require('laravel-elixir');
+
+  elixir(function(mix) {
+      mix.styles([
+          "app.css",
+          "main.css"
+      ], 'public/css/all.css');
+
+  mix.scripts([
+          "common.js",
+          "main.js"
+      ], 'public/css/app.js');
+
+  min.version(["public/css/all.css","public/css/app.js"]);
+
+  });
+
+
+* This will create css,js files and store it with a unique hashed name like all-d782e68f.css 
+  in public/build/css directory.Same applies for JavaScript also.
+
+  <link rel="stylesheet" type="text/css" href="{{ elixir('css/all.css') }}">
+  <script src="{{ elixir('js/main.js') }}"></script>
+  
+  This will return the correct version of your CSS file.
+  
+  
+* Execute elixir tasks: cmd > gulp
+  
+* Run gulp with production:  
+
+  gulp --production
+  
+* gulp watch 
+
+* gulp styles (style compilation run)
+
+* gulp scripts (for compilation of coffeescript files)
+
+
+https://arjunphp.com/run-gulp-tasks-laravel-elixir/
