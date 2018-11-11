@@ -207,4 +207,113 @@ VIEW :
                             </tr>
                         </tfoot>
 </table>
+
+
+
+
+_______________________________________________________________________________
+
+
+
+
+
+ sweet alert :
+ 
+ 
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+<script>
+  $('.delete').click(function(e) {
+    e.preventDefault(); // Prevent the href from redirecting directly
+    var linkURL = $(this).attr("href");
+    warnBeforeRedirect(linkURL);
+  });
+
+  function warnBeforeRedirect(linkURL) {
+    swal({
+      title: "Sure want to delete?", 
+      text: "If you click 'OK' file will be deleted", 
+      type: "warning",
+      showCancelButton: true
+    }, function() {
+      // Redirect the user | linkURL is href url
+      window.location.href = linkURL;
+    });
+  }
+</script>
+
+  
+  
+  Buttton :
+  
+  <td><a class="btn btn-danger delete" href="{{ url('admin/research_delete/'.$r->id) }}">Delete</a></td>
+  
+  
+  
+  Controller :
+  
+  
+  public function research_delete($id){
+
+		$DeleteResearch = Research::find($id);
+
+		$file = $DeleteResearch->file;
+		$rich_editor_file = $DeleteResearch->rich_editor_file;
+		$cover_image = $DeleteResearch->cover_image;
+
+		unlink("project/backend/research/file/".$file);
+		unlink("project/backend/research/rich_editor_file/".$rich_editor_file);
+		unlink("project/backend/research/cover_image/".$cover_image);
+
+		$DeleteResearch->delete();
+
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+_______________________________________________________
+
+
+
+ajax sweet alert:
+
+
+ 
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="{{ asset('project/backend/js/sweetalert.min.js')}}"></script>
+<link rel="stylesheet" href="{{ asset('project/backend/css/sweetalert.css')}}">
+
+
+
+
+  function delete_data_check(id) {
+      swal({
+          title: "Are you sure?",
+          text: "You will not be able to recover this imaginary file!",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#DD6B55",
+          confirmButtonText: "Yes, delete it!",
+          closeOnConfirm: true
+      }, function (isConfirm) {
+          if (!isConfirm) return;
+          $.ajax({
+              type: "get",
+              url: 'research_ajax_delete/'+id,
+              success: function( msg ) {
+                 $("#"+id).fadeOut(1000);
+              }
+          });
+      });
+}
   
