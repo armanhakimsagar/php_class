@@ -174,3 +174,87 @@ Step 5: Create an index.blade.php file
 
 
 Now You can run your application and see the result http://localhost:8000/dropdownlist 
+
+
+
+__________________________________________________________________________________
+
+
+Laravel POST:
+
+
+<form action="" method="post">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <input type="text" style="cursor: default" id="subscription" class="button1" placeholder="Sign up to receive updates from Micro-merchant Asia">
+    <button class="button" type="button" onclick="subscription_req()"><span>SUBSCRIBE</span></button>
+</form>
+
+______________________________
+
+<script>
+    function subscription_req(){
+        var subscription = $("#subscription").val();
+        //alert(subscription);
+        if(subscription != ""){
+          $.ajax({
+            type: "POST",
+            url: "{{ url('subscribtion') }}",
+            dataType: "json",
+            headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
+            data:"user_subscription="+subscription,
+            success: function(data) {
+                $("#subscription_msg").text(data.message);
+            },
+            error: function(data) {
+                successmessage = 'Error';
+                $("#subscription_msg").text(successmessage);
+            }
+          });
+        }
+     }
+</script>
+
+
+______________________________________
+
+public function subscribtion(Request $request) {
+//        echo $request->user_subscription;
+//        exit;
+        
+        if(empty($request->user_subscription)){
+            $feedback = [
+                'status' => 'Error',
+                'message' => '<div class="alert alert-danger" style="display:block; width:58%">Need A Email Address</div>'
+            ];
+            echo json_encode($feedback);
+        }else{
+            $subscription = subscription::where('email',$request->user_subscription)->first();
+            if(filter_var($request->user_subscription, FILTER_VALIDATE_EMAIL) == false){
+                $feedback = [
+                    'status' => 'Error',
+                    'message' => '<div class="alert alert-danger" style="display:block; width:58%">Invalid Email Address</div>'
+                ];
+                echo json_encode($feedback);
+            
+            }elseif($subscription != null){
+                $feedback = [
+                    'status' => 'Error',
+                    'message' => '<div class="alert alert-danger" style="display:block; width:58%">Email Address Already Exists</div>'
+                ];
+                echo json_encode($feedback);
+            }else{
+                
+                $subscription = new subscription;
+                $subscription->email = $request->user_subscription;
+                $subscription->subscription_date = "2018-07-06 00:00:00";
+                $subscription->action_status = 0;
+                $subscription->save();
+                $feedback = [
+                    'status' => 'Success',
+                    'message' => '<div class="alert alert-success" style="display:block; width:58%">Please Check Your Email Address For Subscription</div>'
+                ];
+            echo json_encode($feedback);
+        }
+        }
+        
+}
