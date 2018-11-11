@@ -180,7 +180,7 @@ Now You can run your application and see the result http://localhost:8000/dropdo
 __________________________________________________________________________________
 
 
-Laravel POST:
+Laravel POST with validation:
 
 
 <form action="" method="post">
