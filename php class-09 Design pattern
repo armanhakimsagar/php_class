@@ -1,0 +1,298 @@
+** Design pattern :
+
+To organize our code senior developer already developed some pattern.Thats are call design pattern.
+
+
+** Polymorphism (single click multiple work) :
+
+Polymorphism describes a pattern in object oriented programming in which classes 
+have different functionality while sharing a common interface
+
+example : overriding , interface , 
+
+
+
+
+
+** dependency injection :
+
+It allows you to inject objects, array or string into a class.
+
+//array injection :
+
+class Person {
+
+	private $skills;
+	public function __construct($skills) {
+		$this->skills = $skills;
+	}
+	public function totalSkills() {
+		return count($this->skills);
+	}
+}
+
+
+$mySkills = array("PHP", "HTML", "CSS", "JavaScript");
+
+$p = new Person($mySkills);
+
+echo $p->totalSkills();
+
+
+
+
+//string injection :
+
+class Person {
+
+	private $skills;
+	public function __construct($skills) {
+		$this->skills = $skills;
+	}
+	public function totalSkills() {
+		return count($this->skills);
+	}
+}
+
+
+$mySkills = "data";
+
+$p = new Person($mySkills);
+
+echo $p->totalSkills();
+
+
+
+
+
+
+Strategy pattern :
+
+When we take give any solution or strategy on behalf of problem.
+
+Such as : 
+
+1. we have to send message. Fisrt make a interface class.
+   Then impletement sms,fax .
+   Then compare in switch statement make object of class & run function.
+   This is situation based strategy pattern.
+
+
+
+
+
+** Decorator patter (problem) :
+
+If we have 2 class with thousand of methods & 
+we want to use same named 2 single method without
+touch full class.
+
+like : 
+
+post class have add_comment & article class have add comment;
+Now we want to use add_comment with out touch full class.
+
+Now create a another class which will contain add_comment.
+Set all add_comment works here. Now create object of this class for add comment. 
+
+
+
+
+
+
+** facade design pattern :
+
+get access into complex class.
+
+Such as : your pass a value in class.
+
+this value is passing to another 10 class for get any value.
+easy way to access complex class. 
+
+
+** Factory pattern :
+
+its a dynamic reuseable function.
+Suppose you have a car factory, your giving car model its creating car.
+
+Real example : 
+
+database connection class.
+If you imput oracle its creating a oracle connection.
+
+
+observer pattern :
+
+It have 2 object observe & obserable object.
+If observe object change its detect by obserable object.
+
+Create skype class. It have statechange method.
+This skype class implement by observe interface.
+Create another class obserable.
+If statechange have data check by obserable.
+It will send notification
+ 
+ 
+ 
+______________________________________
+
+Getter & setter :
+
+
+//Set the person's name.
+public function setName($name){
+  $this->name = $name;
+}
+   
+//Get the person's name.
+public function getName(){
+   return $this->name;
+}
+ 
+______________________________________
+
+Repository pattern :
+
+The implements RepositoryInterface section isn’t strictly necessary but it adds an extra layer of structure to our code.
+
+
+structure :
+
+controller (ask repo for value) -> repo (return value to controller) -> interface (restricted repo all method existancy needs)
+	
+* app/Repositories/Repository.php	(possible way to access database) 	
+* RepositoryInterface.php 		(interface is restricted the Repository.php method existancy needs)
+* TaskController.php			(This controller call repo & repo will validate from interface)
+
+
+________________________________________
+
+
+Singleton :
+
+Singletons are designed to ensure there is a single (hence the name singleton) class instance and that is global point of access
+for it, along with this single instance we have global access and lazy initialization.
+
+
+
+class User
+{
+    public static function singleton()
+    {
+        $user = new user;
+        return $user;
+    }
+    
+}
+
+$user1 = User::singleton();
+
+
+
+
+__________________________________________
+
+Design Patterns are well known patterns for solving technical problems.
+
+
+
+******************** Software design pattern : 
+
+https://towardsdatascience.com/10-common-software-architectural-patterns-in-a-nutshell-a0b47a1e9013
+
+
+Layered pattern :
+
+A "tier" can also be referred to as a "layer".
+Several tiers/layers should be able to be joined together to make a whole "something".
+
+Presentation layer :
+its client layer. Use for communicate with application layer.
+
+Business logic layer :
+Its also call application layer. application for communicate with database layer.
+
+Data layer :
+it store layer. 
+
+Single tier :
+
+Single-tier architecture implies putting all of the required components for a software application 
+(both the backend and the frontend) on just one server.
+But having all the resources on the same machine can create an availability and security risk. If the server is down, 
+the application will be down, and it will not communicate with the database. 
+
+
+2nd tier :
+
+client server & database server (total 2 server depends on this process)
+
+3rd tier :
+
+Client server handles Presentation layer
+Application server handles Application layer
+Server system handles Database layer.
+
+
+
+________________________________________
+
+
+Client-server pattern :
+
+if a single server serve multiple client application called Client-server pattern
+
+such ase : blast ilo
+
+________________________________________
+
+
+Master-slave pattern :
+
+This pattern consists of two parties; master and slaves.
+master is main database.
+slave get data from master database.
+
+such as : view table
+
+________________________________________
+
+ Pipe-filter pattern
+
+This pattern can be used to structure systems which produce and process a stream of data.
+Each processing step is enclosed within a filter component. 
+Data to be processed is passed through pipes. These pipes can be used for buffering or 
+for synchronization purposes.
+
+
+such as : socket server
+
+________________________________________
+
+ Broker pattern
+ 
+ Clients request a service from the broker, and the broker then redirects the 
+ client to a suitable service from its registry.
+ 
+ such as : RabbitMQ 
+ 
+ 
+________________________________________
+ 
+ 
+ Peer-to-peer pattern
+ 
+ peer is indivisual software.
+ connect peer with other peer & providing services to other peers
+ 
+ such as : File-sharing networks such as Gnutella and G2)
+  
+________________________________________
+ 
+ Event-bus pattern 
+ 
+ This pattern primarily deals with events and has 4 major components; event source, event listener, channel and event bus.
+
+ event source : in controller where we create event
+ event bus : event bus publish in channel (this is event page)
+Listeners are notified of messages that are published to a channel to which they have subscribed before.
