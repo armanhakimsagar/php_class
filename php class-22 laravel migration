@@ -1,0 +1,261 @@
+Migrations are like version control for your database, 
+allowing your team to easily modify and share the application's database schema. 
+
+To create a migration, use the make:migration Artisan command:
+* php artisan make:migration create_users_table
+
+Schema::create('flights', function (Blueprint $table) {
+
+   $table->increments('id');
+   $table->string('name',100);
+   $table->string('airline',100);
+   $table->timestamps();
+
+});
+
+
+php artisan migrate
+
+
+Schema::create('drinks', function (Blueprint $table) {
+
+   $table->increments('id');
+   $table->string('name',75)->unique();
+   $table->text('comments')->nullable();
+   $table->integer('rating');
+   $table->date('brew_date');
+   $table->timestamps();        
+            
+});
+            
+ 
+* php artisan migrate:rollback
+
+* php artisan make:migration employees
+
+
+
+$table->bigInteger('votes');
+$table->boolean('confirmed'); 
+$table->char('name', 4); 
+$table->date('dob'); 
+$table->dateTime('post'); 
+$table->float('amount', 8, 2);
+$table->increments('id');
+$table->integer('votes');
+$table->ipAddress('visitor');
+$table->longText('description');
+$table->mediumInteger('numbers');
+$table->mediumText('description');
+$table->smallInteger('votes');
+$table->softDeletes();
+$table->string('name', 100);
+
+
+* php artisan make:model Post -m (for model & migration)
+
+* php artisan tinker
+
+ >> 5+18
+ 
+ >> echo 'ok'
+ 
+ >> App\modelname::count()  [show total row]
+ 
+_________
+
+ 
+ >> $post = new App\post(); [create object of model]
+ 
+ >> $post->column_name = "value 1";
+ 
+ >> $post->save();       [for save]
+ 
+ 
+_________
+
+ 
+ >> $post = new App\post(); [create object of model]
+ 
+ >> $post->column_name = "value 2";
+ 
+ >> $post->save();       [for save]
+ 
+
+___________
+
+DB::table('songs')->get();
+
+DB::table('songs')->where('id',10)->get();
+
+
+
+___________
+
+Resouse Controller:
+
+php artisan make:controller songController --resoruse
+
+Route::resoruse('songs','songController');
+
+php artisan route:list
+
+
+
+_____________________________________
+
+
+
+One to many :
+
+in article list see user name:
+
+
+CREATE TABLE articles(
+
+ id int not null PRIMARY key AUTO_INCREMENT,
+ articles varchar(1000) not null,
+ user_id int not null,
+ created_at timestamp,
+ updated_at timestamp
+ 
+)
+
+
+Route:
+
+use App\Article;
+
+Route::get('/articles',function(){
+
+   $article = Article::all();
+	return view('welcome',compact('article'));
+
+});
+
+
+Model :
+
+articel.php:
+
+public function user(){
+
+  return $this->belongsTo('App\User');
+  
+}
+
+
+in view file:
+
+{{ $articel->user->name }}
+
+
+
+__________________________________
+
+Many to one realtionship :
+
+
+in user list see his article:
+
+In route file :
+
+Route::get('profile/{id}',function(){
+
+   $user = User::where('id',$id)->firstOrFail();
+   return view('articles',compact('user'));
+
+});
+
+
+in user.php model :
+
+public function articles(){
+
+    return $this->hasMany('App\Article');
+   
+}
+
+
+In view file :
+
+{{ $user->name }}
+
+@foreach($user->articles as $article)
+ 
+  {{ $article->articles }}
+
+@endforeach
+
+
+_____________________________________
+
+
+One to one realtionship:
+
+in user profile see his address:
+Here country name varchar.
+
+CREATE TABLE addresses(
+ id int not null PRIMARY key AUTO_INCREMENT,
+ userid int not null,
+ country varchar(1000) not null,
+ created_at timestamp,
+ updated_at timestamp
+)
+
+
+in user.php :
+
+public function address(){
+
+   return $this->hasOne('App\Address');
+   
+}
+
+
+In route file :
+
+Route::get('profile/{id}',function(){
+
+   $user = User::where('id',$id)->firstOrFail();
+   return view('user_profile',compact('user'));
+
+});
+
+
+In view file :
+
+{{ $user->address->country }}
+
+
+_________________________
+
+Many to many realtionship :
+
+In user.php
+
+
+public function roles(){
+
+  return $this->belongsToMany('App\Roles');
+}
+
+
+In route file :
+
+Route::get('profile/{id}',function(){
+
+   $user = User::where('id',$id)->firstOrFail();
+   return view('user_profile',compact('user'));
+
+});
+
+
+In view file :
+
+@foreach($user->role as $roles)
+  
+  {{ $roles->name }}
+  
+@endforach
