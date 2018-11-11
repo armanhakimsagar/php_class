@@ -1,0 +1,266 @@
+
+http://www.phpforkids.com/php/php-functions-regular-expressions.php
+
+* \- \@ \. \+                                        [use to add special charecter]
+
+* preg_match("[ABC]", "A")                            [ match any charecter , no range ]
+
+* preg_match("/[0-9]/", "abc")                        [ if your working with any range must add / /  delimeter ]
+
+* preg_match("/^[0-9]*$/", "")                        [ if you have range with ^ & $ then use *, * means all inside it ]
+
+* preg_match("/^[A-Z]*$/","ABC")                      [all match with A to Z]
+
+* preg_match("/[a-z]{3}/, "abc 091")                  [ match all chanrecter length in minimum 3 ]        
+
+* preg_match("/[a-z]{3}/, "abc 091")                  [ match all chanrecter length in minimum 3 ]      
+
+* preg_match("/([a-z]{3})/, "abc 091")                [  () means gruop or section ]
+
+* preg_match([a-z]{3})?([0-9], "abc 091")             [ 2 gruop or section condition & operator ]
+
+* preg_match("/cat|dog/",   "fgdff fgfd")	 		        [ condition || operator ]
+
+* preg_match([a-z]{3})|([0-9], "abc 091")             [ 2 gruop or section condition || operator ]
+
+* preg_match("/([a-z]{3})?([0-9]{3})/", "abc 091")    [ must contain 3 charecter & 3 digit number ]
+
+* preg_match("/(fg)+(dff)/",   "fgdff fgfd")          [ matches concat result of 2 group ]
+
+* $str = "Hello! My name is Cameron Fox. Coffee?"
+
+  $find = array('/is/','/coffee/');
+
+  $replace = array('/was/','/tea/');
+
+  echo preg_replace ($find, $replace, $str);
+  
+* preg_match("/^cat$/",   "fgdff fgfd")	 		          [ full start to end match ]
+
+
+
+Example :
+
+practise in : https://regex101.com/
+
+\+?\d{3}?\-?\d{4}?\-?\d{3}?\-?\d{3}                   [ \+ ( add before any symbol \+)  ?(next)  d{3}(3 digit) ?(next) \- ( add before any symbol \-) )   ]
+
++880-1627-440-390
+  
+
+[a-z]?\@?[a-z]?\.?[a-z]{3}                            [ a to z then symbol \@ then a to z then symbol \. then a-z ]
+
+armanhakimsagar@gmail.com
+
+PPas12!
+
+[A-Z]{2}?[a-z]{2}?[0-9]{2}?[\!|@|#$]                 [ capital 2 pc , small 2 pc , 0-9 2 pc , !@#$ 1 pc ]
+
+
+abc.pdf
+
+\.?[jpg|png|pdf]{3}                                  [ match . then jpg must 3 letter ]
+
+
+
+
+
+
+
+
+
+
+
+________________________________________________________________________
+
+
+array_chunk :
+
+The array_chunk() function splits an array into chunks of new arrays.
+
+$cars=array("Volvo","BMW","Toyota","Honda","Mercedes","Opel");
+print_r(array_chunk($cars,2));
+
+Array ( [0] => Array ( [0] => Volvo [1] => BMW ) [1] => Array ( [0] => Toyota [1] => Honda ) [2] => Array ( [0] => Mercedes [1] => Opel ) ) 
+
+
+
+array_combine :
+
+$a = array('green');
+$b = array('avocado');
+$c = array_combine($a, $b);
+
+['green'=>'avocado']
+
+
+
+
+<?php
+$array1 = array("color" => "red", 2, 4);
+$array2 = array("a", "b", "color" => "green", "shape" => "trapezoid", 4);
+$result = array_merge($array1, $array2);
+print_r($result);
+?>
+
+Array
+(
+    [color] => green
+    [0] => 2
+    [1] => 4
+    [2] => a
+    [3] => b
+    [shape] => trapezoid
+    [4] => 4
+)
+
+
+
+
+
+array_count_values :
+
+$array = array(1, "hello", 1, "world", "hello");
+print_r(array_count_values($array));
+
+Array
+(
+    [1] => 2
+    [hello] => 2
+    [world] => 1
+)
+
+
+
+
+$array1 = array("a" => "green", "red", "blue", "red");
+$array2 = array("b" => "green", "yellow", "red");
+$result = array_diff($array1, $array2);
+
+print_r($result);
+Array
+(
+    [1] => blue
+)
+
+
+
+
+
+<?php
+$array1 = array("a" => "green", "red", "blue");
+$array2 = array("b" => "green", "yellow", "red");
+$result = array_intersect($array1, $array2);
+print_r($result);
+?>
+
+Array
+(
+    [a] => green
+    [0] => red
+)
+
+
+
+
+
+<?php
+  $search_array = array('first' => 1, 'second' => 4);
+  if (array_key_exists('first', $search_array)) {
+    echo "The 'first' element is in the array";
+  }
+?>
+
+
+
+$array = array("blue", "red", "green", "blue", "blue");
+print_r(array_keys($array, "blue"));
+
+
+
+
+
+function cube($n)
+{
+    return($n * $n * $n);
+}
+
+$a = array(1, 2, 3, 4, 5);
+$b = array_map("cube", $a);
+
+
+
+
+
+$a=array("red","green");
+print_r(array_pad($a,5,"blue"));
+Array ( [0] => red [1] => green [2] => blue [3] => blue [4] => blue ) 
+
+
+
+
+
+$stack = array("orange", "banana", "apple", "raspberry");
+$fruit = array_pop($stack);
+Array
+(
+    [0] => orange
+    [1] => banana
+    [2] => apple
+)
+
+
+
+
+
+$stack = array("orange", "banana", "apple", "raspberry");
+$fruit = array_shift($stack);
+Array
+(
+    [0] => banana
+    [1] => apple
+    [2] => raspberry
+)
+
+
+
+
+
+
+<?php
+  $stack = array("orange", "banana");
+  array_push($stack, "apple", "raspberry");
+  print_r($stack);
+?>
+
+Array
+(
+    [0] => orange
+    [1] => banana
+    [2] => apple
+    [3] => raspberry
+)
+
+
+
+
+
+$b = array("a" => 1.2, "b" => 2.3, "c" => 3.4);
+echo "sum(b) = " . array_sum($b) . "\n";
+
+
+
+
+
+function myfunction($value,$key)
+{
+echo "The key $key has the value $value<br>";
+}
+$a=array("a"=>"red","b"=>"green","c"=>"blue");
+array_walk($a,"myfunction");
+
+
+
+$cars=array("Volvo","BMW","Toyota");
+echo sizeof($cars);
+3
