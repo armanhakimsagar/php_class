@@ -1,0 +1,98 @@
+* Cross Site Request Forgery :
+
+  	application should generate a random token and store it in the session
+	Whenever any form is displayed to the user, the token should be present in the page as a hidden input field. 
+	Application logic must check for the token and ensure that it matches the token present in the session. 
+
+
+* Encryption is reversible whereas hashing is irreversible
+
+	Black hat hackers are those who hack without authority. 
+	White hat hackers are authorised to perform a hacking attempt under signed NDA. 
+	Grey hat hackers are white hat hackers which sometimes perform unauthorised activities.
+
+* A firewall is a device that allows/blocks traffic as per defined set of rules. 
+
+* Port scanning is process of sending messages in order to gather information about network, 
+  system etc. by analysing the response received.
+
+
+* VA (Vulnerability Assessment) : exploitable vulnerabilities like a real attacker will do
+
+* DDoS stands for distributed denial of service. When a network/server/application 
+  is flooded with large number of requests which it is not 
+  designed to handle making the server unavailable to the legitimate requests.
+
+* SQL Injection (SQLi) : SQL commands these strings can be entered in places like search boxes, 
+			 login forms, and even directly into a url to negate simple client-side
+
+* Cross site scripting : 
+
+	is a JavaScript vulnerability in the web applications. 
+	The easiest way to explain this is a case when a user enters a script in the client side input 
+	fields and that input gets processed without getting validated.
+
+* Brute Force : 
+
+  More sophisticated Brute Force attacks compile password lists from keywords available on your website 
+  to test on your administrator login forms. The best way to protect yourself is by always using strong, 
+  unique passwords and supplementing your access control with Two Factor authentication.
+
+
+* path injection : 
+  
+  path injection is url link
+  
+* Secure session :
+  
+* Malware and unwanted programs can use browser hijacking to steal a browser's cookie files without a user's knowledge.
+  mcrypt or a custom AES encryption to encrypt session data.
+
+
+* What is the difference between encryption and hashing?
+  
+  Encryption is reversible whereas hashing is irreversible.
+  
+* Spear phishing : attack by high volume of phising
+
+* What is a pentest?
+  hack after 3rd party integration library or framwork
+  
+* Phishing is the fraudulent attempt to obtain sensitive information 
+  such as usernames, passwords, and credit card details 
+
+* Clickjacking : clicking on a button that appears to perform another function
+
+* Baiting : curiosity or greed of the victim
+
+* WAF stands for web application firewall. It is used to protect the 
+  application by filtering legitimate traffic from malicious traffic
+  
+* What are you favourite security testing tools?
+
+* social engineering : users are tricked into clicking on a malicious link they think came from a Facebook friend or LinkedIn connection.
+
+* When you log on to a PC with a user name and password you are authenticating. Authorization is the process of verifying that you have access to something
+
+* two-factor authentication
+
+* What are salted hashes : generating random data, and how it can be used to help store passwords more securely.
+
+* Dictionary Attack : a guessing attack which uses precompiled list of option but Attempts to determine a secret by trying every possible combination. 
+
+* What should you never record into a web app error log?
+  
+  passwords, credit card numbers, any other sensitive data...
+  
+* difference between a White Box test and a Black Box test?
+  
+* A replay attack (also known as playback attack) is a form of network attack in which a valid data transmission is maliciously or fraudulently repeated or delayed.
+
+* rainbow table?
+
+* URL manipulations?
+
+* Stack Trace : in 200 sucess hacker get class name or method name
+  
+  https://www.toptal.com/security/interview-questions
+  http://www.alphadevx.com/a/493-Web-application-security-interview-questions
