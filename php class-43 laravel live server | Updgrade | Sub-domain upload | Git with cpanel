@@ -48,9 +48,9 @@ Subdomain upload:
 * cpanel > Subdomains > 
 
   Create a Subdomain : laravel 
-  Document Root      : public_html/laravel/public
+  Document Root      : /laravel/public
  
-* Upload your full project in public_html/laravel folder.
+* Upload your full project in laravel folder (root).
 
 * setup database connection
 
