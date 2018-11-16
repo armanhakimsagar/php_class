@@ -86,7 +86,17 @@ Chunking:
 
 for high volume compare.It divide query into number of chunk.
 
-
+	$data = Inspector::latest('id')
+		    ->select('id', 'firstname', 'status', 'state', 'phone')
+		    ->where('firstname', 'LIKE', '%' . $searchtext . '%')
+		    ->chunk(50, function($inspectors) {
+			foreach ($inspectors as $inspector) {
+			    // apply some action to the chunked results here
+			}
+		    });
+	    
+	  
+*** set laravel debuger for result
 
 
 _______________________________________________________
