@@ -84,19 +84,32 @@ $name = DB::table('users')->where('name', 'John')->pluck('name');
 
 Chunking:
 
-for high volume compare.It divide query into number of chunk.
+1. for high volume compare.
+2. It divide query into number of chunk.
+3. It dont return any value. If chunk match do something in chunk loop
+4. must set protected value in model
 
-	$data = Inspector::latest('id')
-		    ->select('id', 'firstname', 'status', 'state', 'phone')
-		    ->where('firstname', 'LIKE', '%' . $searchtext . '%')
-		    ->chunk(50, function($inspectors) {
-			foreach ($inspectors as $inspector) {
-			    // apply some action to the chunked results here
-			}
-		    });
+Route::get('/articles',function(){
+
+   $articles = Article::all();
+
+   Article::chunk(100, function ($articles) {
+
+     foreach ($articles as $article) {
+     $value = ($article->articles == "old") ? 1 : 0;
+       if($value){
+	$article->update(['articles' => "new"]);
+       }
+     }
+  });
+});
 	    
-	    
-	    
+
+
+
+_________________________________________________________
+
+
 	  
 *** set laravel debuger for result
 
