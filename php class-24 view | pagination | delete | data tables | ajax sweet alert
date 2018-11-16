@@ -82,6 +82,10 @@ Retrieving A Single Column From A Row:
 $name = DB::table('users')->where('name', 'John')->pluck('name');
 
 
+Chunking:
+
+for high volume compare.It divide query into number of chunk.
+
 
 
 
