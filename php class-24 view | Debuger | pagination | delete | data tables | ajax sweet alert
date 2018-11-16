@@ -71,6 +71,10 @@ VIEW :
 ______________________________________________________
 
 
+ALL QUERIES ::::::::
+
+
+
 Retrieving A Single Row From A Table:
 
 $user = DB::table('users')->where('name', 'John')->first();
@@ -104,7 +108,23 @@ Route::get('/articles',function(){
   });
 });
 	    
+DB::table('users')->count();
 
+$price = DB::table('orders')->max('price');
+
+
+$users = DB::table('users')
+            ->leftJoin('posts', 'users.id', '=', 'posts.user_id')
+            ->get();
+	    
+	 
+->whereNotIn('id', [1, 2, 3])
+
+->whereIn('id', [1, 2, 3])
+
+>whereNull('updated_at')
+
+->avg('price');
 
 
 _________________________________________________________
