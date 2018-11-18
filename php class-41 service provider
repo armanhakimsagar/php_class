@@ -1,9 +1,8 @@
-** SERVICE CONTAINER 
-
-
-
-
-
+* If you've ever come across the Laravel framework, it's highly unlikely that you haven't heard of service
+  containers and service providers. In fact, they're the backbone of the Laravel framework and do all the 
+  heavy lifting when you launch an instance of any Laravel application.
+  
+* The Laravel service container is a powerful tool for managing class dependencies and performing dependency injection.
 
 * default service providers are stored in the app/Providers directory
 
