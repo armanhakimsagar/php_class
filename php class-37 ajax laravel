@@ -1,3 +1,43 @@
+::::::::::::::::::::AJAX::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+      url: "demo_test.txt", 
+      
+      // Async mean that the browser won't wait for when the main thread is free to perform the action
+      
+      async : true,
+      
+      // The content type used when sending data to the server. 
+      
+      contentType : Default is: "application/x-www-form-urlencoded"
+      
+      // dataType	The data type expected of the server response.
+      
+      dataType : JSON
+      
+      // type	Specifies the type of request. (GET or POST)
+      
+      type : get
+      
+      // data	Specifies data to be sent to the server
+      
+      data : { 'data' : value1 , 'data2' : value2 }
+      
+      // success(result,status,xhr)	A function to be run when the request succeeds
+      
+      success: function(result){
+          $("#div1").html(result);
+      }});
+      
+      error(xhr,status,error)	A function to run if the request fails.
+      
+      error: function(result){
+          $("#div1").html(result);
+      }});
+      
+      
+_____________________________________________________________________________      
+
+
 *** Step:1 Create three tables
 
 php artisan make:migration create_country_state_city_tables
@@ -258,3 +298,73 @@ public function subscribtion(Request $request) {
         }
         
 }
+
+
+
+
+
+
+_____________________________________________________
+
+On click ajax :
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<span id="subscription_msg"></span>
+
+<span id="1" onclick="rate(this)">Clcik me</span>
+
+<script>
+
+	function rate(data){
+      
+        rate = $(data).attr('id');
+        
+        if(rate != ""){
+          $.ajax({
+            type: "get",
+            url: "{{ url('add_rating') }}",
+            dataType: "json",
+            data:{'rate_value':rate},
+            success: function(data) {
+            	$("#subscription_msg").text(data.message);
+            },
+            error: function(data) {
+            	console.log('n ok');
+            }
+          });
+        }
+
+    }
+
+</script>
+
+
+----------
+
+
+Route::get('add_rating',function(Request $request){
+	//echo $request->rate_value;
+	$rating 				= new rating;
+	$rating->rating_value 	= $request->rate_value;
+    $rating->save();
+
+    $feedback = [
+        'status' => 'success',
+        'message' => 'thanks for feedback'
+    ];
+    echo json_encode($feedback);
+
+});
+
+
+
+
+
+_________________________________________________________
+
+
+
+
+
+
