@@ -258,51 +258,18 @@ ______________________________
 
 ______________________________________
 
-public function subscribtion(Request $request) {
-//        echo $request->user_subscription;
-//        exit;
-        
-        if(empty($request->user_subscription)){
-            $feedback = [
-                'status' => 'Error',
-                'message' => '<div class="alert alert-danger" style="display:block; width:58%">Need A Email Address</div>'
-            ];
-            echo json_encode($feedback);
-        }else{
-            $subscription = subscription::where('email',$request->user_subscription)->first();
-            if(filter_var($request->user_subscription, FILTER_VALIDATE_EMAIL) == false){
-                $feedback = [
-                    'status' => 'Error',
-                    'message' => '<div class="alert alert-danger" style="display:block; width:58%">Invalid Email Address</div>'
-                ];
-                echo json_encode($feedback);
-            
-            }elseif($subscription != null){
-                $feedback = [
-                    'status' => 'Error',
-                    'message' => '<div class="alert alert-danger" style="display:block; width:58%">Email Address Already Exists</div>'
-                ];
-                echo json_encode($feedback);
-            }else{
-                
-                $subscription = new subscription;
-                $subscription->email = $request->user_subscription;
-                $subscription->subscription_date = "2018-07-06 00:00:00";
-                $subscription->action_status = 0;
-                $subscription->save();
-                $feedback = [
-                    'status' => 'Success',
-                    'message' => '<div class="alert alert-success" style="display:block; width:58%">Please Check Your Email Address For Subscription</div>'
-                ];
-            echo json_encode($feedback);
-        }
-        }
-        
-}
+Route::post('subscribtion',function(Request $request){
 
+	$data = $request->user_subscription;
+	
+	$feedback = [
+        'status' => 'Success',
+        'message' => 'Inserted'
+	];
 
+	echo json_encode($feedback);
 
-
+});
 
 
 _____________________________________________________
