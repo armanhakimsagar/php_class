@@ -225,23 +225,24 @@ Laravel POST with validation:
 
 <form action="" method="post">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <input type="text" style="cursor: default" id="subscription" class="button1" placeholder="Sign up to receive updates from Micro-merchant Asia">
+    <input type="text" style="cursor: default" id="subscription">
     <button class="button" type="button" onclick="subscription_req()"><span>SUBSCRIBE</span></button>
 </form>
 
 ______________________________
 
+<span id="subscription_msg"></span>
+
 <script>
     function subscription_req(){
         var subscription = $("#subscription").val();
-        //alert(subscription);
         if(subscription != ""){
           $.ajax({
             type: "POST",
             url: "{{ url('subscribtion') }}",
             dataType: "json",
             headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
-            data:"user_subscription="+subscription,
+            data: {'user_subscription' : subscription},
             success: function(data) {
                 $("#subscription_msg").text(data.message);
             },
