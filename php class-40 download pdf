@@ -11,6 +11,8 @@ You can optionally use the facade for shorter code. Add this to your facades:
 
 'PDF' => Barryvdh\DomPDF\Facade::class,
 
+php artisan vendor:publish --provider="Barryvdh\DomPDF\ServiceProvider"
+
 __________
 
 Route::get('/response', 'DownloadsController@download');
