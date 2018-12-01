@@ -69,3 +69,16 @@ ___________________________________________
 * click create.
 
 * for update click pull button 
+
+
+
+_______________________
+
+Upload laravel in sub folder:
+
+* upload in folder.
+
+* backstep config.php , htaccess & index.php file in 
+
+* update php version
+*
