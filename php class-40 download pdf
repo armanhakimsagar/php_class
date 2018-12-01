@@ -1,3 +1,6 @@
+PDF ::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
 composer require barryvdh/laravel-dompdf
 
 _______________
@@ -30,7 +33,7 @@ class DownloadsController extends Controller
     public function download() {
     	$rating = rating::all();
     	$pdf = PDF::loadView('pdf',compact('rating'));
-		  return $pdf->download('invoice.pdf');
+	return $pdf->download('invoice.pdf');
   }
 }
 
@@ -44,3 +47,31 @@ pdf.blade.php:
 @endforeach
 
 __________
+
+
+WORD :::::::::::::::::::::::::::::::::::::::::::
+
+
+Route::get('word',function(Request $request){
+	$rating  = rating::all();
+	return view('word',compact('rating'));
+});
+
+__________
+
+
+<?php
+
+  header("Content-Type: application/pdf");
+  header("Expires: 0");//no-cache
+  header("Cache-Control: must-revalidate, post-check=0, pre-check=0");//no-cache
+  header("content-disposition: attachment;filename=sampleword.doc");    
+
+?> 
+
+@foreach($rating as $ratings)
+  {{ $ratings->rating_value }}
+@endforeach
+
+
+
