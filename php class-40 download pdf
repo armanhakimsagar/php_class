@@ -1,0 +1,44 @@
+composer require barryvdh/laravel-dompdf
+
+_______________
+
+
+After updating composer, add the ServiceProvider to the providers array in config/app.php
+
+Barryvdh\DomPDF\ServiceProvider::class,
+
+You can optionally use the facade for shorter code. Add this to your facades:
+
+'PDF' => Barryvdh\DomPDF\Facade::class,
+
+__________
+
+Route::get('/response', 'DownloadsController@download');
+
+__________
+
+<?php
+
+namespace App\Http\Controllers;
+use PDF;
+use App\rating;
+
+class DownloadsController extends Controller
+{
+    public function download() {
+    	$rating = rating::all();
+    	$pdf = PDF::loadView('pdf',compact('rating'));
+		  return $pdf->download('invoice.pdf');
+  }
+}
+
+
+_________
+
+pdf.blade.php:
+
+@foreach($rating as $ratings)
+	{{ $ratings->rating_value }}
+@endforeach
+
+__________
