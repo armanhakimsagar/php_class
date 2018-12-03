@@ -217,10 +217,13 @@ Now You can run your application and see the result http://localhost:8000/dropdo
 
 
 
+
 __________________________________________________________________________________
 
 
-Laravel POST with validation:
+
+
+Laravel POST with onclcik:
 
 
 <form action="" method="post">
@@ -229,7 +232,7 @@ Laravel POST with validation:
     <button class="button" type="button" onclick="subscription_req()"><span>SUBSCRIBE</span></button>
 </form>
 
-______________________________
+_______
 
 <span id="subscription_msg"></span>
 
@@ -256,7 +259,8 @@ ______________________________
 </script>
 
 
-______________________________________
+_____
+
 
 Route::post('subscribtion',function(Request $request){
 
@@ -272,7 +276,9 @@ Route::post('subscribtion',function(Request $request){
 });
 
 
+
 _____________________________________________________
+
 
 On click ajax :
 
@@ -325,6 +331,50 @@ Route::get('add_rating',function(Request $request){
 
 });
 
+
+
+
+
+_________________________________________________________
+
+
+
+AJAX FORM IMAGE UPLOAD :
+
+
+ <form enctype="multipart/form-data" id="upload_form" role="form" method="POST" action="" >
+    <input type="hidden" name="_token" value="{{ csrf_token()}}">
+    <input type="text" name="data" placeholder="name">
+    <input type="file" name="image">
+    <button type="button" class="addbtn">Add</button>
+ </form>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(".addbtn").click(function(){
+		$.ajax({
+		      url:'subscribtion',
+		      data:new FormData($("#upload_form")[0]),
+		      dataType:'json',
+		      async:false,
+		      type:'post',
+		      processData: false,
+		      contentType: false,
+		      success:function(response){
+		        console.log(response);
+		      },
+		 });
+	 });
+</script>
+
+
+
+Route::post('subscribtion',function(Request $request){
+	$input = $request->all();
+    $input['image'] = time().'.'.$request->image->getClientOriginalExtension();
+    $request->image->move(public_path('image'), $input['image']);
+});
 
 
 
