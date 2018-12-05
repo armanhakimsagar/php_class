@@ -1,7 +1,4 @@
-API CREATE ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-View:
+API CREATE FOR USE in get method :::::::
 
 Route::get('departments', function() {
     
@@ -26,15 +23,20 @@ Route::get('departments', function() {
 });
 
 
-______
-
-Edit:
+API CREATE FOR single data in get method :::::::
 
 Route::get('departments/{id}', function($id) 
 
 create method for edit
 
+
+
+
 ______
+
+
+INSERT API LINK FOR IN POST METHOD :::::::
+
 
 Post:
 
@@ -43,7 +45,7 @@ Route::post('departments', function(Request $request) {
     $data = $request->all();
     
     return ap::create([
-        'name' => $data['name']
+        'database_coulmn_name' => $data['field_name']
     ]);
 
     if(count($data) == 0){
@@ -69,7 +71,7 @@ protected $fillable = ['fieldname','fieldname']
 ______
 
 
-Update :
+UPDATE API LINK FOR IN UPDATE METHOD :::::::
 
 Route::put('poll/{id}','control@method')
 
@@ -107,8 +109,10 @@ ______
 
 
 
-Delete :
+UPDATE API LINK FOR IN DELETE METHOD :::::::
 
+
+Delete :
 
 Route::delete('poll/{id}','control@method')
 
@@ -139,11 +143,10 @@ public function delete(Request $request,$id) {
 
 
 
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::
 
 
-
-Validation for view:
+Validation for view (Only apply in edit):
 
 $department = department::find($id);
 
@@ -162,6 +165,11 @@ if(is_null(ap::find($id))){
     ]; 
     return $feedback;
 }
+
+
+
+
+:::::::::::::::::::::::::::::::
 
 
 Validation for insert:
