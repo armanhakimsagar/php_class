@@ -92,6 +92,7 @@ DB::table('songs')->where('id',10)->get();
 
 ___________
 
+
 Resouse Controller:
 
 php artisan make:controller songController --resoruse
@@ -152,6 +153,19 @@ in view file:
 
 
 __________________________________
+
+MODEL ::::::::::::::::::::::::::::::
+
+protected $table = "users" ;   // set table name here
+
+protected $fillable = ['name','email']  
+
+// fillable need for mass assignment, if column not specified when insert
+
+like : $input = input:all(); $cus = new customer($input); $cus->save(); 
+
+
+
 
 Many to one realtionship :
 
