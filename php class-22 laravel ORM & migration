@@ -154,17 +154,25 @@ in view file:
 
 __________________________________
 
+
+
 MODEL ::::::::::::::::::::::::::::::
+
+Mass assignment
 
 protected $table = "users" ;   // set table name here
 
-protected $fillable = ['name','email']  
+protected $fillable = ['name','email']; 
 
 // fillable need for mass assignment, if column not specified when insert
 
 like : $input = input:all(); $cus = new customer($input); $cus->save(); 
 
+protected $fillable = []; // insert not allow
 
+protected $guarded = ['id','created_at','updated_at']; // insert not allow thoese column
+
+protected $guarded = []; // insert allow
 
 
 Many to one realtionship :
