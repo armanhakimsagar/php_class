@@ -197,7 +197,45 @@ public function setNameAttribute($value){
 
 
 
+:::::::::::::::::
 
+Set Reuse method in model :
+
+App\Address::ActiveCheck()->get();
+
+// here scope is prefix
+
+public function scopeActiveCheck($value){
+  return $query->where('active',true);
+}
+
+
+
+:::::::::::::::::
+
+Set trait in method:
+
+namespace App\Trait;
+
+trait modelTrait{
+   public function scopeActiveCheck($value){
+     return $query->where('active',true);
+   }
+}
+
+
+in model:
+
+use  App\Trait\modelTrait;
+
+class {
+  use modelTrait;
+  
+}
+
+
+
+:::::::::::::::::
 
 
 
