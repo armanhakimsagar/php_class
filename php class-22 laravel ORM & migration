@@ -178,6 +178,18 @@ protected $guarded = []; // insert allow
 
 protected $hidden = ['password']  // not show when fetch
 
+protected $dates[] = ['created_at'] 
+
+//just a way of automatically casting the dates to a 
+//carbon object when you get them from the model.
+
+protected $primaryKey = 'employer_id';
+
+// set primary key for find 
+// $employer = Employer::find(1);
+
+
+
 
 :::::::::::::::::::
 
