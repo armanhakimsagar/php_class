@@ -1,7 +1,7 @@
 Network type:
 
 LAN : room network connection for each other 
-(create Lan with server)
+(connect Lan with server, lan with router)
 
 MAN : city network connection for each other. multiple building connection.
 
@@ -20,3 +20,10 @@ protocal : rules for communication. http is protocal.
 Network design
 
 bus topology: connect all lan device in same cable
+
+ring topology: connect all lan device in same cable
+
+star  topology: connect all lan device in router
+
+mash topology : all pc connect with all pc with eithernet.
+
