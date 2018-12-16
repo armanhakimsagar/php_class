@@ -1,10 +1,22 @@
 Network type:
 
 LAN : room network connection for each other 
-(Lan with server)
+(create Lan with server)
+
 MAN : city network connection for each other. multiple building connection.
+
 WAN : wide area network. more than 30 miles called wan
 
-server : its a computer that many people can access
+server : its a computer that many people can access.
 
+work station : your computer
 
+NIC : network interface card. port in computer for internet cable connect. (eithernet)
+
+eithernet : cable connection for internet or network
+
+protocal : rules for communication. http is protocal.
+
+Network design
+
+bus topology: connect all lan device in same cable
