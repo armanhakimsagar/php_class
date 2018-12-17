@@ -30,6 +30,12 @@ mash topology : all pc connect with all pc with eithernet.
 
 modem -> router -> computer | for multiple eithernet connect modem -> switch -> computer
 
+switch : for multiply network
+
 managed switch : can configure net speed, alert 
+
+patch panel : switch to patch panel, then network board in office wall
+
+https://www.youtube.com/watch?v=gUbDd3oD598
 
 repeater : it boost wifi full house equally.
