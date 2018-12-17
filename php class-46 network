@@ -2,6 +2,7 @@ Network type:
 
 LAN : room network connection for each other 
 (connect Lan with server, lan with router)
+(network model create for work)
 
 MAN : city network connection for each other. multiple building connection.
 
@@ -27,3 +28,4 @@ star  topology: connect all lan device in router
 
 mash topology : all pc connect with all pc with eithernet.
 
+model -> router -> computer | for multiple eithernet connect modem -> switch -> computer
