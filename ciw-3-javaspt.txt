@@ -1,4 +1,6 @@
+full page screenshot :
 
+https://chrome.google.com/webstore/detail/full-page-screen-capture/fdpohaocaechififmbbbbbknoalclacl?hl=en
 
 
  document.childNode   [for see dom structure]
@@ -493,12 +495,15 @@ _____
 
 onClick='toogle()'
 
-document.getElementById('image').src = 'pic_bulbon.gif';
+document.getElementById('image').src = 'pic_bulbon.gif';
+
 
 
 upwork calculation onBlur
 
-var valuetotal = value1 - (value1*10)/100;
+var valuetotal = value1 - (value1*10)/100;
+
+
 
 
 
