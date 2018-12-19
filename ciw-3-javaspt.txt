@@ -2,6 +2,12 @@ full page screenshot :
 
 https://chrome.google.com/webstore/detail/full-page-screen-capture/fdpohaocaechififmbbbbbknoalclacl?hl=en
 
+slider :
+
+http://kenwheeler.github.io/slick/
+
+
+
 
  document.childNode   [for see dom structure]
 
