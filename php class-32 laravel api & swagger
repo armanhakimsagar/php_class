@@ -216,19 +216,11 @@ if ($validator->fails()) {
 CUSTOMIZE SINGLE API RESPONSE DATA:
 
 
-			    modelname / modelnameCollection
+			    modelname / modelname resource
 
-* php artisan make:resource Product / ProductCollection
+* php artisan make:resource User / UserResource
 
-
-Show method for single data 
-
-* use App\Http\Resources\Product\ProductResource;
-  
-* return new ProductResource($product); 
- 
- 
-Customize property of API :
+in UserResource file:
 	
 		   
 public function toArray($request){
@@ -249,23 +241,12 @@ public function toArray($request){
 
 
 
+in controller :
 
-CUSTOMIZE ALL API RESPONSE DATA:
-
-
-* php artisan make:resource crud/crudCollection
-
-* set in crudCollection:
-
-use Illuminate\Http\Resources\Json\Resource;
-
-class crudCollection extends Resource
-
-* set in method:
-
-crudCollection::collection(crud::all())
-
-
+* use App\Http\Resources\Product\ProductResource;
+  
+* return new ProductResource($product); 
+ 
 
 
 
