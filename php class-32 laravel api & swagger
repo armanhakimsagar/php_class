@@ -1,26 +1,27 @@
 API CREATE FOR USE in get method :::::::
 
-Route::get('departments', function() {
-    
-    $department = department::all();
-    if(count($department) == 0){
+Route::get('userPost', function() {
+
+    $user = user::all();
+    if(count($user) == 0){
        $feedback = [
            'status'     => "error",
            'message'    => "data not found",
            'data'       => null
-        ]; 
-       
+        ];
+
     }else{
         $feedback = [
            'status'     => "success",
            'message'    => "data found",
-           'data'       => $department
-        ]; 
+           'data'       => $user
+        ];
     }
-    
+
     return $feedback;
-    
+
 });
+
 
 
 API CREATE FOR single data in get method :::::::
@@ -40,27 +41,27 @@ INSERT API LINK FOR IN POST METHOD :::::::
 
 Post:
 
-Route::post('departments', function(Request $request) {
+Route::post('userPost', function(Request $request) {
 
-    $data = $request->all();
-    
-    return ap::create([
-        'database_coulmn_name' => $data['field_name']
-    ]);
+    $user = new User;
+    $user->data = $request->data;
+    $result = $user->save();
 
-    if(count($data) == 0){
+    if(count($result) == 0){
        $feedback = [
            'status'     => "error",
            'message'    => "insert error"
-        ]; 
+        ];
 
     }else{
         $feedback = [
            'status'     => "success",
            'message'    => "inserted successfully"
-        ]; 
+        ];
     }
-    
+
+    return $feedback;
+
 });
 
 ** must add 
