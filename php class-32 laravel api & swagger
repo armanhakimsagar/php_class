@@ -334,30 +334,72 @@ Guzzle Token Check:
 
 ************
 
-Client request for access API data:
+guzzle install:
 
-Route::get('Developerall','DeveloperController@getGuzzleRequest');
+composer require guzzlehttp/guzzle
 
 ---
 
-use GuzzleHttp\Client;
+// client side ---------------------------------------------
+// set route for get data from remote api from client side
 
-public function getGuzzleRequest(){
-	$client = new Client(['http_errors' => false]);
-	$allresponse = $client->request('GET','http://localhost/meeting_apps/public/api/departments', [
-	    'headers' => [
-		'authorization' => "after login set random token here & update token in database"
-	    ]
-	]);
-	$allbody = $allresponse->getBody();
-	$all_list = json_decode($allbody->getContents());
-	return view('view',compact('all_list'));
+Route::get('Developerall','DeveloperController@getGuzzleRequest');
 
+
+// set method & header for get data from remote api from client side
+
+  public function getGuzzleRequest(Request $request){
+
+      $client = new Client(['http_errors' => false]);
+    	$allresponse = $client->request('GET','http://localhost/test/public/api/user', [
+    	    'headers' => [
+    		      'authorization_token' => "54rwerf345t3"
+    	    ]
+    	]);
+
+      $allbody = $allresponse->getBody();
+
+    	$all_list = json_decode($allbody->getContents(),true);
+      // check response in here
+      if($all_list[0] != "authorization error"){
+    	   return view('view',compact('all_list'));
+      }else{
+        return $all_list;
+      }
+  }
+
+
+// developer side here-----------------------------------------
+
+// as a developer check api token header in public/api/user this route
+
+public function index(Request $request)
+{
+// in developer side check header request from client
+  $headers = $request->headers->all();
+  $pubapi = $request->header('authorization_token');
+
+// check header requset with database, if match send data
+  if($pubapi != ""){
+    $user =  User::all();
+    return $user;
+  }else{
+    $feedback = ['authorization error'];
+    return $feedback;
+  }
 }
-    
+
+
+// view for client --------------------------------------------
+
+<?php foreach ($all_list as $key => $value) {
+  echo $value['name'];
+} ?>
+
+
 ************
 
-Create API & Client auth check:
+* Client auth check:
 
 Use GuzzleHttp\Client;
 use Illuminate\Http\Request;
@@ -365,12 +407,8 @@ use Illuminate\Http\Request;
 Route::get('departments', function(Request $request) {
     
     $headers = $request->headers->all(); 
-    // full array
-    
+  
     $pubapi = $request->header('authorization'); 
-    // only token
-    // now check token exits in table or not
-    // if token exits then pass data.
     
     $department = Department::all();
     if(count($department) == 0){
@@ -399,6 +437,22 @@ View data :
     {{ $alldatas['name'] }}
     
 @endforeach
+
+---
+
+use GuzzleHttp\Client;
+
+public function getGuzzleRequest(){
+	$client = new Client(['http_errors' => false]);
+	$allresponse = $client->request('GET','http://localhost/meeting_apps/public/api/departments', [
+	    'headers' => [
+		'authorization' => "after login set random token here & update token in database"
+	    ]
+	]);
+	$allbody = $allresponse->getBody();
+	$all_list = json_decode($allbody->getContents());
+	return view('view',compact('all_list'));
+}
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
