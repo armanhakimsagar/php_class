@@ -213,39 +213,49 @@ if ($validator->fails()) {
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-CUSTOMIZE SINGLE API RESPONSE DATA:
+Perfect API with customize data:
 
 
-			    modelname / modelname resource
+* php artisan make:controller API/PhotoController --api
 
-* php artisan make:resource User / UserResource
+* Route::apiResource('user','API\UserController');
 
-in UserResource file:
-	
-		   
-public function toArray($request){
+* must create model , fillable & migration 
 
-	return [
+* index method or UserController for check:
+ 
+  return User::all();
+  
+  Now check : http://localhost/test/public/api/user
 
-	'name' => $this->name,
+___
 
-	'stock'	=> count($this->stock) == 0 ? 'out_of_stoke' : $this->stock,
+Now create resource for customize data:
 
-	'href'=> 
-		[	
-		  'details' => route('products.show',$this->id)
-		]
 
-	];
-}
+* php artisan make:resource User/UserResource
+
+* in controller:
+  use App\Http\Resources\User\UserResource;
+
+* in UserResource file:
+
+   public function toArray($request)
+    {
+      //dd($this);
+      
+      return[
+        'name' => $this[0]['name'] == "data" ? '0':'1',
+      ];
+    }
 
 
 
 in controller :
 
-* use App\Http\Resources\Product\ProductResource;
+* use App\Http\Resources\User\UserResource;
   
-* return new ProductResource($product); 
+* return new UserResource($User); 
  
 
 
