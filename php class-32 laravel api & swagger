@@ -262,15 +262,15 @@ in controller :
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-Question table : id title userid created_at updated_at
 	
 * Side loading | one to many relationship:
 
-  side load is load foreign key data in api.
-  like load all questions of a poll.
+Question table : id title userid created_at updated_at
+user table     : id name password created_at updated_at 
 
-* In poll model:
+side load is load foreign key data in api.like load all questions of a user.
+
+* In user model:
 
   public function questions(){
     return hasMany('App\Quesion');
@@ -287,9 +287,9 @@ Question table : id title userid created_at updated_at
   
   }
 
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
  
-
 
 Paginate API :
 
