@@ -304,17 +304,27 @@ department::paginate(10);
 
 API File show:
 
-return response->download(asset('imgae/a.png','Show name here'));
 
-see header response for file details.
+$user = User::find($id)->questionMethod;
+$response['user'] = $user;
+$response['download'] = public_path('files/'."a.png");
+return $response;
+
+
+on click link set download method:
+
+return response->download(asset('imgae/a.png','Show name here'));
 
 
 API File upload:
 
-$image = $request->file('photo')->store('image');
+$cover_image = $request->file('photo');
 
-return response()->json(['path' => $path], 200);
+$enc_cover_image = time() . '.' . $cover_image->getClientOriginalExtension();
 
+$destinationPath = public_path('files');
+
+$cover_image->move($destinationPath, $enc_cover_image);
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
