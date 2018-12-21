@@ -265,26 +265,26 @@ in controller :
 	
 * Side loading | one to many relationship:
 
-Question table : id title userid created_at updated_at
+Question table : id title user_id** created_at updated_at
 user table     : id name password created_at updated_at 
 
-side load is load foreign key data in api.like load all questions of a user.
+Select all post against single user.
+One to many relationship
 
 * In user model:
 
-  public function questions(){
-    return hasMany('App\Quesion');
+  public function fetchHasOneUser(){
+      return $this->hasOne(Post::class);
   }
 
-* In poll controller:
+* In user controller:
 
+  // fetch all post from passes user_id **
+  
   public function show($id){
-  
-    $poll = Poll::with('questions')->findOrFail($id);
-    $response['poll'] = $poll;
-    $response['questions'] = $poll->questions;
-    return response->json($response,200);
-  
+      $user = User::find($id)->fetchHasOneUser;
+      $response['user'] = $user;
+      return $response;
   }
 
 
