@@ -263,31 +263,29 @@ in controller :
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+Question table : id title userid created_at updated_at
+	
+* Side loading | one to many relationship:
 
-Side loading | one to many relationship:
+  side load is load foreign key data in api.
+  like load all questions of a poll.
 
-side load is load foreign key data in api.
-like load all questions of a poll.
+* In poll model:
 
-in poll model:
+  public function questions(){
+    return hasMany('App\Quesion');
+  }
 
-public function questions(){
-  return hasMany('App\Quesion');
-}
+* In poll controller:
 
-
-in poll controller:
-
-public function show($id){
-
-  $poll = Poll::with('questions')->findOrFail($id);
-  $response['poll'] = $poll;
-  $response['questions'] = $poll->questions;
-  return response->json($response,200);
+  public function show($id){
   
-}
-
-
+    $poll = Poll::with('questions')->findOrFail($id);
+    $response['poll'] = $poll;
+    $response['questions'] = $poll->questions;
+    return response->json($response,200);
+  
+  }
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
  
