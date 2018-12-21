@@ -288,14 +288,6 @@ One to many relationship
   }
 
 
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
- 
-
-Paginate API :
-
-department::paginate(10);
-
-
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -330,7 +322,7 @@ $cover_image->move($destinationPath, $enc_cover_image);
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
  
-Guzzle Token Check:
+Guzzle Token Check (for auth & view):
 
 ************
 
@@ -396,63 +388,6 @@ public function index(Request $request)
   echo $value['name'];
 } ?>
 
-
-************
-
-* Client auth check:
-
-Use GuzzleHttp\Client;
-use Illuminate\Http\Request;
-
-Route::get('departments', function(Request $request) {
-    
-    $headers = $request->headers->all(); 
-  
-    $pubapi = $request->header('authorization'); 
-    
-    $department = Department::all();
-    if(count($department) == 0){
-       $feedback = [
-           'status'     => "error",
-           'message'    => "data not found",
-           'data'       => null
-        ]; 
-    }else{
-        $feedback = [
-           'status'     => "success",
-           'message'    => "data found",
-           'data'       => $department
-        ]; 
-    }
-    return $department;
-});
-
-___
-
-View data :
-
-
-@foreach($alldata as $alldatas)
-
-    {{ $alldatas['name'] }}
-    
-@endforeach
-
----
-
-use GuzzleHttp\Client;
-
-public function getGuzzleRequest(){
-	$client = new Client(['http_errors' => false]);
-	$allresponse = $client->request('GET','http://localhost/meeting_apps/public/api/departments', [
-	    'headers' => [
-		'authorization' => "after login set random token here & update token in database"
-	    ]
-	]);
-	$allbody = $allresponse->getBody();
-	$all_list = json_decode($allbody->getContents());
-	return view('view',compact('all_list'));
-}
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
