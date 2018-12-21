@@ -216,9 +216,9 @@ if ($validator->fails()) {
 Perfect API with customize data:
 
 
-* php artisan make:controller API/PhotoController --api
+* php artisan make:controller API/PhotoController --api (api controller)
 
-* Route::apiResource('user','API\UserController');
+* Route::apiResource('user','API\UserController'); (api route)
 
 * must create model , fillable & migration 
 
@@ -233,7 +233,7 @@ ___
 Now create resource for customize data:
 
 
-* php artisan make:resource User/UserResource
+* php artisan make:resource User/UserResource (resource for customize data)
 
 * in controller:
   use App\Http\Resources\User\UserResource;
