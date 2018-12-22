@@ -1,1 +1,23 @@
 
+* php artisan make:auth
+
+* Laravel’s authentication facilities are made up of “guards” and “providers”.
+
+* The guard defines the logic of authentication
+
+* Providers fetch data from database
+
+* enter the custom guard details in the config/auth.php
+
+‘providers’=> [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\User::class,
+        ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
+        ],
+]
+
+* We can use this guards using Auth::guard('admin').
