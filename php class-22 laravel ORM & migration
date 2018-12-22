@@ -105,57 +105,6 @@ php artisan route:list
 
 _____________________________________
 
-
-
-One to many :
-
-in article list see user name:
-
-
-CREATE TABLE articles(
-
- id int not null PRIMARY key AUTO_INCREMENT,
- articles varchar(1000) not null,
- user_id int not null,
- created_at timestamp,
- updated_at timestamp
- 
-)
-
-
-Route:
-
-use App\Article;
-
-Route::get('/articles',function(){
-
-   $article = Article::all();
-	return view('welcome',compact('article'));
-
-});
-
-
-Model :
-
-articel.php:
-
-public function user(){
-
-  return $this->belongsTo('App\User');
-  
-}
-
-
-in view file:
-
-{{ $articel->user->name }}
-
-
-
-__________________________________
-
-
-
 MODEL ::::::::::::::::::::::::::::::
 
 :::::::::::::::::
@@ -176,7 +125,9 @@ protected $guarded = ['id','created_at','updated_at']; // insert not allow thoes
 
 protected $guarded = []; // insert allow
 
-protected $hidden = ['password']  // not show when fetch
+protected $hidden = ['password']  // not show when fetch in json
+
+-> return json_encode(User::all()); die();
 
 protected $dates[] = ['created_at'] 
 
@@ -185,11 +136,117 @@ protected $dates[] = ['created_at']
 
 protected $primaryKey = 'employer_id';
 
-// set primary key for find 
-// $employer = Employer::find(1);
+
+_____________
+
+
+HasOne  		(phone userid) | diffrence without foreach loop
+Hasmany 		(post userid)  | in foreach loop
+belongsToMany	(roles users)
+
+
+Question table 	: id title user_id** created_at updated_at
+
+user table 		: id name password created_at updated_at
+
+
+* Route:
+
+Route::get('/{id}','DeveloperController@index');
+
+
+* Model:
+
+public function UserData(){
+
+  return $this->hasMany(User::class);
+
+}
+
+
+* Method:
+
+public function index($id){
+	$data = Question::find($id)->UserData;
+	dd($data);
+}
+
+_______________
+
+many to many (usr_id & role_id in roles table):
+
+roles table 	: id role_id , user_id
+
+
+naming convention: role_user table , user_id & role_id
+
+
+Create:
+
+* user model
+* role model
+
+
+CREATE TABLE role_user(
+ id int not null PRIMARY KEY AUTO_INCREMENT,
+ user_id int not null,
+ role_id int not null,
+ created_at timestamp,
+ updated_at timestamp
+)
+
+
+user model:
+
+public function roles(){
+  $this->belongToMany('Role')
+}
+
+user controller:
+
+
+  public function index($id){
+  
+    $user = User::find($id);
+    return view('view',compact('user'));
+  
+  }
+
+in view:
+
+@foreach($users->roles as $role)
+	{{ $role->name }}
+@endforeach
+
+pass userid in url;
 
 
 
+_______________
+
+
+In method get userid::::::::::::::::::::::::::
+
+
+public function index(){
+    $data = Question::all();
+    return view('view',compact('data'));
+}
+
+In model:
+
+ public function getPosterUserName(){
+     return User::where('id',$this->user_id)->first()->name;
+}
+
+
+In view:
+
+
+
+<?php foreach ($data as $key => $value): ?>
+    {{ $value->getPosterUserName() }}
+<?php endforeach; ?>
 
 :::::::::::::::::::
 
@@ -213,12 +270,14 @@ public function setNameAttribute($value){
 
 Set Reuse method in model :
 
-App\Address::ActiveCheck()->get();
+$d = question::ActiveCheck()->get();
+
+dd($d);
 
 // here scope is prefix
 
-public function scopeActiveCheck($value){
-  return $query->where('active',true);
+public function scopeActiveCheck($query){
+     return $query->where('user_id','1');
 }
 
 
@@ -230,9 +289,10 @@ Set trait in method:
 namespace App\Trait;
 
 trait modelTrait{
-   public function scopeActiveCheck($value){
-     return $query->where('active',true);
-   }
+   
+	public function scopeActiveCheck($query){
+		 return $query->where('user_id','1');
+	}
 }
 
 
@@ -244,116 +304,3 @@ class {
   use modelTrait;
   
 }
-
-
-
-:::::::::::::::::
-
-
-
-Many to one realtionship :
-
-
-in user list see his article:
-
-In route file :
-
-Route::get('profile/{id}',function(){
-
-   $user = User::where('id',$id)->firstOrFail();
-   return view('articles',compact('user'));
-
-});
-
-
-in user.php model :
-
-public function articles(){
-
-    return $this->hasMany('App\Article');
-   
-}
-
-
-In view file :
-
-{{ $user->name }}
-
-@foreach($user->articles as $article)
- 
-  {{ $article->articles }}
-
-@endforeach
-
-
-_____________________________________
-
-
-One to one realtionship:
-
-in user profile see his address:
-Here country name varchar.
-
-CREATE TABLE addresses(
- id int not null PRIMARY key AUTO_INCREMENT,
- userid int not null,
- country varchar(1000) not null,
- created_at timestamp,
- updated_at timestamp
-)
-
-
-in user.php :
-
-public function address(){
-
-   return $this->hasOne('App\Address');
-   
-}
-
-
-In route file :
-
-Route::get('profile/{id}',function(){
-
-   $user = User::where('id',$id)->firstOrFail();
-   return view('user_profile',compact('user'));
-
-});
-
-
-In view file :
-
-{{ $user->address->country }}
-
-
-_________________________
-
-Many to many realtionship :
-
-In user.php
-
-
-public function roles(){
-
-  return $this->belongsToMany('App\Roles');
-}
-
-
-In route file :
-
-Route::get('profile/{id}',function(){
-
-   $user = User::where('id',$id)->firstOrFail();
-   return view('user_profile',compact('user'));
-
-});
-
-
-In view file :
-
-@foreach($user->role as $roles)
-  
-  {{ $roles->name }}
-  
-@endforach
