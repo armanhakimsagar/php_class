@@ -344,8 +344,9 @@ Route::get('Developerall','DeveloperController@getGuzzleRequest');
 
       $client = new Client(['http_errors' => false]);
     	$allresponse = $client->request('GET','http://localhost/test/public/api/user', [
-    	    'headers' => [
-    		      'authorization_token' => "54rwerf345t3"
+    	    // here Authorization fixed, check postman by bearer token
+	    'headers' => [
+    		'Authorization' => "Bearer 54rwerf345t3"
     	    ]
     	]);
 
