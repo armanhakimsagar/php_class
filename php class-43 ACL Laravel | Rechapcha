@@ -1,0 +1,66 @@
+**
+add user_type column in users table
+$table->string('user_type',50)->default('user')
+
+**
+in provider->AuthServiceProvider.php
+
+public function boot(GateContract $gate)
+    {
+        parent::registerPolicies($gate);
+
+        $gate->define('update-contact', function ($user, $contact) {
+            return $user->id === $contact->user_id;
+        });
+    }
+    
+    
+**
+Check in button:
+
+@can('edit-contact', $contact)
+    <a href="{{ route('contacts.edit', [$contact->id]) }}">Edit This Contact</a>
+@endcan
+
+
+**
+in controller set for deny:
+
+if (Gate::denies('update', $contact)) {
+    abort(403);
+}
+
+
+
+___________________________________________
+
+Rechapcha
+
+https://github.com/albertcht/invisible-recaptcha
+
+install : 
+
+composer require albertcht/invisible-recaptcha
+
+app/config/app.php
+
+AlbertCht\InvisibleReCaptcha\InvisibleReCaptchaServiceProvider::class,
+
+.env (set this in bottom)
+
+// required
+INVISIBLE_RECAPTCHA_SITEKEY={siteKey}
+INVISIBLE_RECAPTCHA_SECRETKEY={secretKey}
+
+// optional
+INVISIBLE_RECAPTCHA_BADGEHIDE=false
+INVISIBLE_RECAPTCHA_DATABADGE='bottomright'
+INVISIBLE_RECAPTCHA_TIMEOUT=5
+INVISIBLE_RECAPTCHA_DEBUG=false
+
+crete invisible rechapcha :
+
+https://www.google.com/recaptcha/admin#list
+
+after generate Site key , set Site key | Secret key in .env file
+
