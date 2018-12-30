@@ -403,5 +403,6 @@ public function index(Request $request)
  
  Create API Here  -http://editor.swagger.io/
 
+demo yml : https://gist.github.com/armanhakimsagar/3c733fea95cfa3f68903a12cbfe7d7dc
 Then just export -> generate client -> html2 
 
