@@ -81,4 +81,53 @@ Upload laravel in sub folder:
 * backstep config.php , htaccess & index.php file in 
 
 * update php version
-*
+
+
+
+_______________________
+
+AWS SETTINGS :
+
+
+* Dashboard -> Security & access -> Identity & Access Management -> users -> Create users -> get security access token. (its for upload access against this user)
+
+* After create users set attach policy amazons3fullaccess. (its for allow o upload any type file in this folder)
+
+* Now user ready for upload anything.
+
+* Now go to s3 & create bucket in s3. (bucket is a folder in stroage)
+
+* after create bucket direct you can upload there.
+ 
+   
+Lravel Settings :
+
+add must this code in config/filesystem.php :
+ 
+  's3' => [
+        'driver' => 's3',
+        'key' => env('AWS_ACCESS_KEY_ID'),
+        'secret' => env('AWS_SECRET_ACCESS_KEY'),
+        'region' => env('AWS_DEFAULT_REGION'),
+        'bucket' => env('AWS_BUCKET'),
+    ],
+  
+  
+  set value of .env file 
+  
+  S3_KEY = "",
+  S3_SECRET = "",
+  S3_REGIONS = "",
+  S3_BUCKET = "",
+  
+  
+  
+ * need to install this package : league/flysystem-aws-s3-v3 ~1.0
+ 
+ * use Illuminate\Support\Facades\Storage;
+
+   //upload
+   Storage::put('avatars/1', $fileContents);
+   //download
+   $contents = Storage::get('file.jpg');
+   
