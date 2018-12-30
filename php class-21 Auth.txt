@@ -72,6 +72,42 @@ any view under homecontroller will be auth
 any view under homecontroller will be auth
 
 
+__________________________
+
+
+Check login or not:
+
+if (Auth::check())
+{
+
+}
+
+_____
+
+Get id:
+
+Auth::user()->id;
+
+____
+
+Make hash:
+
+\Hash::make($request['password']);
+
+Try to login:
+
+$credentials = [
+   'username' => session('username'),
+   'password' => session('password'),
+];
+
+// Attempt to login the user
+
+if (Auth::attempt($credentials)) {
+   return redirect()->route('dashboard');
+}
+    
+____
 
 
 -> RECOVERY PASSWORD :
