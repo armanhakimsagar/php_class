@@ -289,3 +289,39 @@ function volume() {
 
 
 
+________________________________
+
+
+JSON:
+
+JSON is a syntax for storing and exchanging data.
+
+
+
+** Stringify(become string)
+** parse (become object)
+
+	Use the JavaScript function JSON.stringify() to convert object or array into a string.
+	It basically use to setitem in browser.
+	When sending data to a web server, the data has to be a string.
+	For use any strigify data parse it.
+	When receiving data from a web server, the data is always a string.
+	Parse the data with JSON.parse(), and the data becomes a JavaScript object.
+
+	// Storing data:
+	myObj = {name: "John", age: 31, city: "New York"};
+	myJSON = JSON.stringify(myObj);
+	localStorage.setItem("testJSON", myJSON);
+
+	// Retrieving data:
+	text = localStorage.getItem("testJSON");
+	obj = JSON.parse(text);
+	document.getElementById("demo").innerHTML = obj.name;
+
+
+** json_encode (PHP object to json):
+
+	Objects in PHP can be converted into JSON by using the PHP function json_encode():
+
+** json_decode (json to PHP object)
+
