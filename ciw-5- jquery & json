@@ -325,3 +325,59 @@ JSON is a syntax for storing and exchanging data.
 
 ** json_decode (json to PHP object)
 
+** getJSON (Get JSON data using an AJAX request)
+  
+   $.getJSON("demo_ajax_json.js", function(result){
+      $.each(result, function(i, field){
+        $("div").append(field + " ");
+      });
+    });
+
+**  load txt file on ajax:
+
+    $("#div1").load("demo_test.txt");
+
+**
+$.post()
+
+The $.post() method requests data from the server using an HTTP POST request.
+
+**
+$.get()
+
+The $.get() method requests data from the server with an HTTP GET request.
+** 
+    text() - Sets or returns the text content of selected elements
+    html() - Sets or returns the content of selected elements (including HTML markup)
+    val() - Sets or returns the value of form fields
+
+**
+serialize()
+
+Serialize form value data in string.
+
+**
+serializeArray()
+
+Serialize form value data in to array.
+
+**
+
+AJAX
+
+contentType:  sending data to the server
+
+data       :  Specifies data to be sent to the server
+
+dataType   :  The data type expected of the server response.
+
+type       :  Specifies the type of request. (GET or POST)
+
+url        :  Specifies the URL to send the request to. Default is the current page
+
+dataType   :  The data type expected of the server response.
+
+async      :  A Boolean value indicating whether the request should be handled asynchronous or not. Default is true
+
+cache      :  A Boolean value indicating whether the browser should cache the requested pages. Default is true
+
