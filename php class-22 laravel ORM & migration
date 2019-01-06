@@ -140,26 +140,26 @@ protected $primaryKey = 'employer_id';
 _____________
 
 
-HasOne  		(phone userid) | diffrence without foreach loop
+HasOne  		(answer userid) | diffrence without foreach loop
 Hasmany 		(post userid)  | in foreach loop
-belongsToMany	(roles users)
+belongsToMany		(roles users)
+
+_____________
 
 
-Question table 	: id title user_id** created_at updated_at
+answers table 	: id number user_id** created_at updated_at
 
-user table 		: id name password created_at updated_at
-
+user table      : id name password created_at updated_at
 
 * Route:
 
-Route::get('/{id}','DeveloperController@index');
+    Route::get('/{id}','DeveloperController@index');
 
+* In user model:
 
-* Model:
+public function AnswerOfUser(){
 
-public function UserData(){
-
-  return $this->hasMany(User::class);
+  return $this->hasMany(answers::class);
 
 }
 
@@ -167,13 +167,64 @@ public function UserData(){
 * Method:
 
 public function index($id){
-	$data = Question::find($id)->UserData;
-	dd($data);
+
+   $data = User::find($id);
+
 }
+
+
+** View file:
+
+$data->posts->title;
+
+
+
 
 _______________
 
-many to many (usr_id & role_id in roles table):
+
+post table 	: id title user_id** created_at updated_at
+
+user table      : id name password created_at updated_at
+
+* Route:
+
+    Route::get('/{id}','DeveloperController@index');
+
+* In user model:
+
+public function PostOfUser(){
+
+  return $this->hasMany(Post::class);
+
+}
+
+
+* Method:
+
+public function index($id){
+
+   $data = User::find($id);
+
+}
+
+
+** View file:
+
+foreach($data->PostOfUser as $datas){
+
+   echo $datas->title;
+
+};
+
+
+
+
+_______________
+
+
+
+many to many    (user_id & role_id in roles table):
 
 roles table 	: id role_id , user_id
 
@@ -218,15 +269,13 @@ in view:
 	{{ $role->name }}
 @endforeach
 
-pass userid in url;
-
 
 
 _______________
 
 
 In method get userid::::::::::::::::::::::::::
-
+(see username beside question title)
 
 public function index(){
     $data = Question::all();
@@ -270,15 +319,20 @@ public function setNameAttribute($value){
 
 Set Reuse method in model :
 
-$d = question::ActiveCheck()->get();
+** Check user active or not,
 
-dd($d);
+** in user method:
 
 // here scope is prefix
 
 public function scopeActiveCheck($query){
-     return $query->where('user_id','1');
+  return $query->where('status','1');
 }
+
+** in controller:
+
+User::ActiveCheck()->get();
+
 
 
 
