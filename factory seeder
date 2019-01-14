@@ -1,0 +1,14 @@
+composer require fzaninotto/faker --dev
+
+php artisan make:factory PostFactory --model=post
+
+now set 'name'=>$faker->name in return
+
+seeds -> database seeder file set:
+
+factory('App/Post',10)->create();
+
+run:
+
+php artisan db:seed
+
