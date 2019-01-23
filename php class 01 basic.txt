@@ -92,13 +92,15 @@ Assignment Operators
 
 
 
-	$a = 2;
-	$b = 1;
-	$c = 3;
+$a = 2;
+$b = 11;
+$c = 3;
 	
-	echo $c %= $b += $a;
-	
-	ans 0
+echo $b %= $c += $a;
+
+// 3 + 2 = 5 | 11/5 = 1
+
+
 
 
 ** start from right
