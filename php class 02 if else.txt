@@ -66,6 +66,15 @@ echo 'This is not a boolean.';
 
 
 
+
+if (is_string("2663"))
+echo "It is a string\n";
+else
+echo 'It is not a string';
+
+
+
+
 var_dump((bool) 1);         // bool(true)
 
 
