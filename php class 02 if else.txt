@@ -1,4 +1,83 @@
 
+
+
+
+DATA TYPE :
+
+
+String
+
+$x = "5985";
+var_dump($x);
+
+
+Integer
+
+$x = 5985;
+var_dump($x);
+
+
+Float
+
+$x = 10.365;
+var_dump($x);
+
+
+Boolean
+
+$a = true;
+var_dump($a);
+
+
+
+NULL
+
+$x = null;
+var_dump($x);
+
+
+
+
+
+Datatype :
+
+
+echo gettype($a)	// return only datatype
+
+
+if(is_int($v3)){
+
+	echo "ok";		// is_int check is it interger
+
+}
+
+
+
+var_dump((bool) 1);         // bool(true)
+
+
+var_dump((bool) "");        // bool(false)
+
+
+var_dump((bool) 0);        	// bool(false)
+
+
+var_dump(0 == (bool)'0'); 	// false
+
+
+var_dump(25/7);         	// float(3.5714285714286)
+
+
+var_dump((int) (25/7)); 	// int(3)
+
+
+
+_________________
+
+
+
+
+
 if with Comparison Operators :
 
 
@@ -112,6 +191,19 @@ var_dump(++$a); //bool(true)
 	
 
 
+
+$v3 = "a";
+
+$v3 .= ' b';
+
+echo $v3;
+
+
+$v3 += 'c';
+
+echo $v3;	// 0
+
+
 _______________
 
 
@@ -136,19 +228,6 @@ $x[1] = &$array1[1];
 var_dump($x[1]);		// null
 
 var_dump($x);
-
-
-
-$v3 = "a";
-
-$v3 .= ' b';
-
-echo $v3;
-
-
-$v3 += 'c';
-
-echo $v3;	// 0
 
 
 
@@ -182,86 +261,3 @@ Constant (Constants are like variables):
 define("GREETING", "hello");
 
 echo GREETING;
-
-
-_______________________________________
-
-
-
-
-DATA TYPE :
-
-
-String
-
-$x = "5985";
-var_dump($x);
-
-
-Integer
-
-$x = 5985;
-var_dump($x);
-
-
-Float
-
-$x = 10.365;
-var_dump($x);
-
-
-Boolean
-
-$a = true;
-var_dump($a);
-
-
-
-NULL
-
-$x = null;
-var_dump($x);
-
-
-
-
-
-Datatype :
-
-
-echo gettype($a)	// return only datatype
-
-
-if(is_int($v3)){
-
-	echo "ok";		// is_int check is it interger
-
-}
-
-
-
-var_dump((bool) 1);         // bool(true)
-
-
-var_dump((bool) "");        // bool(false)
-
-
-var_dump((bool) 0);        	// bool(false)
-
-
-var_dump(0 == (bool)'0'); 	// false
-
-
-var_dump(25/7);         	// float(3.5714285714286)
-
-
-var_dump((int) (25/7)); 	// int(3)
-
-
-echo sprintf( "+%d hello -%d", 36,10 );   
-
-// +36 hello -10 
-
-
-%s -> for string allow 
-
