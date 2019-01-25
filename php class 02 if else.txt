@@ -22,6 +22,9 @@ Float
 $x = 10.365;
 var_dump($x);
 
+there no differnce between double & flaot.
+http://php.net/manual/en/language.types.float.php
+
 
 Boolean
 
@@ -52,6 +55,16 @@ if(is_int($v3)){
 }
 
 
+$var_name = false;
+if (is_bool($var_name))
+
+echo 'This is a boolean.';
+
+else
+
+echo 'This is not a boolean.';
+
+
 
 var_dump((bool) 1);         // bool(true)
 
@@ -69,6 +82,7 @@ var_dump(25/7);         	// float(3.5714285714286)
 
 
 var_dump((int) (25/7)); 	// int(3)
+
 
 
 
