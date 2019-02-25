@@ -46,11 +46,10 @@ Exersize : 2 	(EXTENDS & encapsulation)
 encapsulation public private protected 
 
 
-* public -> full page, 
-
-*** can access after make object 
-  (main difference between private & protected)
-
+* public  -> full page, 
+* we can not access private or protected by create object
+* protected method value can access by extends public.
+* private method value can not access by extedns
 
 class data1{
 
