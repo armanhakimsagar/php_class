@@ -48,8 +48,9 @@ encapsulation public private protected
 
 * public  -> full page, 
 * we can not access private or protected by create object
-* protected method value can access by extends public.
-* private method value can not access by extedns
+* protected method value can access by extends public both own class & extends
+* private method value can not access by own class
+
 
 class data1{
 
@@ -91,13 +92,7 @@ class data1{
 	
 }
 
-class data2 extends data1{
-
-
-	
-}
-
-class data3 extends data2{
+class data2 extends data2{
 	
 	public function data2method(){
 		echo $data2var = $this->property1;
