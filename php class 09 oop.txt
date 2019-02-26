@@ -147,30 +147,46 @@ EXERSIZE : 3 	TRAIT
 *. extends by use traitname in any class
 
 
-	 trait newtrait{
+<?php
+trait userActive{
 	
-		public function xx(){
-			echo "hello from trait ";
-		}
-		 
-	 }
-	
-	
-	class def{
-	 
-	 use newtrait;
-	 
-	 public function check(){
-	 
-		echo $this->data1;
-
+	public function activeCheck($id){
+		
+		$people = array("33", "Joe", "Glenn", "Cleveland");
+		if(in_array($id,$people)){
+			echo "active";
+		}else{
+			echo "not active";
 		}
 	}
+	 
+ }
 
-	
-	$instance = new def;
-	
-	$instance->xx();
+
+class MainClass{
+ 
+	use userActive;
+ 
+	public function connection(){
+ 
+		echo "connected";
+
+	}
+	public function UserId(){
+		return "33";
+	}
+}
+
+
+$instance = new MainClass;
+$id = $instance->UserId();
+
+$instance->activeCheck($id);
+
+?>
+
+
+ 
 	
 	
 _____________________________________
@@ -184,21 +200,28 @@ EXERSIZE : 4 	namespace
 * namespace must on top. access like
 
 
-namespace sec1{
-	
-	class cl{
-	
-		public $data = "hello";
-		
-	}
-	
-	use sec1\cl as new_cl;
+<?php
+namespace MyProject;
 
-	$object = new new_cl;
-	
-	echo $object->data;
-
+function output() {
+    # Output HTML page
+    echo 'HTML!';
 }
+
+
+\RSSLibrary\output();
+
+namespace RSSLibrary;
+
+function output(){
+    # Output RSS feed
+    echo 'RSS!';
+}
+
+
+\MyProject\output();
+
+?>
 
 
 
@@ -486,6 +509,7 @@ just need return $this from fisrt method.
 *. auto load class :
 ___________________
 
+<?php
 
 function __autoload($classname){
 
@@ -496,6 +520,14 @@ function __autoload($classname){
 $car = new car;
 
 $car->lambhorghini();
+
+
+$car = new b;
+
+$car->lambhorghini();
+
+?>
+
 
 
 
@@ -601,6 +633,8 @@ _______________________________________
    
    
 
+<?php
+
  abstract class abst{
  
 	public abstract function a();
@@ -615,6 +649,14 @@ _______________________________________
 	 }
 	 
  }
+ 
+$newabs = new newabs;
+$newabs->a();
+
+?>
+
+
+ 
  
 
 ________________________________________________
