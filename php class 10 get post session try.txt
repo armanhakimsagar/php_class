@@ -131,26 +131,36 @@ ______________________________________
 
 
 
-	function check($a){
-	
-		if($a==20){
-			throw new exception;
-		}
-	}
+<?php
 
-	try{
-		
-		$a = 10;
-		
-		check($a);
-		
-		echo "not ok";
-		
-	}catch(Exception $e){
-		
-		echo "not ok";
-		
+function check($username){
+	if($username == "arman"){
+		throw new exception;
 	}
+}
+
+$username = array(
+		array(
+			'username' => 'arman'
+		),
+		array(
+			'username' => 'hakim'
+		)
+	);
+
+try{
+	foreach($username as $u){
+		check($u['username']);
+	}
+	echo "not matched";
+	
+}catch(exception $e){
+	
+	echo "matched";
+
+}
+
+?>
 
  
 __________
