@@ -1,0 +1,3035 @@
+Doctyper
+
+
+Character encoding
+
+
+meta utf-8
+
+
+Unicode use for convert text to number
+
+
+Utf 8 ( for 8 bit 1 bite)
+
+
+ASCII vs unicode
+
+
+vs ANSI (window 256) vs 
+
+
+8859 ( html4 256)
+
+Empty & container tag concept
+
+ul li
+
+Title
+
+H
+
+em & i
+
+Strong vs b
+
+hr 
+
+Q
+
+kbd code samp
+
+(keyboard , var , output like date)
+
+p pre span  div
+
+del s
+
+sup sub
+
+br
+
+xmp
+
+mark
+
+ins (insert text) 
+
+u
+
+time
+
+png & jpeg
+
+details summary p
+
+ruster vector
+
+Indentation
+
+Important of index
+
+File & folder name
+
+HTTP vs HTTPS
+
+Method-prefix-domain-urn-uri-url
+
+
+
+
+________________________
+
+
+class 4
+
+font
+
+color
+
+link 
+
+image
+
+iframe youbute
+
+<meta property="og:title" content="Prothom Alo" />
+
+<meta property="og:site_name" content="প্রথম আলো" />
+
+<meta property="og:description" content="Education, National, World" />
+
+<meta property="og:type" content="website" />
+
+<meta name="twitter:site" content="@prothomalo" />
+
+<meta name="twitter:creator" content="@prothomalo" />
+
+<meta name="twitter:url" content="https://www.prothomalo.com/" />
+
+<meta name="twitter:title" content="Prothom Alo | Sports photo video live" />
+
+<meta name="twitter:description" content="Online Latest" />
+
+<meta name="twitter:image" content="palo-logo.jpg" />		
+
+
+
+
+a href=#aa
+
+
+a id = aa (destination)
+
+
+(practice with 8 link internal)
+
+
+meta name & content
+
+
+Pics-level : safesurf
+
+
+Meta http-equiv refresh
+
+
+meta name= 'news_keywords'
+
+
+meta name='robots' content='index, follow'
+
+
+meta name='cononical' href='php.net/index.php'
+
+
+Expire : never
+
+
+**og-open graph(property & content)
+
+
+og:title og:type website
+
+og:image og:url 
+
+og:description 
+
+og:image:height  content='200'
+
+
+
+**twitter (name & content)
+
+twitter:title | description | image | url
+
+
+
+________________________
+
+
+class 5
+
+
+table
+
+colspan
+
+website create
+
+form
+
+Color
+
+Date
+
+Datetime-local
+
+Email
+
+Month
+
+Number
+
+Range
+
+Search
+
+Time
+
+URL
+
+Week
+
+Create form like facebook
+
+select optgroup label
+
+textarea rows cols
+
+<canvas id="myCanvas" width="200" height="100"></canvas>
+
+
+<canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;"></canvas>
+
+<script>
+
+	var c = document.getElementById("myCanvas");
+	
+	var ctx = c.getContext("2d");
+	
+	ctx.moveTo(10,0);
+	
+	ctx.lineTo(200,100);
+	
+	ctx.stroke();
+	
+</script>
+
+
+________________________
+
+
+
+Class 6
+
+
+Field set legend 
+
+
+Required
+
+
+Autofocus
+
+
+Checked
+
+
+Use name id in form
+
+
+Input style width
+
+
+autocomplete = 'off' for delete hints
+
+
+Multiple
+
+
+Onclick vs onfocus [click work even fillup]
+
+
+Readonly vs disable
+
+
+Pattern='[a-z]{1,5}'  (condition & length)
+
+
+Number step=3
+
+
+meter value=2 max min
+
+
+Maxlenght="20" input type text
+
+
+Input type URL - URL Unicode
+
+
+spellcheck='true'
+
+
+
+<audio controls>
+
+
+  <source src='' type='audio/mpeg'>
+
+
+</audio>
+
+
+
+<video controls  autoplay poster=a.png>
+
+
+  <source src='' type='video/mp4'>
+
+
+</video>
+
+<a href="https://www.bigbuckbunny.org/" target="_blank">Big Buck Bunny</a>.
+
+
+
+
+________________________
+
+
+
+class 7:
+
+
+
+Internal
+
+External
+
+Inline
+
+Class(naming)
+
+Id
+
+Selector
+
+Property
+
+Value
+
+Link
+
+
+
+BG image
+
+Background-size: 100% 400px (for fit)
+
+
+border-width
+
+border-style (required)
+
+border-color
+
+border-bottom
+
+
+
+border: 10px solid transparent;
+
+border-image: url(border.png)  
+  
+             30 round|stretch;
+
+
+
+			 
+Margin (4 value) clockwise
+
+Padding
+
+Float
+
+
+(Practice 5 div toggle)
+
+(Make table with css)
+
+table
+
+
+________________________
+
+
+class 8
+
+
+css property :
+
+
+color
+
+text-align
+
+Overflow : hidden
+
+text-transform: capitalize;
+
+text-indent: 50px;
+
+letter-spacing: 3px;
+
+line-height: 1.8;
+
+word-spacing: 10px;
+
+text-shadow: 3px 2px red;
+
+font-family:
+
+google font library
+
+font-size: 40px;
+
+font-weight: bold;
+
+--z-index 
+
+
+create a simple layout
+
+
+
+________________________
+
+
+class 9:
+
+menu
+____
+
+
+
+-ul : margin 0 , padding 0
+
+-ul li : position relative , float
+
+-Ul li a : display block , line height ,
+
+
+
+
+radius
+
+hover
+
+active
+
+
+
+dropdownmenu
+____________
+
+
+-li position relative+ float +list style
+
+
+-Ul li a display block
+
+
+-Ul li ul : visibility hidden position absulate 
+
+-ul li:a hover : visibility visible
+
+
+
+make 3-4 box no float to position,
+
+then last box give position .
+
+change the position & top position for see differnce.
+
+
+Position : relative (take position last ansenter)
+
+Position : absulate (take position top left ansenter)
+
+
+
+
+________________________
+
+
+class 10:
+
+
+template edit
+Bootstrap
+
+
+________________________
+
+class 11:
+
+
+Primitive Data:
+
+    string
+    number
+    boolean
+    undefined
+
+Complex Data:
+
+	
+    function
+    object
+
+var x;           // Now x is undefined
+ 
+x = 5;           // Now x is a Number
+
+x = "John";      // Now x is a String 
+
+var length = 16;                               // Number
+
+var x = {firstName:"John", lastName:"Doe"};    // Object
+
+var answer1 = "It's alright";             // Single quote inside double quotes
+ 
+var answer2 = "He is called 'Johnny'";    // Single quotes inside double quotes
+
+var answer3 = 'He is called "Johnny"';    // Double quotes inside single quotes 
+
+var x = true;
+
+var cars = ["Saab", "Volvo", "BMW"];
+
+
+For get datatype 
+
+typeof ""             // Returns "string"
+
+typeof "John"         // Returns "string"
+
+typeof undefined           // undefined
+
+typeof null                // object
+
+typeof (3 + 4)        // Returns "number" 
+
+typeof {name:'John', age:34} // Returns "object"
+
+typeof [1,2,3,4]             // Returns "object" (not "array", see note below)
+
+typeof null                  // Returns "object"
+
+typeof function myFunc(){}   // Returns "function"
+
+
+
+
+
+Writing into an HTML element, using innerHTML.
+
+Writing into the HTML output using document.write().
+
+Writing into an alert box, using window.alert().
+
+Writing into the browser console, using console.log().
+
+
+
+<p id="demo">JavaScript can change HTML content.</p>
+
+<button type="button" onclick='document.getElementById("demo").innerHTML = 
+
+"Hello JavaScript!"'>Click Me!</button>
+
+
+<script>
+
+	document.write(5 + 6);
+	
+</script>
+
+<script>
+	window.alert(5 + 6);
+</script>
+
+
+<script>
+	console.log(5 + 6);
+</script>
+
+
+Property Value
+
+<p id="demo"></p>
+
+<script>
+
+var weather = [
+      
+      {
+
+        a : 'a',
+        b : 'b'
+
+      },
+      
+      {
+
+        c : 'c',
+        d : 'd'
+
+      }
+
+  ];
+
+
+
+document.write(weather[0].a);
+
+</script>
+
+
+
+________________________
+
+
+
+class 12:
+
+
+
+
+Public, Private, and Protected Scope in JavaScript
+
+
+public class MyClass {
+
+  final int x = 10;
+  final double PI = 3.14;
+
+  public static void main(String[] args) {
+
+    MyClass myObj = new MyClass();
+    myObj.x = 50; 
+    System.out.println(myObj.x);
+
+  }
+
+}
+
+
+
+fuction :
+_______
+
+
+
+
+function abc(data){
+
+  return data;  
+
+}
+
+abc();
+
+
+abc(1);
+
+
+
+// function expression
+
+
+
+var func = function abc(){
+
+   document.write("ok");	
+ 
+}
+
+
+
+// annominious function
+
+
+	
+var func = function(){
+	
+   document.write("ok");	
+
+}
+
+func();
+	
+
+// invoke function (fast) use in jquery
+
+
+(function(){
+
+   document.write("ok");
+
+})
+
+();
+
+
+
+// callback function is passing other 
+   
+// function in parameter
+
+
+
+
+function abc(){
+		
+   document.write("ok");	
+	
+}
+	
+function xyz(callback){
+		
+    callback();
+	
+}
+	
+
+xyz(abc);
+
+
+
+
+Event Based Action Handling:
+
+
+<button onclick="document.getElementById('demo').innerHTML=Date()">The time is?</button>
+
+<p id="demo"></p>
+
+
+
+<button onclick="this.innerHTML=Date()">The time is?</button>
+
+
+
+
+<button onclick="displayDate()">The time is?</button>
+
+<script>
+	function displayDate() {
+	  document.getElementById("demo").innerHTML = Date();
+	}
+</script>
+
+<p id="demo"></p>
+
+
+onchange 		An HTML element has been changed
+
+onclick 		The user clicks an HTML element
+
+onmouseover 	The user moves the mouse over an HTML element
+
+onmouseout 		The user moves the mouse away from an HTML element
+
+onkeydown 		The user pushes a keyboard key
+
+onload 			The browser has finished loading the page
+
+
+
+strings functions javascript :
+
+
+var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var sln = txt.length; 
+
+
+var str = "Please locate where 'locate' occurs!";
+var pos = str.indexOf("locate");
+
+
+var str = "Please locate where 'locate' occurs!";
+var pos = str.lastIndexOf("locate");
+
+
+var str = "Please locate where 'locate' occurs!";
+var pos = str.indexOf("locate", 15);
+
+
+var str = "Please locate where 'locate' occurs!";
+var pos = str.search("locate");
+
+
+var str = "Apple, Banana, Kiwi";
+var res = str.slice(7, 13);
+
+
+var text1 = "Hello World!";   
+var text2 = text1.toUpperCase();  
+
+
+var text1 = "Hello World!";  
+var text2 = text1.toLowerCase();
+
+
+var text = "Hello" + " " + "World!";
+var text = "Hello".concat(" ", "World!"); 
+
+
+var str = "       Hello World!        ";
+alert(str.trim());
+
+
+var str = "HELLO WORLD";
+str[0];                   // returns H 
+
+
+<p id="demo"></p>
+
+<script>
+
+	var str = "Hello";
+	var arr = str.split("");
+	var text = "";
+	var i;
+	for (i = 0; i < arr.length; i++) {
+	  text += arr[i] + "<br>"
+	}
+	document.getElementById("demo").innerHTML = text;
+
+</script>
+
+Math operator:
+
+Math.PI;            // returns 3.141592653589793 
+
+Math.round(4.7);    // returns 5
+
+Math.round(4.4);    // returns 4 
+
+Math.pow(8, 2);      // returns 64 
+
+Math.sqrt(64);      // returns 8
+
+Math.ceil(4.4);     // returns 5 
+
+Math.min(0, 150, 30, 20, -8, -200);  // returns -200
+
+Math.max(0, 150, 30, 20, -8, -200);  // returns 150
+
+Math.random();     // returns a random number
+
+Arithmetic
+
+
+var d = new Date();
+
+document.getElementById("demo").innerHTML = d.getTime();
+
+
+var d = new Date();
+
+document.getElementById("demo").innerHTML = d.getFullYear();
+
+
+var d = new Date();
+
+document.getElementById("demo").innerHTML = d.getMonth();
+
+d.getDate(); d.getHours();  d.getMinutes();  d.getMilliseconds();
+
+
+
+
+
+
+
+function  validation(){
+
+  var fn = document.getElementById("fn").value;
+
+  var ln = document.getElementById("ln").value;
+
+  var data = document.getElementById("p1").value;
+
+  var checkbox1 = document.getElementById("checkbox1").checked;
+
+  var checkbox2 = document.getElementById("checkbox2").checked;
+
+  var select_box = document.getElementById("select_box").selectedIndex;
+ 
+  var error = 0;
+  
+  
+  document.getElementById("efn").innerHTML = '';
+
+
+  if(fn==""){
+
+    error = error+1;
+
+  }
+  
+  if(password.length < 7){
+	
+	error = error+1;
+	
+  }
+
+  if(!email.match(/@/)){
+			
+	error = error+1;
+
+  }
+		
+  if(checkbox1==false && checkbox2==false){
+
+    error = error+1;
+	
+	document.getElementById("efname").innerHTML = '**first name required';
+	
+	document.getElementById("fn").className = "red";
+
+			
+  }
+  
+  if(select_box==0){
+
+    error = error+1;
+  }
+
+  if(error==0){
+
+    return true;
+  }
+
+  else{
+
+    return false;
+  }
+
+}
+
+
+
+
+
+
+<form action="a.html" onSubmit="return validation()">
+
+  <input type="text" id="fn" />
+  
+  <input type="text" id="ln" />
+  
+  <input type="text" id="p1">
+
+  <span id="eemail_number"></span>
+  
+  Male : <input type="radio" id="checkbox1" name="checkbox" />
+  
+  Female : <input type="radio" id="checkbox2" name="checkbox" />
+  
+  <select id="select_box">
+  
+    <option value="0">Select a option</option>
+  
+    <option value="1">1</option>
+  
+  </select>
+  
+  <input type="submit" value="submit" />
+
+</form>
+
+
+
+
+
+
+________________________
+
+Class 13:
+
+
+var cars = ["Saab", "Volvo", "BMW"];
+
+var cars = new Array("Saab", "Volvo", "BMW");
+
+var name = cars[0];
+
+document.getElementById("demo").innerHTML = cars;
+
+
+var data = ["a","v","d"];
+
+
+a.sort();
+
+
+a.reverse(); [laste bring first]
+
+
+a.pop();         [remove last index]
+
+
+a.shift();       [remove first index]
+
+
+a.unshift("cc"); [add index first]
+
+
+a.push("cc");    [add index]
+
+
+a.splice(1,1);   [firstcut point,how many will cut]
+
+
+var a = [ ['a','b'],['11','22'] ];
+
+
+document.write(a[0][1]);
+
+
+
+<p id="demo"></p>
+
+<script>
+
+function myFunction() {
+  document.getElementById("demo").innerHTML = Boolean(10 > 9);
+}
+
+</script>
+
+
+
+for (i = 0; i < 5; i++) {
+  text += "The number is " + i + "<br>";
+}
+
+
+var i;
+for (i = 0; i < cars.length; i++) {
+  text += cars[i] + "<br>";
+} 
+
+
+while (i < 10) {
+  text += "The number is " + i;
+  i++;
+}
+
+
+do {
+  text += "The number is " + i;
+  i++;
+}
+while (i < 10); 
+
+
+regular expression js
+
+JavaScript Errors - Throw and Try to Catch:
+
+
+function check(a){
+
+  if(a==10){
+
+    throw new exception;
+  
+  }
+
+}
+
+try{
+  
+  var a =10;
+
+  check(a);
+
+  document.write("not ok");
+
+}catch(e){
+
+  document.write("ok");
+
+}
+
+
+________________________
+
+Class 14
+
+
+<script>
+	$(document).ready(function(){
+	  $("p").click(function(){
+		$(this).hide();
+	  });
+	});
+</script>
+
+
+<p>If you click on me, I will disappear.</p>
+<p>Click me away!</p>
+<p>Click me too!</p>
+
+
+
+$(document).ready(function(){
+  $("button").click(function(){
+    $("p").hide();
+  });
+});
+
+
+$("#hide").click(function(){
+  $("p").hide();
+});
+
+$("#show").click(function(){
+  $("p").show();
+}); 
+
+
+
+$("button").click(function(){
+  $("#div1").fadeIn();
+  $("#div2").fadeIn("slow");
+  $("#div3").fadeIn(3000);
+}); 
+
+
+$("button").click(function(){
+  $("#div1").fadeOut();
+  $("#div2").fadeOut("slow");
+  $("#div3").fadeOut(3000);
+}); 
+
+
+$("button").click(function(){
+  $("#div1").fadeToggle();
+  $("#div2").fadeToggle("slow");
+  $("#div3").fadeToggle(3000);
+}); 
+
+
+$("#flip").click(function(){
+  $("#panel").slideDown();
+}); 
+
+
+$("#flip").click(function(){
+  $("#panel").slideUp();
+}); 
+
+
+$("#flip").click(function(){
+  $("#panel").slideToggle();
+}); 
+
+
+$("button").click(function(){
+  $("div").animate({left: '250px'});
+});
+
+
+$("button").click(function(){
+  $("div").animate({
+    left: '250px',
+    opacity: '0.5',
+    height: '150px',
+    width: '150px'
+  });
+}); 
+
+
+Get Content - text(), html(), and val():
+
+$(document).ready(function(){
+
+  $("#btn1").click(function(){
+    $("#test1").text("Hello world!");
+  });
+  $("#btn2").click(function(){
+    $("#test2").html("<b>Hello world!</b>");
+  });
+  $("#btn3").click(function(){
+    $("#test3").val("Dolly Duck");
+  });
+  
+});
+
+<p id="test1">This is a paragraph.</p>
+<p id="test2">This is another paragraph.</p>
+<p>Input field: <input type="text" id="test3" value="Mickey Mouse"></p>
+
+<button id="btn1">Set Text</button>
+<button id="btn2">Set HTML</button>
+<button id="btn3">Set Value</button>
+
+
+
+________________________
+
+
+Class 19
+
+
+
+
+SQL - Structured Query Language.
+
+Its a programming language
+
+SQL to access the database
+
+
+field attribute :
+
+
+*NOT NULL
+ 
+*DEFAULT
+
+*AUTO INCREMENT  cannot be null
+
+* PRIMARY KEY (AVOID DUPLICATE ENTRY FOR KEY)
+
+	You can only have one primary key, 
+
+	but you can have multiple columns
+
+	cannot be NULL
+
+
+unique key (AVOID DUPLICATE ENTRY FOR VALUE)
+
+	You can only have many unique key,
+
+	- can have null value
+
+*unsigned - positive value
+
+*signed - positive & negetive value	
+
+
+
+Data type:
+
+** number (lenght depends on type)
+
+	
+	tinyint: 1 byte (2^8)
+	
+	max range 127 means 
+	
+	1 byte (means 3 digit) 
+	
+
+	tinyint : 1 bites (1^8)
+	
+	smallint: 2 bytes (2^16)
+	
+	mediumint: 3 bytes (2^24)
+	
+	int/integer: 4 bytes (2^32)
+	
+	bigint: 8 bytes (2^64)
+	
+
+* String:
+	
+
+TINYTEXT
+
+A character large object column with a maximum length of 255 (2^8 - 1) characters.
+
+TEXT
+
+A character large object column with a maximum length of 65535 (2^16 - 1) characters.
+
+MEDIUMTEXT
+
+A character large object column with a maximum length of 16777215 (2^24 - 1) characters.
+
+LONGTEXT
+
+A character large object column with a maximum length of 4294967295 (2^32 - 1) characters. 
+
+
+VARCHAR has a variable max size M up to M = 2^16-1
+
+
+
+
+* FLOAT:
+
+create table:
+
+decimal(65,30) | float (255,30) | double (255,30)
+
+SELECT flb+flb, dba+dba, dbb+dbb FROM `test` 
+
+cannot be unsigned
+
+32bit single precision Floating Point number
+
+accurate to approximately 7 decimal places
+
+Decimal & double:
+
+Full same just lenght is diffenent
+
+
+
+DATETIME:
+
+8 bytes for DATETIME
+
+
+Timestamp:
+
+4 bytes TIMESTAMP
+
+use for track change
+
+Supported range 1971 - 38
+
+TIMESTAMP value converts from current time to UTC so need small space
+
+TIMESTAMP data can be indexed 
+
+Queries with DATETIME will not be cached but queries with TIMESTAMP will be cached.
+
+DATETIME is constant while TIMESTAMP is effected by the time_zone setting
+
+
+_______
+
+
+*. DDL (database defination language) :
+
+- its make structure
+	
+- create alter drop TRUNCATE TABLE
+
+
+_______
+
+*. DML (database manipulates language) :
+
+- insert delete update view
+ 
+_______
+
+
+*. RDBMS (relation on database management system) : 
+
+rdbms it can access in data. 
+
+manupulate,represent,
+
+
+1. MySQLi
+
+2. sql server
+
+3. Oracle 
+
+
+
+* create database databasename
+
+
+* create table tablename(
+	
+	id int auto_increment primary key not null,
+	
+        number int unsigned not null,
+	
+	name varchar ,
+	
+	dates datetime
+	
+)
+
+life curcle with php
+
+________________________
+
+Class 20:
+
+inserface crud
+
+overview
+
+
+Creating, Updating, Deleting DB User Privilege and Permission from phpMyAdmin
+
+Import and Export Data using phpMyAdmin
+
+
+________________________
+
+Class 21:
+
+
+CRUD 
+
+
+Practise (Bank Info):
+
+account_name , account_number , email , phone , 
+pass , gender , address,
+openning_day , openning_time
+
+
+
+Alter Table :
+
+
+
+Alter table tablename
+
+modify filedname datatype [change datatype]
+
+
+
+DROP COLUMN column_name   [delete]
+
+CHANGE COLUMN old new varchar(200); [change name]
+
+
+**RENAME TABLE :
+
+RENAME TABLE tb1 TO tb2;
+
+
+** DELETE ONLY DATA
+
+TRUNCATE TABLE table_name
+
+
+
+** ADD FIELD :
+
+
+Alter table tablename
+
+ADD column_name datatype  [add column]
+
+AFTER filedname
+
+
+
+________________________
+
+Class 22:
+
+
+show databases 
+ 
+ show tables * from php_practise 
+
+ 
+ name from php_practise limit 30
+ 
+ limit 13,2 
+ 
+ (1st is starting point 2nd is how many we want to show) 
+
+ 
+ order by name 
+ 
+ (its show the name by order acc to dec) 
+
+ 
+ order by name desc 
+   
+ (its show the name by order dec to asc)
+
+ 
+ multiple order by id,name 
+ 
+ (its show the name & id both by order acc to dec) 
+ 
+ 
+ order by name desc limit 1 
+ 
+ (its show the last name by order dec to asc) 
+
+ 
+ ORDER BY time DESC 
+ 
+ (its show the lastest date data) 
+
+
+
+ where id='50' 
+	
+	
+ where id !='50' 
+
+
+ where id > '50' 
+
+
+ id < '50' 
+
+
+ id >= '50' 
+
+
+ where id <= '50' 
+ 
+ 
+ where name BETWEEN 10 AND 20 
+ 
+ 
+ where name like 'ban%' 
+ 
+ 
+ where id like 'b%h'  
+ 
+ group by name 
+
+
+ SELECT sum|avg|COUNT(sub_total) 
+ 
+ FROM table name;
+ 
+ (get total of any colomn)
+ 
+ 
+ SELECT * FROM products WHERE 
+ 
+ start_date >= '2017-06-03' 
+ 
+ AND end_time  <= '2017-06-04'
+ 
+ 
+** Add country_id in Practise table
+** Practise add account_type & comments (saving or business) by std
+** create accounts table add user_id 
+
+** ADD FOREIGN KEY :
+
+
+Alter table tablename
+
+add FOREIGN KEY(country_id)
+
+REFERENCES apps_countries(id)
+
+
+SHOW CREATE TABLE tablename;
+
+take the constraint datat_ibfk_1
+
+
+
+alter table tablename
+
+drop foreign key datat_ibfk_1
+
+
+
+ALTER TABLE helo1
+
+DROP KEY fieldname
+
+
+
+** now practise with multuple foreign key
+________________________
+
+Class 23:
+
+INNER JOIN: Client who place order
+
+
+CREATE TABLE cusmoter(
+ id int not null PRIMARY KEY AUTO_INCREMENT,
+ name varchar(200) not null
+)
+
+
+CREATE TABLE orders(
+ id int not null PRIMARY KEY AUTO_INCREMENT,
+ name varchar(200) not null,
+ customer_id int not null
+)
+
+
+
+SELECT orders.name, cusmoter.name
+FROM orders
+INNER JOIN cusmoter
+ON Orders.customer_id=cusmoter.id;
+
+
+SELECT orders.name, cusmoter.name
+FROM orders
+INNER JOIN cusmoter
+ON Orders.customer_id=cusmoter.id
+order by cusmoter.id desc;
+
+
+CREATE TABLE shippers(
+ id int not null PRIMARY KEY AUTO_INCREMENT,
+ address varchar(200) not null,
+ customer_id int not null
+)
+
+
+
+task: order placed customer email, phone number , customer id  
+      order by latest place order time
+
+
+SELECT orders.name, cusmoter.name, shippers.address
+FROM orders
+INNER JOIN cusmoter ON Orders.customer_id=cusmoter.id
+INNER JOIN shippers ON shippers.customer_id=cusmoter.id;
+
+
+
+task: order placed customer email, phone number , customer id , country
+      order by latest place order time
+
+
+
+
+* LEFT JOIN: Select all cusmoter, null value in shippers
+
+
+* priority on from
+
+
+SELECT *
+FROM cusmoter
+LEFT JOIN shippers
+ON shippers.customer_id=cusmoter.id;
+
+
+* priority on right join 
+
+SELECT *
+FROM cusmoter
+RIGHT JOIN shippers
+ON shippers.customer_id=cusmoter.id;
+
+
+
+
+
+
+
+TRIGGER :
+
+CREATE TRIGGER trigger_name
+ 
+BEFORE/AFTER (when trigger function will apply)
+
+INSERT/UPDATE  (which sql query trigger will apply)  
+
+ON table_name
+
+FOR EACH ROW
+
+SET new.fullname = CONCAT(new.fname,'  ',new.lname),
+
+SET new.fname = 'abc'
+
+
+
+show TRIGGERS FROM database_name
+
+drop trigger trigger_name
+
+
+** work with single trigger
+
+** work with multiple trigger
+
+** work with after insert another table
+
+
+
+
+
+store procedure :
+
+
+CREATE PROCEDURE select_name()
+
+BEGIN
+
+   SELECT * FROM abc
+   
+END
+
+CALL select_name()
+
+
+DROP PROCEDURE procude_name;
+
+show procedure status;
+
+
+
+Union (fetch duplicate data)
+
+SELECT City FROM Customers
+
+UNION
+
+SELECT City FROM Suppliers
+
+ORDER BY City;
+
+
+
+
+________________________
+
+
+Class 24:
+
+Create a product table:
+
+ SELECT MIN(Price) FROM Products; 
+
+ SELECT LENGTH(name) AS LengthOfName FROM product; 
+
+ SELECT name, LOCATE("a", name) FROM product;
+
+ SELECT LOWER(name) AS LowercaseCustomerName FROM product;
+
+ SELECT LTRIM(name) AS LeftTrimmedString from product;
+
+ SELECT MID(CustomerName, 1, 10) AS ExtractString FROM Customers; 
+ 
+ SELECT REPEAT(CustomerName, 20) FROM Customers;
+
+ SELECT RIGHT(CustomerName, 20) AS ExtractString FROM Customers;
+
+ SELECT RPAD(CustomerName, 30, "...") AS RP FROM Customers; 
+
+ SELECT SUBSTR(CustomerName, 2, 5) AS ExtractString FROM Customers;
+
+ SELECT column_name(s) FROM table_name WHERE condition GROUP BY column_name(s)
+ ORDER BY column_name(s);      
+        
+ SELECT FLOOR(25.75); 
+
+ SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;
+
+ SELECT POW(4, 2); 
+
+ SELECT RAND();  
+        
+ SELECT CURRENT_TIME();
+ 
+ SELECT DATE("2017-06-15");    
+
+ having
+ 
+ EXAM | Ecommerce databse design
+ 
+
+________________________
+
+Class 25:
+
+<?php
+
+
+
+echo ECHO EcHo
+
+print
+
+echo has no return value while 
+
+print has a return value of 1
+
+
+
+echo "abc","def"
+
+print "abc","def"
+
+
+//
+
+#
+
+/* */
+
+
+concatination
+
+
+
+variable
+
+$ | A-z 0-9 _ | white | case sensitive
+
+
+
+'Cox\'s Bazar'
+
+
+echo '$a'
+
+echo "$a"  // " " cut all variable & {} inside it
+
+echo "{$a}"
+
+echo 10 . 20;
+
+echo "$a+$b" // no arethmethic will work
+
+echo "<pre>";
+	
+echo "\t dfgdf ";
+
+echo "\n dfgdf ";
+
+echo "</pre>";
+
+
+
+error_reporting(0);
+
+
+10 + "25Studs";   // remove word
+
+10 + "Studs25";     // remove all
+
+2.3 +"4"              
+
+"ab"+"kv"             //  0 + 0
+
+"2a" + "3d1";       // remove d1
+
+Arithmetic Operators :
+
+
++ * / %	(vag ses)
+
+
+
+Assignment Operators
+
+
+= +=  -=  *=  /= 
+
+
+
+$a = 2;
+$b = 11;
+$c = 3;
+	
+echo $b %= $c += $a;
+
+// 3 + 2 = 5 | 11/5 = 1
+
+
+
+
+** start from right
+
+echo 01234;
+
+first*8^last
+
+
+if with Comparison Operators :
+
+
+
+if($a >= 5) 
+
+
+if(++$a > 21) Pre-increment
+
+
+if($a++ > $a) 
+
+
+if(10)
+
+
+if(0)
+
+
+if(false)
+
+
+if()
+
+
+if(-5)
+
+
+if(0 == false)
+
+
+if(0 === false)
+
+
+if(10%2)
+
+
+if(++$a) // $a = 0
+
+
+if($a++) // $a = 0
+
+
+if(0);  echo "ss";   echo "sss";	//sssss
+
+
+if(0)  echo "ss";   echo "sss";		//sss
+
+
+if(0)  echo "ss"; echo "sss"; echo "s";   // ssss
+
+
+
+&& (True if both $x and $y are true)
+
+||  (True if either $x or $y is true)
+
+xor (True if either $x or $y is true, but not both)
+
+
+
+salary | age | country :
+
+
+$salary > 20000 || $salary < 15000
+
+$age > 30
+
+
+
+if(isset($a) && $a = 10)
+
+
+if($a = 10 && isset($a))
+
+
+
+
+reference means pointing same data to another variable 
+
+
+$a = 21 ;
+
+$b = &$a ;   		// assignment by reference
+
+
+$x = null;
+
+$x = &$a;
+
+var_dump(++$a);  //int(1) 
+
+
+$x = true;
+
+$x = &$a;
+
+var_dump(++$a); //bool(true) 
+
+
+$v3 = "a";
+
+$v3 .= ' b';
+
+echo $v3;
+
+
+$v3 += 'c';
+
+echo $v3;	// 0
+
+
+$cars = array("Volvo", "BMW", "Toyota");
+echo "I like " . $cars[0] . ", " . $cars[1] . " and " . $cars[2] . ".";
+
+
+$cars = [];
+
+$cars[0] = "Volvo";
+$cars[1] = "BMW";
+$cars[2] = "Toyota"; 
+
+print_r($cars);
+
+
+	
+$array1 = array(1,null);
+
+$x[1] = &$array1[1];
+
+var_dump($x[1]);		// null
+
+var_dump($x);
+
+
+
+if if
+
+if else if else
+
+login
+
+
+ternary operator :
+
+$a = 10;
+	
+echo $a == 10 ? 'yes':'no';
+
+
+
+
+Constant (Constants are like variables):
+
+define("GREETING", "hello");
+
+echo GREETING;
+
+
+________________________
+
+
+Class 26:
+
+
+for($a=1;$a<=11;$a++)
+
+
+for($a=1;$a<=11;$a++){ }
+	
+echo $a;
+
+
+for($i=5; $i<=10; $i++); 
+
+echo $i;
+
+
+
+
+*for($i=1; $i<=20; ++$i)
+
+
+
++= 2
+
+
+
+
+
+now do :
+
+date("")
+
+for($i=2017; $i>=1990; $i--)
+
+
+
+break echo;
+
+
+echo break;
+
+
+continue;
+
+
+*while(con){
+
+  echo;
+
+  increment;
+
+}
+
+
+do {
+
+   echo " ";
+   
+   $a++;
+
+}
+
+
+while (condition);
+
+
+
+* make select option loop
+
+
+
+
+echo time(); 
+
+
+date("Ymd")
+
+
+date("YMD")
+
+
+date("Ymda")
+
+
+date("his")
+
+
+
+date_default_timezone_set("Asia/Dhaka");
+
+
+date(" Y-m-d h:i:sa", 
+
+
+strtotime("+1 week 3 days 7 hours 5 seconds"));
+
+
+
+
+
+
+switch($color){
+         
+	case ("red"):
+						
+	echo "RED color";
+				   
+	break;
+
+	default :
+
+	echo "no color";
+
+}
+
+
+
+	$j = 1;
+	$k = 1;
+
+	for($j; $j <= 3; $j++){
+	
+		for($k; $k <= $j; $k++){
+		
+			echo $k;
+			
+		}
+	}
+	
+
+	
+	
+	
+
+	$j = 1;
+	$k = 1;
+	$l = 3;
+
+	for($j; $j <= 3; $j++){
+	
+		for($k; $k <= $j; $k++){
+		
+			for($l; $l <= $k; $l++){
+		
+				echo $j;
+				
+			}
+			
+		}
+	}
+	
+
+
+
+STRING FUNCTIONS :
+
+
+echo substr($str, 3, 2);  
+
+// start , how many will stay
+
+
+echo substr($str, 3);     
+
+// start 3 , stay to end
+
+
+echo substr($str, -3, 3);    
+
+// start -3, stay to 3
+
+
+echo substr($str, 3, -2); 
+
+// start 3 , 
+
+
+
+
+ucfirst()
+
+
+lcfirst()
+
+
+md5()
+
+
+str_word_count("Hello world!");
+
+
+ucwords()
+
+
+trim()
+
+
+rtrim("World/", "/")  [right trim]
+
+
+strlen()
+
+
+strtoupper()
+
+
+strtolower()
+
+
+strstr("Hello world!","world"); 
+
+
+[cut the world]
+
+
+strrev("Hello World!");    
+
+
+[reverse the string]
+
+
+strip_tags("Hello <b>world!</b>");
+
+[remove tag]
+
+
+htmlentities()
+
+[use in chatbox]
+
+
+
+$word = substr($str,0,2);
+	
+echo str_pad($word,5,".");	
+
+[make prothom alo]
+
+
+
+$str = array("vfgees","fwrd","rgfvr");
+	
+print_r(implode("+",$str));
+
+
+
+$str = "explode is string to array";
+
+print_r(explode(" ",$str));
+
+
+$pow = pow(10,2);
+	
+echo $pow;
+
+
+max(2, 3, 1, 6, 7); 
+
+
+min(2, 3, 1, 6, 7); 
+
+
+round(5.055, 2);  
+
+
+Make round :
+
+
+	$a = .9;
+
+	$b = .8;
+
+	$d = .1;
+
+	$e = .2;
+
+	$x = $a-$b;
+
+	$y = $e-$d;
+
+	$f = round($x,2);
+
+	echo $f;
+
+	if($f==$y){
+
+		echo "ok";
+	}
+
+
+// make .1-.2 cal
+
+
+floor(4.3) 
+
+//  4
+
+
+ceil(4.3)  
+
+//   5
+
+
+Filter :
+
+sanitize for remove unexpected thing
+
+validate is data ok for this field
+
+
+
+filter_var($str, FILTER_SANITIZE_STRING);
+
+filter_var($int, FILTER_VALIDATE_INT) === false
+
+filter_var($ip, FILTER_VALIDATE_IP) === false)
+
+filter_var($email, FILTER_VALIDATE_EMAIL) === false
+
+
+
+
+include (part down) require (full down)
+
+
+________________________
+
+
+Class 27:
+
+*. exersize : 1 (calculator)
+
+	
+<form method="post">
+
+	<input type="text" name="data1"/>
+	<input type="text" name="data2"/>
+	<input type="submit" name="sub"/>
+	
+</form>
+ 
+class abc{
+		
+	public function plus($data1,$data2){
+
+		$data3 = $data1 + $data2;
+		
+		echo $data3;
+
+	}
+}
+ 
+ 
+if(isset($_POST['sub'])){
+
+ $data1 = $_POST['data1'];
+	
+ $data2 = $_POST['data2'];
+ 
+ $instance = new abc;
+ 
+ $instance->plus($data1,$data2);
+ 
+}
+
+
+Exersize : 2 	(EXTENDS & encapsulation)
+
+
+encapsulation public private protected 
+
+
+* public  -> full page, 
+* we can not access private or protected by create object
+* protected method value can access by extends public both own class & extends
+* private method value can not access by own class
+
+
+class data1{
+
+	public $property1 = "this is public";
+	
+}
+
+class data2 extends data1{
+	
+	
+}
+
+class data3 extends data2{
+	
+	
+}
+
+$webapss = new data3;
+$webapss->property1;
+	
+	
+?>
+
+
+
+* protected -> 
+
+
+same class & work in extends.
+ 
+for check make function
+
+
+class data1{
+
+	protected $property1 = "this is public";
+	
+}
+
+class data2 extends data2{
+	
+	public function data2method(){
+		echo $data2var = $this->property1;
+	}
+}
+
+$webapss = new data2;
+$webapss->data2method();
+
+
+
+
+* private-> only class
+
+(can use it in only class. but make method then
+
+check $this->data)
+
+
+<?php
+
+	class data1{
+		private $property1 = "this is public";
+		public function aa(){
+			echo $this->property1;
+		}
+	}
+
+	
+	$webapss = new data1;
+	$webapss->aa();
+	
+	
+?>
+
+
+
+EXERSIZE : 3 	TRAIT 
+
+
+*. trait is class. which can extends as musch by.
+
+*. trait abc { }
+
+*. extends by use traitname in any class
+
+
+<?php
+trait userActive{
+	
+	public function activeCheck($id){
+		
+		$people = array("33", "Joe", "Glenn", "Cleveland");
+		if(in_array($id,$people)){
+			echo "active";
+		}else{
+			echo "not active";
+		}
+	}
+	 
+ }
+
+
+class MainClass{
+ 
+	use userActive;
+ 
+	public function connection(){
+ 
+		echo "connected";
+
+	}
+	public function UserId(){
+		return "33";
+	}
+}
+
+
+$instance = new MainClass;
+$id = $instance->UserId();
+
+$instance->activeCheck($id);
+
+?>
+
+
+ 
+	
+
+
+EXERSIZE : 4 	namespace
+
+
+* namespace must on top. access like
+
+
+<?php
+namespace MyProject;
+
+function output() {
+    # Output HTML page
+    echo 'HTML!';
+}
+
+
+\RSSLibrary\output();
+
+namespace RSSLibrary;
+
+function output(){
+    # Output RSS feed
+    echo 'RSS!';
+}
+
+
+\MyProject\output();
+
+?>
+
+
+
+
+
+which work autometic
+
+
+__contstract autometic call;
+
+__destruct autocall last;
+
+
+
+class HTMLgenerator {
+
+  function __construct() {
+  
+    echo "<html><body>";
+	
+  }
+  function __destruct() {
+  
+    echo "</body></html>";
+	
+  }
+  
+} 
+
+$html = new HTMLgenerator();
+
+echo "Hello, world!";
+
+
+*. multiple construct not possible single class,
+
+*. overriding is make multiple __construct method in extends class.
+
+*. for not effect construct in child take construct in trait
+
+
+
+
+get - property 
+
+set property with value
+
+call - method
+
+
+
+
+__get($e) call if want to access undefined property;
+	
+	
+class data1{
+	
+	public function __get($e){
+		echo "$e does not exist";
+	}
+
+}
+
+$webapss = new data1;
+$webapss->a;
+
+
+
+	
+__set() undefined propety with assigned value :
+
+
+
+class data1{
+	
+	public function __set($property,$value){
+
+		echo "$e $value does not exist";
+
+	}
+	
+}
+
+$webapss = new data1;
+
+$webapss->a = "dd";
+
+
+
+
+
+
+__call() if want to access undefined method with value :
+
+	
+public function __call($e,$value){
+
+	echo "$e  does not exist".implode("",$value);
+	
+}
+	
+
+$webapss = new data1;
+$webapss->a("ss","dd");
+
+
+	
+
+
+
+________________________
+
+
+Class 28:
+
+
+
+<form action="" method="post" enctype='multipart/form-data'>
+
+    <input type="text" name="name"/> <br/><br/>
+    <input type="password" name="password"/> <br/><br/>  
+	<input type="password" name="retype_password"/> <br/><br/>
+    <input type="email" name="email"/> <br/><br/>
+	<input type="text" name="phone"/> <br/><br/>
+    Male : <input type="radio" name="radio" />
+    Female : <input type="radio" name="radio" /> <br/><br/>
+    <select name="country">
+    	<option value="0">SELECT A COUNTRY</option>
+		<option value="1">Bangladesh</option>
+    </select> <br/><br/>
+    <input type="date" name="date" /> <br/><br/>
+    <input type="file" name="image"/> <br/><br/>
+    <input type="checkbox" name="checkbox"/> <br/><br/>
+    <input type="submit" name="register"/>
+
+</form>
+
+
+
+	if(isset($_POST['register'])){
+		
+		function validation($data){
+		
+			$data = trim(strip_tags($data));
+			
+			return $data;
+		}
+		
+		$name = validation($_POST['name']);
+		
+		$email = validation($_POST['email']);
+		
+		$phone = validation($_POST['phone']);
+		
+		$password = validation($_POST['password']);
+		
+		$retype_password = validation($_POST['retype_password']); 
+		
+		$date = validation($_POST['date']); 
+		
+		$country = $_POST['country'];
+		
+		$image = $_FILES['image']['name'];
+		
+		$error = 0;
+		
+		$msg = "";
+		
+		if($name == ""){
+		
+			$error = $error+1;
+			
+			$msg .= "<p> name required </p>";
+			
+		}
+		if($password =="" || !preg_match('/[0-9]?[A-Z]?[!@#$]/',$password)){
+		
+			$error = $error+1;
+			
+			$msg .= "<p> pasword required </p>";
+			
+		}
+		if($password != $retype_password || $retype_password == ""){
+		
+		
+			$error = $error+1;	
+			
+			$msg .= "<p>retype password not matched </p>";
+			
+		}
+		if($email == "" || filter_var($_POST['email'],FILTER_VALIDATE_EMAIL == false)){
+		
+			$msg .= "<p> email required </p>";
+			
+		}
+		if($phone =="" || !is_numeric($phone) || strlen($phone) != 11){
+		
+			$msg .= "<p> phone required </p>";
+			
+		}
+		if(!isset($gender)){
+		
+			$msg .= "<p> gender required </p>";
+			
+		}
+		if($country == 0){
+		
+			$msg .= "<p> country required </p>";
+			
+		}
+		if(!isset($_FILES['image']) || substr($image,-4) != ".jpg"){
+		
+			$msg .= "<p> image required </p>";	
+			
+		}
+		if(!isset($checkbox)){
+		
+			$msg .= "<p> checkbox required </p>";	
+			
+		}
+		if($error == 0){
+			try{
+				echo "DATA NOT INSERTED";
+				
+			}catch(exception $e){
+				echo "DATA INSERTED SUCCESFULLY";
+			}
+			
+		}else{
+			echo $msg;
+			
+		}
+	}
+	
+	
+
+
+
+if($dob != ""){
+
+        // broke in - part
+	$explode = explode('-',$dob);
+	// count if have 3 part (year, month , dday)
+	$count = count($explode);
+	// if have 3 part then execute
+	if($count == 3){
+		// put explode 3 part in list function
+		list($y,$m,$d) = $explode;
+		// check all 3 part have data & checkdate
+		if(isset($m) && isset($d) && isset($y)){
+			if(checkdate($m,$d,$y) == false){
+				$error = $error+1;
+				$msg .= "<p>* date formate problem</p>";
+			}
+			$error = $error+1;
+		}
+	}else{
+		$error = $error+1;
+		$msg .= "<p>* date formate problem</p>";
+	}
+}
+if($dob == ""){
+	$error = $error+1;
+	$msg .= "<p>* date field required</p>";
+}
+	
+	
+	
+!isset($_FILES['image']) || 
+
+substr($_FILES['image']['name'],-4) != ".jpg"
+
+$_FILES['picture']['size'] > 900000  [800kb]
+
+
+
+
+list($old_height,$old_width) = 
+
+getimagesize($_FILES['pic']['tmp_name']);  // for get image height width
+
+echo $old_height.$old_width;
+
+
+move_uploaded_file($_FILES['image']['tmp_name'],'img/'.$image);
+
+
+
+________________________
+
+
+Class 29
+
+
+<?php
+	class webapps{
+	
+	public $localhost = "localhost";
+	
+	public $user = "root";
+	
+	public $password = "";
+	
+	public $database = "prac";
+	
+	public $link;
+	
+	public function __construct(){
+	
+	$this->link = 
+
+	mysqli_connect($this->localhost,$this->user,$this->password,$this->database);
+
+	if($this->link){
+
+		echo "connected";
+
+	}
+  }
+  
+  public function insertdata($insert){
+	  $insert = $this->link->query($insert);
+	  if($insert){
+		  throw new exception;
+	  }
+  }
+	
+}
+
+
+
+
+try{
+
+	$webapps = new webapps;
+	$insert = "INSERT INTO insert_data VALUES('','$name','$password','$email','$phone','$gender','$country','$image')";
+	$webapps->insertdata($insert);
+	echo "DATA NOT INSERTED";
+	
+}catch(exception $e){
+
+	echo "DATA INSERTED SUCCESFULLY";
+	
+}
+
+
+<?php
+			
+	$webapps = new webapps;
+
+	$select = "SELECT * FROM job_name";
+
+	$data = $webapps->select($select);
+
+	while($data2 = $data->fetch_object()){ ?>
+
+	<option value="<?php echo $data2->id ?>">
+
+	<?php echo $data2->name ?></option>;
+
+<?php } ?>
+
+
+file view :
+
+
+$fopen = fopen("files/".$bio_file,"r");
+
+echo fread($fopen,filesize("files/".$bio_file));
+
+
+________________________
+
+Class 30:
+
+Edit Update Validation
+
+
+________________________
+
+Class 31:
+
+
+
+session_start();
+$_SESSION['admin2'] = $admin2;
+
+
+unset($_SESSION['super_admin_user']);
+unset($_SESSION['admin_user']);
+
+session_destroy();
+
+
+
+
+$cookie_name = "user";
+$cookie_value = "John Doe";
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+
+
+if(!isset($_COOKIE[$cookie_name])) {
+
+     echo "Cookie named '" . $cookie_name . "' is not set!";
+	 
+} else {
+
+     echo "Cookie '" . $cookie_name . "' is set!<br>";
+     echo "Value is: " . $_COOKIE[$cookie_name];
+	 
+}
+
+Delete
+
+________________________
+
+
+Class 32:
+
+File handle , Alter
+
+
+________________________
+
+
+class 33:
+
+Pagination		
+
+
+________________________
+
+class 34:
+
+E-Mail - PHP Email System
+ SMTP Email System - Sending Email Using SMTP Support
+ Email Verification - User Registration Confirmation by Email Verification
+
+
+ Understanding about Web Services and API
+
+
+________________________
+
+class 35:
+
+recover password
+change password
+set profile image
+set active email
+
+
+________________________
+
+class 36:
+
+cart management system
+
+________________________
+
+class 37
+
+htaccess
+
+________________________
+
