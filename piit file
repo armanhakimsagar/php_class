@@ -2,9 +2,20 @@ Class 4:
 
 marqueee 
 
+<marquee width="40%" direction="left" height="30%">
+    This is sample scrolling text.
+</marquee>
+
+scrolldelay="1000"
+
+loop="1"
+
 on mouse over
 
-scroll speed
+onmouseover="this.stop();" 
+
+onmouseout="this.start();"
+
 
 Table tr td th caption bgcolor align
 
@@ -21,9 +32,12 @@ entites
 
 &lt; a href &gt;
 
-<map name='id'>
+<img src="planets.gif" width="145" height="126" alt="Planets" usemap="#planetmap">
 
- <area coords='' href='sun.html' shape>
+<map name="planetmap">
+
+  <area shape="rect" coords="0,0,82,126" alt="Sun" href="sun.htm">
+  <area shape="circle" coords="90,58,3" alt="Mercury" href="mercur.htm">
 
 </map>
 
@@ -62,3 +76,79 @@ Time
 URL
 
 Week
+
+
+
+
+_____________
+
+
+
+class 22:
+
+
+INNER JOIN: Client who place order
+
+
+CREATE TABLE cusmoter(
+ id int not null PRIMARY KEY AUTO_INCREMENT,
+ name varchar(200) not null
+)
+
+
+CREATE TABLE orders(
+ id int not null PRIMARY KEY AUTO_INCREMENT,
+ name varchar(200) not null,
+ customer_id int not null
+)
+
+
+
+SELECT orders.name, cusmoter.name
+FROM orders
+INNER JOIN cusmoter
+ON Orders.customer_id=cusmoter.id;
+
+
+SELECT orders.name, cusmoter.name
+FROM orders
+INNER JOIN cusmoter
+ON Orders.customer_id=cusmoter.id
+order by cusmoter.id desc;
+
+
+CREATE TABLE shippers(
+ id int not null PRIMARY KEY AUTO_INCREMENT,
+ address varchar(200) not null,
+ customer_id int not null
+)
+
+
+
+task: order placed customer email, phone number , customer id  
+      order by latest place order time
+
+
+SELECT orders.name, cusmoter.name, shippers.address
+FROM orders
+INNER JOIN cusmoter ON Orders.customer_id=cusmoter.id
+INNER JOIN shippers ON shippers.customer_id=cusmoter.id;
+
+task: order placed customer email, phone number , customer id , country
+      order by latest place order time
+
+* LEFT JOIN: Select all cusmoter, null value in shippers
+
+* priority on from
+
+SELECT *
+FROM cusmoter
+LEFT JOIN shippers
+ON shippers.customer_id=cusmoter.id;
+
+* priority on right join 
+
+SELECT *
+FROM cusmoter
+RIGHT JOIN shippers
+ON shippers.customer_id=cusmoter.id;
