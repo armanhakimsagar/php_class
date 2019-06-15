@@ -82,6 +82,184 @@ Week
 
 _____________
 
+class: 05
+
+
+Entites
+
+Google font
+
+<img src='' usemap=#id />
+
+
+<map name='id'>
+
+
+ <area coords='' href='sun.html' shape>
+
+
+</map>
+
+
+Top to right for poly, 
+
+
+center & radius for circle
+
+
+Top left & bottom right for rect 2 point
+
+
+Form method
+
+Keygen name="security"
+
+Color
+
+Date
+
+Datetime-local
+
+Email
+
+Month
+
+Number
+
+Range
+
+Search
+
+Time
+
+URL
+
+Week
+
+
+
+Full input type
+
+
+Same name for radio
+
+
+select optgroup label
+
+
+textarea rows cols
+
+Field set legend 
+
+
+Required
+
+
+Autofocus
+
+
+Checked
+
+
+Use name id in form
+
+
+Input style width
+
+
+autocomplete = 'off' for delete hints
+
+
+Multiple
+
+
+Onclick vs onfocus [click work even fillup]
+
+
+Readonly vs disable
+
+
+Pattern='[a-z]{1,5}'  (condition & length)
+
+
+Number step=3
+
+
+meter value=2 max min
+
+
+Maxlenght="20" input type text
+
+
+Input type URL - URL Unicode
+
+
+spellcheck='true'
+
+
+
+
+______________
+
+
+Class: 6
+
+
+<audio controls>
+
+
+  <source src='' type='audio/mpeg'>
+
+
+</audio>
+
+
+
+<video controls  autoplay poster=a.png>
+
+
+  <source src='' type='video/mp4'>
+
+
+</video>
+
+
+
+figure - img src - figcaption
+
+
+YouTube also in iframe embaded code
+
+
+<canvas id="myCanvas" width="200" height="100"></canvas>
+
+
+<canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;"></canvas>
+
+<script>
+
+	var c = document.getElementById("myCanvas");
+	
+	var ctx = c.getContext("2d");
+	
+	ctx.moveTo(10,0);
+	
+	ctx.lineTo(200,100);
+	
+	ctx.stroke();
+	
+</script>
+
+
+
+Exam:
+
+create a invoice pay slip:
+
+https://www.google.com/search?q=html+table+template&client=firefox-b-d&tbm=isch&tbs=rimg:CWCmSvjJv7baIjiH58tjiYHxfsVBsIEe6OvHOP1BIwEbtcm9al7IGKGrXIL0_1zjhWRs7p7hvHU-n7ryfrIk7MUprtSoSCYfny2OJgfF-EQN_1oBOeLK0rKhIJxUGwgR7o68cRMo3SFoF2T9wqEgk4_1UEjARu1yRGdAs_1vtWLA1ioSCb1qXsgYoatcEV24BXiUXZUgKhIJgvT_1OOFZGzsRGjsgkheVt4EqEgmnuG8dT6fuvBFeZ8g4MlxkrCoSCZ-siTsxSmu1ESnXj8EnJ4Mx&tbo=u&sa=X&ved=2ahUKEwj15cj89OriAhXEuY8KHS82Bi8Q9C96BAgBEBs&biw=1366&bih=626&dpr=1#imgrc=oFN7VsqTvZutDM:
+
+______________
+
 
 
 class 22:
