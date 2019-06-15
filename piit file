@@ -264,6 +264,13 @@ ______________
 
 class 22:
 
+Web database deisgn:
+
+user management: user , role, department, permission
+
+product:
+
+order:
 
 INNER JOIN: Client who place order
 
@@ -330,3 +337,250 @@ SELECT *
 FROM cusmoter
 RIGHT JOIN shippers
 ON shippers.customer_id=cusmoter.id;
+
+
+
+class 23:
+
+
+TRIGGER :
+
+CREATE TRIGGER trigger_name
+ 
+BEFORE/AFTER (when trigger function will apply)
+
+INSERT/UPDATE  (which sql query trigger will apply)  
+
+ON table_name
+
+FOR EACH ROW
+
+SET new.fullname = CONCAT(new.fname,'  ',new.lname),
+
+SET new.fname = 'abc'
+
+
+
+show TRIGGERS FROM database_name
+
+drop trigger trigger_name
+
+
+** work with single trigger
+
+** work with multiple trigger
+
+** work with after insert another table
+
+
+
+
+
+store procedure :
+
+
+CREATE PROCEDURE select_name()
+
+BEGIN
+
+   SELECT * FROM abc
+   
+END
+
+CALL select_name()
+
+
+DROP PROCEDURE procude_name;
+
+show procedure status;
+
+
+Union (fetch duplicate data)
+
+SELECT City FROM Customers
+
+UNION
+
+SELECT City FROM Suppliers
+
+ORDER BY City;
+
+
+show databases 
+ 
+ show tables * from php_practise 
+
+ 
+ name from php_practise limit 30
+ 
+ limit 13,2 
+ 
+ (1st is starting point 2nd is how many we want to show) 
+
+ 
+ order by name 
+ 
+ (its show the name by order acc to dec) 
+
+ 
+ order by name desc 
+   
+ (its show the name by order dec to asc)
+
+ 
+ multiple order by id,name 
+ 
+ (its show the name & id both by order acc to dec) 
+ 
+ 
+ order by name desc limit 1 
+ 
+ (its show the last name by order dec to asc) 
+
+ 
+ ORDER BY time DESC 
+ 
+ (its show the lastest date data) 
+
+
+
+ where id='50' 
+	
+	
+ where id !='50' 
+
+
+ where id > '50' 
+
+
+ id < '50' 
+
+
+ id >= '50' 
+
+
+ where id <= '50' 
+ 
+ 
+ where name BETWEEN 10 AND 20 
+ 
+ 
+ where name like 'ban%' 
+ 
+ 
+ where id like 'b%h'  
+ 
+ group by name 
+
+
+ SELECT sum|avg|COUNT(sub_total) 
+ 
+ FROM table name;
+ 
+ (get total of any colomn)
+ 
+ 
+ SELECT * FROM products WHERE 
+ 
+ start_date >= '2017-06-03' 
+ 
+ AND end_time  <= '2017-06-04'
+
+
+____________________
+
+
+
+class 24:
+
+
+ Create a product table:
+
+ SELECT MIN(Price) FROM Products; 
+
+ SELECT LENGTH(name) AS LengthOfName FROM product; 
+
+ SELECT name, LOCATE("a", name) FROM product;
+
+ SELECT LOWER(name) AS LowercaseCustomerName FROM product;
+
+ SELECT LTRIM(name) AS LeftTrimmedString from product;
+
+ SELECT MID(CustomerName, 1, 10) AS ExtractString FROM Customers; 
+ 
+ SELECT REPEAT(CustomerName, 20) FROM Customers;
+
+ SELECT RIGHT(CustomerName, 20) AS ExtractString FROM Customers;
+
+ SELECT RPAD(CustomerName, 30, "...") AS RP FROM Customers; 
+
+ SELECT SUBSTR(CustomerName, 2, 5) AS ExtractString FROM Customers;
+
+ SELECT column_name(s) FROM table_name WHERE condition GROUP BY column_name(s)
+ ORDER BY column_name(s);      
+        
+ SELECT FLOOR(25.75); 
+
+ SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;
+
+ SELECT POW(4, 2); 
+
+ SELECT RAND();  
+        
+ SELECT CURRENT_TIME();
+ 
+ SELECT DATE("2017-06-15");    
+
+
+ view table
+
+ Create View `MyViewName` as 
+    Select
+        col1, col2, col3
+    From
+ myTable T
+
+
+
+Exam: 
+
+
+1. What is store procedure?
+ans:
+
+2.What is LEFT JOIN?
+ans:
+
+3.How to create view table?
+ans:
+
+4.how to sum|avg|COUNT in any column?
+ans:
+
+5.What is order by?
+ans:
+
+6.What is show databases?
+ans:
+
+7.What is BETWEEN 10 AND 20?
+ans:
+
+8.What is inner join?
+ans:
+
+10.What is UNION ALL?
+ans:
+
+11.What is meaning of limit 13,2
+ans:
+
+12.What is meaning of this CALL procedure_name()?
+ans:
+
+13.partial dependency vs transitive dependency?
+ans:
+
+14.left join vs right join?
+ans
+
