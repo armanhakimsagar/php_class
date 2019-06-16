@@ -403,6 +403,11 @@ drop trigger trigger_name
 
 ** work with after insert another table
 
+CREATE TRIGGER multi_table_trig 
+AFTER INSERT ON users 
+FOR EACH ROW
+UPDATE cusmoter
+SET name = 'data';
 
 
 
