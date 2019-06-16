@@ -342,14 +342,28 @@ ON shippers.customer_id=cusmoter.id;
 
 class 23:
 
+CREATE TABLE users(
+ id int not null PRIMARY KEY AUTO_INCREMENT,
+ fname varchar(200) not null,
+ lname varchar(200) not null,
+ fullname varchar(400) not null
+)
+
 
 TRIGGER :
 
+A database trigger is special stored procedure that is 
+
+run when specific actions occur within a database. 
+
+trigger is auto but store need to call.
+
+
 CREATE TRIGGER trigger_name
  
-BEFORE/AFTER (when trigger function will apply)
+BEFORE (when trigger function will apply)
 
-INSERT/UPDATE  (which sql query trigger will apply)  
+INSERT  (which sql query trigger will apply)  
 
 ON table_name
 
@@ -358,6 +372,23 @@ FOR EACH ROW
 SET new.fullname = CONCAT(new.fname,'  ',new.lname),
 
 SET new.fname = 'abc'
+
+
+
+
+Multiple table:
+
+CREATE TRIGGER new_table_trig
+ 
+BEFORE 
+
+INSERT
+
+ON cusmoter
+
+FOR EACH ROW
+
+SET new.name = CONCAT(users.fname,'  ',users.lname)
 
 
 
@@ -378,13 +409,12 @@ drop trigger trigger_name
 
 store procedure :
 
+sql code that store for use.
 
+DELIMITER $$
 CREATE PROCEDURE select_name()
-
 BEGIN
-
-   SELECT * FROM abc
-   
+   SELECT * FROM abc;
 END
 
 CALL select_name()
