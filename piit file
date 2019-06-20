@@ -254,7 +254,123 @@ https://www.google.com/search?q=html+table+template&client=firefox-b-d&tbm=isch&
 
 ______________
 
+class: 11
 
+
+
+JavaScript can "display" data in different ways:
+
+Writing into an HTML element, using innerHTML.
+
+Writing into the HTML output using document.write().
+
+Writing into an alert box, using window.alert().
+
+Writing into the browser console, using console.log().
+
+
+
+<p id="demo"></p>
+
+<script>
+
+  document.getElementById("demo").innerHTML = 5 + 6;
+
+</script>
+
+
+
+<script>
+
+	document.write(5 + 6);
+
+</script>
+
+
+<button type="button" onclick="document.write(5 + 6)">Try it</button>
+
+
+<script>
+	window.alert(5 + 6);
+</script>
+
+
+<script>
+	console.log(5 + 6);
+</script>
+
+
+var a, b, c;     // Declare 3 variables
+a = 5;           // Assign the value 5 to a
+b = 6;           // Assign the value 6 to b
+c = a + b;       // Assign the sum of a and b to c
+
+a = 5; b = 6; c = a + b;
+
+
+JavaScript Can Change HTML Styles (CSS):
+
+document.getElementById("demo").style.fontSize = "35px"; 
+
+JavaScript Can Hide HTML Elements:
+
+document.getElementById("demo").style.display = "none";  
+
+
+var writting rules 
+
+
+[case sensitive, a-z, 0-9 , white space, keyword]
+
+
+ var a = "abc xyz";
+ 
+ 
+ console.log(typeof(a));
+
+
+ var answer1 = "It's alright";             // Single quote inside double quotes
+ 
+ var answer2 = "He is called 'Johnny'";    // Single quotes inside double quotes
+ 
+ var answer3 = 'He is called "Johnny"';    // Double quotes inside single quotes
+
+ var x1 = 34.00;     // Written with decimals
+  
+ var x2 = 34;        // Written without decimals 
+ 
+ var y = 5;
+ 
+ var x = 6;    
+
+ console.log(typeof(x == y));  
+
+ var cars = ["Saab", "Volvo", "BMW"];
+
+ var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+
+ document.write(data.length);
+
+ document.write(data.toLowerCase());
+
+
+ document.write(data.toUpperCase());
+
+
+ document.write(data.trim());
+
+ 
+ var length = 16;                               // Number
+ 
+ var lastName = "Johnson";                      // String
+ 
+ var x = {firstName:"John", lastName:"Doe"};    // Object
+
+ 
+ JavaScript uses arithmetic operators ( + - * / ) to compute values:
+ 
+ 
+ __________________
 
 class 22:
 
