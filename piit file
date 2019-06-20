@@ -92,13 +92,15 @@ Google font
 <img src='' usemap=#id />
 
 
-<map name='id'>
+ <img src="planets.gif" width="145" height="126" usemap="#planetmap">
 
+<map name="planetmap">
 
- <area coords='' href='sun.html' shape>
+  <area shape="rect" coords="0,0,82,126" href="sun.htm" alt="Sun">
+  <area shape="circle" coords="90,58,3" href="mercur.htm" alt="Mercury">
+  <area shape="poly" coords="124,58,8" href="venus.htm" alt="Venus">
 
-
-</map>
+</map> 
 
 
 Top to right for poly, 
@@ -109,16 +111,11 @@ center & radius for circle
 
 Top left & bottom right for rect 2 point
 
-
-Form method
-
-Keygen name="security"
+Form method get & post
 
 Color
 
 Date
-
-Datetime-local
 
 Email
 
@@ -137,65 +134,62 @@ URL
 Week
 
 
+create a facebook form
 
-Full input type
-
+Full width input type
 
 Same name for radio
 
-
-select optgroup label
+ <select>
+  <optgroup label="Swedish Cars">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+  </optgroup>
+  <optgroup label="German Cars">
+    <option value="mercedes">Mercedes</option>
+    <option value="audi">Audi</option>
+  </optgroup>
+</select> 
 
 
 textarea rows cols
 
-Field set legend 
-
+ <form>
+  <fieldset>
+    <legend>Personalia:</legend>
+    Name: <input type="text"><br>
+    Email: <input type="text"><br>
+    Date of birth: <input type="text">
+  </fieldset>
+</form> 
 
 Required
 
-
 Autofocus
-
 
 Checked
 
-
-Use name id in form
-
-
 Input style width
-
 
 autocomplete = 'off' for delete hints
 
-
 Multiple
-
 
 Onclick vs onfocus [click work even fillup]
 
-
 Readonly vs disable
-
 
 Pattern='[a-z]{1,5}'  (condition & length)
 
-
 Number step=3
 
+<meter value="2" min="0" max="10">2 out of 10</meter><br>
 
-meter value=2 max min
-
+<meter value="0.6">60%</meter>
 
 Maxlenght="20" input type text
 
-
-Input type URL - URL Unicode
-
-
-spellcheck='true'
-
+<input type="text" name="fname" spellcheck="true">
 
 
 
@@ -358,6 +352,15 @@ class 23:
  AND end_time  <= '2017-06-04'
 
  
+ 
+
+SELECT column_name(s) FROM table1
+UNION
+SELECT column_name(s) FROM table2;
+
+Union all (fetch duplicate data) 
+
+
 
 CREATE TABLE users(
  id int not null PRIMARY KEY AUTO_INCREMENT,
@@ -365,11 +368,6 @@ CREATE TABLE users(
  lname varchar(200) not null,
  fullname varchar(400) not null
 )
-
-
-
-
-
 
 
 
@@ -520,18 +518,6 @@ DROP PROCEDURE procude_name;
 
 show procedure status;
 
-
-Union (fetch duplicate data)
-
-SELECT City FROM Customers
-
-UNION
-
-SELECT City FROM Suppliers
-
-ORDER BY City;
-
- 
 
 
 
