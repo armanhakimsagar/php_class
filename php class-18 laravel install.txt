@@ -63,6 +63,11 @@ Via Composer Create-Project:
 -> php artisan view:clear     (remove all complied error view in storage/framework/views | 404 error)
 
 
+** laravel life circle : https://www.google.com/search?q=laravel+life+cycle&client=firefox-b-d&sxsrf=ACYBGNRl5lSJDK2eRrTuqnIU6xHOvnrdmw:1570548820367&tbm=isch&source=iu&ictx=1&fir=he_3iPPkhrcGNM%253A%252C4vkhHb5xFj5qqM%252C_&vet=1&usg=AI4_-kQfZ4VI9XP9RKXtWCpoZffthD2yqQ&sa=X&ved=2ahUKEwjEj6mk_ozlAhXRfisKHdgdDIoQ9QEwAXoECAgQBg#imgrc=he_3iPPkhrcGNM:&vet=1
+
+** mvc structure : 
+
+
 
 
 
