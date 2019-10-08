@@ -167,12 +167,46 @@ ____________
 
   ?>
 
+____________
 
 
+Route::view('/welcome', 'welcome');
+
+Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
+
+
+___________
+
+
+Route::get('/a/{id}', function ($id) {
+	dd($id);
+    return view('welcome');
+});
+
+____________
+
+
+Route::get('/a/{id}', function () {
+
+   return view('welcome');
+
+});
 
 
 ____________
 
+
+Routeserivceprovider.php
+
+
+public function boot()
+{
+	Route::pattern('id', '[0-9]+');
+
+	parent::boot();
+
+}
+    
 
 
 -> customize 404 error
