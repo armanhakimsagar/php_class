@@ -19,8 +19,7 @@ Command line :
 
 
 
-Installation rules :
-
+Via Laravel Installer:
 
 -> download latest version of xampp for latest php version
 
@@ -32,6 +31,9 @@ Installation rules :
 
 -> composer global require "laravel/installer"
 
+
+Via Composer Create-Project:
+
 -> composer create-project --prefer-dist laravel/laravel blog
 
 -> hit localhost/projectname/public
@@ -42,17 +44,11 @@ Installation rules :
    into root & make server.php to index.php
 
 
--> laravel new blog (for new project)
-
 -> php artisan (it will show all commad)
 
 -> php artisan --version (show verison)
 
--> php artisan env      (show current environment)
-
--> php artisan route:cache    Create a route cache file for faster route registration
-
--> php artisan route:clear
+-> php artisan env   (set APP_ENV value in .env)   (show current environment)
 
 -> php artisan down (Maintenance Mode)
 
@@ -63,10 +59,6 @@ Installation rules :
 -> php artisan up
    
 -> php artisan serve 
-
--> php artisan config:cache 
-
--> php artisan route:list
 
 -> php artisan view:clear     (remove all complied error view in storage/framework/views | 404 error)
 
