@@ -108,29 +108,35 @@ ______________________
 Template Inheritance:
 
 
+Route::get('/', function () {
+    return view('about');
+});
+
+
 master.blade.php
 
 
-<h1> header </h1>
-
-  @yield('title')
-
-<h1> footer </h1>
+<!DOCTYPE html>
+<html>
+    <head>
+       <title>swag</title>
+    </head>
+    <body>
+        @yield('content')
+    </body>
+</html>
 
 
 
 about.blade.php
 
-@extends('folder.filename_only')	[link]
+@extends('layouts.master')
 
-make expression blade :
+@section('content')
 
-@section('title')
+<p>content check</p>
 
-  content will show
-
-@endsection
-
+@stop
 
 
 ______________________
@@ -151,28 +157,16 @@ master.blade.php
 
 
 
-
-
-template.blade.php
-
-@extends('welcome')
-
-@section('sidebar')
-
-    @parent
-
-    <p>This is appended to the master sidebar.</p>
-
-@endsection
-
-
-// create this section & parent it
+about.blade.php
 
 @section('special_js_links')
 
-    <p>This is js links</p>
+    <p>links</p>
 
-@endsection
+@stop
+
+
+
 
 
 
