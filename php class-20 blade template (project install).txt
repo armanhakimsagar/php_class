@@ -3,24 +3,36 @@ Control Structures
 
 @section and @yield @for are directives.
 
+
 @for ($i = 0; $i < 10; $i++)
     
      {{ $i }}
 
 @endfor
 
-
-{{-- This comment will not be present in the rendered HTML --}}
-
-or
-
 @php
-  //
+   
+   if(0==0){
+
+    echo "ok";
+
+   }
+
 @endphp
 
 
+@if (count($records) === 1)
+    I have one record!
+@elseif (count($records) > 1)
+    I have multiple records!
+@else
+    I don't have any records!
+@endif
 
-<?php $records = "ok"; ?>
+
+
+
+<?php $recvords = "ok"; ?>
 
 @isset($records)
 
@@ -36,63 +48,13 @@ or
 @endempty
 
 
-@unless (Auth::check())
-
-    You are not signed in.
-    
-@endunless
-
-
-
-@isset($records)
-
-    // $records is defined and is not null...
-    
-@endisset
-
-@empty($records)
-
-    // $records is "empty"...
-    
-@endempty
-
-
-
-
-@switch($i)
-    @case(1)
-        First case...
-        
-        @break
-
-    @case(2)
-        Second case...
-        
-        @break
-
-    @default
-        Default case...
-        
-@endswitch
-
-
-@auth
-   The user is authenticated...
-@endauth
-
-@guest
-   The user is not authenticated...
-@endguest
-	
-_______________________
-
 
 
 <?php $first = "<b>Narendra Sisodia</b>"; ?>
 
 
 
-{!! $first !!}  // not prevent xss htmlentities
+{!! $first !!} 
 
 {{ $first }}
 
@@ -126,16 +88,6 @@ Route::get('/', function () {
  
  
 Hello, {{ $name }}
-
-
-_______________________
-
-
-@foreach ($users as $user)
-
-  <p>This is user {{ $user->id }}</p>
-    
-@endforeach
 
 
 ________________________
