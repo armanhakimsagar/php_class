@@ -144,26 +144,39 @@ ______________________
 
 * Parent yield:
 
+if parent have section & same named section in blade file
+then parent use. if parent use it will show parent section.
+other wise it will not show parent section.
+
 
 master.blade.php
 
-<h1> header </h1>
-
-   @yield('sidebar')
-
-   @yield('special_js_links')
-
-<h1> footer </h1>
-
+<html>
+    <head>
+        <title>App Name - @yield('title')</title>
+    </head>
+    <body>
+        @section('sidebar')
+            master side bar
+        @show
+    </body>
+</html>
 
 
 about.blade.php
 
-@section('special_js_links')
+@extends('layouts.master')
 
-    <p>links</p>
 
-@stop
+@section('sidebar')
+    @parent
+
+    <p>master side bar with parents</p>
+@endsection
+
+@section('content')
+    <p>This is my body content.</p>
+@endsection
 
 
 
