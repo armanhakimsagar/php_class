@@ -93,6 +93,12 @@ any view under homecontroller will be auth
 any view under homecontroller will be auth
 
 
+
+__________________________
+
+
+ <?php  dd(Auth::user()); ?>
+ 
 __________________________
 
 
