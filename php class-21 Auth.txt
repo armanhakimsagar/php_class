@@ -221,6 +221,32 @@ confiq/auth.php	 (reset guard | provider | password array)
 
 
 
+Multi auth:
+
+
+1. php artisan make auth
+
+2. php artisan make:middleware MiddlewareName
+
+   public function handle($request, Closure $next)
+    {
+    // check here capable for this route
+    
+        if (200 == 200) {
+            return redirect()->route('data');
+        }
+
+        return redirect('home/33');
+    }
+  
+ 3. 
+ 
+ 
+ Route::group(['middleware'=>'admin'], function () {
+	
+	Route::get('login2', 'LoginController@ab')->name('data');
+ });
+
 
 
 ___________________________________________________________
