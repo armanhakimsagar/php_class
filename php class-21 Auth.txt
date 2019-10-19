@@ -126,14 +126,25 @@ Make hash:
 ______________________
 
 
-EMAIL TO PHONE FOR LOGIN:
+EMAIL TO PHONE OR PHONE OR User FOR LOGIN:
 
-1. change name in view file in login.blade.php
+protected function credentials(Request $request){
 
-2. change in validation part
+if(is_numeric($request->get('email'))){
 
-3. change in login attempt
+  return ['phone'=>$request->get('email'),'password'=>$request->get('password')];
 
+}
+
+elseif (filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)) {
+
+  return ['email' => $request->get('email'), 'password'=>$request->get('password')];
+
+}
+
+return ['username' => $request->get('email'), 'password'=>$request->get('password')];
+
+}
 
 
 Try to login:
@@ -144,14 +155,7 @@ $credentials = [
 ];
 
 
-
-// Attempt to login the user
-
-if (Auth::attempt($credentials)) {
-   return redirect()->route('dashboard');
-}
-    
-____
+__________
 
 
 -> RECOVERY PASSWORD :
