@@ -121,12 +121,29 @@ Make hash:
 
 \Hash::make($request['password']);
 
+
+
+______________________
+
+
+EMAIL TO PHONE FOR LOGIN:
+
+1. change name in view file in login.blade.php
+
+2. change in validation part
+
+3. change in login attempt
+
+
+
 Try to login:
 
 $credentials = [
    'username' => session('username'),
    'password' => session('password'),
 ];
+
+
 
 // Attempt to login the user
 
