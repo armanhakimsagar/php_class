@@ -2,6 +2,25 @@ Migrations are like version control for your database,
 allowing your team to easily modify and share the application's database schema. 
 
 To create a migration, use the make:migration Artisan command:
+
+
+* Create Index by defaultStringLength :
+  
+  https://laravel.com/docs/master/migrations#creating-indexes
+
+  app\provider\appserviceprovider.php :
+
+  use Illuminate\Support\Facades\Schema;
+
+  public function boot(){
+  
+    Schema::defaultStringLength(191);
+  
+  }
+  
+  
+  
+  
 * php artisan make:migration create_users_table
 
 Schema::create('flights', function (Blueprint $table) {
