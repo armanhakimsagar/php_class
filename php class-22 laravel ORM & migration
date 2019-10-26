@@ -159,42 +159,35 @@ protected $primaryKey = 'employer_id';
 _____________
 
 
-HasOne  		(answer userid) | diffrence without foreach loop
+HasOne  		(user & user_roll table)
 Hasmany 		(post userid)  | in foreach loop
 belongsToMany		(roles users)
 
 _____________
 
 
-answers table 	: id number user_id** created_at updated_at
 
-user table      : id name password created_at updated_at
+use App\User;
 
-* Route:
+Route::get('/',function(){
+	$data = User::find(1);
+	
+	dd($data->OrderUser->roll_id);
 
-    Route::get('/{id}','DeveloperController@index');
+	return view('welcome');
+});
 
-* In user model:
+user model:
 
-public function AnswerOfUser(){
-
-  return $this->hasMany(answers::class);
-
-}
 
 
 * Method:
 
-public function index($id){
+public function OrderUser(){
 
-   $data = User::find($id);
+   return $this->hasOne(order::class);
 
 }
-
-
-** View file:
-
-$data->posts->title;
 
 
 
