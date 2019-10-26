@@ -194,29 +194,13 @@ public function OrderUser(){
 
 _______________
 
-
-post table 	: id title user_id** created_at updated_at
-
-user table      : id name password created_at updated_at
-
-* Route:
-
-    Route::get('/{id}','DeveloperController@index');
+All same just need loop & hasmany
 
 * In user model:
 
 public function PostOfUser(){
 
   return $this->hasMany(Post::class);
-
-}
-
-
-* Method:
-
-public function index($id){
-
-   $data = User::find($id);
 
 }
 
