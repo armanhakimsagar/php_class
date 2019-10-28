@@ -159,9 +159,9 @@ protected $primaryKey = 'employer_id';
 _____________
 
 
-HasOne  		(user & user_roll table)
-Hasmany 		(post userid)  | in foreach loop
-belongsToMany		(roles users)
+HasOne  		one to one (user & user_roll table)
+Hasmany 		one to many (post userid)  | in foreach loop
+belongsToMany		many to one
 
 _____________
 
@@ -218,6 +218,36 @@ foreach($data->PostOfUser as $datas){
 
 _______________
 
+
+Many to one
+
+All same just many to one
+
+
+use App\order;
+
+Route::get('/userlist',function(){
+	$data = order::find(1);
+	
+	dd($data->user);
+});
+
+
+user model:
+
+
+
+* Method:
+
+public function user(){
+
+   return $this->belongsTo('App\User');
+
+}
+
+
+
+_______________
 
 
 many to many    (user_id & role_id in roles table):
