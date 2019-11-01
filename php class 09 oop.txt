@@ -90,13 +90,21 @@ class data1{
 
 	protected $property1 = "this is public";
 	
+	// for work in same class
+	
+	public function data2method(){
+		$obj = new data1;
+		echo $obj->property1; 
+	}
+	
 }
 
 class data2 extends data2{
-	
+
 	public function data2method(){
 		echo $data2var = $this->property1;
 	}
+
 }
 
 $webapss = new data2;
