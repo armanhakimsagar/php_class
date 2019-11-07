@@ -257,7 +257,7 @@ _______________
 
 EASER LOADING ::::::::::::::::::::::::::
 
-* its for query optimization in one to many relationship
+* its for query optimization in many to many relationship
 * for testing need to download package laravel debuger
 
 * set laravel debuger for result
@@ -281,6 +281,31 @@ EASER LOADING ::::::::::::::::::::::::::
 
 
 
+in route:
+
+Route::get('/userlist2',function(){
+	
+	//$data = user:all(); bring all data for compare with post table.
+	
+	$data = User::with('PostOfUser')->get();
+	
+	//First bring all data then bring data with specified method
+
+	foreach($data as $datas){
+
+	   echo $datas->PostOfUser;
+
+	};
+});
+
+
+
+
+public function PostOfUser(){
+
+      return $this->hasMany(Post::class);
+
+}
 
 
 
