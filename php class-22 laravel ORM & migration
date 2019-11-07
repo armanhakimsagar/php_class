@@ -161,11 +161,13 @@ _____________
 
 HasOne  		one to one (user & user_roll table)
 Hasmany 		one to many (post userid)  | in foreach loop
-belongsToMany		many to one
+belongsToMany		many to one (One product order by many user)
+easer loading		Query optimization for one to many relationship
+
 
 _____________
 
-
+ONE TO ONE :::::::::::::::::::::::::::::::::::::::::::
 
 use App\User;
 
@@ -194,6 +196,9 @@ public function OrderUser(){
 
 _______________
 
+ONE TO MANY :::::::::::::::::::::::::::::::::::::::
+
+
 All same just need loop & hasmany
 
 * In user model:
@@ -219,7 +224,8 @@ foreach($data->PostOfUser as $datas){
 _______________
 
 
-Many to one
+Many to one :::::::::::::::::::::::::::::::::::
+
 
 All same just many to one
 
@@ -236,7 +242,6 @@ Route::get('/userlist',function(){
 user model:
 
 
-
 * Method:
 
 public function user(){
@@ -248,6 +253,44 @@ public function user(){
 
 
 _______________
+
+
+EASER LOADING ::::::::::::::::::::::::::
+
+* its for query optimization in one to many relationship
+* for testing need to download package laravel debuger
+
+* set laravel debuger for result
+
+* composer require barryvdh/laravel-debugbar --dev
+
+* set config/app.php:
+
+   Barryvdh\Debugbar\ServiceProvider::class,
+  'Debugbar' => Barryvdh\Debugbar\Facade::class,
+
+* run:
+
+  php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
+
+* Need to set APP_DEBUG=true in .env file
+
+* composer dump-autoload
+
+* must have a return view for work with debug interface
+
+
+
+
+
+
+
+
+
+______________________________________________________
+
+
+
 
 
 many to many    (user_id & role_id in roles table):
