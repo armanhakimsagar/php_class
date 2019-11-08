@@ -1,3 +1,34 @@
+* whenever you want to inject a service into other services use service provider.
+  Or partial view code load
+
+* php artisan make:provider AwesomeServiceProvider
+
+* The register method is the place where you register
+
+* the boot method is the place where you can write your code & use registered services
+
+* Add your service provider into file config/app.php
+  App\Providers\AwesomeServiceProvider::class,
+  After that service providers will be loaded during the bootstrapping of the Laravel application.
+  
+* use View;
+
+  Schema::defaultStringLength(191);
+
+  View::composer('*', function($view)
+  {
+	$view->with('menudata', category::with('subcategory','subcategory.brand')->get());
+  });
+
+
+
+
+______________________________
+
+
+
+
+
 * If you've ever come across the Laravel framework, it's highly unlikely that you haven't heard of service
   containers and service providers. In fact, they're the backbone of the Laravel framework and do all the 
   heavy lifting when you launch an instance of any Laravel application.
