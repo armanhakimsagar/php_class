@@ -228,16 +228,35 @@ Multi auth:
 
 2. php artisan make:middleware MiddlewareName
 
-   public function handle($request, Closure $next)
-    {
-    // check here capable for this route
-    
-        if (200 == 200) {
-            return redirect()->route('data');
-        }
+namespace App\Http\Middleware;
 
-        return redirect('home/33');
+use Closure;
+use Auth;
+use App\User;
+use App\user_roll;
+
+class Admin
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+        //dd(Auth::id());
+        $roll = user_roll::where('user_id',Auth::id())->first();
+        
+        if($roll->roll_id == 1){
+            return redirect('login1');
+        }
+        if($roll->roll_id == 2){
+            return redirect('login2');
+        }
     }
+}
   
  3. 
  
