@@ -30,3 +30,80 @@
 
 
 https://github.com/Crinsane/LaravelShoppingcart
+
+
+
+
+
+
+
+
+
+
+<?php
+	
+	session_start();
+	$i = 0;
+	function addtoCart($id,$name,$price,$qty,$image){
+		session_start();
+		$_SESSION['add_to_cart'] = [];
+		count($_SESSION['add_to_cart']);
+	}
+
+	if(isset($_GET['cart'])){
+		
+		$add_to_cart = [];
+		
+		
+		$add_to_cart[] = $_GET['id'];
+		$add_to_cart[] = $_GET['name'];
+		$add_to_cart[] = $_GET['price'];
+		$add_to_cart[] = $_GET['quantity'];
+		$add_to_cart[] = $_GET['image'];
+		
+		echo "<pre>";
+		$_SESSION['cart_item'][] = $add_to_cart ;
+		print_r($_SESSION['cart_item']);
+		$i++;
+	}
+
+
+	if(isset($_GET['cart_remove'])){
+		session_unset();
+		header('location:../cart.php');
+	}
+
+	if(isset($_POST['update_cart'])){
+		session_unset();
+		$add_to_cart = [];
+		
+		for ($i=0; $i < count($_POST['id']); $i++) { 
+			$add_to_cart['id'][$i] = $_POST['id'][$i];
+			$add_to_cart['name'][$i] = $_POST['name'][$i];
+			$add_to_cart['price'][$i] = $_POST['price'][$i];
+			$add_to_cart['quantity'][$i] = $_POST['quantity'][$i];
+			$add_to_cart['image'][$i] = $_POST['image'][$i];
+		}
+		$update_cart[] = $add_to_cart;
+		
+		for ($i=0; $i < count($update_cart[0]['id']); $i++) { 
+			$update_cart[] = $update_cart[0]['id'][$i];
+			$update_cart[] = $update_cart[0]['name'][$i];
+			$update_cart[] = $update_cart[0]['price'][$i];
+			$update_cart[] = $update_cart[0]['quantity'][$i];
+			$update_cart[] = $update_cart[0]['image'][$i];
+			
+			$_SESSION['cart_item'] = $update_cart;
+		}
+		echo "<pre>";
+		print_r($_SESSION['cart_item']);
+		die();
+		header('location:../cart.php');
+		
+	}
+
+?>
+
+
+
+
