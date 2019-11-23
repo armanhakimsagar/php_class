@@ -654,3 +654,132 @@ function  validation(){
 </form>
 
 
+
+___________________________________________
+
+
+
+
+
+
+
+
+
+function Validation(){
+	//return false;
+	fname = document.getElementById("fname").value;
+	surname = document.getElementById("surname").value;
+	phone = document.getElementById("phone").value;
+	passwords = document.getElementById("password").value;
+	day = document.getElementById("day").value;
+	month = document.getElementById("month").value;
+	year = document.getElementById("year").value;
+	male = document.getElementById("male").checked;
+	female = document.getElementById("female").checked;
+	error = 0;
+	error_id = [];
+	
+	if(fname == ""){
+		error = error +1;
+		error_id.push("fname");
+		document.getElementById("efname").innerHTML = "First name required";
+	}
+	if(surname == ""){
+		error = error +1;
+		error_id.push("surname");
+		document.getElementById("esurname").innerHTML = "Sur name required";
+	}
+	if(phone == ""){
+		error = error +1;
+		error_id.push("phone");
+		document.getElementById("ephone").innerHTML = "Phone required";
+	}
+	if(passwords == ""){
+		error = error +1;
+		error_id.push("password");
+		document.getElementById("epasswords").innerHTML = "Passowrd required";
+	}
+	if(day == 0){
+		error = error +1;
+		error_id.push("day");
+		document.getElementById("eday").innerHTML = "day required";
+	}
+	if(year == 0){
+		error = error +1;
+		error_id.push("year");
+		document.getElementById("eyear").innerHTML = "year required";
+	}
+	if(month == 0){
+		error = error +1;
+		error_id.push("month");
+		document.getElementById("emonth").innerHTML = "month required";
+		
+	}
+	if(male == false && female == false){
+		error = error +1;
+		
+	}
+	
+	if(error == 0){
+		return true;
+	}else{
+		for(i=0;i< error_id.length;i++){
+			document.getElementById(error_id[i]).className = "border_red";
+			document.getElementById(error_id[i]).style.backgroundImage = "url('icon.png')";
+			document.getElementById(error_id[i]).style.backgroundRepeat = "no-repeat";
+			document.getElementById(error_id[i]).style.backgroundPosition = "95% 0%";
+		}
+		console.log(error_id);
+		return false;
+	}
+	
+}
+
+function clickvalidation(id){
+	document.getElementById(id).className = "border_white";
+	document.getElementById(id).style.backgroundImage = "none";
+	
+	alfa = ['a','b','c','d','e','f'];
+	num = [1,2,3,4,5,6];
+	special_ch = ['#','!','$'];
+	
+	random_alfa = [];
+	random_num = [];
+	random_special_ch = [];
+	
+	for(i=0;i<2;i++){
+		random_alfa.push(alfa[Math.floor((Math.random() * alfa.length-1) + 1)]);
+		random_num.push(num[Math.floor((Math.random() * num.length-1) + 1)]);
+		random_special_ch.push(special_ch[Math.floor((Math.random() * special_ch.length-1) + 1)]);
+	}
+	
+	var data1 = random_alfa.concat(random_num);
+	var data2 = data1.concat(random_special_ch);
+	console.log(data2);
+}
+
+function blurvalidation(id,value){
+	if(value == ""){
+		document.getElementById(id).className = "border_red";
+		document.getElementById(id).style.backgroundImage = "url('icon.png')";
+		document.getElementById(id).style.backgroundRepeat = "no-repeat";
+		document.getElementById(id).style.backgroundPosition = "95% 0%";
+	}
+	console.log(value);
+}
+
+function passwordPattern(id,value){
+	 console.log(value);
+	 if(value.match(/[0-9]/)){
+		 document.getElementById("weak").className = "bg_green";
+		 if(value.match(/[0-9]/) && value.match(/[A-Z]/)){
+			 document.getElementById("weak").className = "bg_green";
+			 document.getElementById("medium").className = "bg_green";
+			 if(value.match(/[0-9]/) && value.match(/[A-Z]/) && value.match(/[@#$%!]/)){
+				 document.getElementById("weak").className = "bg_green";
+				 document.getElementById("medium").className = "bg_green";
+				 document.getElementById("strong").className = "bg_green";
+			 }
+		 }
+	 }
+}
