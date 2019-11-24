@@ -342,54 +342,51 @@ _________________________________________________________
 AJAX FORM IMAGE UPLOAD && FORM VALIDATION :
 
 
+Route::post('subscribtion',function(){
+
+	$name = $_POST['name'];
+	$image = $_FILES['image']['name'];
+	$image = $_FILES['image']['tmp_name'];
+	$feedback = [
+        'status' => 'Success',
+        'message' => 'Inserted'
+	];
+
+	echo json_encode($image);
+
+});
+
 
 <span id="error"></span>
 
  <form enctype="multipart/form-data" id="upload_form" role="form" method="POST" action="" >
-	<input type="hidden" name="_token" value="{{ csrf_token()}}">
+    
+    <input type="hidden" name="_token" value="{{ csrf_token()}}">
     <input type="text" name="name" placeholder="name">
     <input type="file" name="image">
     <button type="button" class="addbtn">Add</button>
+
  </form>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
 <script>
     $(".addbtn").click(function(){
-	$.ajax({
-	      url:'subscribtion',
-	      data:new FormData($("#upload_form")[0]),
-	      dataType:'json',
-	      async:false,
-	      type:'post',
-	      processData: false,
-	      contentType: false,
-	      success:function(response){
-		if(response.error != ""){
-				$.each(response, function( key, value ) {
-					$("#error").html('<p>'+value+'</p>');
-				});
-		}
-	      },
-	 });
+      $.ajax({
+            url:'subscribtion',
+            data:new FormData($("#upload_form")[0]),
+            dataType:'json',
+            async:false,
+            type:'post',
+            processData: false,
+            contentType: false,
+            success:function(response){
+              console.log(response);
+            },
+       });
   });
 </script>
-
-
-
-Route::post('subscribtion',function(Request $request){
-	$input = $request->all();
-    $input['image'] = time().'.'.$request->image->getClientOriginalExtension();
-    $request->image->move(public_path('image'), $input['image']);
-});
-
-
-
-
-_________________________________________________________
-
-
-
-
-
 
