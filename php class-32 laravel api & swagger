@@ -69,6 +69,23 @@ Route::post('userPost', function(Request $request) {
 protected $fillable = ['fieldname','fieldname']
 
 
+________
+view
+
+	$json = file_get_contents('http://echaritybd.com/api/users');
+
+	$data = json_decode($json,true);
+
+	echo "<pre>";
+
+	print_r($data['data']);
+	
+	for($i=0;$i< count($data['data']);$i++){
+		echo $data['data'][$i]['user_id'];
+	}
+
+	exit;
+
 ______
 
 
