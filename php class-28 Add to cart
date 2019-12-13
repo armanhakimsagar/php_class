@@ -107,3 +107,121 @@ https://github.com/Crinsane/LaravelShoppingcart
 
 
 
+
+
+
+
+
+
+
+
+_______________________________________________________________
+
+
+
+RAW PHP ADD TO CART
+
+
+
+<?php
+	
+	session_start();
+	$i = 0;
+	function addtoCart($id,$name,$price,$qty,$image){
+		session_start();
+		$_SESSION['add_to_cart'] = [];
+		count($_SESSION['add_to_cart']);
+	}
+
+	if(isset($_GET['cart'])){
+		
+		// declair a blank array cart
+
+		$add_to_cart = [];
+		echo "<pre>";
+		echo "Old cart testing";
+		
+		// testing seesion is blank or not
+
+		print_r($_SESSION['cart_item']);
+		
+
+		if(isset($_SESSION['cart_item'])){
+		
+			// if isset data in session, then match session data with passed value in parameter
+			
+			for ($i=0; $i < count($_SESSION['cart_item']) ; $i++) {
+				if($_SESSION['cart_item'][$i][1] == $_GET['name']){
+
+					echo "already exists";
+					echo "<pre>";
+					$exists = true;
+					print_r($_SESSION['cart_item']);
+					die();
+
+				}
+				
+			}
+			if(!isset($exists)){
+				
+					$add_to_cart[] = $_GET['id'];
+					$add_to_cart[] = $_GET['name'];
+					$add_to_cart[] = $_GET['price'];
+					$add_to_cart[] = $_GET['quantity'];
+					$add_to_cart[] = $_GET['image'];
+					
+					echo "<pre>";
+					echo "New data in session";
+					$_SESSION['cart_item'][] = $add_to_cart ;
+					print_r($_SESSION['cart_item']);
+					$i++;
+					die();
+				
+			}
+		}else{
+			$add_to_cart[] = $_GET['id'];
+			$add_to_cart[] = $_GET['name'];
+			$add_to_cart[] = $_GET['price'];
+			$add_to_cart[] = $_GET['quantity'];
+			$add_to_cart[] = $_GET['image'];
+			
+			echo "<pre>";
+			echo "New data in session";
+			$_SESSION['cart_item'][] = $add_to_cart ;
+			print_r($_SESSION['cart_item']);
+			$i++;
+			die();
+		}
+		die();
+		
+	}
+
+
+	if(isset($_GET['cart_remove'])){
+		session_unset();
+		header('location:../cart.php');
+	}
+
+	if(isset($_GET['id'])){
+		$id = $_GET['id'];
+		$qty = $_GET['update_cart_qty'];
+		$_SESSION['cart_item'][$id][3] = $qty;
+		header('location:../cart.php');
+	}
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
