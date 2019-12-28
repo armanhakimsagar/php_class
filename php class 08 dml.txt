@@ -992,14 +992,16 @@ First normal form:
 
 2nd normal form :
 
-remove partial dependancy 
-(partial dependency : If a column depends on another 
+partial dependancy 
+If a column depends on another 
 primary column in many to many relationship)
    
 Third normal form : 
 
-remove transitive dependency (many to many).
-If a non primary column depends on another non primary column.
+transitive dependency:
+If a non primary column depends on another non primary column in same table.
+
+
 
 
 
