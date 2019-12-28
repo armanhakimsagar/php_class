@@ -1001,8 +1001,13 @@ Third normal form :
 transitive dependency:
 If a non primary column depends on another non primary column in same table.
 
+BCNF:
+If foreign key treat as super key then all column must dependent on that value.
 
+Fourth normalization form:
 
+Multi-valued Dependency:
+Foreign key value must depends on all other columns.
 
 
 _________
