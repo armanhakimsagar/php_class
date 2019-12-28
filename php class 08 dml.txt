@@ -980,8 +980,9 @@ normalization:
 
 First normal form:
 
-1. each column should take single values 
+1. each column should take single values , all value must be atomic values.
    (multiple value not allow)
+   https://www.studytonight.com/dbms/first-normal-form.php
 
 2. all column should contain related data
 
@@ -993,21 +994,28 @@ First normal form:
 2nd normal form :
 
 partial dependancy 
-If a column depends on another 
-primary column in many to many relationship)
+If a column depends on another table primary key column (different table).
+It have 2 tables.
    
 Third normal form : 
 
 transitive dependency:
 If a non primary column depends on another non primary column in same table.
+It have 2 tables.
 
 BCNF:
-If foreign key treat as super key then all column must dependent on that value.
+If a column dont depends on same table primary key column.
+It have 1 tables.
+so create 2 table for solutions.
+https://www.studytonight.com/dbms/boyce-codd-normal-form.php
 
 Fourth normalization form:
 
 Multi-valued Dependency:
-Foreign key value must depends on all other columns.
+If a multiple column dont depends on same table primary key column.
+It have 1 tables.
+so create 2 or 3 table for solutions.
+https://www.studytonight.com/dbms/boyce-codd-normal-form.php
 
 
 _________
