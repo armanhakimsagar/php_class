@@ -80,5 +80,34 @@ calcluation for small number		calculation for big number
 9   1 0 0 1
 
 
+Any device have 3 specifications: name, ip , mac
+
+IP : IP address are used to uniquely identifies the connection of network with that device take part in a network.
+MAC :  MAC Address is used to ensure the physical address of computer
+
+IP have 2 type:
+IPV4    2^32
+IPV6    2^128
+
+IPV4 have 256 address. 2^8.2^8.2^8.2^8
+
+IPv4 IP address, there are five classes of available IP ranges: 
+
+Class A, Class B, Class C, Class D   Class E.
+0-127    128-191  192-223  224-239   240-255    
+                           research  multicast
+
+
+Class A: net host host host
+Class B: net net host host
+Class C: net net net host
+
+
+
+
+
+
+
+
 
 
