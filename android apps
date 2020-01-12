@@ -32,6 +32,7 @@ view:
             orientation - vertical or horizontal
             content - declair package name & connected class name
             background: "@color/red"
+            screenOrientational="landscape"
 
    groupview - can view contain multiple view
 
@@ -39,4 +40,5 @@ view:
 
             layout_width = wrap content (adjust width)
             text = for text show
-            
+   
+   
