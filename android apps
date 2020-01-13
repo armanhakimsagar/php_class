@@ -81,9 +81,13 @@ view:
   
   1. first create property of the text view
   
-     protected TextView NewTextView;
+     protected TextView NewTextViewForText;
      
-     newdata = (TextView) fildViewById(r.id.nameTextViewId); [set a typehint & get the id]
+     protected TextView NewTextViewForAge;
      
-     newdata.setText("set this text new");
+     (TextView) fildViewById(r.id.nameTextViewId); [set a typehint & get the id]
+     
+     NewTextViewForText.setText("set this text new");
+     
+     NewTextViewForText.setText(20);
    
