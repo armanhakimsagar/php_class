@@ -34,19 +34,56 @@ view:
             background: "@color/red"
             screenOrientational="landscape" [allow rorate]
             oriantation="vertical" [show all widget row wise]
+            gravity = center [line-height]
 
    groupview - can view contain multiple view
 
    view - it will contain single view
 
+   textWidget:
+   
+            id = "@+id/id_name here"
+            
             layout_width = wrap content (adjust width) | match parents [display block]
-            text = "@string/text_name"
+            
+            text = "@string/text_name" [\n for next line]
+            
             padding = 10dp
+            
             textSize = 10sp
+            
             textStyle = "bold"
+            
             textColor = "@color/color_name"
+            
             textAllCaps = true
             
+            textAlign = center
+            
+            textisSelectable = true
+            
+            textcolorhighlight = "@color/color_name" [for hightlight color after selection]
+            
+            
+            
+            
+            
+   scrollview: you can replace full text view widget in scroll view part. it will be scoll auto.         
+            
+            
+            
+            
+            
+            
+            
    
+  .java file:
   
+  1. first create property of the text view
+  
+     protected TextView NewTextView;
+     
+     newdata = (TextView) fildViewById(r.id.nameTextViewId); [set a typehint & get the id]
+     
+     newdata.setText("set this text new");
    
