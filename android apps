@@ -32,13 +32,21 @@ view:
             orientation - vertical or horizontal
             content - declair package name & connected class name
             background: "@color/red"
-            screenOrientational="landscape"
+            screenOrientational="landscape" [allow rorate]
+            oriantation="vertical" [show all widget row wise]
 
    groupview - can view contain multiple view
 
    view - it will contain single view
 
-            layout_width = wrap content (adjust width)
-            text = for text show
+            layout_width = wrap content (adjust width) | match parents [display block]
+            text = "@string/text_name"
+            padding = 10dp
+            textSize = 10sp
+            textStyle = "bold"
+            textColor = "@color/color_name"
+            textAllCaps = true
+            
    
+  
    
