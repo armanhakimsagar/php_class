@@ -50,6 +50,8 @@ view:
             
             padding = 10dp
             
+            layout_marginLeft = '10dp'
+            
             textSize = 10sp
             
             textStyle = "bold"
@@ -73,9 +75,20 @@ view:
             
    scrollview: you can replace full text view widget in scroll view part. it will be scoll auto.         
             
+   button widget:
+   
+        <button
+          
+          all same like text widget
+          
+          drawableLeft="@drawable/image" [for add image in button]
+        
+        >
             
-            
-            
+        <Imagebutton
+          all same like text widget
+          src="@drawable/image"
+        > 
             
             
             
