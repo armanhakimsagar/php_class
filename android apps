@@ -113,5 +113,26 @@ view:
      
      NewTextViewForText.setText(20);
      
-     NewTextViewForText.setOnClickMethod(20); [on clikc method]
+     
+ 2. on click:
+ 
+      Handler handler = new Handler();               [create a class for on click]
+      
+      NewTextViewForText.onclikclistener(handler);   [now add event with property]
+      
+      
+      class Handler implements View.onclicklistener(){
+      
+         public void onlcick(View v){
+         
+            if(v.getId() == R.id.TextId){
+              NewTextViewForText.setText("on click text");
+            }
+            
+         }
+      
+       }
+      
+      
+      
    
