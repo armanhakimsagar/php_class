@@ -133,6 +133,15 @@ view:
       
        }
       
+   or ::::::::::::   
       
+      android:onclick = "showMessage"         [set this is xml file]
       
+      public void showMessage(View v){
+         
+            if(v.getId() == R.id.TextId){
+              NewTextViewForText.setText("on click text");
+            }
+            
+         }
    
