@@ -64,6 +64,9 @@ view:
             
             textcolorhighlight = "@color/color_name" [for hightlight color after selection]
             
+            background = "@color/color_name"
+            
+            for color you can also use this link: https://stackoverflow.com/questions/6674183/storing-hex-color-values-in-strings-xml
             
             
             
