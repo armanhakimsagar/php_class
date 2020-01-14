@@ -29,11 +29,17 @@ manifast file:
 view:
 
 1. layout - can contain multiple group view
-            orientation - vertical or horizontal
+
+            orientation - vertical or horizontal [horizontal allow child side by side]
+
             content - declair package name & connected class name
+            
             background: "@color/red"
+            
             screenOrientational="landscape" [allow rorate]
-            oriantation="vertical" [show all widget row wise]
+            
+            oriantation="vertical" [show all one after one]
+            
             gravity = center [line-height]
 
    groupview - can view contain multiple view
@@ -106,4 +112,6 @@ view:
      NewTextViewForText.setText("set this text new");
      
      NewTextViewForText.setText(20);
+     
+     NewTextViewForText.setOnClickMethod(20); [on clikc method]
    
