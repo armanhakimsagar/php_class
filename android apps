@@ -96,26 +96,55 @@ view:
           src="@drawable/image"
         > 
             
-            
+    image src:
+    
+    <ImageView
+        android:id="@+id/image1"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content"
+        android:src="@drawable/imagep1" 
+        scaleType="position" 
+       />
+    
+    
     Input field:
     
         <EditText
-        android:id="@+id/edittext"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="61dp"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="GUGU TYPE HERE SOMETHINGS"
-        />
+            android:id="@+id/edittext"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/button"
+            android:layout_below="@+id/textView1"
+            android:layout_marginTop="61dp"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="GUGU TYPE HERE SOMETHINGS"
+            />
     
         get data from input field:
         
         String inputData = edittext.getText().toString();
         
+     Checkbox:
+    
+     <CheckBox  
+        android:id="@+id/checkBox3"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+        android:layout_marginLeft="144dp"  
+        android:layout_marginTop="28dp"  
+        android:text="Burger"  
+        app:layout_constraintStart_toStartOf="parent"  
+        app:layout_constraintTop_toBottomOf="@+id/checkBox2" />  
         
+        
+     public void burgerCheck(View v){
+        CheckBox coffe = (CheckBox) findViewById(R.id.checkBox2);
+        CheckBox burger = (CheckBox) findViewById(R.id.checkBox3);
+
+        TextView myAwesomeTextView = (TextView)findViewById(R.id.myAwesomeTextView);
+        myAwesomeTextView.setText("Muri kha gugu");
+    }
    
   .java file:
   
