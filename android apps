@@ -97,7 +97,25 @@ view:
         > 
             
             
-            
+    Input field:
+    
+        <EditText
+        android:id="@+id/edittext"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="61dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="GUGU TYPE HERE SOMETHINGS"
+        />
+    
+        get data from input field:
+        
+        String inputData = edittext.getText().toString();
+        
+        
    
   .java file:
   
