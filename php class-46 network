@@ -93,20 +93,32 @@ IPV4 have 256 address. 2^8.2^8.2^8.2^8
 
 IPv4 IP address, there are five classes of available IP ranges: 
 
-Class A, Class B, Class C, Class D   Class E.
-0-127    128-191  192-223  224-239   240-255    
+        Class A, Class B, Class C, Class D   Class E.
+        0-127    128-191  192-223  224-239   240-255    
                            research  multicast
 
+First id in net id
+Last id is broadcast id.
+That why -2 in total host
+for send message all network called broadcast IP.
+If network increase host decrease.
+
+totla network id will be for class A 126 | 256 | 256 | 256 -2
+
+total network id will be for class B 64 | 256 | 256 | 256 -2 
+
+total network id will be for class C 32 | 256 | 256 | 256 -2 
 
 Class A: net host host host
 Class B: net net host host
 Class C: net net net host
 
 
+When you divide network divide by host wise.
 
 
-
-
+Block size is important for subnet.
+For subnet select which class you will select.
 
 
 
