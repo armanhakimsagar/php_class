@@ -184,6 +184,14 @@ view:
    <webview>                  [webview can load external website as apps]
    https://www.youtube.com/watch?v=4dSmROBY_Us&list=PLgH5QX0i9K3p9xzYLFGdfYliIRBLVDRV5&index=39
    
+   
+   android launcher icon:
+   
+   android:icon="@mipmap/ic_launcher"
+   android:label="@string/app_name"
+   android:roundIcon="@mipmap/ic_launcher_round"
+        
+        
   .java file:
   
   1. first create property of the text view
