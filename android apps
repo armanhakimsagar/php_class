@@ -169,6 +169,21 @@ view:
             }
         });   
         
+        
+        
+   <SeekBar  
+        android:id="@+id/seekBar"  
+        android:layout_width="match_parent"  
+        android:layout_height="wrap_content"  />
+        
+   <switch
+        drawableleft=""       [add image in left]
+        text="for output"
+   >
+        
+   <webview>                  [webview can load external website as apps]
+   https://www.youtube.com/watch?v=4dSmROBY_Us&list=PLgH5QX0i9K3p9xzYLFGdfYliIRBLVDRV5&index=39
+   
   .java file:
   
   1. first create property of the text view
