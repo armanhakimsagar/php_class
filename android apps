@@ -64,6 +64,12 @@ view:
             
             textColor = "@color/color_name"
             
+            typeface = ""                     [font family]
+            
+            download ttf from https://www.fontsquirrel.com/
+            
+            now paste it in : app/src/main/assets/
+            
             textAllCaps = true
             
             textAlign = center
@@ -190,6 +196,16 @@ view:
    android:icon="@mipmap/ic_launcher"
    android:label="@string/app_name"
    android:roundIcon="@mipmap/ic_launcher_round"
+        
+   
+   
+   alert:
+   
+      AlertDialog dialog = new AlertDialog.Builder(c)
+        .setTitle("Add a new task")
+        .setMessage("What do you want to do next?")
+        .setView(taskEditText)
+        
         
         
   .java file:
