@@ -191,6 +191,18 @@ view:
    https://www.youtube.com/watch?v=4dSmROBY_Us&list=PLgH5QX0i9K3p9xzYLFGdfYliIRBLVDRV5&index=39
    
    
+   video:
+   
+   1. take video tag
+   
+   2. get video id in java
+   
+   3. create a raw folder in res folder. paste video in here
+   
+   4. get video link & setVideo url in java file
+   
+   
+   
    android launcher icon:
    
    android:icon="@mipmap/ic_launcher"
