@@ -38,9 +38,18 @@ Intent filter:
          
          Intent newActivityIntent = new Intent(current_Activty.this, Old_activty.class);
          
+         //for pass data in get method
+         
+         Intent.putExtra("key","value");
+         
          // Start the new activity.
           
          startActivity(newActivityIntent);
+         
+         // for get value
+         
+         Intent.getIntent("key");
+         
     
     
 RES folder:
