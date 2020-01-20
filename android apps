@@ -8,6 +8,24 @@ Download JDK:
 6. .java for functionality & .xml for design
 
 
+Activity: In apps single screen is activity. All activity create 2 file Java & xml. 
+          Single activity have 7 method.
+          
+  onCreate : when activity created
+  
+  onStart : when activity visible on user screen
+  
+  onResume: when user can interact
+  
+  onpulse: when activity not visible or close
+  
+  onclose: when activity not visible or close
+  
+  onRestart: when activity close then start its called onrestart
+  
+  onDestroy : when back button click for close
+
+
 RES folder:
 
   drawable : contain all image in here
