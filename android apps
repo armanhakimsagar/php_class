@@ -19,13 +19,30 @@ Activity: In apps single screen is activity. All activity create 2 file Java & x
   
   onpulse: when activity not visible or close
   
-  onclose: when activity not visible or close
+  onclose: when activity not visible or close then onpulse then onclose
   
   onRestart: when activity close then start its called onrestart
   
-  onDestroy : when back button click for close
+  onDestroy : when back button click for close onpulse then onclose then onDestroy
 
 
+Intent filter:
+
+    Its a tag. When we run apps in manifest file if a activity contain internt-filter that will open first.
+    
+    This tag will decide in menifast file which activity will laungh first.
+    
+    Intent also work for link between 2 activity. <a href></a>
+    
+    In onclick method:
+         
+         Intent newActivityIntent = new Intent(current_Activty.this, Old_activty.class);
+         
+         // Start the new activity.
+          
+         startActivity(newActivityIntent);
+    
+    
 RES folder:
 
   drawable : contain all image in here
