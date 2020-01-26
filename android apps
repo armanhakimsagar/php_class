@@ -72,6 +72,12 @@ manifast file:
 
 view:
 
+Width calculation:
+
+0. For width calculation set widthSum in parents div. [same like col span, this is total col span]
+
+   layout_width = 1                                   [set col span 1]
+
 1. layout - can contain multiple group view
 
             orientation - vertical or horizontal [horizontal allow child side by side]
@@ -244,6 +250,34 @@ view:
    3. create a raw folder in res folder. paste video in here
    
    4. get video link & setVideo url in java file
+   
+   
+   
+   MENU:
+   
+   1. Create menu folder in res folder.
+   
+   2. now create menu_layout.xml file in there
+   
+   3. now create some item in there
+   
+   <item>
+          android:id=""
+          android:title= "Home"
+          android:showAsAction = "never"
+   </item>
+   
+   4.
+   In java file set onOptionItemSelected method for get selected menu index then redirect in that page.
+   
+   
+   
+   
+   
+   
+   
+   
+   
    
    
    
