@@ -265,6 +265,7 @@ Width calculation:
           android:id=""
           android:title= "Home"
           android:showAsAction = "never"
+          android:icon = "drawable/index"         [for menu image]
    </item>
    
    4.
@@ -272,9 +273,9 @@ Width calculation:
    
    
    
+   Gradiant color:
    
-   
-   
+   generate gradient color from here : https://angrytools.com/gradient/
    
    
    
