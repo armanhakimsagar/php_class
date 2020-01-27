@@ -405,3 +405,30 @@ public class MainActivity extends Activity {
         myAwesomeTextView.setText("Muri kha gugu");
     }
 }
+
+
+
+
+
+
+SQLLITE:
+
+1. local database. (RDMS)
+2. SQLopenhelper class
+                           super method -> for create & mange database
+                           
+                           oncreate method -> called when first time database create (write here database )
+                           
+                           onupdate method -> when update database any table
+                           
+ 3. getwrtieabledatabase class : help create or write in database
+ 
+ 4. tutorial 125 to last after windows
+ 
+ 
+ 
+                    
+
+
+
+
