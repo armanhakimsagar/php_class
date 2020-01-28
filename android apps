@@ -429,6 +429,24 @@ SQLLITE:
  
                     
 
+INSERT :
 
+1. Get input data from:
+            
+         nameEditText = (EditText) findViewById(R.id.nameEditText)
 
-
+         nameInputValue=   nameEditText.getText().toString();
+         
+         
+         ** Create a insert data method in database helper
+         
+         ** Create a method of contentValue for store data in single method
+         
+         contentValue.put();
+         
+         now databaseHelper.contentValue();
+         
+         
+   2. Get data from database:
+   
+         
