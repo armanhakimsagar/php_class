@@ -1,5 +1,33 @@
-1. for file redirection old domian to new domain
+Apache server configuration file.
 
-2. for redirect php format page to html format page
+.htaccess is a configuration file for use on web servers running the Apache Web Server software
 
-3. redirect ot error gateway like 301, 404
+
+
+_______________________________________________________________
+
+
+Create a htaccess file in localhost root (for redirection)
+
+RewriteEngine on
+
+Redirect 301 / https://www.google.com/
+
+
+
+_______________________________________________________________
+
+Auth by htaccess
+
+in .htaccess file:
+
+RewriteEngine on
+AuthType Basic
+AuthName "Restricted Content"
+AuthUserFile F:\lms\htdocs\index.html
+Require valid-user
+
+
+in index.html file
+
+arman:123456
