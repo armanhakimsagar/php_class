@@ -31,3 +31,31 @@ Require valid-user
 in index.html file
 
 arman:123456
+
+
+
+______________________________________________________________
+
+Catch image:
+
+in htaccess file:
+
+1. set file pattern
+2. set time cockies
+
+
+<FilesMatch "\.(jpg|png)$">
+	Header set Cache-Control "max-age=604800, public"
+</FilesMatch>
+
+
+in index.html file:
+
+1. set image by img src
+2. now check catch load by inspect-network
+
+
+______________________________________________________________
+
+
+
