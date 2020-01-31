@@ -52,10 +52,34 @@ in htaccess file:
 in index.html file:
 
 1. set image by img src
-2. now check catch load by inspect-network
+2. now check catch load by inspect-network-header
 
 
 ______________________________________________________________
 
+Without extention from file name file will run:
+
+1. set extention on code which you want to remove
+
+2. now run: http://localhost/index
+
+3. must have that file in server
+
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+
+
+
+______________________________________________________________
+
+
+Handle custom url:
+
+1. if someone type : http://localhost/hello
+
+   it will redirect http://localhost/index
+
+**   RewriteRule ^hello index.html
 
 
