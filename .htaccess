@@ -83,3 +83,11 @@ Handle custom url:
 **   RewriteRule ^hello index.html
 
 
+
+______________________________________________________________
+
+
+
+Redirect 404 page:
+
+ErrorDocument 404 http://localhost/404.php
