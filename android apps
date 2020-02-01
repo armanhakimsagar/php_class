@@ -79,7 +79,7 @@ style.xml file:
 </style>
 
 
-Set theme name in layout file:
+  Set theme name in layout file:
 
     android:theme="@style/AppTheme.NewthemeNameHere"
 
@@ -95,6 +95,10 @@ manifast file:
   declair launcher java file for run
   
 .java file:
+
+0. create java file for every different activity.
+   If java file create autometically layout file will be created.
+   
 
 1. in oncreate method declair which xml file will load
 
