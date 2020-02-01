@@ -58,7 +58,38 @@ RES folder:
   layout : contain all xml file
   minmap : cantain version screen size related image
   value : contain color,string & style variable name
-  
+
+style.xml file:
+
+1. declair all the theme name here & set theme configurations
+
+ <style name="AppTheme.NewthemeNameHere">
+
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/Aqua</item>
+        <item name="colorPrimaryDark">@color/DarkGreen</item>
+        <item name="colorAccent">@color/lighter_gray</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:colorPrimaryDark">@color/holo_red_dark</item>
+        <item name="android:navigationBarColor">@color/black</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="actionBarTheme">@null</item>
+      
+</style>
+
+
+Set theme name in layout file:
+
+    android:theme="@style/AppTheme.NewthemeNameHere"
+
+
+
+
+
+
+
+
 manifast file:
 
   declair launcher java file for run
