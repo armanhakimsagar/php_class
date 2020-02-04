@@ -453,6 +453,10 @@ Type of Web Service:
 	
 	No lack of Security
 	
+	An Envelope element that identifies the XML document as a SOAP message
+	A Header element that contains header information
+	A Body element that contains call and response information
+	A Fault element containing errors and status information
 	
   RESTful web services:
   	
