@@ -423,3 +423,65 @@ public function index(Request $request)
 demo yml : https://gist.github.com/armanhakimsagar/3c733fea95cfa3f68903a12cbfe7d7dc
 Then just export -> generate client -> html2 
 
+
+
+
+
+ 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Web serice: 
+  
+  1. Web service is a standardized medium to propagate communication between the client and server applications on the World Wide Web.
+  
+  2. The only difference is that a Web service facilitates interaction between two machines over a network. XML
+  
+API:
+
+  1. The only difference is that a Web service facilitates interaction between two machines over any network.
+     JSON,XML
+
+Type of Web Service:
+
+  SOAP web services: 
+  	SOAP is based on transferring XML data as SOAP Messages. Soap mainly used for transfer xml data.
+	We can make any xml doucment like WSDL (Web services description language) for descripe XML details.
+	
+	SOAP was to ensure that programs built on different platforms and programming languages could exchange data in an easy manner
+  
+  	Statefull (web service does in addition to the location of the web service)
+	
+	No lack of Security
+	
+	
+  RESTful web services:
+  	
+	 Restful service would use the normal HTTP verbs of GET, POST, PUT and DELETE for working with the required components
+	
+	 Stateless
+
+	 Lack of Security
+	
+	 Representational State Transfer
+ 
+ 	 Resource - Collections - URL
+
+   	 resource should always be plural
+
+   	 Sorting, filterning, searching, pagination, version set
+	
+  SOAP is a protocol whereas REST is an architectural pattern.
+  
+  WDSL:
+  
+  Create soap api by wsdl :
+  
+  
+<types>		Defines data types
+<message>	Defines the data elements (main message)
+<portType>	communication level
+<binding>	this is the param for add with soap protocal
+
+
+  
+  
