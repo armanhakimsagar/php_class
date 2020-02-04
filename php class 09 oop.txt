@@ -692,3 +692,7 @@ echo user::$name;
 echo user::b();
 
 use for less secure apps.
+
+Polymorphism: Polymorphism describes a pattern in object oriented programming in which classes have different functionality while sharing a common interface. (same name but different functionality)
+
+Method overloading is performed within class. Method override is performed within differnet class.
