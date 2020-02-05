@@ -1,3 +1,16 @@
+INSERT DATA FROM EXTERNAL API & INTO DATABASE
+
+
+$json = json_decode(file_get_contents('http://host.com/api/v1/users/1'), true);
+
+foreach($json as $j){
+   // insert data in laravel
+   
+}
+
+
+THEN :::::
+
 API CREATE FOR USE in get method :::::::
 
 Route::get('userPost', function() {
