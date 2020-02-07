@@ -1,15 +1,47 @@
-INSERT DATA FROM EXTERNAL API & INTO DATABASE
 
 
-$json = json_decode(file_get_contents('http://host.com/api/v1/users/1'), true);
 
-foreach($json as $j){
-   // insert data in laravel
-   
-}
+ Rest API - StateLess (Allow different network)- XML & JSON - 
+
+ Soap API - Statefull (Dont allow different network) - XML - After match ending xml data push
+ 
+ soap:Envelope -> header & body
+
+ Simple Object Access Protocol
+ 
+ Representational State Transfer
+ 
+ Resource - Collections - URL
+
+   resource should always be plural
+
+   Sorting, filterning, searching, pagination, version set
 
 
-THEN :::::
+
+___________________________________
+
+
+INSERT DATA FROM EXTERNAL API & INTO DATABASE :::::::::::::::::::::::::::::::::::
+
+view OR insert into database
+
+	$json = file_get_contents('http://echaritybd.com/api/users');
+
+	$data = json_decode($json,true);
+
+	echo "<pre>";
+
+	print_r($data['data']);
+	
+	for($i=0;$i< count($data['data']);$i++){
+		echo $data['data'][$i]['user_id'];
+	}
+
+	exit;
+
+THEN _________________________________
+
 
 API CREATE FOR USE in get method :::::::
 
@@ -46,7 +78,7 @@ create method for edit
 
 
 
-______
+_________________________________
 
 
 INSERT API LINK FOR IN POST METHOD :::::::
@@ -81,23 +113,6 @@ Route::post('userPost', function(Request $request) {
 
 protected $fillable = ['fieldname','fieldname']
 
-
-________
-view
-
-	$json = file_get_contents('http://echaritybd.com/api/users');
-
-	$data = json_decode($json,true);
-
-	echo "<pre>";
-
-	print_r($data['data']);
-	
-	for($i=0;$i< count($data['data']);$i++){
-		echo $data['data'][$i]['user_id'];
-	}
-
-	exit;
 
 ______
 
@@ -443,6 +458,10 @@ Then just export -> generate client -> html2
  
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+
+Theory:
+
+
 Web serice: 
   
   1. Web service is a standardized medium to propagate communication between the client and server applications on the World Wide Web.
@@ -500,5 +519,3 @@ Type of Web Service:
 <binding>	this is the param for add with soap protocal
 
 
-  
-  
