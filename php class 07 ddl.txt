@@ -470,3 +470,15 @@ Process all stuctured unstructured & bulk data.
 For processing have many computer. 
 All computer have master & slave computer
 
+
+
+
+Cluster:
+
+Need to develop :
+
+  cluster: https://ndimensionz.com/kb/what-is-database-clustering-introduction-and-brief-explanation/
+
+  bcnf & 4nf , online transaction processing (oltp) database, active records
+
+  more complex join
