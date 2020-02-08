@@ -1,5 +1,9 @@
+* Service provider is a class, You can use it method in any file access by creating object.
+  Its called dependency injection.
+  
 * whenever you want to inject a service into other services use service provider.
   Or partial view code load
+  
 
 * php artisan make:provider AwesomeServiceProvider
 
