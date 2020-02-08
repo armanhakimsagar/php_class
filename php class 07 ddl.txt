@@ -364,6 +364,18 @@ Decimal :
 built in take 4 digit after decimel
 
 
+BLOB:
+
+A blob is a data type that can store binary data. This is different than most other data types used in databases, such as integers, floating point numbers, characters, and strings, which store letters and numbers. Since blobs can store binary data, they can be used to store images or other multimedia files.
+
+BLOB stores binary data which are more than 2 GB. Max size for BLOB is 4 GB. Binary data means unstructured data i.e images audio files vedio files digital signature
+
+
+ENUM:
+
+
+SET:
+
 
 
 ___________________________________
