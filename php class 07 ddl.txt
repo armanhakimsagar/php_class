@@ -482,3 +482,84 @@ Need to develop :
   bcnf & 4nf , online transaction processing (oltp) database, active records
 
   more complex join
+
+
+
+_____________________________________
+
+
+
+Relationship : 	country -> region -> Venue -> LeagueVenue -> TeamLeagueDivisionSeason-> team | league
+	
+CREATE TABLE country(
+ id int not null PRIMARY KEY AUTO_INCREMENT,
+ name varchar(200) not null,
+ codes int not null
+)
+
+CREATE TABLE region(
+ id int not null PRIMARY KEY AUTO_INCREMENT,
+ region_name varchar(200) not null,
+ country_id int not null
+)
+
+CREATE TABLE Venue(
+ id int not null PRIMARY KEY AUTO_INCREMENT,
+ venue_name varchar(200) not null,
+ region_id int not null
+)
+
+
+CREATE TABLE LeagueVenue(
+ id int not null PRIMARY KEY AUTO_INCREMENT,
+ LeagueId int not null,
+ VenueId int not null,
+)
+
+CREATE TABLE TeamLeagueDivisionSeason(
+ id int not null PRIMARY KEY AUTO_INCREMENT,
+ TeamId int not null,
+ LeagueId int not null
+)
+
+CREATE TABLE league(
+ id int not null PRIMARY KEY AUTO_INCREMENT,
+ League varchar(100) not null
+)
+
+CREATE TABLE team(
+ id int not null PRIMARY KEY AUTO_INCREMENT,
+ team varchar(100) not null
+)
+
+
+
+
+SELECT * FROM TeamLeagueDivisionSeason a
+INNER JOIN leaguevenue b ON b.LeagueId=a.LeagueId
+INNER JOIN venue c ON c.id=b.VenueId
+INNER JOIN region d ON d.id=c.region_id
+INNER JOIN country e ON e.id = d.country_id
+WHERE a.TeamId=1
+
+
+** Return only country name (Country id from team Id):
+
+SELECT e.name FROM TeamLeagueDivisionSeason a
+INNER JOIN leaguevenue b ON b.LeagueId=a.LeagueId
+INNER JOIN venue c ON c.id=b.VenueId
+INNER JOIN region d ON d.id=c.region_id
+INNER JOIN country e ON e.id = d.country_id
+WHERE a.TeamId=1
+
+
+** Return team from country id
+
+SELECT * FROM country a
+INNER JOIN region b ON b.country_id = a.id
+INNER JOIN venue c ON c.region_id = b.id
+INNER JOIN leaguevenue d ON d.VenueId = c.id
+INNER JOIN TeamLeagueDivisionSeason e ON e.LeagueId = d.LeagueId
+INNER JOIN team f ON f.id = e.TeamId
+WHERE a.id=1
+
