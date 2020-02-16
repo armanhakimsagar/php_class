@@ -109,3 +109,50 @@ echo 01234;
 
 first*8^last
 
+
+
+
+
+______________
+
+
+DECIMAL NUMBER:
+
+Decimal number base is 10.
+In decimal number system, a number construct upon the base of 10.
+
+231=(2 x 102)+(3 x 101)+(1 x 100)
+      =200+30+1
+      =231
+
+
+BITWISE OPERATOR:
+
+A bit (Binary digIT) is the basic unit of information stored in the computing system that exists in two possible states, represented as ON or OFF.BITWISE OPERATOR used for binary calculation.
+
+Binary number base is 2.
+
+		32	16	8	4	2	1
+
+	13 = 	0	0	1	1	0	1
+
+	22 = 	0	1	0	1	1	0
+
+_________________________________________________________
+
+13 & 22 	0	0	0	1	0	0
+
+13 | 22		0	1	1	1	1	1
+
+
+
+
+HEXADECIMAL:
+
+Base is 16.
+
+
+
+
+
+
