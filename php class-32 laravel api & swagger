@@ -1,10 +1,7 @@
-Zend:
-
-
 
 Need to develop :
 https://laravel-news.com/json-api-introduction
-
+Api crud : https://www.toptal.com/laravel/restful-laravel-api-tutorial
 
  Rest API - StateLess (Allow different network)- XML & JSON - 
 
@@ -16,11 +13,54 @@ https://laravel-news.com/json-api-introduction
  
  Representational State Transfer
  
- Resource - Collections - URL
+ Collections (collection of resource) - Resource (model) -  - URL
 
    resource should always be plural
 
    Sorting, filterning, searching, pagination, version set
+
+
+LETS START ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+First we need to generate 2 classes one to handle the resource and the other to handle the collection.
+
+*** Make resource : php artisan make:resource ArticleResource
+
+*** Make collection of that resource : php artisan make:resource ArticlesResource --collection
+
+
+You will now have a new directory under app/Http/Resources where all these resources will reside.
+
+classes you will have a toArray method which is where we will transform our models the way we want them.
+
+public function toArray($request){
+	return [
+	    'type'          => 'articles',
+	    'id'            => (string)$this->id,
+	    'attributes'    => [
+		'title' => $this->title,
+	    ],
+	];
+}
+
+
+*** Make comtroller : php artisan make:controller --resource ArticleController
+
+Now wrap model in controller :::
+
+public function show(Article $article)
+{
+    return new ArticleResource($article);
+}
+
+
+*** Route :
+
+Route::resource('articles', 'ArticleController');
+
+
+
 
 
 
