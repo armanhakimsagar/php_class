@@ -38,183 +38,97 @@ https://github.com/Crinsane/LaravelShoppingcart
 
 
 
+if(isset($_GET['cart'])){
 
+	 // get pro id from url
 
-<?php
+	 $id = $_GET['cart'];
 	
-	session_start();
-	$i = 0;
-	function addtoCart($id,$name,$price,$qty,$image){
-		session_start();
-		$_SESSION['add_to_cart'] = [];
-		count($_SESSION['add_to_cart']);
-	}
+	  // get data from database
 
-	if(isset($_GET['cart'])){
-		
-		$add_to_cart = [];
-		
-		
-		$add_to_cart[] = $_GET['id'];
-		$add_to_cart[] = $_GET['name'];
-		$add_to_cart[] = $_GET['price'];
-		$add_to_cart[] = $_GET['quantity'];
-		$add_to_cart[] = $_GET['image'];
-		
-		echo "<pre>";
-		$_SESSION['cart_item'][] = $add_to_cart ;
+	 $select="select * from products where id='$id'";
+
+	 $proResource = $webApps->Select($select);
+
+  	 $proObject= $proResource->fetch_array();
+  	 
+  	 // declair add to cart	
+
+  	 $add_to_cart = [];
+	 
+	 // assign product name in add to cart array
+
+	 $add_to_cart['name'] = $proObject['name'];
+	 
+	 // assign initial quantity
+
+	 $add_to_cart['qty'] = 1;
+
+	 // if data alreary in cart
+
+	 if(isset($_SESSION['cart_item'])){
+
+	 	// match alrady exits or nots
+
+	 	foreach ($_SESSION['cart_item'] as $key => $value) {
+	 		if($value['name'] == $add_to_cart['name']){
+	 			echo "match found";
+	 			
+	 			// if exists increase quantity
+
+	 			$_SESSION['cart_item'][$key]['qty']++;
+	 			echo "<pre>";
+	 			print_r($_SESSION['cart_item']);
+		 		die();
+	 		}else{
+	 			$exists = true;	
+	 		}
+	 	}
+
+	 	if(isset($exists)){
+	 		echo "match not found";
+ 			$_SESSION['cart_item'][] = $add_to_cart;
+ 			echo "<pre>";
+ 			print_r($_SESSION['cart_item']);
+	 		die();
+	 	}
+	 	
+	 }else{
+	 	$_SESSION['cart_item'][] = $add_to_cart;
+	 	echo "<pre>";
 		print_r($_SESSION['cart_item']);
-		$i++;
-	}
+	 }
 
-
-	if(isset($_GET['cart_remove'])){
-		session_unset();
-		header('location:../cart.php');
-	}
-
-	if(isset($_POST['update_cart'])){
-		session_unset();
-		$add_to_cart = [];
 		
-		for ($i=0; $i < count($_POST['id']); $i++) { 
-			$add_to_cart['id'][$i] = $_POST['id'][$i];
-			$add_to_cart['name'][$i] = $_POST['name'][$i];
-			$add_to_cart['price'][$i] = $_POST['price'][$i];
-			$add_to_cart['quantity'][$i] = $_POST['quantity'][$i];
-			$add_to_cart['image'][$i] = $_POST['image'][$i];
-		}
-		$update_cart[] = $add_to_cart;
-		
-		for ($i=0; $i < count($update_cart[0]['id']); $i++) { 
-			$update_cart[] = $update_cart[0]['id'][$i];
-			$update_cart[] = $update_cart[0]['name'][$i];
-			$update_cart[] = $update_cart[0]['price'][$i];
-			$update_cart[] = $update_cart[0]['quantity'][$i];
-			$update_cart[] = $update_cart[0]['image'][$i];
-			
-			$_SESSION['cart_item'] = $update_cart;
-		}
-		echo "<pre>";
-		print_r($_SESSION['cart_item']);
-		die();
-		header('location:../cart.php');
-		
-	}
-
-?>
+ 	 die();
+ 	
+	 
+}
 
 
 
 
 
+if($_GET['cart_remove']){
+	 //echo "ok";
+	 $id = $_GET['cart_remove'];
+	 unset($_SESSION['cart_item'][$id]);
+	 echo "<pre>";
+	 print_r($_SESSION['cart_item'][0]);
+}
 
 
 
+if(isset($_GET['cart_update'])){
+	 // get new qty from url
+	 $new_qty = $_GET['cart_new_quantity'];
+	 // get cart index
+	 $session_index = $_GET['cart_index'];;
 
-
-
-
-_______________________________________________________________
-
-
-
-RAW PHP ADD TO CART
-
-
-
-<?php
-	
-	session_start();
-	$i = 0;
-	function addtoCart($id,$name,$price,$qty,$image){
-		session_start();
-		$_SESSION['add_to_cart'] = [];
-		count($_SESSION['add_to_cart']);
-	}
-
-	if(isset($_GET['cart'])){
-		
-		// declair a blank array cart
-
-		$add_to_cart = [];
-		echo "<pre>";
-		echo "Old cart testing";
-		
-		// testing seesion is blank or not
-
-		print_r($_SESSION['cart_item']);
-		
-
-		if(isset($_SESSION['cart_item'])){
-		
-			// if isset data in session, then match session data with passed value in parameter
-			
-			for ($i=0; $i < count($_SESSION['cart_item']) ; $i++) {
-				if($_SESSION['cart_item'][$i][1] == $_GET['name']){
-
-					echo "already exists";
-					echo "<pre>";
-					$exists = true;
-					print_r($_SESSION['cart_item']);
-					die();
-
-				}
-				
-			}
-			if(!isset($exists)){
-				
-					$add_to_cart[] = $_GET['id'];
-					$add_to_cart[] = $_GET['name'];
-					$add_to_cart[] = $_GET['price'];
-					$add_to_cart[] = $_GET['quantity'];
-					$add_to_cart[] = $_GET['image'];
-					
-					echo "<pre>";
-					echo "New data in session";
-					$_SESSION['cart_item'][] = $add_to_cart ;
-					print_r($_SESSION['cart_item']);
-					$i++;
-					die();
-				
-			}
-		}else{
-			$add_to_cart[] = $_GET['id'];
-			$add_to_cart[] = $_GET['name'];
-			$add_to_cart[] = $_GET['price'];
-			$add_to_cart[] = $_GET['quantity'];
-			$add_to_cart[] = $_GET['image'];
-			
-			echo "<pre>";
-			echo "New data in session";
-			$_SESSION['cart_item'][] = $add_to_cart ;
-			print_r($_SESSION['cart_item']);
-			$i++;
-			die();
-		}
-		die();
-		
-	}
-
-
-	if(isset($_GET['cart_remove'])){
-		session_unset();
-		header('location:../cart.php');
-	}
-
-	if(isset($_GET['id'])){
-		$id = $_GET['id'];
-		$qty = $_GET['update_cart_qty'];
-		$_SESSION['cart_item'][$id][3] = $qty;
-		header('location:../cart.php');
-	}
-
-?>
-
-
-
-
-
+	 // update qty index wise
+	 $_SESSION['cart_item'][$session_index]['qty'] += $new_qty;
+	 
+}
 
 
 
