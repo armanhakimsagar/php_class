@@ -16,6 +16,7 @@ Xform session cookies
 
 Question topics:
 
+bitwise operator
 Ip conguration with php
 Array in php
 Preg match pattern in php
@@ -25,6 +26,7 @@ Security
 Oop
 Web service
 Libraries
+pdo
 Mail server
 
 
