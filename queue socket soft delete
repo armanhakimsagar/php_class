@@ -1,0 +1,245 @@
+Login ::
+
+
+public function postLogin(Request $request)
+{
+    $credentials = [
+        'username' => $request['username'],
+        'password' => $request['password'],
+    ];
+
+    // Dump data
+    dd($credentials);
+
+    if (Auth::attempt($credentials)) {
+        return redirect()->route('dashboard');
+    }
+
+    return 'Failure';
+}
+
+
+Soft delete: 
+
+If we delete in normal process it will not deleted.
+
+1. Set in migration:
+
+	$table->softDeletes();
+	
+	It create a column name deleted_at (timestamp) null allow
+	
+	Laravel query if deleted_at is null then show.
+	
+2. In model:
+
+   use trait SoftDelete.
+   
+   
+   
+Mail:
+
+1. php artisan make:mail EmailVerification
+
+
+
+2. In controller:
+
+   $user = user::all();
+   
+   Mail::to('a@gmail.com')->send(new EmailVerification($user));
+   
+   
+   
+3. in EmailVerification.php file :
+	
+   use user;
+	
+   public function __constructor(user $user){
+		$this->user = $user;
+   }
+   
+   
+   build(){
+	
+		return $this->view('file_name')->with('user',$this->user);
+   
+   }
+   
+4. Set config/mail.php smtp info of mailtrap
+
+
+
+Queue Mail:
+
+
+1. 'default' => env('QUEUE_DRIVER', 'redis'),
+
+2. change this code : 
+
+   Mail::to('a@gmail.com')->queue(new EmailVerification($user));
+	
+	
+3. php artisan queue:work
+
+
+4. end
+
+
+Notification:
+
+Do something when a action occur.
+It track notification in database notification table.
+
+
+1. php artisan make:notification FacebookNoti
+
+   php artisan notifications:table
+   
+   php artisan migrate
+   
+   
+2. use notification in desired model.
+
+3. in controller set notification class where you want.
+
+   $admin = "To whom we will notifiy query ( suppose admin user info)";
+   
+   $user = "which user we want to notifiy query ( suppose user info who registered new )";
+   
+   $admin->notify(new FacebookNoti($user));
+   
+   // after insert set notification & pass realted data
+
+
+
+4. get this data in FacebookNoti contructor class.
+
+   public function __constructor(User $user){
+		$user = $this->user;
+   }
+   
+5. For use queue use in FacebookNoti class impliments ShouldQueue
+
+   & must use Queueable;
+
+
+6. via method define which channel will use for notification.
+
+   like: email , sms [ you can use package for integrate it ]
+   
+   If you want a custom notification like fb. code in array part.
+   
+   ToArray this is part where you will define custom channel.
+   
+   public function toArray($notification){
+		return = [
+			$user = $this->user;
+		]
+   }
+   
+
+7. After that you will see a row inserted in notification table.
+
+8. Show this data in front end like:
+
+@foreach($user->notification as $notification)
+	
+	dd($notification);
+	
+	// if you want to mark as read
+	
+	$notification->markAsRead();
+	
+@endforeach
+
+
+
+// if you want to load un read notifications
+
+@foreach($user->unreadnotification as $notification)
+	
+	dd($notification);
+	
+	// if you want to mark as read
+	
+	$notification->markAsRead();
+	
+@endforeach
+
+
+
+
+****************
+
+
+
+pusher:
+
+Its a 3rd part service for real time data communication.
+We will send data to pusher & we will include a js file of a pusher to receive that file.
+At a time if we have more that 100 user & daily message 2 lac cross we have to pay.
+
+1. app/broadcast.php
+
+	set default driver pusher
+
+2. .env file set pusher cred.
+
+   set broadcast driver pusher.
+
+3. in event 
+	
+	public $post;
+	
+	in contructor method pass data in broadcast.
+	
+	$post = $this->post;
+	
+	in broadcast method set channel name:
+
+		return new Channel(post.created);
+ 
+		// post.created is creating a channel
+
+4. composer require pusher
+
+5. in event class impliment ShouldBroadcast
+
+6. install pusher & echo
+
+7. uncomment echo js part in laravel built in bootstrap.js file
+
+8. follow laravel documentation for details.
+
+   echo.channel('channel_name').listen(event name here);
+   
+   This code is for receive data from pusher.
+
+   In this code you will get data in console.
+
+9. in channel.php file on broadcast scope resolution operator check auth
+
+
+10. you can set channel id & listener id for private chat
+
+
+********************
+
+
+Socket server :
+
+its a server if any change make in server it will notify client side.
+All communication channel.
+
+Socket server have :
+
+1. listen is part of that channel. If any change make in server. Socket push output in channel.
+2. broadcast is the part where we push data in server.
+
+Socket server have 3 channel:
+
+1. public channel: no auth need for get data from that channel
+2. private channel: need auth for get data from that channel
+3. precense channel: server will not send any data.We can see have many data contain in this channel.
+   we can use it how many user are now logging in system
