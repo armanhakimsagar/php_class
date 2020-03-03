@@ -1,0 +1,29 @@
+1. php artisan make:command InactiveUsers
+
+2. add signature in InactiveUsers file
+
+   (in this signature name you can call php cmd line)
+   
+   email:deactive-users
+   
+   for debug : php artisan
+
+3. set logic in handle part.
+
+4. now run cmd line like this
+
+   php artisan email:deactive-users
+   
+5. in karnel.php register command class in protected command section
+
+	Protedted $commands = [
+		InactiveUsers::class,
+	]
+
+	
+6. in schedule function of karnel.php add
+
+	$schedule->command('InactiveUsers')->daily();
+	
+
+7. or create bat file run by scheduler
