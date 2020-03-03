@@ -1,0 +1,103 @@
+1. use package for time log on browser
+
+2. after insert set event for catch data. if data in catch then not query from database.
+
+
+
+
+
+*********** Radis setup:
+	
+	redis-server --version
+
+	download from : https://github.com/microsoftarchive/redis/releases downlaod .msi file
+	install & add system variable.
+	
+	
+	composer require predis/predis
+
+1. app\catch ------ change default driver to radis
+
+2. install redis
+
+3. in .env file ---- change catch driver to radis
+
+4. install pradis package
+
+5. In controller when fetch & show data first check catch.
+
+   catch('articale',function(){
+		
+		$post = post::all();
+		
+   });
+   
+6. In model create a Protected $dispatch event for catch all inserted & update & delete in every insert & update & delete.
+
+	// created, updated, deleted built in keyword for 
+	
+	protected $dispatchesEvents = [
+		'created' => PostCreated::class;
+		'updated' => PostUpdate::class;
+		'deleted' => PostDelete::class;
+	]
+	
+7. Create event on model name & Event name.
+   
+   php artisan make:event PostCreated
+   php artisan make:event PostUpdate
+   php artisan make:event PostDelete
+   
+   
+8. Now listener is some action after work & broadcast is inform someone about this action occured.
+
+   In listener we have to add data in catch if we dont add it yet.
+    
+	
+9. Now create listener. 
+
+   php artisan make:listener PostCatchHandleListener
+   
+   In handle part do your work.
+   
+   public function handle($event){
+	
+	 // remove previous catch
+	 
+	 cache()->forget('articles');
+	
+	 $all_data = post::all();
+	 
+	 // set new data in cache after every event.
+	 
+	 cache('articles',$all_data); or
+	 
+	 cache()->put('articles',$articles);
+	 
+	 cache()->get('articles');
+   
+   }
+   
+   
+10. all done. now link thoes 3 event with 1 listener. in event service provider.
+
+	protected $listen = [
+		PostCreated::class => [
+			PostCatchHandleListener::class,
+		],
+		PostUpdated::class => [
+			PostCatchHandleListener::class,
+		],
+		PostDeleted::class => [
+			PostCatchHandleListener::class,
+		]
+	];
+	
+	
+11. For debug article cache.
+
+	dd(cache()->get('articles'));
+	info(cache()->get('articles'));
+	
+	
+12. 
