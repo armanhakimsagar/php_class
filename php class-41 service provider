@@ -293,6 +293,82 @@ Some patterns are developed by senior developer :
 
 
 
+___________________________________
+
+
+Class content :::::::::::::::::::::::::::::::
+
+
+
+** Create a service folder & Test.php file & make some logic there:
+
+
+<?php
+namespace App\Service;
+
+
+class Tests
+{
+    public function test($ids)
+    {
+        if(in_array(11,$ids)){
+        	echo "active user";
+        }else{
+        	echo "inactive user";
+        }
+    }
+}
+
+
+** Now create a service provider & register service here:
+
+$ php artisan make:provider TestProvider
+
+public function boot()
+{
+  $this->app->bind('App\Service\Tests', function($app){
+		return new \App\Service\Tests();
+	});
+}
+
+
+
+** Now create a controller & bind service:
+	
+$ php artisan make:controller TestController
+
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Service\Tests;
+
+class TestController extends Controller
+{
+    public function index()
+    {
+        $t = new Tests();
+        $userid = [1,2,3,4,5,6,7,8,9];
+        
+        $t->test($userid);
+		
+		dd();
+    }
+}
+
+
+** If you want access direct from blade file for dynamic menu
+
+
+<?php 
+use App\Service\Tests; 
+$t = new Tests();
+$userid = [1,2,3,4,5,6,7,8,9];
+$t->test($userid); 
+?>
+
 
 
 
