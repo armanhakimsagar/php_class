@@ -299,7 +299,6 @@ ___________________________________
 Class content :::::::::::::::::::::::::::::::
 
 
-
 ** Create a service folder & Test.php file & make some logic there:
 
 
@@ -323,6 +322,9 @@ class Tests
 ** Now create a service provider & register service here:
 
 $ php artisan make:provider TestProvider
+
+// here boot means on load 
+// register means on call load 
 
 public function boot()
 {
@@ -363,14 +365,8 @@ class TestController extends Controller
 
 
 <?php 
-use App\Service\Tests; 
-$t = new Tests();
-$userid = [1,2,3,4,5,6,7,8,9];
-$t->test($userid); 
+	use App\Service\Tests; 
+	$t = new Tests();
+	$userid = [1,2,3,4,5,6,7,8,9];
+	$t->test($userid); 
 ?>
-
-
-
-
-
-
