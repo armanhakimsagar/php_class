@@ -281,6 +281,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin','middleware'=>'Middlew
 
 
 
+_____________________________________________________________________________
+
+
+Controller :::
 
 
 -> CRUD routes :
@@ -289,20 +293,40 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin','middleware'=>'Middlew
 	
 	Route::resource('photos', 'PhotoController');
 	
+	
 
-	uri						method			Verb									Route
+-> Multiple resource 
 
-	photos  				index 			get		(for show home page)			Route::resource('photos', 'PhotoController');
-	
-	photos/create			create			get		(for show form)					Route::resource('photos.create', 'PhotoController');
-	
-	photos					store			post	(for insert data)				Route::resource('photos.store', 'PhotoController');
-	
-	photos/{id}				show			get		(only for single data show)		Route::resource('photos.show', 'PhotoController');
+Route::resources([
 
-	photos/{id}/edit		edit			get		(show for edit)					Route::resource('photos.edit', 'PhotoController');
+    'photos' => 'PhotoController',
+    'posts' => 'PostController'
 
-	photos/{id}				update			PUT/patch(for update)					Route::resource('photos.update', 'PhotoController');
+]);
 	
-	photos/{id}			    delete			delete									Route::resource('photos.destroy', 'PhotoController');
-	
+
+-> resource with controller:
+
+   php artisan make:controller PhotoController --resource --model=Photo
+
+
+-> except route list:
+
+Route::resource('photos', 'PhotoController')->except([
+
+    'create', 'store', 'update', 'destroy'
+
+]);
+
+
+-> api controller:
+
+php artisan make:controller API/PhotoController --api
+
+
+
+-> Cache
+
+php artisan route:cache
+
+php artisan route:clear
