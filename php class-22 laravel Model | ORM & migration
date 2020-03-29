@@ -179,6 +179,70 @@ protected $dates = [
 protected $primaryKey = 'employer_id';
 
 
+
+
+
+:::::::::::::::::::
+
+Accessor & mutator
+
+
+Customize any column value when fetch data from model.
+Create accessor in model.
+
+public function getNameAttribute($value){
+  return ucwords($value);
+}
+
+public function setNameAttribute($value){
+  $this->attributes['name'] = ucwords($value);
+}
+
+
+
+:::::::::::::::::
+
+Set Reuse method in model :
+
+** Check user active or not,
+
+** in user method:
+
+// here scope is prefix
+
+public function scopeActiveCheck($query){
+  return $query->where('status','1');
+}
+
+** in controller:
+
+User::ActiveCheck()->get();
+
+
+
+
+:::::::::::::::::
+
+Set trait in method:
+
+namespace App\Trait;
+
+trait modelTrait{
+   
+	public function scopeActiveCheck($query){
+		 return $query->where('user_id','1');
+	}
+}
+
+
+in model:
+
+use  App\Trait\modelTrait;
+
+class {
+  use modelTrait;
+  
+}
 _____________
 
 
@@ -414,64 +478,3 @@ In view:
     {{ $value->getPosterUserName() }}
 <?php endforeach; ?>
 
-:::::::::::::::::::
-
-Accessor & mutator
-
-
-Customize any column value when fetch data from model.
-Create accessor in model.
-
-public function getNameAttribute($value){
-  return ucwords($value);
-}
-
-public function setNameAttribute($value){
-  $this->attributes['name'] = ucwords($value);
-}
-
-
-
-:::::::::::::::::
-
-Set Reuse method in model :
-
-** Check user active or not,
-
-** in user method:
-
-// here scope is prefix
-
-public function scopeActiveCheck($query){
-  return $query->where('status','1');
-}
-
-** in controller:
-
-User::ActiveCheck()->get();
-
-
-
-
-:::::::::::::::::
-
-Set trait in method:
-
-namespace App\Trait;
-
-trait modelTrait{
-   
-	public function scopeActiveCheck($query){
-		 return $query->where('user_id','1');
-	}
-}
-
-
-in model:
-
-use  App\Trait\modelTrait;
-
-class {
-  use modelTrait;
-  
-}
