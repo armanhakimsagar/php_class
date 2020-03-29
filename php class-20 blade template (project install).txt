@@ -142,48 +142,30 @@ about.blade.php
 ______________________
 
 
-* Parent yield:
-
-if parent have section & same named section in blade file
-then parent use. if parent use it will show parent section.
-other wise it will not show parent section.
-
-
-master.blade.php
-
-<html>
-    <head>
-        <title>App Name - @yield('title')</title>
-    </head>
-    <body>
-        @section('sidebar')
-            master side bar
-        @show
-    </body>
-</html>
-
-
-about.blade.php
-
-@extends('layouts.master')
-
+** direct show
 
 @section('sidebar')
-    @parent
+            <div class="sidenav">
+			  <a href="#">Home</a>
+			  <a href="#">Product</a>
+			  <a href="#">Service</a>
+			  <a href="#">About</a>
+			  <a href="#">Contact</a>
+			</div>
+@show
 
-    <p>master side bar with parents</p>
-@endsection
 
 @section('content')
-    <p>This is my body content.</p>
+
+    <p>This is Content here.</p>
+
 @endsection
 
 
 
 
+______________________
 
-
-________________________
 
 * Stack Push
 
@@ -203,27 +185,5 @@ Master.blade.php
 <head>
   stack('css')
 </head>
-
-__________________________
-
-// directly show it
-// no need yield
-
-@section('name')
-
-
-    <p>This is js links</p>
-
-@show
-
-
-
-
-
-
-
-
-
-
 
 
