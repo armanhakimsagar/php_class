@@ -136,7 +136,26 @@ protected $fillable = ['name','email'];
 
 // fillable need for mass assignment, if column not specified when insert
 
-like : $input = input:all(); $cus = new customer($input); $cus->save(); 
+
+//////////////////////
+
+For mass assignment:
+
+
+<form action="{{ route('photos.store') }}" method="post">
+    {{ csrf_field() }}
+    <input type="text" name="name">
+    <input type="submit">
+</form>
+
+protected $guarded = array();
+
+dd(new Photos(request()->all()));
+
+
+//////////////////////
+
+
 
 protected $fillable = []; // insert not allow
 
@@ -148,7 +167,11 @@ protected $hidden = ['password']  // not show when fetch in json
 
 -> return json_encode(User::all()); die();
 
-protected $dates[] = ['created_at'] 
+protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
 
 //just a way of automatically casting the dates to a 
 //carbon object when you get them from the model.
