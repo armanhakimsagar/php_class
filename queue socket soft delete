@@ -33,9 +33,22 @@ If we delete in normal process it will not deleted.
 	
 2. In model:
 
-   use trait SoftDelete.
+	use Illuminate\Database\Eloquent\SoftDeletes; // <-- This is required on top
+
+	use SoftDeletes; // inside class
+
+* now try in controller:
+
+	Photos::where('id',2)->delete();
    
-   
+* now fetch data without deleted item:
+
+dd(Photos::all());
+
+
+
+
+
    
 Mail:
 
