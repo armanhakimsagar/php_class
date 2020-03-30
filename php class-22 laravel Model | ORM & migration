@@ -28,6 +28,11 @@ Schema::create('flights', function (Blueprint $table) {
    $table->increments('id');
    $table->string('name',100);
    $table->string('airline',100);
+   
+   
+   $table->unsignedBigInteger('user_id');
+   $table->foreign('user_id')->references('id')->on('users');   
+   
    $table->timestamps();
 
 });
@@ -52,7 +57,20 @@ Schema::create('drinks', function (Blueprint $table) {
 
 * php artisan make:migration employees
 
+* php artisan make:migration add_votes_to_users_table --table=users
 
+  (if migration name & table name are not same)
+  
+* php artisan migrate:rollback --step=5
+
+  (if want to control rollback)
+
+* php artisan migrate:fresh  (drop then create again)
+
+
+* php artisan migrate:refresh  (rollback then create again)
+
+  (for check this drop a row from migration table. from migration laravel get roll back info. so it will get error)
 
 $table->bigInteger('votes');
 $table->boolean('confirmed'); 
