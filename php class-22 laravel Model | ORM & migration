@@ -150,7 +150,8 @@ For mass assignment:
 
 protected $guarded = array();
 
-dd(new Photos(request()->all()));
+Product::create($request->all());
+
 
 
 //////////////////////
@@ -189,6 +190,7 @@ Accessor & mutator
 
 Customize any column value when fetch data from model.
 Create accessor in model.
+here Name in column name & get Attribute prefix
 
 public function getNameAttribute($value){
   return ucwords($value);
@@ -199,7 +201,12 @@ public function setNameAttribute($value){
 }
 
 
+view data:
 
+$user = Photos::find(1);
+
+dd($user->name);
+	
 :::::::::::::::::
 
 Set Reuse method in model :
