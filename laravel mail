@@ -122,71 +122,8 @@ Mail::to("a@gmail.com")->queue(new VerficationEmail());
 
 
 
+attachment & delay
 
 
 
 
-
-
-______________________________________________________
-
-
-QUEQE MAIL:
-
-
-
-* make mail class for send mail :
-
-  php artisan make:mail send_mail
- 
-  set :
-
-  public function build(){
-
-        return $this->view('emails.send');
-  }
-
-* queue table migration :
-
-  php artisan queue:table
-
-* create job for mail class :
-
-  php artisan make:job send_mail_job
-
-* php artisan migrate
-   or
-  CREATE TABLE jobs( id int not null AUTO_INCREMENT PRIMARY KEY, queue varchar(1000) not null, payload text not null, attempts tinyint not null, reserved_at int null, available_at int not null, created_at int not null )
-
-
-* set send_mail_job controller handle() part:
-
-  use App\Mail\send_mail;
-  use Mail;
-
-  Mail::to('abc@gmail.com')->send(new send_mail());
-
-
-* set dispatch job in route for run jobs everytime hit route :
- 
-  
-  use App\Jobs\send_mail_job;
-  use Carbon\carbon;
-
-  Route::get('view_form','MailController@view_form');
-
-  Route::post('send_mail',function(){ 
-	$job = (new send_mail_job)
-			->delay(Carbon::now()->addSeconds(5));
-	dispatch($job);
-	return "email ok";
-  });
-
-  Route::get('send_mail','MailController@send_mail'); [remove previous route]
-
-
-* now active this delay by .env file :
-
-  queue_driver : database (means listen dispatch delay) queue_driver : sync (dont delay)
-
-* If occur any error check laravel.log file
