@@ -1,8 +1,7 @@
-Contact with hosting provider for get mail server configuration.
-No need any extarnal setting. 
-just put your mail configuration in .env file.
-Mailtrap for mail testing. 
-IT will not send any real message to your mail account.
+
+
+******************* FISRT PROCESS ***********************
+
 
 
 Route::get('mail_form_view','MailController@mail_form_view');
@@ -65,6 +64,68 @@ MAIL_PORT=25
 MAIL_USERNAME=7b377e1839d361
 MAIL_PASSWORD=7673373cb322e2
 MAIL_ENCRYPTION=null
+
+
+
+
+
+
+
+
+
+******************* SECOUND PROCESS ***********************
+
+CREATE MAIL CLASS THEN SEND MAIL:
+
+
+In route : 
+
+Route::get('email', 'JobController@processQueue');
+
+In Controller:
+
+public function processQueue(){
+
+    	Mail::to("a@gmail.com")->send(new VerficationEmail());
+
+}
+
+
+In VerficationEmail file:
+
+
+public function build()
+{
+        return $this->view('emails.welcome');
+}
+
+
+
+
+
+
+
+
+******************* QUEUE PROCESS ***********************
+
+
+1. php artisan queue:table
+
+2. php artisan migrate
+
+3. QUEUE_DRIVER=database (.env) 
+   QUEUE_CONNECTION=database
+
+4. now:
+
+Mail::to("a@gmail.com")->queue(new VerficationEmail());
+
+
+
+
+
+
+
 
 
 ______________________________________________________
