@@ -1,33 +1,5 @@
- SINGLE AUTH :
 
-
-*. avoid home.blade.php file auth+layouts folder
-
-
-* Create Index by defaultStringLength :
-  
-  https://laravel.com/docs/master/migrations#creating-indexes
-
-  app\provider\appserviceprovider.php :
-
-  use Illuminate\Support\Facades\Schema;
-
-  public function boot(){
-  
-    Schema::defaultStringLength(191);
-  
-  }
-
- 
-
-*. php artisan make:auth
-
-   php artisan migrate
-
-
-
-* route: 
-
+Route::::::
   
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
@@ -37,11 +9,108 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
-// Password Reset Routes...
-Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
-Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+
+Registration Form::::::::
+
+
+<form method="POST" action="{{route('register')}}">
+        {{ csrf_field() }}
+        <input type="text" class="form-control" id="name" name="name">
+        <input type="email" class="form-control" id="email" name="email">
+        <input type="password" class="form-control" id="password" name="password">
+        <button style="cursor:pointer" type="submit" class="btn btn-primary">register</button>
+</form>
+
+
+
+Registration method::::::
+
+
+public function register(){
+	$this->validate(request(), [
+	    'name' => 'required',
+	    'email' => 'required|email',
+	    'password' => 'required'
+	]);
+
+	$user = User::create(request(['name', 'email', 'password']));
+}
+
+    
+    
+In user model set password encryption::::::
+
+use Illuminate\Support\Facades\Auth;
+public function setPasswordAttribute($password)
+{
+   $this->attributes['password'] = bcrypt($password);
+}
+
+
+
+_______________
+
+
+Login view ::::::::::::::
+
+
+<form method="post" action="{{route('login')}}">
+  {{ csrf_field() }}
+        <input type="email" class="form-control" id="email" name="email">
+        <input type="password" class="form-control" id="password" name="password">
+        <button type="submit" class="btn btn-default">Login</button>
+</form>
+
+
+
+Login method::::::::::::::
+
+
+
+use Illuminate\Support\Facades\Auth;
+
+
+public function login(Request $request){
+
+	 $this->validate($request,[
+	    'email'=>'required|email',
+	    'password'=>'required'
+	]);
+
+	dd(Auth::attempt(['email'=>$request['email'],'password'=>$request['password']]));
+
+	if(!Auth::attempt(['email'=>$request['email'],'password'=>$request['password']])){
+	    echo "not login";
+	}
+
+}
+
+
+
+** multiple auth system ::::::::::::::::
+
+/ create UserRolls table /
+
+CREATE TABLE UserRolls(
+ id int not null PRIMARY KEY AUTO_INCREMENT,
+ user_id int not null,
+ roll_id int not null,
+ created_at timestamp,
+ updated_at timestamp
+)
+
+
+/ in user model check id with userrolls table userid /
+
+
+public function user_role() {
+  return $this->hasOne(UserRoll::class,'user_id');
+}
+
+
+
+
 
 
 -> logout button create:
