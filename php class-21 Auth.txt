@@ -104,6 +104,45 @@ $id = Auth::user()->id;
 
 check this id status in user_roll table;
 
+_____
+
+
+** guard used for multi auth. we can make as many guard as we want.
+   configure guard in auth.php file
+
+   // attempt guard 
+   
+	if(Auth::guard('admin')->attempt(['email'=>$request['email'],'password'=>$request['password']])){
+
+            echo "admin logged in";
+        
+        }
+
+    // check guard
+    
+        if(Auth::guard('admin')->check()){
+            echo "thanks admin";
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
