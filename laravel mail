@@ -122,8 +122,58 @@ Mail::to("a@gmail.com")->queue(new VerficationEmail());
 
 
 
-attachment & delay
+
+
+
+******************* DYNAMIC CONTENT ***********************
 
 
 
 
+/ need to pass object /
+
+
+
+$User = User::find(1);
+
+    	Mail::to("a@gmail.com")
+			->send(new VerficationEmail($User));
+
+
+
+
+/ need to pass object /
+
+
+
+class VerficationEmail extends Mailable
+{
+    use Queueable, SerializesModels;
+    private $User;
+    
+    public function __construct(User $User)
+    {
+        $this->User = $User;
+    }
+    public function build()
+    {
+        return $this->view('emails.welcome')->with('User',$this->User);
+    }
+}
+
+
+
+/ in view file /
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Laravel Mail Queue Tutorial</title>
+</head>
+<body>
+<p>Hello! {{ $User->name }}</p>
+<p>download this file <a href="{{ $User->password }}">Download</a></p>
+</body>
+</html>
