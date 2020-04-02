@@ -16,25 +16,38 @@
 	
 	composer require predis/predis
 
-1. app\catch ------ change default driver to radis
+1. composer require predis/predis
 
 2. install redis
 
-3. in .env file ---- change catch driver to radis
+3. install pradis package
 
-4. install pradis package
+4. cmd > redis-cli
 
 5. In controller when fetch & show data first check catch.
 
+   // for get data
+   
    catch('articale',function(){
-		
-		$post = post::all();
+   
+	if(Cache::has('key')){
+		dd(cache()->get('key'));
+	}else{
+		$data = Post::all();
+		cache::put('key', $data);
+		dd("ok");
+	}
 		
    });
    
-6. In model create a Protected $dispatch event for catch all inserted & update & delete in every insert & update & delete.
-
+6. In model create a Protected $dispatch event for catch all 
+   inserted & update & delete in every insert & update & delete.
+	
 	// created, updated, deleted built in keyword for 
+	
+	
+	
+	use App\Events\PostCreated;
 	
 	protected $dispatchesEvents = [
 		'created' => PostCreated::class;
@@ -43,6 +56,7 @@
 	]
 	
 7. Create event on model name & Event name.
+   
    
    php artisan make:event PostCreated
    php artisan make:event PostUpdate
@@ -80,6 +94,9 @@
    
    
 10. all done. now link thoes 3 event with 1 listener. in event service provider.
+	
+	use App\Events\PostCreated;
+	use App\Listeners\PostCatchHandleListener;
 
 	protected $listen = [
 		PostCreated::class => [
@@ -94,10 +111,16 @@
 	];
 	
 	
-11. For debug article cache.
+11. For debug article cache insert ::::::::
+    
+    public function cacheInsert(){
 
-	dd(cache()->get('articles'));
-	info(cache()->get('articles'));
+	$Post = new Post;
+     	$Post->title = "new data";
+     	$Post->save();
+
+     	if(Cache::has('key')){
+	   dd(cache()->get('key'));
+	}
+    }
 	
-	
-12. 
