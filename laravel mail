@@ -209,6 +209,13 @@ public function processQueue(){
 
    in job class pass data in mail class 
 
+   private $User;
+   
+   public function __construct(User $User)
+   {
+        $this->User1 = $User;
+   }
+    
    public function handle()
     {
         $email = new VerficationEmail($User);
