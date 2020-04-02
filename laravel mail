@@ -177,3 +177,78 @@ class VerficationEmail extends Mailable
 <p>download this file <a href="{{ $User->password }}">Download</a></p>
 </body>
 </html>
+
+
+
+
+
+
+
+******************* JOB ***********************
+
+1. create job by:
+
+php artisan make:job SendMailJob
+
+
+2. In Controller 
+
+   dispatch job . In job we can set delay time
+
+use App\User;
+use App\Jobs\SendWelcomeEmail;
+
+public function processQueue(){
+
+    	$User = User::find(1);
+        dispatch((new SendWelcomeEmail($User))->delay(Carbon::now()->addSeconds(10))); // pass user data in job
+
+}
+
+3. Job class
+
+   in job class pass data in mail class 
+
+   public function handle()
+    {
+        $email = new VerficationEmail($User);
+        Mail::to('info@larashout.com')->send($email);
+    }
+
+
+
+4. in Mail class:
+  
+  pass data in email view
+
+class VerficationEmail extends Mailable
+{
+    use Queueable, SerializesModels;
+    private $User;
+ 
+    public function __construct(User $User)
+    {
+        $this->User = $User;
+    }
+
+    public function build()
+    {
+        return $this->view('emails.welcome')->with('User',$this->User);
+    }
+    
+}
+
+
+5. in view:
+
+
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Laravel Mail Queue Tutorial</title>
+</head>
+<body>
+<p>Hello! {{ $User->name }}</p>
+<p>download this file <a href="{{ $User->password }}">Download</a></p>
+</body>
+</html>
