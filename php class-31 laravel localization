@@ -1,36 +1,36 @@
-Route::get('/', function () {
 
-   return view('welcome');
+Create folder & set lang ::::::::::::
 
-});
-
-Route::get('{lang?}',function($lang = null){
-
-   App::setlocale($lang);
-	
-   return view('welcome');
-
-});
-
-
-_______
-
-Create folder :
-
-resourse/view/lang/in :
+resourse/view/lang/bd :
 
 <?php
 	
     return [
-	'welcome' => 'india welcome',
+	'welcome' => 'bd welcome',
     ];
 
 ?>
-_______
 
 
-@lang('header.welcome')
+resourse/view/lang/en :
+
+<?php
+	
+    return [
+	'welcome' => 'en welcome',
+    ];
+
+?>
 
 
 
-______
+-------------
+
+Now get access to this lang :::::::::::::::::::
+
+Route::get('/', function () {
+
+    app()->setLocale("bn");
+    echo trans('lang.msg');
+
+});
