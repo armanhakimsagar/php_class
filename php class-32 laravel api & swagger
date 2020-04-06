@@ -1,69 +1,485 @@
 
-Need to develop :
-https://laravel-news.com/json-api-introduction
-Api crud : https://www.toptal.com/laravel/restful-laravel-api-tutorial
-
- Rest API - StateLess (Allow different network)- XML & JSON - 
-
- Soap API - Statefull (Dont allow different network) - XML - After match ending xml data push
- 
- soap:Envelope -> header & body
-
- Simple Object Access Protocol
- 
- Representational State Transfer
- 
- Collections (collection of resource) - Resource (model) -  - URL
-
-   resource should always be plural
-
-   Sorting, filterning, searching, pagination, version set
+JWT :::::::::::::::::::::::::::
 
 
-LETS START ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+https://www.youtube.com/watch?v=wImucnZgcUo&list=PLT9miexWCpPW9T33f5dFzkMQldoc5DtQQ&index=9
 
 
-First we need to generate 2 classes one to handle the resource and the other to handle the collection.
+fetch direct from api data : https://www.youtube.com/watch?v=UciopWMTdUM
 
-*** Make resource : php artisan make:resource ArticleResource
+https://www.youtube.com/playlist?list=PLCakfctNSHkGQ6S557u-6sLEYsfWje47P
 
-*** Make collection of that resource : php artisan make:resource ArticlesResource --collection
+JWT :
+
+JWT Encoding process:
+
+Jwt is a token, when user name & password match we pass this data in jwt package payload function.
+It return a token to client as login token.This token contain all related info about login.
+
+JWT Decoding process:
 
 
-You will now have a new directory under app/Http/Resources where all these resources will reside.
 
-classes you will have a toArray method which is where we will transform our models the way we want them.
 
-public function toArray($request){
-	return [
-	    'type'          => 'articles',
-	    'id'            => (string)$this->id,
-	    'attributes'    => [
-		'title' => $this->title,
-	    ],
+
+
+
+
+
+Rest Api:
+
+1. If we work in laravel api.php file, no cookies & session will set
+  
+   For check use postman : http://echaritybd.com/ or http://echaritybd.com/api/users
+   
+
+2. Create API resource for bind easily with crud:
+
+  php artisan make:controller API/PhotoController (api controller)
+
+  Route::Resource('photo','API\PhotoController'); (api route)
+
+
+3. You can set version :
+
+   Route::group(['prefix' => 'v2'], function(){
+		
+		Route::Resource('photo','API\PhotoController'); (api route)
+		
+   });
+   
+   
+4. now check by :  php artisan route:list
+
+
+5. return User::all();
+
+
+6. now make a format for view:
+
+	
+	$user = user::all();
+    
+	if(count($user) == 0){
+       $feedback = [
+           'status'     => "error",
+           'message'    => "data not found",
+           'data'       => null
+        ];
+
+    }else{
+        $feedback = [
+           'status'     => "success",
+           'message'    => "data found",
+           'data'       => $user
+        ];
+    }
+
+    return $feedback;
+	
+	
+	
+	
+	Insert :::::::::::::::::::::
+	
+	$validator = Validator::make($request->all(), [
+	        
+		'name'  => 'required'
+
+	]);
+
+	if ($validator->fails()) {
+
+		return response()->json($validator->errors()->toArray(),400);
+		
+	} 
+	
+	user = new User;
+    $user->data = $request->data;
+    $result = $user->save();
+
+    if(count($result) == 0){
+       $feedback = [
+           'status'     => "error",
+           'message'    => "insert error"
+        ];
+
+    }else{
+        $feedback = [
+           'status'     => "success",
+           'message'    => "inserted successfully"
+        ];
+    }
+
+    return $feedback;
+	
+	
+	
+	** must add 
+
+	protected $fillable = ['fieldname','fieldname']
+
+
+
+	Update ::::::::::::::::
+	
+	
+	public function update(Request $request,$id) {
+
+	   $poll = DB::table('aps')
+			->where('id',$id)
+			->update(array(
+				'name'=>$request->name,
+			));
+
+	   if($poll == null){
+	   
+		   $feedback = [
+			   'status'     => "error",
+			   'message'    => "update error"
+			]; 
+
+		}else{
+			$feedback = [
+			   'status'     => "success",
+			   'message'    => "update successfully"
+			]; 
+		}
+
+		return $feedback;
+		
+	}
+	
+	
+	
+	Delete :::::::::::
+	
+	
+	
+	   $poll = DB::table('aps')
+		->where('id',$id)
+		->delete();
+
+	   if($poll == null){
+		   $feedback = [
+		   'status'     => "error",
+		   'message'    => "delete error"
+		]; 
+
+		}else{
+			$feedback = [
+			   'status'     => "success",
+			   'message'    => "delete successfully"
+			]; 
+		}
+
+		return $feedback;
+		
+		
+	
+**  Create a product api for perfect example:
+
+	
+	Resource is object (http://api.example.com/cart-management/users/1)
+	
+    Collection is a collection of object (http://api.example.com/cart-management/users)
+	
+	Endpoint is something that indecate specific Resource in a collection.
+	
+	
+
+	Respository create:
+
+
+	1. Its a layer against model. Its name repository
+	
+	2. So after create repository pattern dont call model. 
+	   You should call repository for CRUD.
+	   
+	3. So will communicate with repository & repository will communicate with model
+	
+	4. You can make service for reduce FAT Controller. Its better practise.
+	   You can separate common functionality from a fat controller.
+	   Its call service
+	   
+	now create resource:
+	
+	* php artisan make:resource API/PhotoResource
+	  
+
+	
+	
+	* Now in controller:
+	
+	use App\Http\Resources\API\PhotoResource;
+	use App\Photo;
+	
+	public function show($id)
+    {
+        $photo = photo::find(2);
+        return new PhotoResource($photo);
+    }
+	
+	* in PhotoResource file:
+	
+	
+
+	public function toArray($request)
+    {
+        return [
+            'name' => $this->name,
+			'total_price' => $this->qty * $this->price,
+			'rating' => $this->rating
+        ];
+    }
+	
+	Test by : http://localhost:8070/queueTest/public/api/v2/photo/1
+	
+	
+	* now create collection for photo api: 
+	
+		php artisan make:resource API/PhotoCollection
+	
+	
+	* in controller:
+	
+	
+	use App\Http\Resources\API\PhotoCollection;
+
+	public function index()
+    {
+        return PhotoCollection::collection(Photo::all());
+    }
+	
+	
+	* in collection remove collection from extends & use
+	
+		use Illuminate\Http\Resources\Json\Resource;
+
+		class PhotoCollection extends Resource
+		{
+			/**
+			 * Transform the resource collection into an array.
+			 *
+			 * @param  \Illuminate\Http\Request  $request
+			 * @return array
+			 */
+			public function toArray($request)
+			{
+				return [
+					'name' => $this->name
+				];
+			}
+		}
+		
+	
+	* now check by : http://localhost:8070/queueTest/public/api/v2/photo
+
+	
+	
+	
+	
+	
+	
+6. Create pagination in api:
+
+	
+    return PhotoCollection::collection(Photo::paginate(4));
+
+    check by: http://localhost:8070/queueTest/public/api/v2/photo?page=3
+	
+	
+
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	
+
+
+* Side loading | one to many relationship:
+
+review table : id title user_id** created_at updated_at
+product table: id name password created_at updated_at 
+
+Select all review against single product.
+One to many relationship
+
+* In Product model:
+
+  public function Reviews(){
+      
+	  // if one to one relationship
+	  
+      return $this->hasOne(Review::class);
+  
+	  // if one to many relationship
+	  
+      return $this->hasMany(Review::class);
+  }
+
+* In user controller:
+
+  // fetch all post from passes user_id **
+  
+  public function show($id){
+  
+      $user = User::find($id)->Reviews;
+	  
+      $response['user'] = $user;
+      
+	  return $response;
+  
+  }
+  
+  
+  
+  
+  
+_________________________________________
+
+
+
+File upload API Controller :::::::
+
+
+$cover_image = $request->file('photo');
+
+$enc_cover_image = time() . '.' . $cover_image->getClientOriginalExtension();
+
+$destinationPath = public_path('files');
+
+$cover_image->move($destinationPath, $enc_cover_image);
+
+
+
+API File show :::::::
+
+
+
+$response['download'] = public_path('files/'."a.png");
+
+return $response;
+
+
+
+
+::::::::::::::::::::::::::::::::::::::
+
+
+JWT Library :
+
+1. Its a library for encode & decode json web token.
+
+   Structure: 
+   
+   Header: Identifies which algorithm is used to generate the signature
+   
+   Payload: Contains a set of claims. Infomation about login
+   
+   Signature: The signature is calculated by encoding the header and payload using Base64url Encoding.
+
+   
+   
+   
+2.  download: composer require firebase/php-jwt
+	
+	in controller :::::::::: 
+	
+	use Firebase\JWT\JWT;
+	
+	
+	$payload_info = [
+    
+        'iss' => "localhost",       // issuer server details
+        
+        'iat' => time(),        // time of issue
+        
+        'nbf' => time()+10,     // time interval of issue
+        
+        'eat' => time()+30, // expire time
+
+        'aud' => "my_users",        // audience info
+        
+            'data'=> array(
+                "id"=> 1,
+                
+                "name"=> "arman",
+                
+                "email"=> "arman@gmail.com"
+            )
+        ];
+        
+        $secret_key = "owt125";		// its salt
+        
+        $jwt = JWT::encode($payload_info,$secret_key);
+
+        dd($jwt);
+
+	* Token generated successfully.
+	  now return $jwt as token value after login.
+	
+
+	$data = [
+		'status'=>1,
+		'_token' => $jwt,
+		'message' => 'logged in successfully'
 	];
-}
 
-
-*** Make comtroller : php artisan make:controller --resource ArticleController
-
-Now wrap model in controller :::
-
-public function show(Article $article)
-{
-    return new ArticleResource($article);
-}
-
-
-*** Route :
-
-Route::resource('articles', 'ArticleController');
+	return $data;
 
 
 
 
 
+** For testing go to this link & paste jwt token for see details:
 
+https://jwt.io/#debugger-io
+
+
+** For change algo type go to vendor/firebase/jwt.php.
+   All algo list in there.
+
+   & set in here 
+   
+        $jwt = JWT::encode($payload_info,$secret_key,"HS512");
+
+
+
+** now create a middleware. now check header authentication or bearer token in middleware.
+   
+    check header by: 
+	
+		dd(getallheaders());
+
+	
+	check valid token by:
+	
+		JWT::decode($jwt_from_header,'123',array('HS512'));
+	
+	
+	
+		
+** Decode JWT by:
+
+	     
+		$jwt = JWT::decode($jwt,$secret_key,array('HS512'));
+		
+		
+		example code:
+		
+		
+		$data = JWT::decode("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJpYXQiOjE1ODU5ODY1MDEsIm5iZiI6MTU4NTk4NjUxMSwiZWF0IjoxNTg1OTg2NTMxLCJhdWQiOiJteV91c2VycyIsImRhdGEiOnsiaWQiOjEsIm5hbWUiOiJhcm1hbiIsImVtYWlsIjoiYXJtYW5AZ21haWwuY29tIn19.RzscKkiRSRi02VcKXW7Zu2A4mfJjpZme_OL6PT526yfXJq7FKyWUrxUn5prm4CoV9qAbLuSKs-xnstTd832DZQ","www123",array('HS512'));
+
+        dd($data);
+		
+		
+		** Check this in separate method
+		** also check expired time
+		
+		
+		
+		
 ___________________________________
 
 
@@ -84,330 +500,6 @@ view OR insert into database
 	}
 
 	exit;
-
-THEN _________________________________
-
-
-API CREATE FOR USE in get method :::::::
-
-Route::get('userPost', function() {
-
-    $user = user::all();
-    if(count($user) == 0){
-       $feedback = [
-           'status'     => "error",
-           'message'    => "data not found",
-           'data'       => null
-        ];
-
-    }else{
-        $feedback = [
-           'status'     => "success",
-           'message'    => "data found",
-           'data'       => $user
-        ];
-    }
-
-    return $feedback;
-
-});
-
-
-
-API CREATE FOR single data in get method :::::::
-
-Route::get('departments/{id}', function($id) 
-
-create method for edit
-
-
-
-
-_________________________________
-
-
-INSERT API LINK FOR IN POST METHOD :::::::
-
-
-Post:
-
-Route::post('userPost', function(Request $request) {
-
-    $user = new User;
-    $user->data = $request->data;
-    $result = $user->save();
-
-    if(count($result) == 0){
-       $feedback = [
-           'status'     => "error",
-           'message'    => "insert error"
-        ];
-
-    }else{
-        $feedback = [
-           'status'     => "success",
-           'message'    => "inserted successfully"
-        ];
-    }
-
-    return $feedback;
-
-});
-
-** must add 
-
-protected $fillable = ['fieldname','fieldname']
-
-
-______
-
-
-UPDATE API LINK FOR IN UPDATE METHOD :::::::
-
-Route::put('poll/{id}','control@method')
-
-
-controller :
-
-public function update(Request $request,$id) {
-
-   $poll = DB::table('aps')
-		->where('id',$id)
-		->update(array(
-			'name'=>$request->name,
-		));
-
-   if($poll == null){
-       $feedback = [
-	   'status'     => "error",
-	   'message'    => "update error"
-	]; 
-
-    }else{
-	$feedback = [
-	   'status'     => "success",
-	   'message'    => "update successfully"
-	]; 
-    }
-
-    return $feedback;
-
-}
-
-
-
-______
-
-
-
-UPDATE API LINK FOR IN DELETE METHOD :::::::
-
-
-Delete :
-
-Route::delete('poll/{id}','control@method')
-
-controller :
-
-public function delete(Request $request,$id) {
-
-   $poll = DB::table('aps')
-		->where('id',$id)
-		->delete();
-
-   if($poll == null){
-       $feedback = [
-	   'status'     => "error",
-	   'message'    => "delete error"
-	]; 
-
-    }else{
-	$feedback = [
-	   'status'     => "success",
-	   'message'    => "delete successfully"
-	]; 
-    }
-
-    return $feedback;
-
-}
-
-
-
-:::::::::::::::::::::::::::::::
-
-
-Validation for view (Only apply in edit):
-
-$department = department::find($id);
-
-if(is_null(ap::find($id))){
-    $feedback = [
-       'status'     => "error",
-       'message'    => "data not found",
-       'data'       => null
-    ]; 
-    return $feedback;
-}else{
-    $feedback = [
-       'status'     => "success",
-       'message'    => "data found",
-       'data'       => ap::find($id)
-    ]; 
-    return $feedback;
-}
-
-
-
-
-:::::::::::::::::::::::::::::::
-
-
-Validation for insert:
-
-
-$validator = Validator::make($request->all(), [
-	        
-    'name'  => 'required'
-
-]);
-
-if ($validator->fails()) {
-
-    return response()->json($validator->errors()->toArray(),400);
-    
-} else {
-
-    $data = $request->all();
-    return ap::create([
-        'name' => $data['name']
-    ]);
-
-    if(count($data) == 0){
-       $feedback = [
-           'status'     => "error",
-           'message'    => "insert error"
-        ]; 
-
-    }else{
-        $feedback = [
-           'status'     => "success",
-           'message'    => "inserted successfully"
-        ]; 
-    }
-}
-
-
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-Perfect API with customize data:
-
-
-* php artisan make:controller API/PhotoController --api (api controller)
-
-* Route::apiResource('user','API\UserController'); (api route)
-
-* must create model , fillable & migration 
-
-* index method or UserController for check:
- 
-  return User::all();
-  
-  Now check : http://localhost/test/public/api/user
-
-___
-
-Now create resource for customize data:
-
-
-* php artisan make:resource User/UserResource (resource for customize data)
-
-* in controller:
-  use App\Http\Resources\User\UserResource;
-
-* in UserResource file:
-
-   public function toArray($request)
-    {
-      //dd($this);
-      
-      return[
-        'name' => $this[0]['name'] == "data" ? '0':'1',
-      ];
-    }
-
-
-
-in controller :
-
-* use App\Http\Resources\User\UserResource;
-  
-* return new UserResource($User); 
- 
-
-
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	
-* Side loading | one to many relationship:
-
-Question table : id title user_id** created_at updated_at
-user table     : id name password created_at updated_at 
-
-Select all post against single user.
-One to many relationship
-
-* In user model:
-
-  public function fetchHasOneUser(){
-      return $this->hasOne(Post::class);
-  }
-
-* In user controller:
-
-  // fetch all post from passes user_id **
-  
-  public function show($id){
-      $user = User::find($id)->fetchHasOneUser;
-      $response['user'] = $user;
-      return $response;
-  }
-
-
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
- 
-
-
-API File show:
-
-
-$user = User::find($id)->questionMethod;
-$response['user'] = $user;
-$response['download'] = public_path('files/'."a.png");
-return $response;
-
-
-on click link set download method:
-
-return response->download(asset('imgae/a.png','Show name here'));
-
-
-API File upload:
-
-$cover_image = $request->file('photo');
-
-$enc_cover_image = time() . '.' . $cover_image->getClientOriginalExtension();
-
-$destinationPath = public_path('files');
-
-$cover_image->move($destinationPath, $enc_cover_image);
-
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
