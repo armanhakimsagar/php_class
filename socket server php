@@ -1,0 +1,207 @@
+** set up telnet:
+
+Hold down the ⊞ Win and S (Search) keys.
+Enter Add or Remove Programs and click the System settings option.
+In the Apps & features dialog, scroll down to Related settings and click Programs and Features.
+Click Turn Windows features on or off.
+Scroll down and select the Telnet Client check box.
+Click OK.
+Open a new CMD window and type telnet to see if it is installed. You should see a Microsoft Telnet> prompt.
+To quit, enter quit.
+
+
+1. composer require cboden/ratchet
+
+2. Now create a server controller & chat controller
+
+
+
+
+Server controller (server.php):
+
+<?php
+
+include('ChatController.php');
+
+// for coomunicate with browser
+
+use Ratchet\Server\IoServer;
+use Ratchet\Http\HttpServer;
+use Ratchet\WebSocket\WsServer;
+
+
+// socket connection
+
+$server = IoServer::factory(
+    new HttpServer(
+		new WsServer(
+			new Chat()
+		)
+	),
+    8090
+);
+
+$server->run();
+
+
+
+// set onOpen onMessage all method logic here
+
+chat controller:
+
+<?php
+
+require dirname(__DIR__) . '../../../vendor/autoload.php';
+
+use Ratchet\MessageComponentInterface;
+use Ratchet\ConnectionInterface;
+use Ratchet\Http\HttpServer;
+use Ratchet\WebScoket\ws;
+
+class Chat implements MessageComponentInterface {
+
+	// this is main message data
+
+	protected $clients;
+
+	public function __construct() {
+
+		// SplObjectStorage built in object for store key & value
+		
+		$this->clients = new \SplObjectStorage;
+    }
+
+	// after connection load here
+	
+    public function onOpen(ConnectionInterface $conn) {
+	
+    	$this->clients->attach($conn);
+    	
+		echo "new connection ($conn->resourceId)";
+    
+	}
+
+	// message from to set here
+	
+    public function onMessage(ConnectionInterface $from, $msg) {
+    
+		$msg = json_decode($msg);
+    	
+		// from to logic here. If request to match with current user
+    	
+		foreach ($this->clients as $client) {
+		
+    		if($msg->to == "korim"){
+    			$client->send($msg->data);
+    		}
+    	
+		}
+
+    	// here you can create model & send message to database
+    	
+		// id user id , message, from
+    
+	}
+
+    public function onClose(ConnectionInterface $conn) {
+
+    	$this->clients->attach($conn);
+    	echo "connection closed by :($conn->resourceId)";
+
+    }
+
+    public function onError(ConnectionInterface $conn, \Exception $e) {
+    	echo $e->message();
+    }
+}
+
+
+
+
+chat.php :
+
+
+
+
+<form class="chatForm">
+	<input type="text" name="message" id="message">
+	<input type="submit" name="submit">
+</form>
+
+// show view here
+
+<ul class="messageList"></ul>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+	// socket connection
+	$(document).ready(function(){
+
+		var con = new WebSocket('ws://localhost:8090');
+		var chatForm = $(".chatForm");
+		var messageList = $(".messageList");
+		
+		chatForm.on("submit",function(e){
+			e.preventDefault();
+    		var messageInput = $("input[name='message']",this).val();
+			
+    		// this send method pass data to php method onMessage,
+    		
+			// here you can only pass string. if you pass object make json stringfy 
+
+    		var message = {
+				receiver : "korim",
+				data : messageInput,
+				sender : "rohim"	
+			};
+
+			con.send(JSON.stringify(message));
+			
+			messageList.append("<li>"+message.data+"</li>");
+
+			// after append you can load prevoius message by ajax 
+
+			// url , datatype , success
+		
+		});
+		
+		// when connection open
+		
+		con.onopen = function(e){
+
+			console.log("connected");
+			con.send("message sent from browser");
+
+		};
+
+		// when message send what will happen in destination
+	
+		con.onmessage = function(e){
+
+			console.log(e.data);
+
+			output = JSON.parse(e.data);
+
+			messageList.prepend("<li>"+output.data+"</li>");
+
+		};
+
+	})
+	
+</script>
+
+
+
+
+
+
+
+
+
+Now run in cmd for run server : php server.php 
+
+Now run in cmd for run client chat : telnet localhost 8080
+
+https://www.youtube.com/watch?v=iIky77Wm924&list=PLZU0qJlzY07UQY_UPvxhPDOD1w7ViTPR9&index=10
