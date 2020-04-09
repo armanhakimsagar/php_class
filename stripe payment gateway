@@ -1,0 +1,42 @@
+https://www.youtube.com/watch?v=GhD23s_3PCg
+
+** Register in stripe:
+
+	https://dashboard.stripe.com/register
+
+** Go to developer > api keys :
+
+	https://dashboard.stripe.com/test/apikeys
+
+** copy view from here (set csrf ,set form action,set pk token in js)
+
+	https://stripe.com/docs/stripe-js
+
+	composer require stripe/stripe-php
+
+
+** Now after submit you will get a token:
+
+$token = $_POST['stripeToken'];
+
+
+// set your secret key
+// https://stripe.com/docs/payments/charges-api
+
+\Stripe\Stripe::setApiKey('sk_test_hrwD2YjW5kha7OnT3xULtwK1');
+
+
+
+$charge = \Stripe\Charge::create([
+  'amount' => 999,
+  'currency' => 'usd',
+  'description' => 'Example charge',
+  'source' => $token,
+  'statement_descriptor' => 'Custom descriptor',
+]);
+
+
+end
+
+	
+  
