@@ -1,0 +1,83 @@
+** Create Command:
+
+	php artisan make:command TestCommands
+
+** set command name:
+
+	protected $signature = 'TestCommand';
+
+** in register in karnel.php
+
+
+	protected $commands = [
+		Commands\TestCommands::class;
+	];
+
+
+
+** by check by : 
+		php artisan
+		php artisan TestCommands
+
+** you can set param in command
+
+	protected $signature = 'TestCommand {id}';
+
+	
+	php artisan TestCommands 1
+	
+	
+** Now set handle:
+
+
+    // if you want to catch param value in here
+		
+	echo $this->argument('id');
+  
+  ___________________
+  
+	// if you want to ask from cmd your name
+	
+	$name = $this->ask("Whats you name");
+    
+	echo $name;
+
+  ___________________
+  
+	// if you want type secret
+
+	$name = $this->secret("Whats you name");
+    
+	echo $name;
+
+  ___________________
+  
+	// if you want a confirm message
+
+	$bool = $this->confirm("Do you want to print?");
+    
+	if($bool == true){
+		echo $name;
+	}
+
+
+  ___________________
+  
+  
+  You can rename table :
+  
+  
+  php artisan TestCommand users admins
+  
+  
+  public function handle()
+  {
+	$from = $this->argument('from');
+	$to = $this->argument('to');
+	DB::statement("ALTER TABLE $from RENAME TO $to");
+  }
+  
+  ___________________
+  
+  
+  
