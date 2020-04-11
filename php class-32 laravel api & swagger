@@ -478,6 +478,59 @@ https://jwt.io/#debugger-io
 		** also check expired time
 		
 		
+Login API Process ::::::::::::::::
+
+
+
+
+
+guzzle install for send get & post request with header:
+
+composer require guzzlehttp/guzzle
+
+
+// first send request with username & password as client for get api token
+
+$url = "http://localhost/test/public/api/user";
+
+$data = ['username'=>'arman','password'=>'123'];
+
+$request = $this->client->post($url,array(
+					'content-type' => 'application/json'
+				),array());
+
+$request->setBody($data);
+			
+$response = $request->send();
+
+
+// in this $response you will get token
+
+// now pass this token with header for get access in dashboard url
+
+
+$client = new Client(['http_errors' => false]);
+
+$allresponse = $client->request('GET','http://localhost/test/public/api/user/dashboard', [
+
+	'headers' => [
+		'Authorization' => $response['token']
+	]
+	
+]);
+
+
+
+// now in middleware check your token validity:
+
+dd(getallheaders());
+
+if (200 == 200) {
+	return redirect('submit');
+}
+
+return redirect('home/33');
+		
 		
 		
 ___________________________________
@@ -500,78 +553,6 @@ view OR insert into database
 	}
 
 	exit;
-
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
- 
-Guzzle Token Check (for auth & view):
-
-************
-
-guzzle install:
-
-composer require guzzlehttp/guzzle
-
----
-
-// client side ---------------------------------------------
-// set route for get data from remote api from client side
-
-Route::get('Developerall','DeveloperController@getGuzzleRequest');
-
-
-// set method & header for get data from remote api from client side
-
-  public function getGuzzleRequest(Request $request){
-
-      $client = new Client(['http_errors' => false]);
-    	$allresponse = $client->request('GET','http://localhost/test/public/api/user', [
-    	    // here Authorization fixed, check postman by bearer token
-	    'headers' => [
-    		'Authorization' => "Bearer 54rwerf345t3"
-    	    ]
-    	]);
-
-      $allbody = $allresponse->getBody();
-
-    	$all_list = json_decode($allbody->getContents(),true);
-      // check response in here
-      if($all_list[0] != "authorization error"){
-    	   return view('view',compact('all_list'));
-      }else{
-        return $all_list;
-      }
-  }
-
-
-// developer side here-----------------------------------------
-
-// as a developer check api token header in public/api/user this route
-
-public function index(Request $request)
-{
-// in developer side check header request from client
-  $headers = $request->headers->all();
-  $pubapi = $request->header('authorization_token');
-
-// check header requset with database, if match send data
-  if($pubapi != ""){
-    $user =  User::all();
-    return $user;
-  }else{
-    $feedback = ['authorization error'];
-    return $feedback;
-  }
-}
-
-
-// view for client --------------------------------------------
-
-<?php foreach ($all_list as $key => $value) {
-  echo $value['name'];
-} ?>
-
-
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
  
