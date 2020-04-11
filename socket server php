@@ -1,4 +1,9 @@
-** set up telnet:
+
+https://www.youtube.com/watch?v=iIky77Wm924&list=PLZU0qJlzY07UQY_UPvxhPDOD1w7ViTPR9&index=10
+
+
+***************** set up telnet ***************************
+
 
 Hold down the ⊞ Win and S (Search) keys.
 Enter Add or Remove Programs and click the System settings option.
@@ -10,10 +15,21 @@ Open a new CMD window and type telnet to see if it is installed. You should see 
 To quit, enter quit.
 
 
+There 2 file 
+
+server.php
+
+ServerController.php
+
+
+You need to start both file by cmd > php server.php
+
+telnet localhost 8080
+
+
 1. composer require cboden/ratchet
 
 2. Now create a server controller & chat controller
-
 
 
 
@@ -45,9 +61,11 @@ $server->run();
 
 
 
+
+
 // set onOpen onMessage all method logic here
 
-chat controller:
+server controller:
 
 <?php
 
@@ -71,7 +89,7 @@ class Chat implements MessageComponentInterface {
 		$this->clients = new \SplObjectStorage;
     }
 
-	// after connection load here
+     // after connection load here
 	
     public function onOpen(ConnectionInterface $conn) {
 	
@@ -81,27 +99,28 @@ class Chat implements MessageComponentInterface {
     
 	}
 
-	// message from to set here
+     // message from to set here
 	
     public function onMessage(ConnectionInterface $from, $msg) {
-    
+    		
+		// object pass from javascripts
+		
 		$msg = json_decode($msg);
     	
-		// from to logic here. If request to match with current user
-    	
 		foreach ($this->clients as $client) {
+		
+		// send all logic here to & from
 		
     		if($msg->to == "korim"){
     			$client->send($msg->data);
     		}
     	
-		}
+        }
 
     	// here you can create model & send message to database
     	
-		// id user id , message, from
-    
-	}
+	// id user id , message, from
+    }
 
     public function onClose(ConnectionInterface $conn) {
 
@@ -118,7 +137,7 @@ class Chat implements MessageComponentInterface {
 
 
 
-chat.php :
+viewfile.php :
 
 
 
@@ -136,12 +155,18 @@ chat.php :
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-	// socket connection
+	
 	$(document).ready(function(){
-
+		
+		// socket connection
+		
 		var con = new WebSocket('ws://localhost:8090');
+		
 		var chatForm = $(".chatForm");
+		
 		var messageList = $(".messageList");
+		
+		// form on submit
 		
 		chatForm.on("submit",function(e){
 			e.preventDefault();
@@ -151,7 +176,7 @@ chat.php :
     		
 			// here you can only pass string. if you pass object make json stringfy 
 
-    		var message = {
+    			var message = {
 				receiver : "korim",
 				data : messageInput,
 				sender : "rohim"	
@@ -196,12 +221,124 @@ chat.php :
 
 
 
+*************************
+
+
+If you want to send both notification & chat message :
+
+view file:
 
 
 
 
-Now run in cmd for run server : php server.php 
+<form class="chatForm">
+	<input type="text" name="message" id="message">
+	<input type="submit" name="submit">
+</form>
 
-Now run in cmd for run client chat : telnet localhost 8080
+<form class="notiForm">
+	<input type="text" name="notification" id="notification">
+	<input type="submit" name="submit" value="send notification">
+</form>
 
-https://www.youtube.com/watch?v=iIky77Wm924&list=PLZU0qJlzY07UQY_UPvxhPDOD1w7ViTPR9&index=10
+<ul class="messageList"></ul>
+
+<ul class="notiList"></ul>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+	// socket connection
+	$(document).ready(function(){
+
+
+		var con = new WebSocket('ws://localhost:8010');
+		var chatForm = $(".chatForm");
+		var notiForm = $(".notiForm");
+		var messageList = $(".messageList");
+		var notiList = $(".notiList");
+		
+		
+		// noti send 
+		
+		notiForm.on("submit",function(e){
+			e.preventDefault();
+    		var messageInput = $("input[name='notification']",this).val(); 
+
+    		var noti = {
+				receiver : "korim",
+				data : messageInput,
+				sender : "rohim"	
+			};
+
+
+			//con.send(message);
+			con.send(JSON.stringify(noti));
+
+			// sender point append here
+
+			notiList.append("<li>"+messageInput+"</li>");
+
+			// after append you can load prevoius message by ajax
+
+			// url , datatype , success
+
+		});		
+		//console.log(messageInput);
+		
+		
+		// chat send
+		
+		chatForm.on("submit",function(e){
+			e.preventDefault();
+    		var messageInput = $("input[name='message']",this).val();
+    		// console.log(messageInput);
+
+    		// this send method pass data to php method onMessage,
+    		// here you can only pass string. if you pass object make json stringfy 
+
+    		var chat = {
+				receiver : "korim",
+				data : messageInput,
+				sender : "rohim"	
+			};
+
+
+			//con.send(message);
+			con.send(JSON.stringify(chat));
+
+			// sender point append here
+
+			messageList.append("<li>"+messageInput+"</li>");
+
+			// after append you can load prevoius message by ajax
+
+			// url , datatype , success
+
+		});
+
+		// when connection open
+		con.onopen = function(e){
+			console.log("connected");
+			con.send("message sent from browser");
+		};
+
+		// when message send what will happen in destination
+		
+		con.onmessage = function(e){
+
+			// this is receiver point
+
+			console.log(e.data);
+			//  parse json data
+			output = JSON.parse(e);
+			messageList.prepend("<li>"+output.data+"</li>");
+			notiList.prepend("<li>"+output.data+"</li>");
+		};
+	})
+	
+</script>
+
+
+
+
