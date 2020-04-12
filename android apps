@@ -435,6 +435,12 @@ CODE ONCLICK :::::::::::::::::::::::::::::::::
 
 
 
+Link a href :
+
+Intent newActivityIntent = new Intent(MainActivity.this, DashboardActivity.class);
+
+startActivity(newActivityIntent);
+
 
 
 package com.example.android;
