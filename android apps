@@ -26,8 +26,17 @@ Activity: In apps single screen is activity. All activity create 2 file Java & x
   onDestroy : when back button click for close onpulse then onclose then onDestroy
 
 
+manifest file:
+
+    its a core file for set all setting of a apps.
+    androidmanifest.xml
+    
+    
+    
 Intent filter:
 
+    Intent is for call start service or launch activity or disply page.
+    
     Its a tag. When we run apps in manifest file if a activity contain internt-filter that will open first.
     
     This tag will decide in menifast file which activity will laungh first.
@@ -49,9 +58,17 @@ Intent filter:
          // for get value
          
          Intent.getIntent("key");
-         
     
     
+Service : 
+
+          its a background process.
+          any you want to run in bg.
+ 
+contain provider:
+
+          used to share data between application.
+          
 RES folder:
 
   drawable : contain all image in here
@@ -228,7 +245,9 @@ Width calculation:
         app:layout_constraintStart_toStartOf="parent"  
         app:layout_constraintTop_toBottomOf="@+id/checkBox2" />  
         
-        
+     
+     // must set View v
+     
      public void burgerCheck(View v){
         CheckBox coffe = (CheckBox) findViewById(R.id.checkBox2);
         CheckBox burger = (CheckBox) findViewById(R.id.checkBox3);
