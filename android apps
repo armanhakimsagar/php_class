@@ -375,6 +375,24 @@ Width calculation:
       NewTextViewForText.onclikclistener(handler);   [now add event with property]
       
       
+      
+      if in on create method:
+      
+      Button button3 = findViewById(R.id.button3);
+      
+      button3.setOnClickListener(new View.OnClickListener() {
+      
+            @Override
+            public void onClick(View v) {
+      
+                Intent newActivityIntent = new Intent(DashboardActivity.this, DashboardActivity.class);
+                startActivity(newActivityIntent);
+            
+            }
+            
+      });
+        
+      
       class Handler implements View.onclicklistener(){
       
          public void onlcick(View v){
