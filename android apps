@@ -510,7 +510,23 @@ public class MainActivity extends Activity {
 
 
 
-        
+ Adapter for pass data in array to view:
+ 
+ 
+ String[] mobileArray = {"Android","IPhone","WindowsMobile","Blackberry","WebOS","Ubuntu","Windows7","Max OS X"};
+            
+ // MylistView is destination id, simple_list_item_1 default templete for data show, 
+ 
+ ListView MylistView = (ListView) findViewById(R.id.mobile_list);
+
+ ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, mobileArray);
+
+ MylistView.setAdapter(adapter);
+
+
+
+
+
 
 
 
@@ -527,6 +543,9 @@ SQLLITE:
  3. getwrtieabledatabase class : help create or write in database
  
  4. tutorial 125 to last after windows
+ 
+ 
+ 
  
  
  
