@@ -461,6 +461,28 @@ startActivity(newActivityIntent);
 
 
 
+
+Splash screen  (if you delay in a href just set this in on create method):
+
+in on create method:
+
+new Handler().postDelayed(new Runnable(){
+
+@Override
+public void run() {
+
+    /* Create an Intent that will start the Menu-Activity. */
+
+    Intent newActivityIntent = new Intent(DashboardActivity.this, scroll_layout.class);
+    startActivity(newActivityIntent);
+    DashboardActivity.this.finish();
+
+}
+
+}, 3000);
+
+
+
 package com.example.android;
 
 import android.os.Bundle;
@@ -486,6 +508,9 @@ public class MainActivity extends Activity {
 
 
 
+
+
+        
 
 
 
