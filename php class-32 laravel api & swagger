@@ -1,6 +1,27 @@
+{
+  "student_info":[
+  	{
+	  'name' : 'korim 1',
+	  'age'  : 1,
+	  'description' : 'korim details'
+	},
+	{
+	  'name' : 'korim 2',
+	  'age'  : 2,
+	  'description' : 'korim details'
+	},
+	{
+	  'name' : 'korim 3',
+	  'age'  : 3,
+	  'description' : 'korim details'
+	}
+  ]
+}
+
 validate api data : jsonlint.com
 
 Generate api link from : myjson.com
+
 
 
 JWT :::::::::::::::::::::::::::
