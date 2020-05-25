@@ -301,7 +301,12 @@ Rest Api:
 	* now check by : http://localhost:8070/queueTest/public/api/v2/photo
 
 	
+	********************
+		
+		* it will only work on model::find();
+		* if you work with multiple table can use one to one relationship
 	
+	********************
 	
 	
 	
