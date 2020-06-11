@@ -25,13 +25,23 @@ homework |||
 
 software || 
 
-problems ||| 
+problems in group ||| 
 
-facilities ||| 
+facilities call center||| 
 
 khata  ||
 
 number collection ||
+
+Facebook group add ||
+
+Video in group ||
+
+
+
+
+
+
 
 _____
 
@@ -480,7 +490,7 @@ ______________________________
 
 
 
-link rel shortcuts shortcuts?shortcuts?t‹ href
+link rel shortcuts shortcuts?shortcuts?tâ€¹ href
 
 
 input list - datalist id - option value
