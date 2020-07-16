@@ -635,6 +635,13 @@ function validation(){
 	RemoveClass("phone");
 	
 	
+	// iamge validation :
+	
+	var parts = document.getElementById('image').value.split('.');
+	if (parts[parts.length-1] != 'pdf') {
+		alert('Invalid extension. Needs to be PDF.');
+	}
+	
 	if(getIdValue("fname","input") == ""){
 		error = error+1;
 		msg += getErrorMsg("Firstname");
@@ -704,6 +711,7 @@ function inputOnclick(value){
 	getId(value).classList.remove("error_icon");
 	
 }
+
 function inputOnBlur(value){
 	if(getIdValue(value,"input") == ""){
 		getId(value).classList.add("red");
