@@ -1,202 +1,41 @@
-RULES :
+class CartController{
 
-1. welcome page to details page details to full cart must be post route
-2. check cart if isset
-3. return total cart in every controller for show total cart
+    public function create($post){
+     // declair add to cart 
 
-	$cart = new Cart();
-    $total_item = $cart->totalQuantity();
+     $add_to_cart = [];
+     
+     // assign product name in add to cart array
 
-4. clear cart retru view with full data.
-
-	$total_price = $cart->getTotal();
-	$items = $cart->items();
-	$total_price = $cart->getTotal();
-	return view('checkout',compact('items','total_item','total_price')); 
-
-
-
-https://github.com/anam-hossain/phpcart
-
-
-
-
-
-
-1.  composer require anam/phpcart
-
-2.  config/app.php
-
-   'Anam\Phpcart\CartServiceProvider'
-
-    $aliases array
-
-   'Cart' => 'Anam\Phpcart\Facades\Cart'
-
+     $add_to_cart['pro_name']   = $post['pro_name'];
+     $add_to_cart['pro_prize']  = $post['pro_prize'];
+     $add_to_cart['pro_id']     = $post['pro_id'];
+     $add_to_cart['pro_qty']    = $post['pro_qty'];
+     $add_to_cart['pro_image']  = $post['pro_image'];
    
-   
-3. Make controller method & route 
-
-
-
-use Anam\Phpcart\Cart;
-
-
-// additem
-
-
-$cart = new Cart();
-
-
-public function add_to_cart($id){
-	$cart = new Cart();
-	$product = product::find($id);
-	
-	$cart->add([
-		'id'       => $id,
-		'name'     => $product->name,
-		'quantity' => 1,
-		'price'    => $product->price,
-		'image'    => $product->picture
-	]);
-	
-}
-
-
-
-
-
-//get total item list
-
-
-
-$cart = new Cart();
-
-$items = $cart->items();   //get all item in cart (quantity)
-
-$total_item = $carts->totalQuantity() //get total number of quantity
-
-$total_price = $carts->getTotal();  // get total price
-
-
-return view('index',compact('items'));
-	
-	
-	
-	
-in view just :
-
-{{ $items }}
-
-
-
-
-
-
-
-
-4. checkout.blade.php
-
-
-
-In controller :
-
-
-$cart = new Cart();
-$checkout_items = $cart->items();
-return view('checkout',compact('checkout_items'));
-
-
-
-
-In View:
-
-
-@foreach($checkout_items as $checkout_item)
-
-	<tr>
-	
-		<td><img src="images/{{ $checkout_item->image }}" height="50px" /></td>
-		
-		<td>{{  $checkout_item->name  }}</td>
-
-		<td>{{  $checkout_item->price  }}</td>
-
-		<td><input type="number" value="{{  $checkout_item->quantity  }}"/></td>
-		
-		<td>{{  $checkout_item->quantity * $checkout_item->price  }}</td>
-		
-		<td>Update</td>
-		
-		<td>Delete</td>
-		
-	</tr>
-
-@endforeach
-
-
-
-
-5. DELETE : 
-
-
-
-<a href='{{ url("clear_cart/$checkout_item->id") }}'>Delete</a>
-
-public function clear($id){
-	
-	$cart = new Cart();
-	$product = product::find($id);
-	$id = $product->id;
-	$cart->remove($id);		
-	return redirect()->back();
-
-}
-
-
-
-
-6. UPDATE :
-
-  
-in view 
-
-
-@foreach($checkout_items as $checkout_item)
-
-	<tr>
-	<form method="post" action="{{ url('update') }}">
-		<td><img src="images/{{ $checkout_item->image }}" height="50px" /></td>
-		
-		<td>{{  $checkout_item->name  }}</td>
-
-		<td>{{  $checkout_item->price  }}</td>
-
-		<td><input type="number" value="{{  $checkout_item->quantity  }}" name="quantity"/></td>
-		
-		<td>{{  $checkout_item->quantity * $checkout_item->price  }}</td>
-		
-		<input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-		<input type="hidden" name="id" value="{{ $checkout_item->id }}" />
-		
-		<td><input type="submit" value='Update'></td>
-		
-		<td><a href='{{ url("clear_cart/$checkout_item->id") }}'>Delete</a></td>
-	</form>	
-	</tr>
-	
-@endforeach
-
-
-
-in controller :
-
-
-public function update(){
-	
-	$cart = new Cart();
-	$id = $_POST['id'];
-	$quantity = $_POST['quantity'];
-	$cart->updateQty($id, $quantity);
-	return redirect()->back();
-}
+       // check any thing in cart
+       if(isset($_SESSION['cart_item'])){
+
+            // match alrady exits or nots
+
+            foreach ($_SESSION['cart_item'] as $key => $value) {
+              if($value['pro_id'] == $post['pro_id']){
+                $exists = true; 
+                $_SESSION['cart_item'][$key]['pro_qty']++;
+              }else{
+                $exists = false;
+              }
+            }
+
+            // if not exists then add 
+            if(!isset($exists) || $exists == false){
+              echo "match not found";
+              $_SESSION['cart_item'][] = $add_to_cart;
+            }
+            
+       }else{
+              $_SESSION['cart_item'][] = $add_to_cart;
+       }
+
+        header('location:http://localhost/bitm36/project/views/user/shopping-cart.php');
+    }
