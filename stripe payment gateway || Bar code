@@ -8,42 +8,15 @@ https://www.youtube.com/watch?v=GhD23s_3PCg
 	pass  : A!S@D#F$G%
 
 ** Go to developer > api keys :
-
+	now get your api key from dashboard
 	https://dashboard.stripe.com/test/apikeys
 
-** copy view from here (set csrf ,set form action,set pk token in js)
+** download file from this link :
+   
+   https://phppot.com/php/stripe-payment-gateway-integration-using-php/#create-a-stripe-account-stripe-account-and-get-api-keys
 
-	https://stripe.com/docs/stripe-js
+** import database table
 
-	composer require stripe/stripe-php
+** put api key & publish key
 
-
-** Now after submit you will get a token:
-
-$token = $_POST['stripeToken'];
-
-
-// set your secret key
-// https://stripe.com/docs/payments/charges-api
-
-\Stripe\Stripe::setApiKey('sk_test_hrwD2YjW5kha7OnT3xULtwK1');
-
-
-
-$charge = \Stripe\Charge::create([
-  'amount' => 999,
-  'currency' => 'usd',
-  'description' => 'Example charge',
-  'source' => $token,
-  'statement_descriptor' => 'Custom descriptor',
-]);
-
-
-end
-
-	
-  
-____________________
-
-
-Bar code : https://github.com/picqer/php-barcode-generator
+** run : composer require stripe/stripe-php
