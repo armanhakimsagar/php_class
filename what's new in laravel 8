@@ -1,0 +1,27 @@
+1. 
+
+laravel 7 have default UI package for login , register called
+
+laravel/UI
+
+Laravel 8 have jetstream, It have : login, registration, 2fa, session, API support
+
+2. 
+
+In laravel 8 new directory added name  MODEL
+
+3. 
+
+In laravel 7 factory in method based (define method)
+
+In laravel 8 facetory is class based. We have separate clas for it
+
+4. 
+
+For partial migration we have laravel Migration Squashing package
+
+5.
+
+We can set RATE LIMITING
+
+
