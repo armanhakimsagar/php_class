@@ -618,8 +618,83 @@ _______________
  
 
 
+
+___________________________________
+
+
+polimorchism:
+
+* same name
+* differnet functionality
+* 2 method
+* used in interface implement in php ( Same interface different method )
+
+<?php
+   interface Machine {
+      public function calcTask();
+   }
+   class Circle implements Machine {
+ 
+      private $radius;
+      public function __construct($radius){
+         $this -> radius = $radius;
+      }
+      public function calcTask(){
+         return $this -> radius * $this -> radius * pi();
+      }
+   
+   }
+   class Rectangle implements Machine {
+   
+      private $width;
+      private $height;
+      public function __construct($width, $height){
+         $this -> width = $width;
+         $this -> height = $height;
+      }
+      public function calcTask(){
+         return $this -> width * $this -> height;
+      }
+      
+   }
+   $mycirc = new Circle(3);
+   $myrect = new Rectangle(3,4);
+   echo $mycirc->calcTask();
+   echo $myrect->calcTask();
+
+?>
+
+
+
 _______________________________________
 
+
+Overloading:
+
+class SocialMedia
+{
+
+    public function sharaMessage($para)
+    {
+
+        echo "sharaMessage() with one parameter";
+
+    }
+
+    public function sharaMessage($para1, $para2)
+    {
+
+        echo "sharaMessage() with two parameter";
+
+    }
+
+}
+
+$object = new SocialMedia();
+$object->sharaMessage('Hello World');
+
+
+____________________
 
 
 *. abstract class 
@@ -640,29 +715,36 @@ _______________________________________
    public & final . abs have magic method but implements dnt
    
    
-
 <?php
+	 abstract class abst{
 
- abstract class abst{
- 
-	public abstract function a();
-	
- }
- 
- 
- class newabs extends abst{
- 
-	 public function a(){
-		echo "ok";
+		public abstract function authID();
+		public abstract function authPass();
+
 	 }
-	 
- }
- 
-$newabs = new newabs;
-$newabs->a();
+
+
+	 class newabs extends abst{
+
+		 public function authID(){
+			echo 12;
+		 }
+		 public function authPass(){
+			echo 456;
+		 }
+		 public function authLogin(){
+			echo "ok";
+		 }
+
+	 }
+
+
+
+	$newabs = new newabs;
+	$newabs->authLogin();
+
 
 ?>
-
 
  
  
@@ -700,4 +782,8 @@ Method overloading is performed within class. Method override is performed withi
 
 
 
-polimorchism: same named class but different functionality
+
+
+
+
+
