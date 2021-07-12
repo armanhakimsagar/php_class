@@ -90,8 +90,14 @@ _________________________
 		git push origin --delete master_design 	(remote)
 		git branch -d master_design		(local)
 
-	
 
+** git log (For see all commit list)
+
+** fetch : Git download only commits from the target branch (No file download by this code)
+	
+	git fetch
+
+** Now check latest commit changes after fetch : git log origin/development
 
 
 
@@ -107,12 +113,7 @@ Clone : Get a working copy of the remote repository.
 
 Pull  : merge any new changes
 
-fetch : This will Download all the changes that have been made to the origin/main 
-        branch project which are not present in your local branch.
-	
-	
-
-	
+		
 
 	
 -->  git clone (for download copy):
@@ -123,15 +124,6 @@ fetch : This will Download all the changes that have been made to the origin/mai
 	
     git pull https://github.com/armanhakimsagar/prac.git branch_name_here
 	
-  
--->  git fetch :
-
-	First pull it. if make any changes then fetch.
-
-	git fetch https://github.com/armanhakimsagar/php_ajax_api.git
-
-
-  
    
  --> stash (save uncomplete work):
  
