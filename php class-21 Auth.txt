@@ -324,3 +324,145 @@ web/route.php (remove auth route)
 delete database tables (related to auth)
 confiq/auth.php	 (reset guard | provider | password array)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+____________________________________________________________________________________
+
+
+
+
+
+
+
+
+* Create middleware of permission name, like userView.
+
+* Register all route in middleware:
+
+    protected $routeMiddleware = [
+        'auth' => \App\Http\Middleware\Authenticate::class,
+        'auth_check' => \App\Http\Middleware\AuthCheck::class,    
+        'UserView' =>\App\Http\Middleware\UserView::class,
+    ]
+
+
+
+* Route (Set middleware name in route)
+
+Route::group(['middleware'=>['auth_check']], function(){
+
+       Route::prefix('/admin')->group(function(){
+
+          Route::get('DashboardView',[DashboardController::class,'index'])->name('dashboardview')->middleware('DashboardView');
+
+      });
+
+});
+
+
+* In middleware check here session exists or not
+
+
+    public function handle(Request $request, Closure $next)
+    {
+        $routes = [
+            session('agent-create'),
+            'cnf.agents.store',
+        ];
+        if (Session::has('agent-create')){
+            if(!in_array($request->route()->getName(),$routes)){
+                Toastr::error('You don\'t have permission');
+                return redirect()->route('admin.dashboard');
+            }
+        }
+        else if(!Session::has('agent-create')){
+            Toastr::error('You don\'t have permission');
+            return redirect()->route('admin.dashboard');
+        }
+        else if(!in_array(session('agent-create'),$routes)){
+            Toastr::error('You don\'t have permission');
+            return redirect()->route('admin.dashboard');
+        }
+        return $next($request);
+    }
+
+
+
+
+* lOGIN METHOD 
+
+
+    function check(Request $request){
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+        try {
+            if($user = User::where('email','=',$request->email)->first()){
+                if(Hash::check($request->password,$user->password)){
+                    $request->session()->put('loggedUser',$user->id);
+                    Session::put('loggedUser', $user->id);
+                    $this->idToPermission($user->id);
+                    Toastr::success('Logged in successfully ');
+                    return redirect()->route('admin.dashboard');
+                }else{
+                    Toastr::error('Wrong password');
+                    return redirect()->route('login');
+                }
+            }else{
+                Toastr::error('User is not registered');
+                return redirect()->route('login');
+            }
+        } catch (Exception $e) {
+            Log::channel('devlog')->info('User login => ' . $e->getmessage());
+            Toastr::error('Check mail or password');
+            return redirect()->back();
+        }
+    }
+
+
+
+
+    function idToPermission($id){
+        $all_roles = DB::table('user_role_permission')->select('role_id')->where('user_id',$id)->get();
+        $permissionsId = array();
+        foreach($all_roles as $role){
+            $permission = DB::table('role_permission')->select('*')->where('role_id',$role->role_id)->get();
+            $permissionsId = (array) $permission;
+        }
+
+        foreach ($permissionsId as $permissionId) {
+            foreach ($permissionId as $key => $value) {
+                $permission = DB::table('permissions')->select('*')->where('id',$value->permission_id)->first();
+                $key = $permission->permission;
+                $value =  $permission->permission_route;
+                session()->put($key,$value);
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
