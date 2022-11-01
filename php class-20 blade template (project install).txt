@@ -187,3 +187,44 @@ Master.blade.php
 </head>
 
 
+______________________
+
+https://developer-kaustubh.medium.com/component-and-slot-in-laravel-500be0cd8dc2
+
+How to use Component and Slot (Example):-
+
+resources
+— views
+— — component
+— — — question-component.blade.php
+
+
+
+//question-component.blade.php
+
+<div style="background: #cbcda8">
+
+    <div><b>Question:</b>-{{$question}}</div>
+    <div><b>Answer :</b>- {{$answer}}</div>
+    
+</div>
+
+
+index.blade.php
+
+@component('component.question-component')
+@slot('question')
+        What is earth?
+    @endslot
+@slot('answer')
+        Earth is planet
+    @endslot
+@endcomponent
+@component('component.question-component')
+@slot('question')
+        What is Laravel?
+    @endslot
+@slot('answer')
+        Laravel is a web application framework with expressive, elegant syntax
+    @endslot
+@endcomponent
